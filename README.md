@@ -56,6 +56,39 @@ cinematic).
 
 The em-dash sweep was applied to all three directions and the gallery, not just 01.
 
+## Depth pass (2026-09-03)
+
+The client's second note was that all three read flat and the heroes were boring.
+Fair: every hero was the same structural idea (type on one plane, media on
+another, nothing overlapping), and direction 02 was flat because the Caldera
+reference it derives from is explicitly shadowless.
+
+Each direction now has its **own** depth device rather than the same trick three
+times:
+
+| | Depth language | Hero device |
+|---|---|---|
+| 01 Daylight | Layered planes, occlusion, diffused ambient lift | Footage, a shaft of light, and a before-and-after plate lifted above both and hung across the section edge |
+| 02 Broadsheet | Offset colour planes, concentric tray-and-core radii | Halftone lapping over the headline, media slab on two offset planes, review card hung across the boundary |
+| 03 Hazard | Machined bevels, corner bolts, hard accent offsets | Footage bolted on as a steel plate, extruded headline, two-scale construction grid |
+
+Shared rules kept from `high-end-visual-design`, adapted rather than copied (its
+glassmorphic SaaS look would have walked straight back into slop):
+
+- shadows are always **tinted to the page**, never neutral black, and always
+  large-radius diffused rather than tight and harsh
+- containers are **nested** (outer tray, inner core, mathematically smaller radius)
+- scroll entry resolves out of `blur()` on a custom cubic-bezier, driven by
+  IntersectionObserver, never a scroll listener
+- grain lives on a single `position:fixed; pointer-events:none` layer
+- everything animates `transform` and `opacity` only
+
+**Gotcha worth remembering:** an `<img>` with an HTML `height` attribute ignores
+`aspect-ratio`, because the attribute is a presentational hint and `aspect-ratio`
+only applies when height is `auto`. The hero plate rendered 1080px tall until
+`height:auto` was added. Anywhere else on these pages the images carry an explicit
+`height:100%`, which is why it only bit once.
+
 ## The reels genuinely auto-play
 
 Self-hosted, muted, looping MP4s taken from their Instagram:
