@@ -24,13 +24,23 @@ differs; keep it updated if a direction changes.
 
 ## The reels genuinely auto-play
 
-Three clips from their Instagram, self-hosted as muted looping MP4s:
+Self-hosted, muted, looping MP4s taken from their Instagram:
 
 | File | Source post | Content |
 |---|---|---|
 | `reel-storefront.mp4` / `-wide.mp4` | `/reel/C0joTZTuT9r/` | Commercial storefront, water-fed pole (60s source, cut to 14s) |
 | `reel-solar.mp4` | `/reel/DG8Opp4R9e6/` | Rooftop solar-panel rinse (trimmed to the 6.7s of clean footage) |
-| `reel-beforeafter.mp4` | `/reel/C3j11U1Ot1i/` | Before/after on a glass frontage |
+| `beforeafter.jpg` | `/reel/C3j11U1Ot1i/` | **Still, not video** — see below |
+
+Their third reel is a **static image posted as a reel**: 0.03% of pixels change
+between t=1s and t=13s and every scene score is ~0. Shipping it as a looping
+video with a REC badge would have implied footage that does not exist, so it runs
+as a still in the third bay, badged accordingly. Check motion before assuming a
+reel moves:
+
+```
+ffmpeg -i in.mp4 -vf "select='gt(scene,0)',metadata=print:file=-" -f null -
+```
 
 Each `<video>` is `autoplay muted loop playsinline` with a poster frame, and an
 IntersectionObserver plays it only while it is on screen. `prefers-reduced-motion`
@@ -117,17 +127,20 @@ hanger (`assets/doorhanger.jpg`) and Instagram captions; the **5.0 rating from 4
 Google reviews** is the real count and all four reviews are quoted in full. No
 invented statistics.
 
-Two things to check with the client:
+**There is no offer running** (confirmed by the client, 2026-09-03), and nothing
+on any page states one. Their before/after reel had **"20% off new customers"**
+burned into the footage; it is masked out in `assets/beforeafter.jpg` with two
+`drawbox` fills colour-matched to the backing wall, which leaves both photos and
+the Before/After labels untouched. Their **$50 off** promo graphic is not used at
+all. If an offer ever starts, add it as copy — do not un-mask the reel, the
+discount in it is stale.
 
-- The before/after reel has **"20% off new customers"** burned into the footage,
-  and a 2026 promo graphic offers **$50 off**. Neither is stated as current
-  anywhere in the copy, but confirm what offer (if any) should run.
-- They already advertise **www.eastvalleywindowcleaning.com** on printed door
-  hangers — check who controls that domain before choosing a deploy target.
+They already advertise **www.eastvalleywindowcleaning.com** on printed door
+hangers — check who controls that domain before choosing a deploy target.
 
 ## Still open
 
-- **High-resolution logo file.** Only a 150px Instagram avatar is available, so
+- **High-resolution logo file — still outstanding.** Only a 150px Instagram avatar is available, so
   the Arizona mark here (`assets/az-mark.svg`, inlined per direction so it
   recolours with `currentColor`) is a clean vector rebuild of the real one.
 - No contact form — every CTA is `tel:` or `sms:`.

@@ -97,7 +97,7 @@ section{padding:clamp(56px,7vw,104px) 0}
 /* reels */
 .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bay{position:relative;border-radius:var(--r-card);overflow:hidden;background:var(--deep);aspect-ratio:9/16}
-.bay video{width:100%;height:100%;object-fit:cover}
+.bay video,.bay img{width:100%;height:100%;object-fit:cover}
 .bay .lab{position:absolute;left:16px;bottom:16px;right:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .bay .lab b{background:var(--limestone);border-radius:var(--r-pill);padding:9px 17px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .bay .lab i{background:var(--cyan);color:var(--ink);border-radius:var(--r-pill);padding:9px 15px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-style:normal}
@@ -292,7 +292,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
   <div class="wrap">
     <div class="shead">
       <div><span class="eyebrow">On the job</span><h2 style="margin-top:12px">Straight<br>from the van</h2></div>
-      <p>Real jobs, filmed on site and posted to Instagram. Playing here with the sound off.</p>
+      <p>Straight off their Instagram — two clips playing muted on loop, plus a before and after.</p>
     </div>
     <div class="reels">
       <div class="bay">
@@ -304,7 +304,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
         <span class="lab"><b>Solar array rinse</b><i>Tile roof</i></span>
       </div>
       <div class="bay">
-        <video data-reel autoplay muted loop playsinline preload="metadata" poster="assets/poster-beforeafter.jpg" aria-label="Before and after of a commercial glass frontage"><source src="assets/reel-beforeafter.mp4" type="video/mp4"></video>
+        <img src="assets/beforeafter.jpg" alt="Before and after of a commercial glass frontage — dull, filmed glass above, clear glass below" loading="lazy" width="608" height="1080">
         <span class="lab"><b>Before / after</b><i>Glazing</i></span>
       </div>
     </div>

@@ -114,7 +114,8 @@ section{padding:clamp(56px,7vw,104px) 0}
 .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .bay{border:1px solid var(--line);background:var(--steel);position:relative}
 .bay .vid{position:relative;aspect-ratio:9/16;background:#000;border-bottom:1px solid var(--line)}
-.bay video{width:100%;height:100%;object-fit:cover}
+.bay video,.bay .vid img{width:100%;height:100%;object-fit:cover}
+.stillpill{position:absolute;top:20px;right:14px;z-index:2;background:var(--yellow);color:#000;padding:5px 10px;font-family:var(--m);font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
 .bay .tape{position:absolute;top:0;left:0;right:0;height:7px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 9px,#0b0b0c 9px 18px);z-index:2}
 .bay .ft{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px}
 .bay .ft b{font-family:var(--d);font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.01em}
@@ -329,7 +330,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
   <div class="wrap">
     <div class="shead">
       <div><span class="code">Sec. 02 — Site footage</span><h2 style="margin-top:14px">Straight<br>from the van</h2></div>
-      <p>Real jobs, filmed on site and posted to Instagram. Playing here with the sound off.</p>
+      <p>Straight off their Instagram — two clips playing muted on loop, plus a before and after.</p>
     </div>
     <div class="reels">
       <div class="bay">
@@ -343,8 +344,8 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
         <div class="ft"><b>Solar rinse</b><span>Tile roof</span></div>
       </div>
       <div class="bay">
-        <div class="vid"><div class="tape"></div><span class="rec"><i></i>Rec</span>
-          <video data-reel autoplay muted loop playsinline preload="metadata" poster="assets/poster-beforeafter.jpg" aria-label="Before and after of a commercial glass frontage"><source src="assets/reel-beforeafter.mp4" type="video/mp4"></video></div>
+        <div class="vid"><div class="tape"></div><span class="stillpill">Still</span>
+          <img src="assets/beforeafter.jpg" alt="Before and after of a commercial glass frontage — dull, filmed glass above, clear glass below" loading="lazy" width="608" height="1080"></div>
         <div class="ft"><b>Before / after</b><span>Glazing</span></div>
       </div>
     </div>
