@@ -1,7 +1,7 @@
 import {open,sleep} from './cdp.mjs';
 import {writeFileSync} from 'node:fs';
 const BASE='https://lumen-marketing.github.io/evwc-designs/';
-const pages=[['','live-g.png'],['01-control.html','live-d1.png'],['02-broadsheet.html','live-d2.png'],['03-hazard.html','live-d3.png']];
+const pages=[['','live-g.png'],['01-daylight.html','live-d1.png'],['02-broadsheet.html','live-d2.png'],['03-hazard.html','live-d3.png']];
 for(const [p,out] of pages){
   const P=await open(1440,940);
   await P.send('Page.navigate',{url:BASE+p});

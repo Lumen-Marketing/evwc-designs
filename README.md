@@ -9,7 +9,7 @@ Three industrial homepage directions for **East Valley Window Cleaning LLC**
 | | |
 |---|---|
 | `index.html` | Gallery chooser — live scaled iframe previews, Desktop/Mobile toggle |
-| `01-control.html` | **Control Room** — dark midnight-teal instrument panel |
+| `01-daylight.html` | **Daylight** - container-less, full-bleed photography |
 | `02-broadsheet.html` | **Broadsheet** — light limestone poster, architectural type |
 | `03-hazard.html` | **Hazard** — black + hazard yellow site signage |
 | `assets/` | Their real photos and re-encoded reels |
@@ -21,6 +21,40 @@ order, zero shared components. The furniture matrix in `index.html` records what
 differs; keep it updated if a direction changes.
 
 ---
+
+## Direction 01 was rebuilt (2026-09-03)
+
+The first version of direction 01 ("Control Room") was rejected by the client as
+generic AI output, correctly. It was audited against the `design-taste-frontend`
+anti-slop rules and failed on ten counts:
+
+- dark navy plus cyan **outer glows** on buttons and the CTA panel
+- **seven identical icon-in-a-rounded-square cards** in an equal 4-column grid
+- **six numbered eyebrows** (`01 - Capabilities`, `02 - On the job`, ...) against
+  a cap of `ceil(sections / 3)`
+- **div-built fake monitor chrome** (three dots, `CAM 01`, a telemetry strip),
+  which is the single most recognisable AI tell
+- **"LIVE FEED" badges with pulsing red dots** on pre-recorded clips, which was
+  also simply untrue
+- middle-dot chains, em-dashes throughout, Manrope as the safe default grotesk,
+  a centered glowing CTA, and photos shrunk into small rounded cards
+
+Underneath all of it, "control room" was a crypto-dashboard concept bolted onto a
+window cleaner. It described nothing about the business.
+
+**`01-daylight.html`** replaces it. The concept is the only thing this business
+actually sells: glass, at scale. There are no cards, no borders, no badges and no
+fake UI anywhere on the page. Footage runs edge to edge behind the headline, the
+services are three named groups of large type instead of an icon grid, and a
+neutral off-black lets the photography carry the colour. The logo turquoise is
+the single locked accent, used for actions only.
+
+Type is Bricolage Grotesque 800 with Instrument Sans. Dials: variance 8, motion 5,
+density 2, deliberately the inverse of direction 03 so that two dark pages read as
+completely different things (03 is a dense ruled document, 01 is sparse and
+cinematic).
+
+The em-dash sweep was applied to all three directions and the gallery, not just 01.
 
 ## The reels genuinely auto-play
 

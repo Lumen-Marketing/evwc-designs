@@ -1,5 +1,5 @@
 import {open,sleep} from './cdp.mjs';
-const page=process.argv[2]||'01-control.html';
+const page=process.argv[2]||'01-daylight.html';
 const P=await open(1440,940);
 await P.send('Page.navigate',{url:'file:///C:/Users/tagal/evwc-designs/'+page});
 await sleep(3000);

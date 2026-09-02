@@ -1,5 +1,5 @@
 import {open,sleep} from './cdp.mjs';
-const pages=['01-control.html','02-broadsheet.html','03-hazard.html'];
+const pages=['01-daylight.html','02-broadsheet.html','03-hazard.html'];
 for(const pg of pages){
   const P=await open(390,844);
   await P.send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:2,mobile:true});
@@ -14,8 +14,8 @@ for(const pg of pages){
     return new Promise(res=>setTimeout(()=>{
       const links=[...document.querySelectorAll('.nlinks a,.npill a')];
       const vis=links.filter(a=>{const r=a.getBoundingClientRect();return r.width>0&&r.height>0&&r.right<=innerWidth+1&&r.left>=-1});
-      const cta=document.querySelector('.ncta');const cr=cta.getBoundingClientRect();
-      const ctaVis=cr.width>0&&cr.height>0&&cr.right<=innerWidth+1&&cr.bottom<=innerHeight+400;
+      const cta=document.querySelector('.ncta,.ncall');const cr=cta?cta.getBoundingClientRect():{width:0,height:0,right:0,bottom:0,top:-1};
+      const ctaVis=!!cta&&cr.width>0&&cr.height>0&&cr.right<=innerWidth+1&&cr.bottom<=innerHeight+400;
       // smallest tap target anywhere
       const small=[...document.querySelectorAll('a[href],button')].map(e=>{const q=e.getBoundingClientRect();
         return {t:(e.textContent||'').trim().slice(0,22)||e.className,w:Math.round(q.width),h:Math.round(q.height)}})

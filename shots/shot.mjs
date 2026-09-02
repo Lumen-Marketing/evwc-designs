@@ -138,7 +138,7 @@ const SL = Number(process.env.SLICES || 5);
 const only = process.argv[2];
 const JOBS = [
   ['index.html', 'g.png'],
-  ['01-control.html', 'd1.png'],
+  ['01-daylight.html', 'd1.png'],
   ['02-broadsheet.html', 'd2.png'],
   ['03-hazard.html', 'd3.png'],
 ].filter(([f]) => !only || f.includes(only));
