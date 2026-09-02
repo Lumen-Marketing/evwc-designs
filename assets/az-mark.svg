@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" fill="none" role="img" aria-label="Arizona">
+  <defs>
+    <clipPath id="azclip">
+      <path d="M21.1 0 L160 0 L160 180 L103.8 180 L0 143.2 L2.5 135.9 L8 126.1 L18.6 85.7 L5 63.5 L6.7 27 L21.1 25.7 Z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#azclip)" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
+    <!-- sun -->
+    <circle cx="46" cy="56" r="12" fill="currentColor" stroke="none"/>
+    <g opacity=".9">
+      <path d="M46 32v-9M46 89v9M22 56h-9M70 56h9M29 39l-6-6M63 73l6 6M63 39l6-6M29 73l-6 6"/>
+    </g>
+    <!-- mountain ranges -->
+    <path d="M-6 116 L34 78 L58 102 L86 66 L118 104 L166 74" stroke-width="4"/>
+    <path d="M-6 138 L28 112 L52 130 L80 104 L110 132 L166 100" stroke-width="3" opacity=".65"/>
+    <!-- saguaro -->
+    <g stroke-width="4.4">
+      <path d="M132 150V74"/>
+      <path d="M132 108h-11a5 5 0 0 1-5-5V90"/>
+      <path d="M132 96h11a5 5 0 0 0 5-5V80"/>
+    </g>
+    <!-- desert floor rules -->
+    <g stroke-width="2.6" opacity=".55">
+      <path d="M10 158h34M56 158h26M96 166h40M18 170h30"/>
+    </g>
+  </g>
+  <path d="M21.1 0 L160 0 L160 180 L103.8 180 L0 143.2 L2.5 135.9 L8 126.1 L18.6 85.7 L5 63.5 L6.7 27 L21.1 25.7 Z"
+        stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+</svg>

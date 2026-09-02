@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>East Valley Window Cleaning — Crystal clear views start here</title>
+<meta name="description" content="Window cleaning, screen &amp; track cleaning, hard water stain removal, pressure washing, window tinting, solar panel cleaning and junk removal across the East Valley of Arizona. Owner-operated. Free estimates — call or text 480-806-9455.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;800&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#062430; --panel:#0b3341; --panel2:#0f4152; --line:#175468; --line-soft:#123c4c;
+  --cyan:#12c4de; --cyan-lt:#7cebfa; --sun:#fcde58; --ink:#04171e; --white:#fff; --muted:#a4c4d0;
+  --gut:clamp(20px,5vw,72px); --max:1240px; --r-card:24px; --r-pill:9999px;
+  --f:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --m:'Chivo Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--deep);color:var(--white);font:500 17px/1.6 var(--f);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.04em;line-height:1}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+.mono{font-family:var(--m);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan-lt);display:block}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--sun);color:var(--ink);padding:12px 18px;z-index:99;border-radius:0 0 12px 0;font-weight:700}
+.skip:focus{left:0}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(6,36,48,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.nav .in{display:flex;align-items:center;gap:20px;height:74px;position:relative}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto;min-height:44px}
+.brand>svg{width:26px;height:29px;color:var(--sun);flex:0 0 auto}
+.brand b{font-weight:800;font-size:15px;letter-spacing:-.02em;line-height:1.1;display:block}
+.brand i{font-family:var(--m);font-size:9.5px;letter-spacing:.2em;color:var(--cyan-lt);text-transform:uppercase;font-style:normal}
+.nlinks{display:flex;gap:4px;margin-left:auto}
+.nlinks a{text-decoration:none;font-size:15px;padding:10px 14px;border-radius:var(--r-pill);color:#d6ecf2;min-height:44px;display:inline-flex;align-items:center;transition:background .18s,color .18s}
+.nlinks a:hover{background:var(--panel);color:#fff}
+.ncta{display:inline-flex;align-items:center;gap:9px;background:var(--cyan);color:var(--ink);font-weight:700;font-size:15px;padding:12px 20px;border-radius:var(--r-pill);text-decoration:none;min-height:44px;box-shadow:0 0 24px rgba(18,196,222,.28);transition:transform .18s,box-shadow .18s;white-space:nowrap}
+.ncta:hover{transform:translateY(-1px);box-shadow:0 0 34px rgba(18,196,222,.45)}
+.ncta svg{width:17px;height:17px}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--line);background:transparent;border-radius:12px;color:#fff;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto}
+.burger svg{width:20px;height:20px}
+
+/* hero */
+.hero{position:relative;padding:clamp(44px,6vw,88px) 0 clamp(56px,7vw,104px);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% 0 auto 0;height:70%;background:radial-gradient(60% 100% at 28% 0%,rgba(18,196,222,.17),transparent 70%);pointer-events:none}
+.hgrid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,4vw,60px);align-items:center}
+.chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--panel);padding:8px 16px;border-radius:var(--r-pill);font-family:var(--m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-lt)}
+.dot{width:8px;height:8px;border-radius:50%;background:#00ffaa;box-shadow:0 0 0 0 rgba(0,255,170,.6);animation:pulse 2.4s infinite;flex:0 0 auto}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(0,255,170,0)}100%{box-shadow:0 0 0 0 rgba(0,255,170,0)}}
+h1{margin:22px 0 0;font-size:clamp(38px,5.6vw,82px);line-height:.94;letter-spacing:-.055em}
+.hl{display:inline-block;border:1.5px dashed var(--cyan);border-radius:8px;padding:0 .1em .04em;color:var(--cyan-lt)}
+.lede{margin:24px 0 0;max-width:52ch;color:#cfe6ee;font-size:clamp(16px,1.3vw,19px);line-height:1.62}
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:var(--r-pill);text-decoration:none;font-weight:700;font-size:16px;min-height:52px;transition:transform .18s,box-shadow .18s,background .18s}
+.btn svg{width:18px;height:18px;flex:0 0 auto}
+.b1{background:var(--cyan);color:var(--ink);box-shadow:0 0 30px rgba(18,196,222,.3)}
+.b1:hover{transform:translateY(-2px);box-shadow:0 0 42px rgba(18,196,222,.5)}
+.b2{border:1.5px solid var(--line);color:#fff}
+.b2:hover{background:var(--panel);transform:translateY(-2px)}
+.hnote{margin-top:18px;font-family:var(--m);font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+
+.mon{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);padding:14px;box-shadow:0 30px 80px -30px rgba(0,0,0,.85)}
+.mon .bar{display:flex;align-items:center;gap:8px;padding:2px 4px 12px}
+.mon .bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.mon .bar .lab{margin-left:auto;font-family:var(--m);font-size:10.5px;letter-spacing:.16em;color:var(--cyan-lt);text-transform:uppercase}
+.screen{position:relative;border-radius:14px;overflow:hidden;background:#02141b;aspect-ratio:16/9}
+.screen video{width:100%;height:100%;object-fit:cover}
+.scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px)}
+.telem{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0 0}
+.telem div{background:var(--panel2);padding:12px 14px}
+.telem dt{font-family:var(--m);font-size:9.5px;letter-spacing:.18em;color:var(--cyan-lt);text-transform:uppercase;margin:0}
+.telem dd{margin:5px 0 0;font-size:15px;font-weight:600;letter-spacing:-.02em}
+
+/* strip */
+.strip{border-block:1px solid var(--line-soft)}
+.strip .in{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-soft)}
+.strip .c{background:var(--deep);padding:26px 18px;text-align:center}
+.strip .n{font-size:clamp(21px,2.3vw,30px);font-weight:600;letter-spacing:-.03em;color:var(--cyan-lt);display:flex;align-items:center;justify-content:center;gap:7px}
+.strip .n svg{width:19px;height:19px;color:var(--sun)}
+.strip .l{margin-top:7px;font-family:var(--m);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+section{padding:clamp(60px,7.5vw,112px) 0}
+.head{max-width:62ch}
+.head h2{font-size:clamp(29px,4vw,54px);letter-spacing:-.045em;margin-top:14px;line-height:1.02}
+.head p{color:#c3dde6;margin:16px 0 0;font-size:17px}
+
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.svc article{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-card);padding:26px 24px 28px;transition:border-color .2s,transform .2s,background .2s}
+.svc article:hover{border-color:var(--cyan);transform:translateY(-3px);background:var(--panel2)}
+.svc .ic{width:42px;height:42px;border-radius:11px;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;color:var(--cyan);margin-bottom:18px}
+.svc .ic svg{width:21px;height:21px}
+.svc h3{font-size:19px;letter-spacing:-.03em;line-height:1.2}
+.svc p{margin:9px 0 0;font-size:14.5px;line-height:1.55;color:#b6d4de}
+.svc .big{grid-column:span 2}
+.svc .big h3{font-size:25px}
+
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.bay{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);padding:12px;display:flex;flex-direction:column}
+.bay .vid{position:relative;border-radius:14px;overflow:hidden;background:#02141b;aspect-ratio:9/16;flex:1}
+.bay video{width:100%;height:100%;object-fit:cover}
+.bay .meta{padding:14px 6px 4px}
+.bay .meta .t{font-size:15px;font-weight:600;letter-spacing:-.02em}
+.bay .meta .s{font-family:var(--m);font-size:10px;letter-spacing:.16em;color:var(--cyan-lt);text-transform:uppercase;margin-top:3px}
+.live{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:7px;background:rgba(4,23,30,.72);backdrop-filter:blur(6px);border:1px solid var(--line);padding:6px 11px;border-radius:var(--r-pill);font-family:var(--m);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff}
+.live i{width:6px;height:6px;border-radius:50%;background:#ff4d4d;animation:pulse 2s infinite}
+
+.proof{display:grid;grid-template-columns:1.4fr 1fr;grid-auto-rows:200px;gap:14px;margin-top:44px}
+.proof figure{margin:0;border-radius:var(--r-card);overflow:hidden;position:relative;border:1px solid var(--line-soft)}
+.proof img{width:100%;height:100%;object-fit:cover}
+.proof .tall{grid-row:span 2}
+.proof figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 15px;background:linear-gradient(transparent,rgba(4,23,30,.92));font-family:var(--m);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#dff3f8}
+
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.rev{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r-card);padding:26px 24px;display:flex;flex-direction:column}
+.stars{display:flex;gap:3px;color:var(--sun);margin-bottom:14px}
+.stars svg{width:15px;height:15px}
+.rev p{margin:0;font-size:15px;line-height:1.6;color:#e2f2f7}
+.rev .by{margin-top:auto;padding-top:20px;font-family:var(--m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+.area{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,5vw,72px);align-items:center}
+.azbox{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);padding:38px;display:grid;place-items:center}
+.azbox svg{width:100%;max-width:280px;height:auto;color:var(--cyan)}
+.cities{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.cities span{border:1px solid var(--line);background:var(--panel);padding:10px 17px;border-radius:var(--r-pill);font-size:14.5px;color:#dff0f5}
+
+.cta{background:var(--panel2);border:1px solid var(--line);border-radius:32px;padding:clamp(38px,5vw,68px);text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:auto 0 -60% 0;height:120%;background:radial-gradient(50% 100% at 50% 100%,rgba(18,196,222,.24),transparent 70%)}
+.cta>*{position:relative}
+.cta h2{font-size:clamp(28px,4.4vw,56px);letter-spacing:-.05em;line-height:1}
+.cta p{color:#cbe6ee;margin:18px auto 0;max-width:54ch}
+.phone{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-top:30px;font-size:clamp(25px,3.4vw,42px);font-weight:600;letter-spacing:-.04em;color:var(--sun);text-decoration:none}
+.phone:hover{text-decoration:underline;text-underline-offset:6px}
+
+footer{border-top:1px solid var(--line-soft);padding:52px 0 40px;color:var(--muted);font-size:14px}
+.fgrid{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;justify-content:space-between}
+footer a{color:#cfe8ef}
+footer p a{display:inline-flex;align-items:center;min-height:44px}
+.fnote{margin-top:30px;padding-top:22px;border-top:1px solid var(--line-soft);font-family:var(--m);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+
+@media (max-width:1080px){
+  .svc{grid-template-columns:repeat(2,1fr)}
+  .revs{grid-template-columns:repeat(2,1fr)}
+  .strip .in{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:860px){
+  .nlinks,.ncta{display:none}
+  .burger{display:inline-flex;margin-left:auto}
+  .hgrid,.area{grid-template-columns:1fr}
+  .proof{grid-template-columns:1fr;grid-auto-rows:210px}
+  .proof .tall{grid-row:span 1}
+  .reels{grid-template-columns:1fr;max-width:400px;margin-inline:auto}
+  .nav.open .in{height:auto;flex-wrap:wrap;padding-bottom:14px}
+  .nav.open .nlinks{display:flex;order:3;flex-direction:column;width:100%;gap:2px;margin:8px 0 0}
+  .nav.open .nlinks a{width:100%}
+  .nav.open .ncta{display:inline-flex;order:4;width:100%;justify-content:center;margin-top:8px}
+}
+@media (max-width:560px){
+  .strip .in{grid-template-columns:repeat(2,1fr)}
+  .svc,.revs{grid-template-columns:1fr}
+  .svc .big{grid-column:span 1}
+  .telem{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1Z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.8a2 2 0 0 1 1.7 2Z"/></symbol>
+<symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-4.2-1L3 20l1.2-4.6A8.4 8.4 0 1 1 21 11.5Z"/></symbol>
+<symbol id="i-az" viewBox="0 0 160 180">
+  <clipPath id="azc"><path d="M21.1 0H160v180h-56.2L0 143.2l2.5-7.3 5.5-9.8L18.6 85.7 5 63.5 6.7 27l14.4-1.3Z"/></clipPath>
+  <g clip-path="url(#azc)" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" fill="none">
+    <circle cx="46" cy="56" r="12" fill="currentColor" stroke="none"/>
+    <g opacity=".85"><path d="M46 32v-9M46 89v9M22 56h-9M70 56h9M29 39l-6-6M63 73l6 6M63 39l6-6M29 73l-6 6"/></g>
+    <path d="M-6 116 34 78l24 24 28-36 32 38 48-30" stroke-width="4"/>
+    <path d="M-6 138 28 112l24 18 28-26 30 28 56-32" stroke-width="3" opacity=".6"/>
+    <g stroke-width="4.4"><path d="M126 150V74"/><path d="M126 108h-11a5 5 0 0 1-5-5V90"/><path d="M126 96h10a5 5 0 0 0 5-5V80"/></g>
+    <g stroke-width="2.6" opacity=".5"><path d="M10 158h34M56 158h26M96 166h34M18 170h30"/></g>
+  </g>
+  <path fill="none" d="M21.1 0H160v180h-56.2L0 143.2l2.5-7.3 5.5-9.8L18.6 85.7 5 63.5 6.7 27l14.4-1.3Z" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-azmini" viewBox="0 0 160 180">
+  <path fill="none" d="M21.1 0H160v180h-56.2L0 143.2l2.5-7.3 5.5-9.8L18.6 85.7 5 63.5 6.7 27l14.4-1.3Z" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+  <circle cx="52" cy="58" r="13" fill="currentColor"/>
+  <path fill="none" d="M6 118 40 84l24 24 30-38 32 40" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+</symbol>
+</defs></svg>
+
+<header class="nav" id="nav">
+  <div class="in wrap">
+    <a class="brand" href="#top" aria-label="East Valley Window Cleaning, home">
+      <svg aria-hidden="true"><use href="#i-azmini"/></svg>
+      <span><b>East Valley</b><i>Window Cleaning LLC</i></span>
+    </a>
+    <nav class="nlinks" aria-label="Primary">
+      <a href="#services">Services</a><a href="#reels">Recent work</a><a href="#reviews">Reviews</a><a href="#areas">Areas</a>
+    </nav>
+    <a class="ncta" href="tel:+14808069455"><svg aria-hidden="true"><use href="#i-phone"/></svg>480-806-9455</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main"><span id="top"></span>
+
+<section class="hero">
+  <div class="wrap hgrid">
+    <div>
+      <span class="chip"><i class="dot"></i> Free estimates · Call or text</span>
+      <h1>Crystal <span class="hl">clear</span> views start here.</h1>
+      <p class="lede">Owner-operated window cleaning across the East Valley — inside and out, screens and tracks, hard water stains, tint, solar panels and hauling. Residential and commercial, done by the same hands every time.</p>
+      <div class="acts">
+        <a class="btn b1" href="tel:+14808069455"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call 480-806-9455</a>
+        <a class="btn b2" href="sms:+14808069455"><svg aria-hidden="true"><use href="#i-sms"/></svg>Text for a quote</a>
+      </div>
+      <p class="hnote">Mesa · Gilbert · Chandler · Queen Creek · San Tan Valley · Apache Junction</p>
+    </div>
+    <div class="mon">
+      <div class="bar"><i></i><i></i><i></i><span class="lab">Cam 01 — Commercial storefront</span></div>
+      <div class="screen">
+        <video data-reel autoplay muted loop playsinline preload="metadata" poster="assets/poster-storefront-wide.jpg" aria-label="Crew cleaning a commercial storefront with a water-fed pole"><source src="assets/reel-storefront-wide.mp4" type="video/mp4"></video>
+        <div class="scan"></div>
+      </div>
+      <dl class="telem">
+        <div><dt>Service</dt><dd>Exterior glass</dd></div>
+        <div><dt>Property</dt><dd>Commercial</dd></div>
+        <div><dt>Method</dt><dd>Water-fed pole</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="in wrap">
+    <div class="c"><div class="n"><svg aria-hidden="true"><use href="#i-star"/></svg>5.0</div><div class="l">Google rating</div></div>
+    <div class="c"><div class="n">4</div><div class="l">Google reviews</div></div>
+    <div class="c"><div class="n">7</div><div class="l">Services offered</div></div>
+    <div class="c"><div class="n">LLC</div><div class="l">Registered business</div></div>
+    <div class="c"><div class="n">Free</div><div class="l">Estimates</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <span class="mono">01 — Capabilities</span>
+      <h2>Everything that touches the glass.</h2>
+      <p>One operator, one invoice. Book a single window clean or bundle the whole exterior.</p>
+    </div>
+    <div class="svc">
+      <article class="big">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <h3>Window cleaning — interior &amp; exterior</h3>
+        <p>Streak-free glass on homes and businesses, single storey to multi-storey, using purified water and a water-fed pole where the height calls for it.</p>
+      </article>
+      <article>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 3v18M11 3v18M15 3v18M19 3v18"/></svg></div>
+        <h3>Screens &amp; tracks</h3>
+        <p>Screens pulled, washed and re-set. Sills and sliding tracks vacuumed and scrubbed out.</p>
+      </article>
+      <article>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.1 12 2.7 12 2.7Z"/></svg></div>
+        <h3>Hard water stain removal</h3>
+        <p>Mineral etching from sprinkler overspray and monsoon dust cut back off the glass.</p>
+      </article>
+      <article>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M7 20V9l5-5 5 5v11"/><path d="M10 20v-5h4v5"/></svg></div>
+        <h3>Pressure washing</h3>
+        <p>Driveways, walkways, patios and building exteriors brought back to colour.</p>
+      </article>
+      <article>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></div>
+        <h3>Window tinting</h3>
+        <p>UV and heat film to protect furnishings and hold the AC in, plus reflective film for privacy.</p>
+      </article>
+      <article>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16 6 6h12l3 10H3Z"/><path d="M3 16v3h18v-3M9 6l-1 10M15 6l1 10"/></svg></div>
+        <h3>Solar panel cleaning</h3>
+        <p>Dust and hard water film lifted off panels so the array stops losing output to grime.</p>
+      </article>
+      <article>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18l-1.4 13H4.4L3 7Z"/><path d="M8.5 7V4.5h7V7M10 11v5M14 11v5"/></svg></div>
+        <h3>Junk removal &amp; hauling</h3>
+        <p>Monsoon debris, rental clear-outs and listing prep loaded up and taken away.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="reels">
+  <div class="wrap">
+    <div class="head">
+      <span class="mono">02 — On the job</span>
+      <h2>Straight from the van.</h2>
+      <p>Real jobs, filmed on site and posted to Instagram. Playing here with the sound off.</p>
+    </div>
+    <div class="reels">
+      <div class="bay">
+        <div class="vid"><span class="live"><i></i>Live feed</span>
+          <video data-reel autoplay muted loop playsinline preload="metadata" poster="assets/poster-storefront.jpg" aria-label="Cleaning a commercial storefront with a water-fed pole"><source src="assets/reel-storefront.mp4" type="video/mp4"></video></div>
+        <div class="meta"><div class="t">Commercial storefront</div><div class="s">Mesa · Exterior glass</div></div>
+      </div>
+      <div class="bay">
+        <div class="vid"><span class="live"><i></i>Live feed</span>
+          <video data-reel autoplay muted loop playsinline preload="metadata" poster="assets/poster-solar.jpg" aria-label="Rinsing dust off rooftop solar panels"><source src="assets/reel-solar.mp4" type="video/mp4"></video></div>
+        <div class="meta"><div class="t">Solar array rinse</div><div class="s">Tile roof · Panel wash</div></div>
+      </div>
+      <div class="bay">
+        <div class="vid"><span class="live"><i></i>Live feed</span>
+          <video data-reel autoplay muted loop playsinline preload="metadata" poster="assets/poster-beforeafter.jpg" aria-label="Before and after of a commercial glass frontage"><source src="assets/reel-beforeafter.mp4" type="video/mp4"></video></div>
+        <div class="meta"><div class="t">Before / after</div><div class="s">Storefront glazing</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="head"><span class="mono">03 — Evidence</span><h2>Glass you stop noticing.</h2></div>
+    <div class="proof">
+      <figure class="tall"><img src="assets/restaurant.jpg" alt="Looking out through a spotless full-height restaurant window onto an Arizona parking lot" loading="lazy" width="1400" height="1750"><figcaption>Commercial glazing · Restaurant frontage</figcaption></figure>
+      <figure><img src="assets/hero-pole.jpg" alt="Water-fed pole cleaning a tall arched window on a tile-roofed home" loading="lazy" width="1200" height="1600"><figcaption>Two-storey residential</figcaption></figure>
+      <figure><img src="assets/junk.jpg" alt="Before and after of a backyard cleared of debris" loading="lazy" width="1024" height="1024"><figcaption>Junk removal · Before &amp; after</figcaption></figure>
+      <figure><img src="assets/storefront.jpg" alt="Clean glass shopfront with door and window signage" loading="lazy" width="1200" height="1200"><figcaption>Retail unit · Entry glass</figcaption></figure>
+      <figure><img src="assets/rig.jpg" alt="Work vehicle with a ladder racked on the roof at sunset" loading="lazy" width="1200" height="1200"><figcaption>Owner-operated since day one</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="head"><span class="mono">04 — Reviews</span><h2>5.0 on Google.</h2><p>Every review the business has received, unedited.</p></div>
+    <div class="revs">
+      <article class="rev">
+        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <p>“Jose did an outstanding job cleaning my windows! The team was incredibly friendly, professional, and detail-oriented. They left every window spotless, even cleaning the frames and screens to perfection.”</p>
+        <div class="by">Lacey Shultz · Google</div></article>
+      <article class="rev">
+        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <p>“Jose from East Valley Window Cleaning is a true professional. They are polite, easy to communicate with, and make you feel confident in their honesty and reliability.”</p>
+        <div class="by">Nina Hanopol · Google</div></article>
+      <article class="rev">
+        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <p>“Great job done! On time, on schedule. Windows and sliding doors look great.”</p>
+        <div class="by">Kirkland Sanders · Google</div></article>
+      <article class="rev">
+        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <p>“Really great service!”</p>
+        <div class="by">Maria Sandoval · Google</div></article>
+    </div>
+  </div>
+</section>
+
+<section id="areas">
+  <div class="wrap area">
+    <div class="azbox"><svg role="img" aria-label="Arizona — East Valley service area"><use href="#i-az"/></svg></div>
+    <div>
+      <span class="mono">05 — Coverage</span>
+      <h2 style="font-size:clamp(29px,4vw,54px);margin-top:14px">Working the whole East Valley.</h2>
+      <p style="color:#c3dde6;margin-top:16px;max-width:52ch">Based in the East Valley and on the road daily. If you are near one of these, you are on the route.</p>
+      <div class="cities"><span>Mesa</span><span>Gilbert</span><span>Chandler</span><span>Queen Creek</span><span>San Tan Valley</span><span>Apache Junction</span><span>Johnson Ranch</span><span>Bella Vista Farms</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta">
+      <span class="mono">Free estimate</span>
+      <h2 style="margin-top:16px">Tell us what needs cleaning.</h2>
+      <p>Call or text with your address and roughly how many windows. Most homes can be priced without a visit.</p>
+      <a class="phone" href="tel:+14808069455"><svg style="width:.72em;height:.72em" aria-hidden="true"><use href="#i-phone"/></svg>480-806-9455</a>
+      <div class="acts" style="justify-content:center">
+        <a class="btn b1" href="sms:+14808069455"><svg aria-hidden="true"><use href="#i-sms"/></svg>Text a photo of your windows</a>
+        <a class="btn b2" href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">See more on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div style="max-width:34ch">
+        <a class="brand" href="#top" style="margin-bottom:14px"><svg aria-hidden="true"><use href="#i-azmini"/></svg><span><b>East Valley</b><i>Window Cleaning LLC</i></span></a>
+        <p style="margin:0">Owner-operated by Jose Sandoval. Residential &amp; commercial window care across the East Valley of Arizona.</p>
+      </div>
+      <div><span class="mono" style="margin-bottom:12px">Contact</span>
+        <p style="margin:0 0 6px"><a href="tel:+14808069455">480-806-9455</a></p>
+        <p style="margin:0 0 6px"><a href="sms:+14808069455">Text a quote request</a></p>
+        <p style="margin:0"><a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">@eastvalleywindowcleaningllc</a></p></div>
+      <div><span class="mono" style="margin-bottom:12px">Services</span>
+        <p style="margin:0;line-height:1.9">Window cleaning<br>Screens &amp; tracks<br>Hard water removal<br>Pressure washing<br>Window tinting<br>Solar panel cleaning<br>Junk removal</p></div>
+    </div>
+    <div class="fnote"><span>© <span id="yr">2026</span> East Valley Window Cleaning LLC</span><span>Direction 01 — Control Room</span></div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+var nav=document.getElementById('nav'),bg=document.getElementById('burger');
+bg.addEventListener('click',function(){var o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Close menu':'Open menu')});
+nav.querySelectorAll('.nlinks a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');bg.setAttribute('aria-expanded','false')})});
+(function(){
+  var vids=[].slice.call(document.querySelectorAll('video[data-reel]'));
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sd=navigator.connection&&navigator.connection.saveData;
+  if(rm||sd){vids.forEach(function(v){v.removeAttribute('autoplay');v.pause();v.controls=true});return}
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var v=e.target;
+    if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}
+  })},{threshold:.2});
+  vids.forEach(function(v){io.observe(v)});
+})();
+</script>
+</body>
+</html>

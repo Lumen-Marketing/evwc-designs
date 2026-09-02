@@ -1,0 +1,10 @@
+import {open,sleep} from './cdp.mjs';
+import {writeFileSync} from 'node:fs';
+const [,,page,out,w,h]=process.argv;
+const P=await open(Number(w)||1200,Number(h)||600);
+await P.send('Page.navigate',{url:'file:///C:/Users/tagal/evwc-designs/'+page});
+await sleep(2600);
+const s=await P.send('Page.captureScreenshot',{format:'png'});
+writeFileSync('shots/'+out,Buffer.from(s.data,'base64'));
+console.log('shot',out);
+P.close();process.exit(0);
