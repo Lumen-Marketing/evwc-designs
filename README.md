@@ -161,7 +161,7 @@ page holds, because that is what actually costs money:
 |---|---|---|
 | **Basic** | 02 Broadsheet | Conventional patterns done well: a card grid, a poster hero, a stat row. Quickest to build, easiest for anyone to extend later. |
 | **Standard** | 03 Hazard | A designed system rather than a set of cards: a ruled construction grid, bolted plates, a picture strip and a machined control block, all from one rule set. |
-| **Premium** | 01 Daylight | Full-bleed footage, a pane of frosted glass the headline crosses, a bespoke gallery engine, service rows that text a quote. The most custom engineering. |
+| **Premium** | 01 Daylight | Two-plane cinematic hero, a bespoke gallery engine, service rows that text a quote. The most custom engineering. |
 
 Filenames did not change, so any link already sent still works. The chooser is
 re-ordered and the comparison table's columns follow it. The tier chip itself
@@ -169,14 +169,41 @@ is the ladder: outline, cyan outline, cyan filled.
 
 ### What each tier gained from the reference layouts
 
-**Premium.** The hero copy now sits on a **pane of frosted glass**, and the
-headline is deliberately wider than the pane so its second line crosses the edge
-onto the sharp footage. That crossing is the whole effect, and it needs no text
-masks: the pane is a decorative element sized to about 84% of the copy block, so
-the long line simply overhangs it. `backdrop-filter` works here because `.hero`
-carries `isolation: isolate`, which makes the hero its own backdrop root, so the
-pane samples the footage and nothing above it. The town runs vertically down the
-right edge.
+**Premium.** The hero went through a frosted-glass version and it was rejected,
+correctly. A `backdrop-filter` panel with rounded corners sitting on footage is
+the single most common AI-design signature there is, and three separate things
+were wrong underneath it: the panel hid the photograph, which is the only thing
+actually being sold; a rotated edge label ran down the right side, which is an
+agency-portfolio cliche; and a tilted photo plate fell off the bottom of the
+frame, so the hero did not fit its own viewport.
+
+### The hero: two planes, no container
+
+Rebuilt with **no panel, no blur and no card**. The hero is a two-column grid.
+The left plane is the page's own black. The right plane is the footage, bleeding
+off the top, right and bottom of the frame. The headline is laid across *both*
+columns while the paragraph, the rating and the buttons are held inside the left
+one, so the long second line passes in front of the footage's edge, and the
+black plane casts an inset shadow onto it. **That crossing and that shadow are
+the depth.** A card would only have covered the picture.
+
+Three details make it work:
+
+* **The seam is a long feather, not an edge.** The black runs solid at the
+  media's own left edge and does not reach zero until 36% across, so the type
+  keeps a field to sit on and the two planes interlock instead of butting
+  together. A hairline rim was tried at the boundary and removed: against black
+  on black it read as a rendering artefact, not an edge.
+* **The clip was swapped for its portrait crop.** The hero used to run
+  `reel-storefront-wide.mp4` (1280x722) full-bleed, where the visible frame was
+  a dark, muddy interior. The same job also exists as a 608x1080 portrait crop,
+  which fits a tall column with almost no cropping, is far brighter, and shows
+  what the business actually does: water sheeting down glass, a pole, a crew.
+  The wide crop moved to the gallery, where a wide frame belongs.
+* **`height: 100%` on the video had to become `position: absolute`.** Against an
+  indefinite grid row that percentage resolves to auto, the clip falls back on
+  its own 9:16 ratio, and the hero came out 270px taller than it asked for with
+  the call button pushed below the fold.
 
 Services were rebuilt as **one ruled run of rows**: name, kicker, a stadium of
 the job, the detail, and an arrow. The whole row is an `sms:` link with the body
@@ -209,7 +236,7 @@ towns covered, and what an estimate costs. **No invented statistics.**
 link into the schedule. The deep and cyan planes step down behind the row rather
 than behind each card, so the trio reads as one object rather than three.
 
-**Standard.** The frosted pane has a machined equivalent: the hero copy sits in
+**Standard.** The same idea in this direction's own vocabulary: the hero copy sits in
 a **recess milled into the plate**, with `--bevel-deep`, corner bolts and a
 hazard-yellow stripe down its leading edge. Same idea as the premium hero, drawn
 entirely in this direction's own vocabulary.
