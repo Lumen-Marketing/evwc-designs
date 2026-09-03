@@ -23,7 +23,7 @@
   --d:'Bricolage Grotesque',system-ui,sans-serif;
   --b:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
   --ez:cubic-bezier(.32,.72,0,1);
-  --ez-out:cubic-bezier(.16,1,.3,1);
+  --ez-out:cubic-bezier(.23,1,.32,1);
   /* diffused ambient shadows tinted to the page, never harsh */
   --lift-1:0 2px 4px -2px rgba(0,0,0,.6), 0 12px 28px -12px rgba(0,0,0,.75);
   --lift-2:0 8px 18px -8px rgba(0,0,0,.7), 0 40px 80px -28px rgba(0,0,0,.9);
@@ -76,15 +76,18 @@ h1{font-size:clamp(42px,7.6vw,116px);max-width:14ch;text-shadow:0 2px 40px rgba(
 .hero p{margin:24px 0 0;max-width:44ch;font-size:clamp(16px,1.35vw,19px);color:#d9dddf}
 
 /* front plane: a plate of proof lifted off the footage, hung over the section edge */
-.plate{margin:0;position:absolute;z-index:4;right:var(--gut);bottom:clamp(-108px,-9vw,-64px);
-  width:clamp(168px,20vw,286px);transform:rotate(-2.6deg);transition:transform .9s var(--ez)}
-.plate-in{padding:9px;border-radius:22px;background:linear-gradient(168deg,#26292b,#141618);
-  box-shadow:var(--lift-3),0 0 0 1px rgba(255,255,255,.09),var(--rim)}
-.plate-in img{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:13px;
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.5)}
-.plate figcaption{margin-top:15px;text-align:right;font-size:12.5px;line-height:1.45;color:var(--fg-2);
-  text-shadow:0 1px 10px rgba(0,0,0,.8)}
-.plate:hover{transform:rotate(-1.4deg) translateY(-7px)}
+.plate{margin:0;position:absolute;z-index:4;right:var(--gut);bottom:clamp(-96px,-8vw,-56px);
+  width:clamp(186px,23vw,320px);transform:rotate(-2.4deg);
+  transition:transform 420ms var(--ez-out),filter 420ms var(--ez-out)}
+.plate-in{padding:6px;border-radius:16px;background:linear-gradient(168deg,#2b2f31,#131517);
+  box-shadow:var(--lift-3),0 0 0 1px rgba(255,255,255,.11),var(--rim)}
+.plate-in img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;
+  object-position:center;border-radius:10px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.55)}
+.plate figcaption{margin-top:14px;text-align:right;font-size:12.5px;line-height:1.45;color:var(--fg-2);
+  text-shadow:0 1px 10px rgba(0,0,0,.85)}
+@media (hover:hover) and (pointer:fine){
+  .plate:hover{transform:rotate(-1.2deg) translateY(-6px)}
+}
 @supports (animation-timeline:scroll()){
   @media (prefers-reduced-motion:no-preference){
     .hero-bg video{animation:drift linear both;animation-timeline:scroll();animation-range:0 92vh}
@@ -158,7 +161,7 @@ h1{font-size:clamp(42px,7.6vw,116px);max-width:14ch;text-shadow:0 2px 40px rgba(
 .rev{position:relative;padding-bottom:clamp(72px,10vw,148px);overflow:hidden}
 /* a photographic plane behind the panes so the section is never bare */
 .rev::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url(assets/hero-pole.jpg) center 30%/cover no-repeat;opacity:.2;filter:grayscale(.3) blur(3px);
+  background:url(assets/storefront.jpg) center 40%/cover no-repeat;opacity:.17;filter:grayscale(.45) blur(5px);
   -webkit-mask-image:radial-gradient(58% 62% at 86% 26%,#000,transparent 74%);
   mask-image:radial-gradient(58% 62% at 86% 26%,#000,transparent 74%)}
 .rev>.wrap{position:relative;z-index:1}
@@ -301,8 +304,8 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
       </div>
     </div>
     <figure class="plate">
-      <div class="plate-in"><img src="assets/beforeafter.jpg" alt="Before and after of a commercial glass frontage, dull filmed glass above and clear glass below" width="608" height="1080"></div>
-      <figcaption>The same frontage,<br>before and after</figcaption>
+      <div class="plate-in"><img src="assets/plate-pole.jpg" alt="A water-fed pole brush washing a tall arched window, water running down the glass against a blue Arizona sky" width="900" height="1200"></div>
+      <figcaption>Two storey residential,<br>water-fed pole</figcaption>
     </figure>
   </div>
 </section>

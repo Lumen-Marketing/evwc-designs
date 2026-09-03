@@ -89,6 +89,31 @@ only applies when height is `auto`. The hero plate rendered 1080px tall until
 `height:auto` was added. Anywhere else on these pages the images carry an explicit
 `height:100%`, which is why it only bit once.
 
+## Hero plate replaced (2026-09-03)
+
+The client rejected the before/after image in direction 01's hero plate. The
+cause was self-inflicted: masking the stale "20% off" out of that reel left
+roughly a third of the frame as flat dead brown, and its baked-in Before/After
+labels are set in a heavy sans that clashes with Bricolage Grotesque. It survives
+at thumbnail size in the reel wall but not enlarged in the hero, where it reads as
+a pasted screenshot.
+
+Replaced with `assets/plate-pole.jpg`, a **dedicated tight crop** cut from the
+original 1440x1920 source: the brush head on the glass with water running down,
+the yellow pole, blue sky. Bright and saturated against the dark orange interior
+footage behind it, so the plate now pops instead of muddying. The bezel was
+thinned from 9px to 6px with a smaller inner radius so it reads as a photographic
+print rather than a phone mockup, and the hover was cut from 900ms to 420ms on
+Emil's strong ease-out curve and gated behind `(hover:hover) and (pointer:fine)`.
+
+Cutting a fresh crop rather than reusing `hero-pole.jpg` directly matters: the
+mid-page band already uses that file as a wide architectural shot. The plate is a
+tight detail of the same job, which reads as detail-then-context rather than as a
+duplicate.
+
+**Lesson:** an image that works at 300px does not necessarily work at 900px.
+Anything with baked-in text or masked-out regions should stay small.
+
 ## Reviews depth pass (2026-09-03)
 
 He then pointed at the reviews block: it still read flat. He was right, and the
