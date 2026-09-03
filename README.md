@@ -107,7 +107,7 @@ print rather than a phone mockup, and the hover was cut from 900ms to 420ms on
 Emil's strong ease-out curve and gated behind `(hover:hover) and (pointer:fine)`.
 
 Cutting a fresh crop rather than reusing `hero-pole.jpg` directly matters: the
-mid-page band already uses that file as a wide architectural shot. The plate is a
+band below it used that file as a wide architectural shot. The plate is a
 tight detail of the same job, which reads as detail-then-context rather than as a
 duplicate.
 
@@ -149,6 +149,28 @@ the stars grey, so the accent colour needed restating at the more specific
 selector.
 
 ## The work gallery (2026-09-03)
+
+**It runs the full width of the viewport, inside a gutter.** The header, the
+index and the controls stay in the centred column; only the deck breaks out, so
+it is a sibling of the `.wrap` rather than a child of it. No `100vw` anywhere:
+`vw` includes the scrollbar and would push the document sideways.
+
+The step between cards is **solved from the width actually available** rather
+than fixed. Given the visible width of each rank, the gap that makes the row
+span exactly the space inside the gutter is
+`g = (A - 2*B[D] - w[D]) / (2*D)`, and the deck drops a rank if that gap would
+crowd the cards. A fixed step cannot do this: it leaves a band of dead space on
+a wide screen and overflows on a narrow one.
+
+`overflow-x: clip` on the deck, with `overflow-y: visible` so the reflection
+below it survives. A card narrowed by `clip-path` still occupies its full box,
+so the outermost pair was pushing the document sideways even though nothing was
+painted out there.
+
+Direction 01's full-bleed photo band is gone. It held the one job photograph the
+gallery was missing, and a full-bleed strip immediately above a full-bleed
+gallery was the same move twice. All three decks now carry seven items, which is
+what a symmetric three-deep row needs.
 
 Reference layouts supplied by the client: a centre-stage photo gallery with a
 pill index and arrows, and a hero holding one wide image flanked by tall

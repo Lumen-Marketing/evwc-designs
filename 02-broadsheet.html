@@ -153,8 +153,9 @@ section{padding:clamp(56px,7vw,104px) 0}
 /* the deck: one card at full size on the centre line with its colour planes
    stacked straight down behind it, its neighbours stepped back either side.
    Depth stays stacking, never blur, so the falloff is scale and not focus. */
-.deck{--dw:clamp(196px,23vw,320px);--dh:calc(var(--dw) * 4 / 3);
-  position:relative;height:var(--dh);margin:0 auto clamp(72px,9vw,126px);touch-action:pan-y}
+.deck{--dw:clamp(196px,24vw,430px);--dh:calc(var(--dw) * 4 / 3);
+  position:relative;height:var(--dh);margin:0 0 clamp(72px,9vw,126px);
+  padding-inline:var(--gut);touch-action:pan-y;overflow-x:clip;overflow-y:visible}
 .deck::before,.deck::after{content:"";position:absolute;left:50%;top:0;z-index:0;
   width:var(--dw);height:var(--dh);border-radius:var(--r-card);pointer-events:none}
 .deck::before{background:var(--deep);transform:translate(-50%,0) translate(0,26px)}
@@ -288,7 +289,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
 @media (max-width:760px){
   .deck{height:auto;display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;
     scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;
-    margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut)}
+    overflow-y:visible;padding-inline:var(--gut)}
   .deck::-webkit-scrollbar{display:none}
   .deck::before,.deck::after{display:none}
   .slide{position:static;flex:0 0 78%;width:auto;height:auto;scroll-snap-align:center;transform:none;opacity:1}
@@ -443,6 +444,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
       <li><button class="pill" aria-pressed="false">Junk removal</button></li>
       <li><button class="pill" aria-pressed="false">The rig</button></li>
     </ul>
+  </div>
 
     <div class="deck" data-deck aria-roledescription="carousel" aria-label="Recent work">
     <figure class="slide" data-cap="Commercial storefront" data-sub="Mesa, exterior glass" data-pv="poster-storefront.jpg">
@@ -468,6 +470,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
     </figure>
     </div>
 
+  <div class="wrap">
     <div class="deck-bar">
       <p class="dcap" aria-live="polite"><b>Commercial storefront</b><span>Mesa, exterior glass</span></p>
       <div class="dctl">
@@ -578,13 +581,30 @@ nav.querySelectorAll('.npill a').forEach(function(a){a.addEventListener('click',
   var n=slides.length, cur=0, seen=true;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sd=navigator.connection&&navigator.connection.saveData;
-  var SC=[1,.84,.70], LAP=-.15, DEPTH=2;
+  var SC=[1,.84,.70,.58];
+  var MAXD=Math.min(3,Math.floor((n-1)/2)), LMIN=-.26, LMAX=.10;
   var wide=matchMedia('(min-width: 761px)');
+
+  /* Solve for the step that makes the row span exactly the width inside the
+     gutter, then drop a rank if that would crowd the cards. Deriving it is the
+     only way the deck reaches both edges at every viewport; a fixed step
+     leaves a band of dead space on a wide screen. */
+  function fit(W,A){
+    for(var D=MAXD;D>=1;D--){
+      var sw=[],B=[0],k;
+      for(k=0;k<=D;k++) sw[k]=W*SC[k];
+      for(k=1;k<=D;k++) B[k]=B[k-1]+(sw[k-1]+sw[k])/2;
+      var g=(A-2*B[D]-sw[D])/(2*D);
+      if(g>=W*LMIN||D===1) return {D:D,g:Math.max(W*LMIN,Math.min(g,W*LMAX)),B:B};
+    }
+  }
 
   function place(){
     if(wide.matches){
-      var W=slides[cur].offsetWidth, xs=[0], k;
-      for(k=1;k<=DEPTH;k++) xs[k]=xs[k-1]+W*(SC[k-1]+SC[k])/2+W*LAP;
+      var W=slides[cur].offsetWidth, cs=getComputedStyle(deck), k;
+      var A=deck.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      var f=fit(W,A), DEPTH=f.D, xs=[0];
+      for(k=1;k<=DEPTH;k++) xs[k]=f.B[k]+k*f.g;
       slides.forEach(function(el,i){
         var o=i-cur; if(o>n/2)o-=n; if(o<-n/2)o+=n;
         var a=Math.abs(o), d=Math.min(a,DEPTH);

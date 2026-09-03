@@ -155,10 +155,11 @@ section{padding:clamp(56px,7vw,104px) 0}
 
 /* the deck: plates standing on a bench. They scale from the foot, not the
    centre, so however far back a plate steps it keeps the same baseline. */
-.deck{--dw:clamp(188px,22vw,312px);--dh:calc(var(--dw) * 4 / 3);
-  position:relative;height:var(--dh);margin:0 auto clamp(58px,7.2vw,102px);touch-action:pan-y}
-.deck::before{content:"";content:"";position:absolute;left:50%;translate:-50% 0;bottom:-1px;height:1px;
-  width:min(calc(100% + var(--gut) * 1.2),1320px);background:var(--line2)}
+.deck{--dw:clamp(188px,23vw,420px);--dh:calc(var(--dw) * 4 / 3);
+  position:relative;height:var(--dh);margin:0 0 clamp(58px,7.2vw,102px);
+  padding-inline:var(--gut);touch-action:pan-y;overflow-x:clip;overflow-y:visible}
+.deck::before{content:"";position:absolute;left:var(--gut);right:var(--gut);bottom:-1px;height:1px;
+  background:var(--line2)}
 .slide{position:absolute;left:50%;top:0;margin:0;width:var(--dw);height:var(--dh);cursor:pointer;
   -webkit-tap-highlight-color:transparent;transform-origin:50% 100%;
   transform:translate3d(calc(-50% + var(--x,0px)),0,0) scale(var(--s,1));
@@ -298,7 +299,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
 @media (max-width:760px){
   .deck{height:auto;display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;
     scroll-snap-type:x mandatory;scrollbar-width:none;
-    margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut)}
+    overflow-y:visible;padding-inline:var(--gut)}
   .deck::-webkit-scrollbar{display:none}
   .deck::before{display:none}
   .slide{position:static;flex:0 0 78%;width:auto;height:auto;scroll-snap-align:center;transform:none;opacity:1}
@@ -462,6 +463,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
       <li><button class="tab" aria-pressed="false">Junk</button></li>
       <li><button class="tab" aria-pressed="false">Rig</button></li>
     </ul>
+  </div>
 
     <div class="deck" data-deck aria-roledescription="carousel" aria-label="Job record">
     <figure class="slide" data-cap="Storefront" data-sub="Mesa / Exterior / 0:14">
@@ -487,6 +489,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
     </figure>
     </div>
 
+  <div class="wrap">
     <div class="deck-bar">
       <p class="dcap" aria-live="polite"><b>Storefront</b><span>Mesa / Exterior / 0:14</span></p>
       <div class="dctl">
@@ -598,13 +601,30 @@ nav.querySelectorAll('.nlinks a').forEach(function(a){a.addEventListener('click'
   var n=slides.length, cur=0, seen=true;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sd=navigator.connection&&navigator.connection.saveData;
-  var SC=[1,.82,.66], LAP=-.08, DEPTH=2;
+  var SC=[1,.82,.66,.52];
+  var MAXD=Math.min(3,Math.floor((n-1)/2)), LMIN=-.24, LMAX=.10;
   var wide=matchMedia('(min-width: 761px)');
+
+  /* Solve for the step that makes the row span exactly the width inside the
+     gutter, then drop a rank if that would crowd the cards. Deriving it is the
+     only way the deck reaches both edges at every viewport; a fixed step
+     leaves a band of dead space on a wide screen. */
+  function fit(W,A){
+    for(var D=MAXD;D>=1;D--){
+      var sw=[],B=[0],k;
+      for(k=0;k<=D;k++) sw[k]=W*SC[k];
+      for(k=1;k<=D;k++) B[k]=B[k-1]+(sw[k-1]+sw[k])/2;
+      var g=(A-2*B[D]-sw[D])/(2*D);
+      if(g>=W*LMIN||D===1) return {D:D,g:Math.max(W*LMIN,Math.min(g,W*LMAX)),B:B};
+    }
+  }
 
   function place(){
     if(wide.matches){
-      var W=slides[cur].offsetWidth, xs=[0], k;
-      for(k=1;k<=DEPTH;k++) xs[k]=xs[k-1]+W*(SC[k-1]+SC[k])/2+W*LAP;
+      var W=slides[cur].offsetWidth, cs=getComputedStyle(deck), k;
+      var A=deck.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      var f=fit(W,A), DEPTH=f.D, xs=[0];
+      for(k=1;k<=DEPTH;k++) xs[k]=f.B[k]+k*f.g;
       slides.forEach(function(el,i){
         var o=i-cur; if(o>n/2)o-=n; if(o<-n/2)o+=n;
         var a=Math.abs(o), d=Math.min(a,DEPTH);

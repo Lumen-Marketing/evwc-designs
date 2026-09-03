@@ -122,12 +122,6 @@ h1{font-size:clamp(42px,7.6vw,116px);max-width:14ch;text-shadow:0 2px 40px rgba(
 .cluster li span{display:block;font-family:var(--b);font-weight:400;font-size:15.5px;line-height:1.55;letter-spacing:0;color:var(--fg-2);margin-top:9px;max-width:52ch}
 
 /* ---------- full-bleed break ---------- */
-.band{position:relative;height:clamp(340px,52vw,620px);overflow:hidden}
-.band img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
-.band::after{content:"";position:absolute;inset:auto 0 0 0;height:34%;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(12,13,14,.82))}
-.band figcaption{position:absolute;left:var(--gut);bottom:26px;z-index:2;font-size:14px;color:#e6eaeb}
-
 /* ---------- reels: a light table ----------
    Two clips of equal size standing on one shared surface, mirrored about the
    centre line, then the before and after as a single hinged plate below. The
@@ -155,12 +149,12 @@ h1{font-size:clamp(42px,7.6vw,116px);max-width:14ch;text-shadow:0 2px 40px rgba(
    down to standing slivers, evenly spaced either side of the same centre line.
    Positions come from the visible width of each step, which is the only way to
    keep the gaps even once the cards are narrowed. */
-.deck{--dw:clamp(214px,27vw,394px);--dh:calc(var(--dw) * 4 / 3);
-  position:relative;height:var(--dh);margin:0 auto;touch-action:pan-y}
-/* the surface the deck stands on, fading out equally at both ends */
-.deck::before{content:"";position:absolute;left:50%;translate:-50% 0;bottom:0;height:1px;
-  width:min(calc(100% + var(--gut) * 1.4),1240px);
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.17) 24%,rgba(255,255,255,.17) 76%,transparent)}
+.deck{--dw:clamp(200px,27vw,500px);--dh:calc(var(--dw) * 4 / 3);
+  position:relative;height:var(--dh);margin:0;padding-inline:var(--gut);touch-action:pan-y;
+  overflow-x:clip;overflow-y:visible}
+/* the surface the deck stands on, running the full width inside the gutter */
+.deck::before{content:"";position:absolute;left:var(--gut);right:var(--gut);bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.17) 12%,rgba(255,255,255,.17) 88%,transparent)}
 /* the light the focused card throws down onto that surface */
 .deck::after{content:"";position:absolute;left:50%;translate:-50% 0;top:100%;
   width:calc(var(--dw) * .94);height:clamp(38px,4.8vw,68px);pointer-events:none;
@@ -332,7 +326,7 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
 @media (max-width:760px){
   .deck{height:auto;display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;
     scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;
-    margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut)}
+    overflow-y:visible;padding-inline:var(--gut)}
   .deck::-webkit-scrollbar{display:none}
   .deck::before,.deck::after{display:none}
   .slide{position:static;flex:0 0 76%;width:auto;height:auto;scroll-snap-align:center;
@@ -433,12 +427,8 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
   </div>
 </section>
 
-<figure class="band" style="margin:0">
-  <img src="assets/hero-pole.jpg" alt="A water-fed pole reaching a tall arched window on a tile-roofed Arizona home against a blue sky" loading="lazy" width="1200" height="1600">
-  <figcaption>Two storey residential, water-fed pole</figcaption>
-</figure>
-
-<section class="reels wrap" id="reels">
+<section class="reels" id="reels">
+  <div class="wrap">
   <div class="rhead rv">
     <h2>Straight from the van.</h2>
     <p class="sub">Their own clips and job photographs, straight off Instagram. The two clips play here with the sound off.</p>
@@ -448,10 +438,12 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
     <li><button class="pill" aria-pressed="true">Storefront</button></li>
     <li><button class="pill" aria-pressed="false">Solar</button></li>
     <li><button class="pill" aria-pressed="false">Restaurant</button></li>
+    <li><button class="pill" aria-pressed="false">Residential</button></li>
     <li><button class="pill" aria-pressed="false">Retail entry</button></li>
     <li><button class="pill" aria-pressed="false">Junk removal</button></li>
     <li><button class="pill" aria-pressed="false">The rig</button></li>
   </ul>
+  </div>
 
   <div class="deck rv" data-deck aria-roledescription="carousel" aria-label="Recent work">
     <figure class="slide" data-cap="Commercial storefront" data-sub="Mesa, exterior glass" data-pv="assets/poster-storefront.jpg">
@@ -462,6 +454,9 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
     </figure>
     <figure class="slide" data-cap="Restaurant frontage" data-sub="Interior and exterior glass" data-pv="assets/restaurant.jpg">
       <div class="frame"><img src="assets/restaurant.jpg" alt="Looking out through a spotless full height restaurant window onto an Arizona parking lot" loading="lazy" width="1400" height="1750"></div>
+    </figure>
+    <figure class="slide" data-cap="Two storey residential" data-sub="Water-fed pole, arched glass" data-pv="assets/hero-pole.jpg">
+      <div class="frame"><img src="assets/hero-pole.jpg" alt="A water-fed pole reaching a tall arched window on a tile-roofed Arizona home against a blue sky" loading="lazy" width="1200" height="1600"></div>
     </figure>
     <figure class="slide" data-cap="Retail entry" data-sub="Door and window glass" data-pv="assets/storefront.jpg">
       <div class="frame"><img src="assets/storefront.jpg" alt="A clean glass shopfront with door and window signage" loading="lazy" width="1200" height="1200"></div>
@@ -474,11 +469,12 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
     </figure>
   </div>
 
+  <div class="wrap">
   <div class="deck-bar rv">
     <p class="dcap" aria-live="polite"><b>Commercial storefront</b><span>Mesa, exterior glass</span></p>
     <div class="dctl">
       <button class="dnav" data-dir="-1" aria-label="Previous item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
-      <span class="dcount" aria-hidden="true">01 / 06</span>
+      <span class="dcount" aria-hidden="true">01 / 07</span>
       <button class="dnav" data-dir="1" aria-label="Next item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
     </div>
   </div>
@@ -493,6 +489,7 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
     </div>
     <figcaption class="dcap">Storefront glazing, Mesa</figcaption>
   </figure>
+  </div>
 </section>
 
 <section class="rev" id="reviews">
@@ -571,15 +568,30 @@ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var count=document.querySelector('.dcount');
   var n=slides.length, cur=0, seen=true;
   var sd=navigator.connection&&navigator.connection.saveData;
-  var CLIP=[0,32,44], RAD=[18,42,64], GAP=14, DEPTH=2;
+  var CLIP=[0,28,38,44.5], RAD=[18,40,58,74];
+  var MAXD=Math.min(3,Math.floor((n-1)/2)), GMIN=.03, GMAX=.18;
   var wide=matchMedia('(min-width: 761px)');
+
+  /* Solve for the gap that makes the row span exactly the width inside the
+     gutter, then step down a rank if that would crowd the cards. Deriving it
+     is the only way the deck reaches both edges at every viewport; a fixed
+     step leaves a gutter of dead space on a wide screen. */
+  function fit(W,A){
+    for(var D=MAXD;D>=1;D--){
+      var vw=[],B=[0],k;
+      for(k=0;k<=D;k++) vw[k]=W*(1-2*CLIP[k]/100);
+      for(k=1;k<=D;k++) B[k]=B[k-1]+(vw[k-1]+vw[k])/2;
+      var g=(A-2*B[D]-vw[D])/(2*D);
+      if(g>=W*GMIN||D===1) return {D:D,g:Math.max(W*GMIN,Math.min(g,W*GMAX)),B:B};
+    }
+  }
 
   function place(){
     if(wide.matches){
-      var W=slides[cur].offsetWidth, xs=[0], k;
-      for(k=1;k<=DEPTH;k++){
-        xs[k]=xs[k-1]+(W*(1-2*CLIP[k-1]/100)+W*(1-2*CLIP[k]/100))/2+GAP;
-      }
+      var W=slides[cur].offsetWidth, cs=getComputedStyle(deck), k;
+      var A=deck.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);
+      var f=fit(W,A), DEPTH=f.D, xs=[0];
+      for(k=1;k<=DEPTH;k++) xs[k]=f.B[k]+k*f.g;
       slides.forEach(function(el,i){
         var o=i-cur; if(o>n/2)o-=n; if(o<-n/2)o+=n;
         var a=Math.abs(o), d=Math.min(a,DEPTH);
