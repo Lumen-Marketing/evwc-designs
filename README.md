@@ -241,6 +241,43 @@ a **recess milled into the plate**, with `--bevel-deep`, corner bolts and a
 hazard-yellow stripe down its leading edge. Same idea as the premium hero, drawn
 entirely in this direction's own vocabulary.
 
+## The statement band, and a before and after you can work (2026-09-03)
+
+Two parts of Premium were type on black with nothing to look at, and both were
+called out.
+
+**The owner claim now has a picture under it.** A wide plate of the work sits
+below "Every job is done by Jose Sandoval", and the four verified figures
+**step up onto its bottom edge** with a negative margin, so the two planes
+overlap rather than stacking. That occlusion is this direction's own depth
+device doing a job instead of decorating. The frame chosen is the residential
+arched window with sky and cloud reflected in the wet glass, the brightest asset
+in the set and the only bright moment in the middle of the page. The copy says
+"residential or commercial" and every other picture near it is commercial. On
+phones the band goes from 16:7 to 5:4, because at a phone's width a 16:7 strip
+is about 200px tall and the stat tiles covered nearly all of it.
+
+**The before and after is now one frame you switch.** Side by side never
+explained itself: two pictures of a window is not obviously a transformation. It
+is a single frame with a `BEFORE / AFTER` segmented control under it, and the
+frame itself is a button, so either one flips it. The outgoing picture **blurs
+and scales very slightly on its way out**, which is the trick for masking a
+crossfade the eye would otherwise read as two photographs trading places rather
+than one thing changing.
+
+A wipe slider is still not available, and this is why: the two shots were taken
+from slightly different camera positions, which an earlier scale sweep and phase
+cross-correlation put at **NCC -0.04**, nowhere near alignment. A moving seam
+would tear the window frame in half. Swapping the whole picture is the honest
+version of the same idea.
+
+The block **plays itself through once** when it first scrolls into view, showing
+the before for 1150ms and then switching, because a control nobody presses
+explains nothing. It runs once, is cancelled the instant the visitor touches
+either control, and is skipped entirely under `prefers-reduced-motion`. The
+hinge label above it was rewritten to say what the block is: *"The same
+storefront, before and after one visit."*
+
 ## More photography, all of it theirs (2026-09-03)
 
 The services sections were type only, so the whole right of the column ran
