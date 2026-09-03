@@ -151,38 +151,59 @@ h1 .l2{white-space:nowrap}
 .stars{display:flex;gap:4px;color:var(--acc)}
 .stars svg{width:17px;height:17px}
 
-/* ---------- services: one ruled run of rows ----------
-   Each row is the whole thing at a glance: what it is, a picture of it, what it
-   involves, and a way to ask for it. The row is the link, so the arrow is not
-   decoration. */
+/* ---------- services: one run of photographic bands ----------
+   The picture of the job IS the row. It sits behind the type, held back with a
+   sideways scrim and desaturated at rest so seven of them in a column still read
+   as one calm list; on hover the row it belongs to comes up to full colour and
+   pushes in slightly, so only the one you are pointing at is loud. */
 .svc{padding-bottom:clamp(64px,9vw,132px)}
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.ghead{padding:clamp(26px,3vw,42px) clamp(10px,1.4vw,22px) clamp(8px,1vw,14px);
+.ghead{padding:clamp(30px,3.4vw,48px) clamp(10px,1.4vw,22px) clamp(10px,1.2vw,16px);
   font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:#6f7679}
 .ghead:first-child{padding-top:clamp(18px,2vw,28px)}
 .row a{display:grid;align-items:center;text-decoration:none;position:relative;
-  grid-template-columns:minmax(0,1.02fr) clamp(112px,12.5vw,186px) minmax(0,.88fr) 44px;
-  gap:clamp(14px,2.2vw,38px);
-  padding-block:clamp(16px,2vw,26px);padding-inline:clamp(10px,1.4vw,22px);
-  border-bottom:1px solid var(--line);
-  transition:background .45s var(--ez-out)}
-.row a:hover{background:linear-gradient(90deg,rgba(18,196,222,.1),rgba(18,196,222,.015) 62%)}
+  isolation:isolate;overflow:hidden;
+  grid-template-columns:minmax(0,1.16fr) minmax(0,1fr) 44px;
+  gap:clamp(16px,2.6vw,52px);
+  padding-block:clamp(28px,3.6vw,52px);padding-inline:clamp(18px,2.2vw,34px);
+  border-bottom:1px solid rgba(255,255,255,.17)}
 .row a:focus-visible{outline-offset:-3px}
+/* the photograph, filling the band */
+.rbg{position:absolute;inset:0;z-index:-1;margin:0;overflow:hidden;background:var(--bg-2);
+  box-shadow:inset 0 0 0 0 var(--acc);
+  transition:box-shadow .5s var(--ez-out)}
+.rbg img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);
+  filter:grayscale(.72) contrast(.76) brightness(.42);
+  transition:transform 1.3s var(--ez),filter .7s var(--ez-out)}
+/* a couple of the frames are much lighter than the rest; they get pulled down
+   further so the seven bands sit on one level rather than flickering */
+.rbg img.hi{filter:grayscale(.75) contrast(.66) brightness(.33)}
+/* held back sideways so the name always has a dark field under it, and top and
+   bottom so consecutive bands do not run into one another */
+.rbg::before,.rbg::after{content:"";position:absolute;inset:0;pointer-events:none}
+.rbg::before{background:
+  linear-gradient(90deg,rgba(8,9,10,.96),rgba(8,9,10,.88) 42%,rgba(8,9,10,.6)),
+  linear-gradient(180deg,rgba(8,9,10,.62),transparent 32%,transparent 68%,rgba(8,9,10,.68));
+  transition:opacity .6s var(--ez-out)}
+.rbg::after{background:
+  linear-gradient(90deg,var(--acc) 0 4px,transparent 4px),
+  linear-gradient(90deg,rgba(18,196,222,.2),rgba(18,196,222,.02) 58%);
+  opacity:0;transition:opacity .5s var(--ez-out)}
 .rn{font-family:var(--d);font-weight:800;line-height:1.04;letter-spacing:-.034em;
-  font-size:clamp(21px,2.6vw,38px)}
-.rk{display:block;margin-top:7px;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
-  color:#6f7679}
-/* a stadium of the job itself, small enough that a soft source still holds up */
-.rpic{margin:0;overflow:hidden;border-radius:999px;aspect-ratio:2.5/1;background:var(--bg-2);
-  box-shadow:var(--lift-1),inset 0 0 0 1px rgba(255,255,255,.09)}
-.rpic img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ez)}
-.rd{font-size:15px;line-height:1.55;color:var(--fg-2)}
-.ra{justify-self:end;color:#6f7679;display:inline-flex;
+  font-size:clamp(22px,2.7vw,40px);text-shadow:0 2px 26px rgba(0,0,0,.85)}
+.rk{display:block;margin-top:8px;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(242,243,243,.62);text-shadow:0 1px 16px rgba(0,0,0,.85)}
+.rd{font-size:15px;line-height:1.55;color:#dde2e3;text-shadow:0 1px 16px rgba(0,0,0,.8)}
+.ra{justify-self:end;color:rgba(242,243,243,.5);display:inline-flex;
   transition:color .35s var(--ez-out),transform .35s var(--ez-out)}
 .ra svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5;
   stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover) and (pointer:fine){
-  .row a:hover .rpic img{transform:scale(1.07)}
+  .row a:hover .rbg img{transform:scale(1.11);filter:grayscale(.14) contrast(1) brightness(.62)}
+  .row a:hover .rbg img.hi{filter:grayscale(.14) contrast(.94) brightness(.5)}
+  .row a:hover .rbg::before{opacity:.8}
+  .row a:hover .rbg::after{opacity:1}
+  .row a:hover .rbg{box-shadow:inset 4px 0 0 0 var(--acc)}
   .row a:hover .ra{color:var(--acc);transform:translateX(7px)}
 }
 
@@ -363,12 +384,15 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
 
 @media (max-width:960px){
   .stats{grid-template-columns:repeat(2,1fr)}
-  .row a{grid-template-columns:minmax(0,1fr) clamp(96px,14vw,150px) 34px;
-    gap:clamp(12px,2.4vw,24px);row-gap:14px;align-items:start}
+  .row a{grid-template-columns:minmax(0,1fr) 34px;
+    gap:clamp(12px,2.4vw,24px);row-gap:13px;align-items:start;
+    padding-block:clamp(24px,5vw,34px)}
   .row a>span:first-child{grid-column:1;grid-row:1}
-  .rpic{grid-column:2;grid-row:1;align-self:center}
-  .ra{grid-column:3;grid-row:1;align-self:center}
+  .ra{grid-column:2;grid-row:1;align-self:center}
   .rd{grid-column:1 / -1;grid-row:2;font-size:14.5px}
+  .rbg::before{background:
+    linear-gradient(90deg,rgba(8,9,10,.93),rgba(8,9,10,.84) 52%,rgba(8,9,10,.7)),
+    linear-gradient(180deg,rgba(8,9,10,.6),transparent 34%,transparent 66%,rgba(8,9,10,.66))}
   .ra svg{width:25px;height:25px}
   .rmore{grid-template-columns:1fr;gap:30px}
 }
@@ -481,45 +505,45 @@ body>footer a{color:var(--fg);display:inline-flex;align-items:center;min-height:
     <li class="ghead">Glass</li>
     <li class="row rv"><a href="sms:+14808069455?&amp;body=Hi%2C%20I%27d%20like%20a%20quote%20for%20interior%20and%20exterior%20windows.">
       <span><span class="rn">Interior and exterior windows</span><span class="rk">Homes and businesses</span></span>
-      <figure class="rpic"><img src="assets/job-glass-wide.jpg" alt="A squeegee on a pole clearing water off a commercial glass frontage" loading="lazy" width="1280" height="722"></figure>
+      <figure class="rbg" aria-hidden="true"><img style="object-position:50% 44%" src="assets/job-glass-wide.jpg" alt="A squeegee on a pole clearing water off a commercial glass frontage" loading="lazy" width="1280" height="722"></figure>
       <span class="rd">Streak free, single storey up to multi storey, using purified water and a water-fed pole where the height calls for it.</span>
       <span class="ra" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13.5 6 20 12l-6.5 6"/></svg></span>
     </a></li>
     <li class="row rv"><a href="sms:+14808069455?&amp;body=Hi%2C%20I%27d%20like%20a%20quote%20for%20screens%20and%20tracks.">
       <span><span class="rn">Screens and tracks</span><span class="rk">Pulled, washed, re-set</span></span>
-      <figure class="rpic"><img src="assets/storefront.jpg" alt="A clean glass shopfront with door and window signage" loading="lazy" width="1200" height="1200"></figure>
+      <figure class="rbg" aria-hidden="true"><img style="object-position:50% 46%" src="assets/job-squeegee.jpg" alt="" loading="lazy" width="540" height="720"></figure>
       <span class="rd">Screens pulled, washed and re-set. Sills and sliding tracks vacuumed and scrubbed out.</span>
       <span class="ra" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13.5 6 20 12l-6.5 6"/></svg></span>
     </a></li>
     <li class="row rv"><a href="sms:+14808069455?&amp;body=Hi%2C%20I%27d%20like%20a%20quote%20for%20hard%20water%20stain%20removal.">
       <span><span class="rn">Hard water stain removal</span><span class="rk">Mineral etching</span></span>
-      <figure class="rpic"><img src="assets/ba-before.jpg" alt="A commercial glass frontage before cleaning, the panes hazy with dust and hard water film" loading="lazy" width="390" height="488"></figure>
+      <figure class="rbg" aria-hidden="true"><img class="hi" style="object-position:50% 40%" src="assets/ba-before.jpg" alt="A commercial glass frontage before cleaning, the panes hazy with dust and hard water film" loading="lazy" width="390" height="488"></figure>
       <span class="rd">Mineral etching from sprinkler overspray and monsoon dust cut back off the glass.</span>
       <span class="ra" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13.5 6 20 12l-6.5 6"/></svg></span>
     </a></li>
     <li class="ghead">Film and panels</li>
     <li class="row rv"><a href="sms:+14808069455?&amp;body=Hi%2C%20I%27d%20like%20a%20quote%20for%20window%20tinting.">
       <span><span class="rn">Window tinting</span><span class="rk">UV, heat and privacy film</span></span>
-      <figure class="rpic"><img src="assets/restaurant.jpg" alt="Looking out through a spotless full height restaurant window onto an Arizona parking lot" loading="lazy" width="1400" height="1750"></figure>
+      <figure class="rbg" aria-hidden="true"><img style="object-position:50% 38%" src="assets/restaurant.jpg" alt="Looking out through a spotless full height restaurant window onto an Arizona parking lot" loading="lazy" width="1400" height="1750"></figure>
       <span class="rd">UV and heat film to protect furnishings and hold the AC in, plus reflective film for privacy.</span>
       <span class="ra" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13.5 6 20 12l-6.5 6"/></svg></span>
     </a></li>
     <li class="row rv"><a href="sms:+14808069455?&amp;body=Hi%2C%20I%27d%20like%20a%20quote%20for%20solar%20panel%20cleaning.">
       <span><span class="rn">Solar panel cleaning</span><span class="rk">Output you paid for</span></span>
-      <figure class="rpic"><img src="assets/job-solar-sky.jpg" alt="A rooftop solar array on terracotta tile under a bank of cloud" loading="lazy" width="540" height="960"></figure>
+      <figure class="rbg" aria-hidden="true"><img style="object-position:50% 46%" src="assets/job-solar-sky.jpg" alt="A rooftop solar array on terracotta tile under a bank of cloud" loading="lazy" width="540" height="960"></figure>
       <span class="rd">Dust and hard water film lifted off panels so the array stops losing output to grime.</span>
       <span class="ra" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13.5 6 20 12l-6.5 6"/></svg></span>
     </a></li>
     <li class="ghead">Property</li>
     <li class="row rv"><a href="sms:+14808069455?&amp;body=Hi%2C%20I%27d%20like%20a%20quote%20for%20pressure%20washing.">
       <span><span class="rn">Pressure washing</span><span class="rk">Driveways to elevations</span></span>
-      <figure class="rpic"><img src="assets/job-pole-wide.jpg" alt="A water-fed pole extended to the top of a commercial storefront, two cleaners working below it" loading="lazy" width="1280" height="722"></figure>
+      <figure class="rbg" aria-hidden="true"><img style="object-position:50% 40%" src="assets/job-pole-wide.jpg" alt="A water-fed pole extended to the top of a commercial storefront, two cleaners working below it" loading="lazy" width="1280" height="722"></figure>
       <span class="rd">Driveways, walkways, patios and building exteriors brought back to colour.</span>
       <span class="ra" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13.5 6 20 12l-6.5 6"/></svg></span>
     </a></li>
     <li class="row rv"><a href="sms:+14808069455?&amp;body=Hi%2C%20I%27d%20like%20a%20quote%20for%20junk%20removal.">
       <span><span class="rn">Junk removal and hauling</span><span class="rk">Loaded and taken away</span></span>
-      <figure class="rpic"><img src="assets/job-haul.jpg" alt="A pile of dumped furniture and cardboard in a walled back yard before it was hauled away" loading="lazy" width="820" height="1094"></figure>
+      <figure class="rbg" aria-hidden="true"><img style="object-position:50% 50%" src="assets/job-haul.jpg" alt="A pile of dumped furniture and cardboard in a walled back yard before it was hauled away" loading="lazy" width="820" height="1094"></figure>
       <span class="rd">Monsoon debris, rental clear-outs and listing prep loaded up and taken away.</span>
       <span class="ra" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13.5 6 20 12l-6.5 6"/></svg></span>
     </a></li>

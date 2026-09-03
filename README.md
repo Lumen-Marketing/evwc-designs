@@ -175,11 +175,25 @@ carries `isolation: isolate`, which makes the hero its own backdrop root, so the
 pane samples the footage and nothing above it. The town runs vertically down the
 right edge.
 
-Services were rebuilt as **one ruled run of rows**: name, kicker, a stadium of
-the job, the detail, and an arrow. The whole row is an `sms:` link with the body
-pre-filled for that service, so the arrow is a real control rather than
-decoration. Seven services, seven pictures, where the old three-group layout
-carried three. The trust line became four figures in trays and cores, every one
+Services were rebuilt as **one run of photographic bands**: the picture of the
+job *is* the row, filling it edge to edge behind the name, the detail and an
+arrow. The whole row is an `sms:` link with the body pre-filled for that service,
+so the arrow is a real control rather than decoration. Seven services, seven
+pictures, where the old three-group layout carried three.
+
+Seven photographs stacked in a column will not behave on their own: the frames
+came off phone video at wildly different exposures, and a wall of shop signage
+sat directly under one of the headlines. Three things hold the run level. Every
+frame is desaturated and flattened at rest (`grayscale(.72) contrast(.76)
+brightness(.42)`), which pulls blown highlights back toward mid grey rather than
+just dimming the whole picture. A sideways scrim keeps a near-solid field under
+the name and lets the photograph breathe on the right, with a second gradient
+top and bottom so consecutive bands do not run into one another. And the two
+lightest frames carry a `.hi` class that pushes them down further still. On
+hover the row you are pointing at comes up to full colour, pushes in slightly,
+takes a cyan wash and a hazard-thin accent edge, so only one band is ever loud.
+The one frame that was a wall of shop lettering was swapped for the squeegee arc
+— type over type is not a treatment problem, it is the wrong photograph. The trust line became four figures in trays and cores, every one
 of them checkable: the Google rating and its count, the number of services, the
 towns covered, and what an estimate costs. **No invented statistics.**
 
