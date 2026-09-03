@@ -15,18 +15,19 @@ for(const [p,out] of pages){
     h:document.body.scrollHeight,
     fonts:[...new Set([...document.querySelectorAll('h1,body')].map(e=>getComputedStyle(e).fontFamily.split(',')[0].replace(/["']/g,'')))],
     broken:[...document.images].filter(i=>i.complete&&i.naturalWidth===0).map(i=>i.getAttribute('src')),
-    vids:[...document.querySelectorAll('video')].map(v=>({f:(v.currentSrc||'').split('/').pop(),w:v.videoWidth,ready:v.readyState,t:Math.round(v.currentTime*100)/100,err:v.error?v.error.code:null})),
+    vids:[...document.querySelectorAll('video')].map(v=>({f:(v.currentSrc||'').split('/').pop(),w:v.videoWidth,ready:v.readyState,t:Math.round(v.currentTime*100)/100,err:v.error?v.error.code:null,off:!!v.dataset.off})),
     frames:document.querySelectorAll('iframe').length
   })`);
   const d=JSON.parse(info);
-  const badV=d.vids.filter(v=>!(v.w>0&&v.ready>=2&&!v.err&&v.t>0));
+  const badV=d.vids.filter(v=>!(v.w>0&&v.ready>=2&&!v.err&&(v.off||v.t>0)));
+  const parked=d.vids.filter(v=>v.off).length;
   await P.evalJS(`scrollTo(0,0)`); await sleep(500);
   const s=await P.send('Page.captureScreenshot',{format:'png'});
   writeFileSync('shots/'+out,Buffer.from(s.data,'base64'));
   console.log((p||'index').padEnd(20),
     'scrollW='+d.sw+'/'+d.cw+(d.sw>d.cw+2?' SIDEWAYS':''),
     'page='+d.h+'px','fonts='+d.fonts.join('/'),
-    'imgsBroken='+d.broken.length,'videos='+d.vids.length,'videoFail='+badV.length,
+    'imgsBroken='+d.broken.length,'videos='+d.vids.length,'parked='+parked,'videoFail='+badV.length,
     d.frames?('iframes='+d.frames):'');
   if(d.broken.length)console.log('   BROKEN:',d.broken.join(', '));
   if(badV.length)console.log('   VIDEO FAIL:',JSON.stringify(badV));
