@@ -89,6 +89,40 @@ only applies when height is `auto`. The hero plate rendered 1080px tall until
 `height:auto` was added. Anywhere else on these pages the images carry an explicit
 `height:100%`, which is why it only bit once.
 
+## Reviews depth pass (2026-09-03)
+
+He then pointed at the reviews block: it still read flat. He was right, and the
+cause was an inconsistency inside each page rather than a missing effect. On 01
+the reel bays, proof frames and hero plate all got enclosures in the depth pass,
+and the reviews got nothing at all, so it was the only block on the page with no
+material. Same on 03, where reviews were still plain ruled cells while the reel
+bays had become plates.
+
+Fixed in each direction's own language rather than by adding testimonial cards:
+
+- **01 Daylight** - reviews are now panes of glass, which is the product. A lifted
+  sheet with light catching the top edge, one reflection sweeping across it, an
+  out-of-focus photographic plane behind the section, and the 5.0 rating on a
+  small plate that overlaps the quote pane the way the hero plate overlaps the
+  fold. Three smaller panes stagger below.
+- **02 Broadsheet** - trays holding cores at concentric radii, matching the stat
+  row so the page reads as one system, cascaded on the z-axis with the featured
+  review raised highest in sun yellow.
+- **03 Hazard** - the ruled cells became bolted plates with recessed cores,
+  bevels, corner bolts and a hard yellow offset, consistent with the reel bays.
+
+Craft rules applied from `emil-design-eng`: no `transition: all`, exact properties
+only, custom cubic-bezier curves rather than the built-ins, hover effects gated
+behind `@media (hover:hover) and (pointer:fine)` so touch devices do not fire them
+on tap, and a short stagger between panes.
+
+**Gotcha:** direction 01 defines its star sprite as `#star` while 02 and 03 use
+`#i-star`. The shared patch script emitted `#i-star` everywhere, so 01's new
+rating plate rendered five invisible SVGs. Check the sprite id per file. A second
+one right after it: `.rating-plate span` beat `.stars` on specificity and turned
+the stars grey, so the accent colour needed restating at the more specific
+selector.
+
 ## The reels genuinely auto-play
 
 Self-hosted, muted, looping MP4s taken from their Instagram:

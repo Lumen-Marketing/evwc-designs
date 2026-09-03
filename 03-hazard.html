@@ -167,8 +167,16 @@ section{padding:clamp(56px,7vw,104px) 0}
 .proof figcaption{position:absolute;left:0;bottom:0;background:var(--yellow);color:#000;padding:6px 12px;font-family:var(--m);font-size:9.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 
 /* reviews */
-.revs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.rev{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(22px,2.3vw,32px);display:flex;flex-direction:column}
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rev{position:relative;padding:11px;background:var(--plate);display:flex;flex-direction:column;
+  box-shadow:var(--bevel),var(--hard-y),var(--cast);transition:transform .5s var(--ez),box-shadow .5s var(--ez)}
+.rev::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background-image:var(--bolts);background-repeat:no-repeat}
+.rev .core{background:#0e1011;padding:clamp(20px,2.1vw,28px);display:flex;flex-direction:column;flex:1;
+  box-shadow:var(--bevel-deep)}
+@media (hover:hover) and (pointer:fine){
+  .rev:hover{transform:translate(-3px,-3px);box-shadow:var(--bevel),18px 18px 0 rgba(252,222,88,.18),var(--cast)}
+}
 .stars{display:flex;gap:3px;color:var(--yellow);margin-bottom:16px}
 .stars svg{width:15px;height:15px}
 .rev p{margin:0;font-size:14.5px;line-height:1.66;color:#d5dbde}
@@ -413,21 +421,21 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
     <div class="shead"><div><span class="code">Sec. 04 / Verified reviews</span><h2 style="margin-top:14px">5.0 on Google</h2></div><p>Every review the business has received, unedited.</p></div>
     <div class="revs">
       <article class="rev">
-        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <div class="core"><div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
         <p>“Jose did an outstanding job cleaning my windows! The team was incredibly friendly, professional, and detail-oriented. They left every window spotless, even cleaning the frames and screens to perfection.”</p>
-        <div class="by">Lacey Shultz / Google</div></article>
+        <div class="by">Lacey Shultz / Google</div></div></article>
       <article class="rev">
-        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <div class="core"><div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
         <p>“Jose from East Valley Window Cleaning is a true professional. They are polite, easy to communicate with, and make you feel confident in their honesty and reliability.”</p>
-        <div class="by">Nina Hanopol / Google</div></article>
+        <div class="by">Nina Hanopol / Google</div></div></article>
       <article class="rev">
-        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <div class="core"><div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
         <p>“Great job done! On time, on schedule. Windows and sliding doors look great.”</p>
-        <div class="by">Kirkland Sanders / Google</div></article>
+        <div class="by">Kirkland Sanders / Google</div></div></article>
       <article class="rev">
-        <div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <div class="core"><div class="stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
         <p>“Really great service!”</p>
-        <div class="by">Maria Sandoval / Google</div></article>
+        <div class="by">Maria Sandoval / Google</div></div></article>
     </div>
   </div>
 </section>
