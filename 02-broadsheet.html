@@ -134,6 +134,33 @@ section{padding:clamp(56px,7vw,104px) 0}
 .svc .feature h3{font-size:clamp(28px,3.4vw,48px)}
 .svc .feature p{color:#c3d9df;max-width:44ch;font-size:17px}
 .svc .feature:hover{background:#0d3946}
+/* the feature carries the job it describes, cut to a band across its foot */
+.svc .feature{padding-bottom:0;overflow:hidden}
+.fpic{margin:clamp(24px,2.6vw,36px) 0 0;border-radius:var(--r-sm) var(--r-sm) 0 0;overflow:hidden;
+  aspect-ratio:21/8;background:var(--ink)}
+.fpic img{width:100%;height:100%;object-fit:cover}
+/* a card that is only a photograph, which squares the grid off as well */
+.svc .pic{padding:9px;background:var(--limestone);position:relative;overflow:hidden}
+.svc .pic .m{position:relative;height:100%;min-height:clamp(190px,20vw,270px);overflow:hidden;
+  border-radius:calc(var(--r-card) - 9px);background:var(--deep)}
+.svc .pic img{width:100%;height:100%;object-fit:cover}
+.svc .pic figcaption{position:absolute;left:14px;bottom:14px;background:var(--limestone);
+  border-radius:var(--r-pill);padding:7px 15px;font-size:11.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase}
+
+/* a wide plate of the work, offset straight down so it stays on the centre line */
+.pband{margin:0;position:relative;isolation:isolate}
+.pband::before,.pband::after{content:"";position:absolute;inset:0;border-radius:var(--r-card);z-index:0}
+.pband::before{background:var(--deep);transform:translate(0,24px)}
+.pband::after{background:var(--cyan);transform:translate(0,12px)}
+.pband-in{position:relative;z-index:1;padding:10px;border-radius:var(--r-card);background:var(--limestone);
+  box-shadow:var(--lift-3)}
+.pband .m{position:relative;border-radius:calc(var(--r-card) - 10px);overflow:hidden;aspect-ratio:21/9;
+  background:var(--deep)}
+.pband img{width:100%;height:100%;object-fit:cover}
+.pband .cap{position:absolute;left:clamp(16px,2vw,26px);bottom:clamp(16px,2vw,26px);
+  background:var(--limestone);border-radius:var(--r-pill);padding:9px 19px;font-size:12.5px;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 
 /* reels: a symmetric spread.
    Two clips of equal size on one baseline with their colour planes mirrored
@@ -248,6 +275,14 @@ section{padding:clamp(56px,7vw,104px) 0}
 .ctaband>*{position:relative}
 .ctaband h2{font-size:clamp(34px,6.4vw,92px)}
 .ctaband p{max-width:48ch;color:#cfd8db;margin:20px 0 0}
+/* the band was half empty; a tray of the work fills it without crowding the copy */
+.ctaband{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.62fr);
+  gap:clamp(28px,4vw,64px);align-items:center}
+.ctaband .copy{min-width:0}
+.ctapic{margin:0;position:relative;z-index:1;padding:10px;border-radius:var(--r-card);
+  background:var(--limestone);box-shadow:var(--lift-3)}
+.ctapic .m{border-radius:calc(var(--r-card) - 10px);overflow:hidden;aspect-ratio:4/5;background:var(--deep)}
+.ctapic img{width:100%;height:100%;object-fit:cover}
 .phone{display:inline-flex;align-items:center;gap:14px;min-height:44px;margin-top:28px;font-family:var(--d);font-weight:400;font-size:clamp(32px,5.4vw,74px);letter-spacing:.02em;color:var(--sun);text-decoration:none;line-height:1}
 .phone:hover{text-decoration:underline;text-underline-offset:8px}
 
@@ -259,6 +294,8 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
 
 @media (max-width:1080px){
   .svc{grid-template-columns:repeat(2,1fr)}
+  .ctaband{grid-template-columns:1fr;gap:clamp(26px,5vw,40px)}
+  .ctapic .m{aspect-ratio:16/10}
   .svc .feature{grid-column:span 2}
   .revs,.stats{grid-template-columns:repeat(2,1fr)}
 }
@@ -394,6 +431,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M12 3v18M3 12h18"/></svg></div>
         <h3>Window cleaning<br>inside &amp; out</h3>
         <p>Streak-free glass on homes and businesses, single storey to multi-storey, using purified water and a water-fed pole where the height calls for it.</p>
+        <figure class="fpic"><img src="assets/job-glass-wide.jpg" alt="A squeegee on a pole clearing water off a commercial glass frontage" loading="lazy" width="1280" height="722"></figure>
       </article>
       <article>
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M7 3v18M11 3v18M15 3v18M19 3v18"/></svg></div>
@@ -425,7 +463,20 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
         <h3>Junk removal</h3>
         <p>Monsoon debris, rental clear-outs and listing prep loaded up and taken away.</p>
       </article>
+      <article class="pic">
+        <div class="m"><img src="assets/job-crew.jpg" alt="A cleaner working a tall storefront window with a water-fed pole" loading="lazy" width="608" height="1080"><figcaption>On the job</figcaption></div>
+      </article>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <figure class="pband">
+      <div class="pband-in">
+        <div class="m"><img src="assets/job-pole-wide.jpg" alt="A water-fed pole extended to the top of a commercial storefront, two cleaners working below it" loading="lazy" width="1280" height="722"><span class="cap">Two storey reach, no ladder</span></div>
+      </div>
+    </figure>
   </div>
 </section>
 
@@ -533,6 +584,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
   <div class="wrap">
     <div class="ctaband">
       <div class="dots halftone"></div>
+      <div class="copy">
       <span class="tag">Free estimate</span>
       <h2 style="margin-top:20px">Tell us what<br>needs cleaning</h2>
       <p>Call or text with your address and roughly how many windows. Most homes can be priced without a visit.</p>
@@ -541,6 +593,8 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
         <a class="btn b1" href="sms:+14808069455"><svg aria-hidden="true"><use href="#i-sms"/></svg>Text a photo of your windows</a>
         <a class="btn b2" style="border-color:#fff;color:#fff" href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">See more on Instagram</a>
       </div>
+      </div>
+      <figure class="ctapic"><div class="m"><img src="assets/job-solar-roof.jpg" alt="A rooftop solar array on tile catching the light against a clear sky" loading="lazy" width="540" height="960"></div></figure>
     </div>
   </div>
 </section>

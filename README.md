@@ -148,6 +148,45 @@ one right after it: `.rating-plate span` beat `.stars` on specificity and turned
 the stars grey, so the accent colour needed restating at the more specific
 selector.
 
+## More photography, all of it theirs (2026-09-03)
+
+The services sections were type only, so the whole right of the column ran
+empty. Every section that needed a picture has one now: **eleven added across
+the three pages**, plus a photograph in each closing band.
+
+The account has **thirteen posts**, twelve of which are in the grid, eleven
+scraped, and the twelfth belongs to another account. Nothing usable was left, so
+rather than reach for a stock library the new images were **cut from their own
+footage**:
+
+| Asset | Source |
+|---|---|
+| `job-squeegee.jpg` | `reel-storefront-wide.mp4` at 9.6s, cropped to portrait |
+| `job-glass-wide.jpg` | same clip at 3.2s |
+| `job-pole-wide.jpg` | same clip at 0.4s, the pole at full reach |
+| `job-crew.jpg` | `reel-storefront.mp4` at 6.4s, portrait |
+| `job-solar-sky.jpg` | `reel-solar.mp4` at 0.15s, panels under cloud |
+| `job-solar-roof.jpg` | same clip at 5.6s |
+| `job-haul.jpg` | the debris half of the junk post, cropped away from its banners |
+
+Pull frames with `ffmpeg -ss N -i in.mp4 -frames:v 1 -q:v 2 out.jpg`, and pick
+the timestamps off a contact sheet first
+(`-vf "fps=1,scale=200:-1,tile=7x2"`) rather than guessing. The wide clip is
+1280x722, so its frames stand up at full width; the portrait clips are 608x1080
+and 540x960 and stay in column-sized slots.
+
+Where they went:
+
+- **01** a photograph takes the third column of each services group and
+  stretches to whatever height that group runs to, so the column that was empty
+  now carries the picture.
+- **02** the deep-teal feature card gets a band across its foot, a photo card
+  squares off the grid, a wide plate of the work sits between services and the
+  gallery, and a limestone tray fills the empty half of the closing band.
+- **03** a recessed photo sits beside the copy in the lead cell, a four-wide
+  picture strip continues the ruled table underneath it, and the closing band
+  takes the job behind it under the plate gradient.
+
 ## The work gallery (2026-09-03)
 
 **It runs the full width of the viewport, inside a gutter.** The header, the
