@@ -27,6 +27,7 @@ import { spawn } from 'node:child_process';
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+const WAIT = Number(process.env.WAIT || 520);
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HERE, '..');
@@ -118,7 +119,7 @@ async function run(file, { width, height, out, slices = 0, wait = 2400 }) {
     for (let i = 0; i < n; i++) {
       const y = Math.min(i * height, Math.max(0, info.height - height));
       await send('Runtime.evaluate', { expression: `scrollTo(0,${y})` });
-      await sleep(520);
+      await sleep(WAIT);
       const shot = await send('Page.captureScreenshot', { format: 'png' });
       const name = slices ? out.replace('.png', `-${i + 1}.png`) : out;
       writeFileSync(resolve(HERE, name), Buffer.from(shot.data, 'base64'));
