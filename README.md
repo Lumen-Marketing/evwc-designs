@@ -17,8 +17,11 @@ Three industrial homepage directions for **East Valley Window Cleaning LLC**
 | `shots/` | Headless-Chrome verification harness |
 
 Homepages only, as asked. Each direction is a **standalone file** — same section
-order, zero shared components. The furniture matrix in `index.html` records what
-differs; keep it updated if a direction changes.
+order, zero shared components. `index.html` is the chooser and nothing else: three
+live previews with a tier chip and a short note each, then the footer. The
+build-notes column and the section-by-section comparison table that used to sit
+under them were cut on 2026-09-03 — the client is choosing a homepage, not
+reading a spec.
 
 ---
 

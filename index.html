@@ -89,21 +89,6 @@ h1 em{font-style:normal;color:var(--cy)}
 .chip.cy{border-color:rgba(18,196,222,.45);color:var(--cy)}
 .chip.sn{border-color:rgba(252,222,88,.42);color:var(--sun)}
 
-.matrix{padding-block:clamp(34px,5vw,70px);border-top:1px solid var(--s800)}
-.matrix h3{font-size:clamp(1.3rem,3vw,2.1rem);font-weight:800;text-transform:uppercase;letter-spacing:-.03em;font-stretch:118%;margin-bottom:8px}
-.matrix .mono{display:block;margin-bottom:22px}
-.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px}
-.tbl th,.tbl td{border:1px solid var(--s800);padding:11px 13px;text-align:left;vertical-align:top}
-.tbl th{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--s400);font-weight:400;background:var(--s950)}
-.tbl td:first-child{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy);white-space:nowrap}
-.tbl tbody tr:hover td{background:var(--s950)}
-.scrollx{overflow-x:auto}
-
-.notes{padding-block:clamp(30px,4.5vw,60px);border-top:1px solid var(--s800);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,2.4vw,32px)}
-.note{border:1px solid var(--s800);padding:20px;background:var(--s950)}
-.note h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--sun);margin-bottom:11px;font-weight:700}
-.note p{font-size:14px;color:var(--s300);line-height:1.62}
-.note p+p{margin-top:9px}
 footer{padding-block:34px 46px;border-top:1px solid var(--s800)}
 .frow{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
 @media (max-width:560px){.cards{grid-template-columns:1fr}.card{min-width:0}}
@@ -184,52 +169,6 @@ footer{padding-block:34px 46px;border-top:1px solid var(--s800)}
   </article>
 </div>
 
-<section class="matrix">
-  <h3>What differs</h3>
-  <span class="mono">Same section order in all three: <b>hero → trust → services → work gallery → reviews → areas → CTA</b>. Everything below is built separately per direction.</span>
-  <div class="scrollx">
-  <table class="tbl">
-    <thead><tr><th>Section</th><th>Basic &middot; Broadsheet</th><th>Standard &middot; Hazard</th><th>Premium &middot; Daylight</th></tr></thead>
-    <tbody>
-      <tr><td>Hero</td><td>Poster headline with a halftone lapping over it, media slab on two offset planes, review card hung across the edge</td><td>Extruded headline on a two-scale grid, footage bolted on as a steel plate, plated spec strip</td><td>Footage, a shaft of light, a pane of frosted glass the headline crosses, the town set on its side down the edge</td></tr>
-      <tr><td>Trust row</td><td>Four oversized cards, three cyan and one deep teal</td><td>Five ruled cells, yellow condensed numerals</td><td>One sentence of type, then four figures in trays and cores: rating, services, towns, estimates</td></tr>
-      <tr><td>Services</td><td>Three tall photo cards lead in, then three columns, a deep-teal feature with a photo band across its foot, a photo card squaring the grid</td><td>Four ruled table cells with part numbers, a recessed photo in the lead cell, a four-wide picture strip under the table</td><td>One ruled run of rows: name, kicker, a stadium of the job, the detail, and an arrow that texts for it</td></tr>
-      <tr><td>Work gallery</td><td>Runs the full viewport inside a gutter. Focused card on its stacked colour planes, neighbours stepped back by scale, house pills above</td><td>Runs the full viewport inside a gutter. Plates on a bench scaling from the foot so the baseline holds, ruled tab strip above</td><td>Runs the full viewport inside a gutter. Focused card at full width, neighbours clipped to standing slivers on a lit table, named pills above</td></tr>
-      <tr><td>Gallery controls</td><td>Round ink buttons, Anton caption above</td><td>One machined block, back and forward bolted either side of the count</td><td>Round outline buttons, count between them</td></tr>
-      <tr><td>Before and after</td><td>Wide plate offset straight down onto sun yellow, pill labels</td><td>One taped housing, steel and hazard-yellow tabs</td><td>One hinged plate, hairline seam, AFTER in cyan</td></tr>
-      <tr><td>Reviews</td><td>Four trays holding cores, cascaded, the first in sun yellow</td><td>Four bolted plates with recessed cores</td><td>Quote on a lifted glass pane with a rating plate overlapping it, three staggered panes below</td></tr>
-      <tr><td>Service area</td><td>Arizona mark reversed out of a solid cyan block</td><td>Arizona mark in a steel panel, two-column ruled city grid</td><td>Named in a single line under the closing phone number</td></tr>
-      <tr><td>Closing CTA</td><td>Ink band, halftone field, a limestone tray of the work filling the other half</td><td>Bordered band with hazard tape, the job behind it under the plate gradient</td><td>Full-bleed photograph, phone number at display size</td></tr>
-      <tr><td>Depth device</td><td>Offset colour planes stacked behind, concentric tray-and-core radii, tinted shadow</td><td>Machined bevels, corner bolts and hard offsets in the accent colour</td><td>Layered planes, occlusion, and lit glass panes with a diffused ambient lift</td></tr>
-      <tr><td>Type</td><td>Anton + DM Sans 500</td><td>Saira Condensed 800 + JetBrains Mono</td><td>Bricolage Grotesque 800 + Instrument Sans</td></tr>
-      <tr><td>Radii</td><td>40px cards, 800px pills</td><td>0, square throughout</td><td>0, and almost nothing to put a radius on</td></tr>
-    </tbody>
-  </table>
-  </div>
-</section>
-
-<section class="notes">
-  <div class="note">
-    <h4>Every picture is theirs</h4>
-    <p>The account only has thirteen posts, so where a section needed a photograph and there was none left, the frame was cut from <b>their own footage</b> rather than bought from a stock library. Seven images on these pages started as video frames or as tighter crops of their posts. Nothing here is a stranger's window.</p>
-  </div>
-  <div class="note">
-    <h4>The reels are real, and they really auto-play</h4>
-    <p>Two clips were pulled from <b>@eastvalleywindowcleaningllc</b> and re-encoded for the web: a commercial storefront job and a rooftop solar-panel rinse. They are self-hosted MP4s, so they start on their own, loop, and stay muted. Instagram's own embed widget cannot do that. It only ever shows a cover frame with a play button.</p>
-    <p>Both clips and every job photograph live in <b>one gallery</b> per page, running the full width of the screen inside a gutter. The spacing is solved from the width actually available, so it reaches both edges on any monitor instead of sitting in a narrow column. The card at the front plays; the ones stepped back are paused, so only one video is ever decoding. Click a card, click a name, use the arrows, press left and right, or swipe. On a phone the whole thing becomes a swipeable rail at full size.</p>
-    <p>A third post turned out to be a <b>static before and after</b> rather than footage. Both halves of it were cut out as separate photographs and are shown as a matched pair, so nothing on the page pretends to be moving when it is not.</p>
-  </div>
-  <div class="note">
-    <h4>Every fact on the page is verified</h4>
-    <p>Services, service area and the owner's name come from their own door hanger and Instagram captions. The <b>5.0 rating from 4 Google reviews</b> is the real count, and all four reviews are quoted in full.</p>
-    <p>No invented statistics, and <b>no offer or discount anywhere</b>, because there isn't one running. The "20% off" that was burned into their before/after post falls outside the two crops used here.</p>
-  </div>
-  <div class="note">
-    <h4>What is still needed</h4>
-    <p>A high-resolution <b>logo file</b>. The only version online is a 150px Instagram avatar, so the Arizona mark used here is a clean vector rebuild of it. Drop the real file in and it swaps straight through.</p>
-    <p>These are homepages only. No contact form yet, so every call to action is a tap-to-call or tap-to-text.</p>
-  </div>
-</section>
 </main>
 
 <footer>
