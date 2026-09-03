@@ -148,6 +148,51 @@ one right after it: `.rating-plate span` beat `.stars` on specificity and turned
 the stars grey, so the accent colour needed restating at the more specific
 selector.
 
+## Three tiers: basic, standard, premium (2026-09-03)
+
+The chooser now presents the three as a ladder rather than three flavours. The
+ladder is **how much bespoke work is in the build**, not how much content the
+page holds, because that is what actually costs money:
+
+| Tier | Direction | Why it sits there |
+|---|---|---|
+| **Basic** | 02 Broadsheet | Conventional patterns done well: a card grid, a poster hero, a stat row. Quickest to build, easiest for anyone to extend later. |
+| **Standard** | 03 Hazard | A designed system rather than a set of cards: a ruled construction grid, bolted plates, a picture strip and a machined control block, all from one rule set. |
+| **Premium** | 01 Daylight | Full-bleed footage, a pane of frosted glass the headline crosses, a bespoke gallery engine, service rows that text a quote. The most custom engineering. |
+
+Filenames did not change, so any link already sent still works. The chooser is
+re-ordered and the comparison table's columns follow it. The tier chip itself
+is the ladder: outline, cyan outline, cyan filled.
+
+### What each tier gained from the reference layouts
+
+**Premium.** The hero copy now sits on a **pane of frosted glass**, and the
+headline is deliberately wider than the pane so its second line crosses the edge
+onto the sharp footage. That crossing is the whole effect, and it needs no text
+masks: the pane is a decorative element sized to about 84% of the copy block, so
+the long line simply overhangs it. `backdrop-filter` works here because `.hero`
+carries `isolation: isolate`, which makes the hero its own backdrop root, so the
+pane samples the footage and nothing above it. The town runs vertically down the
+right edge.
+
+Services were rebuilt as **one ruled run of rows**: name, kicker, a stadium of
+the job, the detail, and an arrow. The whole row is an `sms:` link with the body
+pre-filled for that service, so the arrow is a real control rather than
+decoration. Seven services, seven pictures, where the old three-group layout
+carried three. The trust line became four figures in trays and cores, every one
+of them checkable: the Google rating and its count, the number of services, the
+towns covered, and what an estimate costs. **No invented statistics.**
+
+**Basic.** The single wide plate between services and the gallery became
+**three tall photo cards** with an icon and a label overlaid at the foot, each a
+link into the schedule. The deep and cyan planes step down behind the row rather
+than behind each card, so the trio reads as one object rather than three.
+
+**Standard.** The frosted pane has a machined equivalent: the hero copy sits in
+a **recess milled into the plate**, with `--bevel-deep`, corner bolts and a
+hazard-yellow stripe down its leading edge. Same idea as the premium hero, drawn
+entirely in this direction's own vocabulary.
+
 ## More photography, all of it theirs (2026-09-03)
 
 The services sections were type only, so the whole right of the column ran

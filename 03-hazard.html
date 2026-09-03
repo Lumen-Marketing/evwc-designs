@@ -76,6 +76,14 @@ h1,h2,h3{margin:0;font-family:var(--d);font-weight:800;line-height:.9;letter-spa
 .hmain::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(58% 46% at 22% 26%,rgba(252,222,88,.05),transparent 70%)}
 .hmain>*{position:relative}
+.hrecess{position:relative;padding:clamp(24px,3vw,44px) clamp(22px,2.6vw,40px);
+  background:linear-gradient(180deg,#0e0f11,#131517 62%,#0d0e10);
+  box-shadow:var(--bevel-deep),0 0 0 1px rgba(0,0,0,.9)}
+.hrecess::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background-image:var(--bolts);background-repeat:no-repeat}
+.hrecess>*{position:relative;z-index:1}
+.hrecess .h1line{position:absolute;left:0;top:0;bottom:0;width:3px;z-index:2;
+  background:linear-gradient(180deg,var(--yellow),rgba(252,222,88,.05))}
 h1{font-size:clamp(46px,7.2vw,104px);letter-spacing:-.015em;
   text-shadow:3px 3px 0 rgba(18,196,222,.2),7px 7px 0 rgba(18,196,222,.08),0 18px 40px rgba(0,0,0,.6)}
 h1 em{font-style:normal;color:var(--yellow)}
@@ -308,6 +316,7 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
   .nav.open .nlinks a{border-left:0;border-top:1px solid var(--line);padding:16px 0;width:100%}
   .nav.open .ncta{display:flex;order:4;width:100%;justify-content:center;border-left:0;border-top:1px solid var(--line);padding:16px}
   .hgrid{grid-template-columns:1fr}
+  .hrecess{padding:clamp(20px,5vw,32px) clamp(18px,4.5vw,28px)}
   .rail{display:none}
   .area{grid-template-columns:1fr}
   .ctainner{grid-template-columns:1fr}
@@ -395,7 +404,8 @@ footer p a{display:inline-flex;align-items:center;min-height:44px}
       <span class="code" style="writing-mode:vertical-rl">EVWC-01</span>
     </div>
     <div class="hmain">
-      <div>
+      <div class="hrecess">
+        <span class="h1line" aria-hidden="true"></span>
         <span class="code">Sec. 00 / Window care unit</span>
         <h1 style="margin-top:18px">Crystal <em>clear</em><br><span class="out">views</span> start here</h1>
         <p class="lede">Owner-operated window cleaning across the East Valley. Inside and out, screens and tracks, hard water stains, tint, solar panels and hauling. Residential and commercial, done by the same hands every time.</p>
