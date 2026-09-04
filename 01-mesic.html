@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>East Valley Window Cleaning - Crystal clear views start here</title>
+<meta name="description" content="Window cleaning, screens and tracks, hard water stain removal, pressure washing, window tinting, solar panel cleaning and junk removal across the East Valley of Arizona. Owner-operated. Free estimates, call or text 480-806-9455.">
+<meta name="theme-color" content="#062A33">
+
+<!--
+  EAST VALLEY WINDOW CLEANING / 01 "MESIC"
+
+  Ported from the Set Right Homes direction of the same name, which was itself a
+  component for component copy of mesiccontracting.com's layout. Layout, material
+  and type pairing are Set Right's. Every word, photograph, clip, review, town
+  and phone number is East Valley's.
+
+  MATERIAL: a drafting sheet. The 24px minor rule and the 144px major rule are
+  painted on <body>, so the grid runs continuously across every section seam
+  instead of restarting at each one. Ice sections are translucent washes over
+  that grid carrying concentric survey contours. The deep teal panels get a
+  raked hatch and an aggregate speckle.
+
+  LIQUID GLASS on three elements only: the nav, the draggable jump menu and the
+  stat bar on the hero photograph. Everything else is separated by a hairline,
+  by space, or by weight. Glass over paper would be a white rectangle, so it
+  only ever sits on photography here. This is a web APPROXIMATION: one hairline
+  catch on the lit top edge, a shallow sheen inset from both sides, and a
+  pointer tracked specular that is dim at rest. There is no official Apple
+  liquid glass for the web. A solid fallback is provided under
+  prefers-reduced-transparency and backdrop-filter is dropped below 760px.
+
+  SHAPE RULE: everything square, buttons 4px, glass 26px. The glass radius is
+  the one documented exception, because a lens has no corners and that is what
+  makes it read as a different material from the paper it floats over. The
+  26px glass takes a 14px inner radius on its own nav rows so the curves stay
+  concentric.
+
+  COLOUR: Set Right's blues became East Valley's logo turquoise, split by job.
+  #12C4DE measures 2.10:1 on white so it never carries text on a light ground;
+  #0B6E7E does, at 5.92:1. See the README for the full ramp.
+
+  CONTENT: no invented statistics. The only figures are the Google rating, the
+  review count stated beside it, the number of services listed and the number
+  of towns listed. Photographs and both clips are the client's own, self
+  hosted, with no licence obligation. One SWAP: placeholder, the map embed.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  color-scheme: light;
+  --navy:#062A33;
+  --navy-2:#0A3D4A;
+  --navy-3:#04191F;
+  --blue:#0B6E7E;
+  --blue-d:#084F5C;
+  --sky:#5FD8EA;
+  --ice:#DFF0F4;          /* replaces the reference's cream, pulled toward blue */
+  --ice-2:#CDE8EE;
+  --white:#FFFFFF;
+  --ink:#07222A;
+  --ink-2:#255663;
+  --muted:#41707C;
+  --line:#CFE4EA;
+  /* SHAPE RULE. Everything on this page is square. Buttons are 4px.
+     The glass is the one exception at 20px, because a lens has no
+     corners, and that is what makes it read as a different material
+     from the paper it floats over. */
+  --r:0px;
+  --r-sm:0px;
+  --pad:clamp(18px,4vw,40px);
+  --maxw:1240px;
+  --sh:0 18px 44px -26px rgba(6,42,51,.42);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--white);color:var(--ink);
+  font-family:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:17px;line-height:1.65;font-weight:400;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-serif;
+  font-weight:800;line-height:1.08;letter-spacing:-.024em}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(48px,6.5vw,86px)}
+.ice{background:var(--ice)}
+.lede{color:var(--muted);font-weight:500}
+
+/* the reference's section heading: bold, left, short accent rule under it */
+.sh{font-size:clamp(24px,3.2vw,34px);padding-bottom:12px;position:relative;display:inline-block}
+.sh::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:2px;background:var(--blue);border-radius:0}
+/* the reference's small pill badge above a heading */
+.badge{display:inline-block;background:var(--ice-2);color:var(--navy);font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border-radius:0;margin-bottom:16px}
+
+/* ---------- LIQUID GLASS (web approximation) ---------- */
+:root{ --rg:26px; }   /* the glass radius. Nothing else on the page is round. */
+
+.glass,.gbar,.pbcard{
+  position:relative;isolation:isolate;overflow:hidden;border-radius:var(--rg);
+  border:0;
+  /* --gx and --gy are the pointer position, written by JS. The defaults
+     put the catch light top left so the material still reads on load and
+     on touch, where there is no pointer. */
+  --gx:30%; --gy:34%; --gi:.09;   /* pointer x, y, and highlight strength */
+  background:
+    linear-gradient(162deg,rgba(255,255,255,.13),rgba(255,255,255,.02) 44%,rgba(255,255,255,.05)),
+    linear-gradient(180deg,rgba(5,28,34,.46),rgba(5,28,34,.62));
+  /* glass attenuates. Over a bright photograph the pane has to hold a
+     floor for the white type on it, and this was measured: at the old
+     tint the small labels sat at 3.4:1. The saturation is high so the
+     colour of whatever is behind still comes through the tint. */
+  backdrop-filter:blur(28px) saturate(230%) brightness(.92);
+  -webkit-backdrop-filter:blur(28px) saturate(230%) brightness(.92);
+  /* THE TOP FACE ONLY. One hairline catch where the light lands and a
+     soft glow falling off under it. No outline, no side glows: an even
+     rim on all four edges is a frame, not a material. */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.30),
+    inset 0 12px 20px -18px rgba(255,255,255,.55),
+    0 30px 72px -30px rgba(4,25,31,.68);
+}
+/* the specular sheet: a hot spot that tracks the pointer, plus a fixed
+   diagonal sweep so there is always something to catch */
+.glass::before,.gbar::before,.pbcard::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
+  transition:background .18s linear;
+  background:
+    radial-gradient(220px 220px at var(--gx) var(--gy),rgba(255,255,255,var(--gi)),transparent 72%),
+    radial-gradient(circle at 12% 4%,rgba(255,255,255,.22),transparent 38%),
+    linear-gradient(104deg,transparent 26%,rgba(255,255,255,.20) 42%,transparent 56%);
+  transition:background-position .2s linear;
+}
+/* a shallow sheen down the top third, the way light sits on a curved
+   edge. It stops well short of the sides so it cannot read as a border. */
+.glass::after,.gbar::after,.pbcard::after{
+  content:"";position:absolute;left:6%;right:6%;top:0;height:34%;
+  border-radius:inherit;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),transparent 82%);
+}
+@media (prefers-reduced-transparency: reduce){
+  .glass,.gbar,.pbcard{background:rgba(7,34,42,.94);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav.stuck .glass,.nav.stuck.glass{background:var(--white)}
+}
+
+/* ---------- buttons, copied shapes from the reference ---------- */
+.btn{
+  --b:var(--blue);--f:#fff;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;
+  padding:14px 24px;border-radius:4px;border:1.5px solid var(--b);background:var(--b);color:var(--f);
+  font:inherit;font-weight:800;font-size:14.5px;text-decoration:none;cursor:pointer;
+  transition:transform .18s cubic-bezier(.16,1,.3,1),box-shadow .25s,background .25s,border-color .25s,color .25s;
+  box-shadow:0 8px 18px -10px rgba(11,110,126,.75);
+}
+.btn:hover{transform:translateY(-2px);background:var(--blue-d);border-color:var(--blue-d);box-shadow:0 14px 26px -12px rgba(11,110,126,.9)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.btn.navy{--b:var(--navy);box-shadow:0 8px 18px -10px rgba(6,42,51,.75)}
+.btn.navy:hover{background:var(--navy-2);border-color:var(--navy-2)}
+.btn.ghost{--b:var(--line);background:var(--white);--f:var(--navy)}
+.btn.ghost:hover{background:var(--ice);border-color:var(--navy);color:var(--navy)}
+.btn.glassy{--b:rgba(255,255,255,.4);background:rgba(255,255,255,.16);--f:#fff;backdrop-filter:blur(10px);box-shadow:none}
+.btn.glassy:hover{background:rgba(255,255,255,.28);border-color:rgba(255,255,255,.6)}
+
+/* ---------- utility bar + nav ---------- */
+.util{background:var(--navy-3);color:rgba(255,255,255,.8);font-size:12.5px}
+.util-in{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;padding-block:8px}
+.util a{text-decoration:none;transition:color .2s}
+.util a:hover{color:#fff}
+.util .r{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
+
+.nav{position:sticky;top:0;z-index:60;transition:background .35s,box-shadow .35s,border-color .35s;
+  border-bottom:1px solid transparent;background:transparent}
+.nav .glass{border-radius:0;border:0;border-bottom:1px solid rgba(255,255,255,.13)}
+.nav .glass::after{display:none}
+.nav.stuck{background:var(--white);border-bottom-color:var(--line);box-shadow:0 6px 22px -16px rgba(6,42,51,.5)}
+.nav.stuck .glass{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:transparent;box-shadow:none}
+.nav.stuck .glass::before,.nav.stuck .glass::after{display:none}
+.nav-in{height:70px;display:flex;align-items:center;gap:22px;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.brand .mk{width:36px;height:36px;border-radius:0;background:var(--blue);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;letter-spacing:-.02em}
+.brand b{font-size:16.5px;font-weight:800;letter-spacing:-.035em;line-height:1.05;color:#fff;transition:color .3s}
+.brand small{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.66);font-weight:700;transition:color .3s}
+.nav.stuck .brand b{color:var(--ink)}
+.nav.stuck .brand small{color:var(--muted)}
+.nav-links{display:flex;gap:4px;margin-left:14px}
+.nav-links a{text-decoration:none;font-size:13.5px;font-weight:700;color:rgba(255,255,255,.86);padding:8px 11px;border-radius:4px;transition:background .22s,color .22s}
+.nav-links a:hover{background:rgba(255,255,255,.16);color:#fff}
+.nav.stuck .nav-links a{color:var(--ink-2)}
+.nav.stuck .nav-links a:hover{background:var(--ice);color:var(--navy)}
+.nav-cta{margin-left:auto;display:flex;gap:9px;align-items:center}
+.tel{display:inline-flex;align-items:center;gap:8px;padding:14px 20px;border-radius:4px;background:var(--navy);color:#fff;
+  text-decoration:none;font-weight:800;font-size:14px;white-space:nowrap;transition:background .25s,transform .18s}
+.tel:hover{background:var(--navy-2);transform:translateY(-2px)}
+.burger{display:none;width:42px;height:42px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.14);
+  border-radius:4px;margin-left:auto;cursor:pointer}
+.nav.stuck .burger{border-color:var(--line);background:var(--white)}
+.burger i{display:block;width:17px;height:2px;background:#fff;margin:0 auto;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:17px;height:2px;background:#fff;transition:transform .3s}
+.burger i::before{top:-5.5px}.burger i::after{top:5.5px}
+.nav.stuck .burger i,.nav.stuck .burger i::before,.nav.stuck .burger i::after{background:var(--ink)}
+.burger[aria-expanded="true"] i{background:transparent}
+.burger[aria-expanded="true"] i::before{transform:translateY(5.5px) rotate(45deg)}
+.burger[aria-expanded="true"] i::after{transform:translateY(-5.5px) rotate(-45deg)}
+.drawer{display:none}
+
+/* ---------- hero: full bleed photo, left gradient, eyebrow, headline ---------- */
+.hero{position:relative;margin-top:-70px;min-height:clamp(560px,calc(100dvh - 36px),1080px);display:flex;align-items:center;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 74%;z-index:0}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(96deg,rgba(6,34,42,.9) 4%,rgba(6,34,42,.62) 42%,rgba(6,34,42,.24) 72%,rgba(6,34,42,.42))}
+.hero-in{position:relative;z-index:2;width:100%;padding-top:70px;padding-bottom:clamp(18px,2.4vw,30px);
+  display:grid;grid-template-columns:1.55fr .45fr;gap:clamp(24px,4vw,48px);align-items:center}
+.eyebrow{color:rgba(255,255,255,.86);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.hero h1{color:#fff;font-size:clamp(34px,4.8vw,60px);max-width:24ch;letter-spacing:-.03em;line-height:1.04}
+.hero p{color:rgba(255,255,255,.84);margin-top:16px;max-width:48ch;font-size:16.5px}
+.hero-act{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
+
+/* the glass menu card over the hero, from the supplied component */
+.gmenu{padding:16px;width:100%;max-width:304px;margin-left:auto;cursor:grab;touch-action:none}
+.gmenu:active{cursor:grabbing}
+.gmenu .ttl{color:rgba(255,255,255,.9);font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:2px 6px 12px}
+.gmenu nav{display:grid;gap:6px;position:relative;z-index:3}
+.gmenu a{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;color:#fff;
+  text-decoration:none;font-weight:700;font-size:14px;transition:background .25s,transform .25s}
+.gmenu a svg{width:17px;height:17px;flex:none;opacity:.9}
+.gmenu a:hover{background:rgba(255,255,255,.2);transform:translateX(3px)}
+.gmenu a.on{background:rgba(255,255,255,.92);color:var(--navy);
+  box-shadow:inset 0 1px 0 #fff,0 8px 22px -12px rgba(4,25,31,.7)}
+.gmenu a.on:hover{background:var(--white);transform:translateX(3px)}
+
+/* ---------- review ticker, the reference's blue strip ---------- */
+.ticker{background:var(--navy);color:#fff;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.12)}
+.tick-track{display:flex;gap:0;width:max-content;animation:tick 42s linear infinite}
+.ticker:hover .tick-track{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+.tick-track span{display:inline-flex;align-items:center;gap:9px;padding:12px 26px;font-size:13px;font-weight:600;white-space:nowrap;color:rgba(255,255,255,.86)}
+.tick-track b{color:#fff;font-weight:800}
+/* separates the quote from the reviewer without a middle dot chain */
+.tsep{display:inline-block;width:1px;height:12px;background:rgba(255,255,255,.4);margin-inline:2px;flex:none}
+.stars{color:#FFC53D;letter-spacing:1px;font-size:12px}
+@media (prefers-reduced-motion:reduce){.tick-track{animation:none}}
+
+/* ---------- intro: checklist beside a form card ---------- */
+.intro{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,4vw,54px);align-items:start}
+.checks{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:11px}
+.checks li{display:flex;gap:11px;align-items:flex-start;font-size:15px;font-weight:600;color:var(--ink-2)}
+.checks li svg{width:17px;height:17px;flex:none;margin-top:3px;color:var(--blue)}
+.formcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:clamp(20px,2.6vw,28px);box-shadow:var(--sh)}
+.formcard .hd{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line);
+  font-size:12px;font-weight:700;color:var(--muted)}
+.f{display:grid;gap:6px;margin-bottom:12px}
+.f label{font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.f input,.f select,.f textarea{font:inherit;font-size:15px;padding:11px 13px;border:1px solid var(--line);border-radius:0;
+  background:var(--ice);color:var(--ink);width:100%;transition:border-color .22s,background .22s,box-shadow .22s}
+.f input::placeholder,.f textarea::placeholder{color:#8FB3BB}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(11,110,126,.16)}
+.f .err{font-size:12px;color:#B3261E;font-weight:700;display:none}
+.f.bad input,.f.bad select{border-color:#B3261E}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fnote{font-size:11.5px;color:var(--muted);margin-top:11px;line-height:1.5}
+.fok{display:none;margin-top:16px;padding:12px 16px;border-radius:0;background:#E7F4EA;border:1px solid #A9D6B6;color:#14532D;font-weight:700;font-size:13.5px}
+.fok.on{display:block}
+
+/* ---------- section blocks. Only the proof block on navy is a plate. ---------- */
+.panel{background:none;border:0;border-radius:0;padding:0;box-shadow:none}
+.navyfield .panel{background:var(--white);padding:clamp(24px,3vw,40px)}
+.panel-hd{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+.panel-hd h2{font-size:clamp(21px,2.8vw,30px);max-width:22ch}
+.panel-hd p{color:var(--muted);font-size:14.5px;max-width:62ch;margin-top:8px}
+
+/* before / after pair */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ba figure{margin:0}
+.ba .shot{position:relative;border-radius:var(--r-sm);overflow:hidden;aspect-ratio:16/10;border:1px solid var(--line)}
+.ba .shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.ba figure:hover .shot img{transform:scale(1.05)}
+.ba .tag{position:absolute;left:10px;top:10px;background:var(--navy-3);color:#fff;font-size:10.5px;font-weight:800;
+  letter-spacing:.13em;text-transform:uppercase;padding:6px 12px;border-radius:0}
+.ba .tag.a{background:var(--blue)}
+.ba figcaption{padding-top:12px}
+.ba figcaption b{display:block;font-size:15px;font-weight:800}
+.ba figcaption span{color:var(--muted);font-size:13.5px}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.trio div{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;background:var(--ice)}
+.trio b{display:block;font-size:13.5px;font-weight:800;margin-bottom:3px}
+.trio span{color:var(--muted);font-size:12.5px;line-height:1.45}
+
+/* two column: copy left, bordered rows right */
+.split{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(22px,3.4vw,44px)}
+.rows{display:grid;gap:9px}
+.row{border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 15px;display:flex;gap:11px;align-items:flex-start;
+  transition:border-color .25s,background .25s,transform .25s}
+.row:hover{border-color:var(--blue);background:var(--ice);transform:translateX(3px)}
+.row b{display:block;font-size:14px;font-weight:800}
+.row span{color:var(--muted);font-size:12.5px;line-height:1.5}
+.hint{margin-top:14px;background:var(--ice-2);border-radius:var(--r-sm);padding:13px 16px;font-size:13.5px;font-weight:700;color:var(--navy)}
+
+/* ---------- big navy panel ---------- */
+.navypanel{background:var(--navy);color:#fff;border-radius:var(--r);padding:clamp(24px,3.4vw,44px);
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,3.4vw,42px);box-shadow:0 26px 60px -34px rgba(6,42,51,.7)}
+.navypanel h2{font-size:clamp(23px,3vw,34px);max-width:18ch}
+.navypanel>div>p{color:rgba(255,255,255,.78);margin-top:14px;font-size:15px;max-width:52ch}
+.navypanel .rows{margin-top:20px}
+.navypanel .row{border-color:rgba(255,255,255,.2);background:none}
+.navypanel .row:hover{border-color:var(--sky);background:none}
+.navypanel .row span{color:rgba(255,255,255,.72)}
+.navypanel .row .d{background:var(--sky)}
+.npic{border-radius:var(--r-sm);overflow:hidden;aspect-ratio:16/11;border:1px solid rgba(255,255,255,.2)}
+.npic img{width:100%;height:100%;object-fit:cover}
+.nlist{display:grid;gap:9px;margin-top:14px}
+.nlist div{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.07);border-radius:var(--r-sm);padding:11px 14px;
+  font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+
+/* ---------- photo card grids, the reference's service cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,22px);margin-top:26px}
+.pcard{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:12px;text-align:center;
+  transition:transform .32s cubic-bezier(.16,1,.3,1),box-shadow .32s,border-color .3s}
+.pcard:hover{transform:translateY(-5px);box-shadow:var(--sh);border-color:var(--blue)}
+.pcard .shot{border-radius:var(--r-sm);overflow:hidden;aspect-ratio:16/10;margin-bottom:14px}
+.pcard .shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.pcard:hover .shot img{transform:scale(1.06)}
+.pcard h3{font-size:16.5px;margin-bottom:6px}
+.pcard p{color:var(--muted);font-size:13.5px;padding:0 6px 10px;line-height:1.55}
+
+/* ---------- results card ---------- */
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+
+/* ---------- blue three up strip ---------- */
+.strip3{background:var(--blue);border-radius:var(--r);display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden}
+.strip3 div{padding:18px 22px;color:#fff;border-right:1px solid rgba(255,255,255,.24)}
+.strip3 div:last-child{border-right:0}
+.strip3 b{display:block;font-size:15px;font-weight:800;margin-bottom:3px}
+.strip3 span{font-size:13px;color:rgba(255,255,255,.84)}
+
+/* ---------- reviews, stars + quote mark like the reference ---------- */
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,24px);margin-top:26px;align-items:start}
+@media (max-width:1080px){.revs{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.revs{grid-template-columns:1fr}}
+.rev{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px;position:relative;overflow:hidden;
+  transition:transform .32s cubic-bezier(.16,1,.3,1),box-shadow .32s}
+.rev:hover{transform:translateY(-5px);box-shadow:var(--sh)}
+.rev .stars{font-size:14px;margin-bottom:10px;display:block}
+.rev p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+.rev b{display:block;margin-top:16px;font-weight:800;font-size:14.5px}
+.rev .qm{position:absolute;right:14px;bottom:6px;font-size:52px;line-height:1;color:var(--ice-2);font-weight:800}
+
+/* ---------- service area ---------- */
+.area{display:grid;grid-template-columns:1.18fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+.towns{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:20px}
+.towns span{background:var(--white);border:1px solid var(--line);border-radius:0;padding:10px 12px;text-align:center;
+  font-size:13.5px;font-weight:700;transition:border-color .25s,background .25s,transform .25s,color .25s}
+.towns span:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.mapcard{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--white)}
+.mapcard .lbl{padding:11px 14px;font-size:13px;font-weight:700;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.mapcard .shot{aspect-ratio:16/11;overflow:hidden}
+.mapcard img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- faq ---------- */
+.faq{margin-top:26px;display:grid;gap:9px}
+.q{border:1px solid var(--line);border-radius:var(--r-sm);background:var(--white);overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.q[data-open="1"]{border-color:var(--blue);box-shadow:var(--sh)}
+.q button{width:100%;background:none;border:0;text-align:left;font:inherit;font-weight:800;font-size:15.5px;color:var(--ink);
+  padding:16px 50px 16px 18px;cursor:pointer;position:relative;transition:color .22s;line-height:1.4}
+.q button:hover{color:var(--blue)}
+.q button:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+.q-m{position:absolute;right:18px;top:50%;width:15px;height:15px;transform:translateY(-50%)}
+.q-m::before,.q-m::after{content:"";position:absolute;background:var(--navy);transition:transform .35s cubic-bezier(.16,1,.3,1),background .25s}
+.q-m::before{left:0;right:0;top:6.5px;height:2px}
+.q-m::after{top:0;bottom:0;left:6.5px;width:2px}
+.q[data-open="1"] .q-m::after{transform:rotate(90deg)}
+.q[data-open="1"] .q-m::before{background:var(--blue)}
+.q-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.16,1,.3,1)}
+.q[data-open="1"] .q-body{grid-template-rows:1fr}
+.q-body>div{overflow:hidden}
+.q-body p{color:var(--muted);font-size:14.5px;padding:0 18px 18px;max-width:76ch}
+
+/* ---------- contact band ---------- */
+.cta{background:var(--navy);color:#fff;border-radius:var(--r);padding:clamp(24px,3.4vw,44px);
+  display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(22px,3.4vw,44px);align-items:center;box-shadow:0 26px 60px -34px rgba(6,42,51,.7)}
+.cta h2{font-size:clamp(24px,3.2vw,36px);max-width:16ch}
+.cta p{color:rgba(255,255,255,.78);margin-top:14px;max-width:44ch}
+.cinfo{display:grid;gap:8px;margin-top:20px}
+.cinfo a,.cinfo div{display:flex;gap:12px;align-items:center;text-decoration:none;font-size:14.5px;font-weight:600;
+  background:rgba(255,255,255,.07);border-radius:var(--r-sm);padding:11px 14px;transition:background .25s,transform .22s}
+.cinfo a:hover{background:rgba(255,255,255,.15);transform:translateX(3px)}
+.cinfo em{font-style:normal;color:rgba(255,255,255,.56);min-width:62px;font-weight:600;font-size:12.5px}
+
+/* ---------- footer ---------- */
+.foot{background:var(--navy-3);color:rgba(255,255,255,.72)}
+.foot-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;padding-block:clamp(36px,5vw,58px)}
+.foot h5{color:#fff;font-size:12px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:13px;font-weight:800}
+.foot a{display:block;text-decoration:none;color:rgba(255,255,255,.72);font-size:14px;padding:4px 0;transition:color .2s,transform .2s}
+.foot a:hover{color:#fff;transform:translateX(3px)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.14);padding-block:18px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12.5px}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+
+
+/* ============================================================
+   MATERIAL PASS  /  "BLUEPRINT LINEN"
+   The reference page is flat cream. Flat colour is what made the
+   first attempt read as a template, so every ground here carries a
+   real material instead:
+     - one continuous drafting grid under the whole document
+       (painted on <body>, so the rules line up across section seams)
+     - ice washes laid over that grid, translucent so it shows through
+     - navy panels get a raked hatch, an aggregate speckle and a
+       corner light, so they read as a surface, not a swatch
+     - a fixed film grain veil over everything
+   The grain sits on a FIXED, pointer-events:none layer so it never
+   repaints while the page scrolls.
+   ============================================================ */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  --hatch:repeating-linear-gradient(58deg,rgba(255,255,255,.035) 0 1px,transparent 1px 10px);
+}
+.grain{
+  position:fixed;inset:0;z-index:70;pointer-events:none;
+  opacity:.06;mix-blend-mode:multiply;
+  background-image:var(--grain);background-size:180px 180px;
+}
+/* ---- RHYTHM ----
+   Grain is the paper and sits on every page. The DRAWING is the ink, and
+   you do not draw on every square inch of a sheet. So the grounds are
+   plain by default and the drafting rules appear on two sections only,
+   with plain ground either side of each.
+
+   .ruled: the drafting sheet, 24px minor rule and 144px major */
+body{background-color:var(--white)}
+.ruled{
+  background-color:var(--white);
+  background-image:
+    linear-gradient(rgba(10,61,74,.075) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(10,61,74,.075) 1px,transparent 1px),
+    linear-gradient(rgba(10,61,74,.16) 1.3px,transparent 1.3px),
+    linear-gradient(90deg,rgba(10,61,74,.16) 1.3px,transparent 1.3px),
+    radial-gradient(ellipse 1200px 560px at 82% -12%,rgba(255,255,255,.85),transparent 64%);
+  background-size:24px 24px,24px 24px,144px 144px,144px 144px,100% 100%;
+}
+/* ice is a plain ground: it is the rest between the drawn sections */
+.ice{background-color:var(--ice)}
+/* .plotted: survey contours on ice, used where the page talks about ground */
+.plotted{
+  background-color:var(--ice);
+  background-image:
+    repeating-radial-gradient(ellipse 820px 460px at 90% 4%,
+      transparent 0 32px,rgba(6,42,51,.08) 32px 33.6px),
+    repeating-radial-gradient(ellipse 640px 380px at 2% 96%,
+      transparent 0 27px,rgba(6,42,51,.062) 27px 28.4px),
+    radial-gradient(ellipse 1100px 540px at 84% -10%,rgba(255,255,255,.8),transparent 66%);
+}
+
+/* .aggregate: a granular ground for the estimate block. Three dot
+   lattices at sizes that do not share a factor, so they never line up
+   into a visible grid. It reads as compacted base course, which is the
+   material this company actually sells. */
+.aggregate{
+  background-color:var(--ice);
+  background-image:
+    radial-gradient(circle at 50% 50%,rgba(6,42,51,.20) 1.1px,transparent 1.4px),
+    radial-gradient(circle at 50% 50%,rgba(6,42,51,.13) 1px,transparent 1.3px),
+    radial-gradient(circle at 50% 50%,rgba(255,255,255,.9) 1.2px,transparent 1.5px),
+    radial-gradient(circle at 50% 50%,rgba(6,42,51,.09) 1.6px,transparent 2px),
+    radial-gradient(ellipse 980px 540px at 10% -10%,rgba(255,255,255,.9),transparent 64%);
+  background-size:11px 11px,19px 17px,15px 21px,37px 41px,100% 100%;
+  background-position:0 0,6px 4px,3px 9px,13px 21px,0 0;
+}
+
+/* .blurshot: a photograph out of focus, used as a colour field rather
+   than as an image. The scrim is light because the type on it is ink,
+   and the pair was measured on the rendered pixels, not guessed. */
+.blurshot{position:relative;isolation:isolate;background-color:var(--ice);overflow:hidden;
+  /* the photograph under this section is darker than flat ice, so the
+     body grey is darkened with it. Measured on the rendered pixels:
+     the pale default sat at 3.7:1 here, under the 4.5 floor. */
+  --muted:#2E5C68}
+.blurshot>img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;
+  z-index:0;filter:blur(34px) saturate(1.45) brightness(1.2);transform:scale(1.2);
+}
+.blurshot::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 980px 660px at 14% 2%,rgba(255,255,255,.55),transparent 66%),
+    linear-gradient(176deg,rgba(231,245,249,.72),rgba(228,243,247,.78) 40%,rgba(222,240,245,.90));
+}
+.blurshot>.wrap{position:relative;z-index:2}
+
+/* navy: raked hatch + aggregate + two lights */
+.navypanel,.cta{
+  background-color:var(--navy);
+  background-image:
+    radial-gradient(circle at 88% -18%,rgba(95,216,234,.40),transparent 55%),
+    radial-gradient(circle at 4% 116%,rgba(11,110,126,.30),transparent 58%),
+    var(--hatch),
+    var(--grain);
+  background-size:auto,auto,auto,180px 180px;
+  background-blend-mode:normal,normal,normal,soft-light;
+}
+.foot{
+  background-color:var(--navy-3);
+  background-image:radial-gradient(ellipse 1000px 340px at 16% -40%,rgba(11,110,126,.20),transparent 66%);
+}
+.util{background-color:var(--navy-3);background-image:var(--hatch)}
+.ticker{
+  background-color:var(--navy);
+  background-image:
+    radial-gradient(ellipse 700px 120px at 50% 50%,rgba(95,216,234,.22),transparent 70%),
+    var(--hatch);
+}
+.strip3{
+  background-color:var(--blue);
+  background-image:
+    radial-gradient(circle at 92% -30%,rgba(255,255,255,.34),transparent 56%),
+    repeating-linear-gradient(58deg,rgba(255,255,255,.075) 0 1px,transparent 1px 9px),
+    var(--grain);
+  background-size:auto,auto,180px 180px;
+  background-blend-mode:normal,normal,soft-light;
+}
+/* the hero is a photographic ground, so nothing is laid over it */
+
+/* ============================================================
+   CONTAINERS, DELIBERATELY FEW
+   Four things on this page are containers. Everything else is
+   separated by a hairline, by space, or by weight.
+   ============================================================ */
+
+/* the form: a real container, plain white, one hairline, no glass */
+.formcard{
+  background:var(--white);border:0;border-radius:0;
+  padding:clamp(24px,3vw,40px);box-shadow:none;
+}
+.formcard .hd{
+  padding-bottom:16px;margin-bottom:24px;border-bottom:1px solid var(--line);
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.f input,.f select,.f textarea{
+  background:var(--white);border:0;border-bottom:1.5px solid var(--line);border-radius:0;
+  padding:12px 0;box-shadow:none;
+}
+.f input:focus,.f select:focus,.f textarea:focus{
+  background:var(--white);border-bottom-color:var(--blue);border-bottom-width:2px;box-shadow:none;
+}
+.f label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.f{gap:0;margin-bottom:24px}
+.two{gap:24px}
+
+/* ---- the call / text panel that stands where the estimate form stood ----
+   Same plate, same hairline language. A form would have contradicted the copy
+   beside it, which says most homes are priced off a photo without a visit. */
+.callpanel .ck{margin:0;font-family:var(--d);font-weight:700;font-size:clamp(19px,2.1vw,24px);
+  line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
+.callpanel .bignum{display:block;margin:14px 0 0;font-family:var(--d);font-weight:800;
+  font-size:clamp(30px,3.9vw,44px);line-height:1;letter-spacing:-.03em;color:var(--navy);
+  text-decoration:none;transition:color .2s}
+.callpanel .bignum:hover{color:var(--blue)}
+.callpanel .cn{margin:14px 0 22px;font-size:15px;line-height:1.6;color:var(--ink-2);max-width:38ch}
+.callpanel .crow{display:grid;grid-template-columns:88px 1fr;gap:14px;align-items:baseline;
+  padding:14px 0;border-top:1px solid var(--line);font-size:14px;color:var(--ink-2);line-height:1.5}
+.callpanel .crow:first-of-type{margin-top:24px}
+.callpanel .crow em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted)}
+.callpanel .crow a{color:var(--blue);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.callpanel .crow a:hover{border-bottom-color:var(--blue)}
+@media (max-width:520px){.callpanel .crow{grid-template-columns:1fr;gap:4px}}
+
+/* the proof plate on the navy field: the one white container in the page body */
+.panel{border-radius:0}
+
+/* ---- everything below was a card and is now not ---- */
+.pcard,.rev,.q,.mapcard,.trio div,.towns span,.hint,
+.row,.nlist div,.cinfo a,.cinfo div{
+  background:none;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;
+  -webkit-backdrop-filter:none;padding:0;
+}
+
+/* services and truck: photo does the work, caption sits under it, left set */
+.pcard{text-align:left;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.pcard .shot{border-radius:0;margin-bottom:20px}
+.pcard h3{font-size:22px;margin-bottom:8px;letter-spacing:-.02em}
+.pcard p{color:var(--muted);font-size:15px;padding:0;line-height:1.6;font-weight:400;max-width:34ch}
+.pcard:hover{box-shadow:none;transform:none}
+.pcard:hover .shot img{transform:scale(1.04)}
+
+/* results: photo, caption, nothing else */
+
+/* the trio: three columns split by a single rule, no boxes */
+.trio{border-top:1px solid var(--line);padding-top:24px;gap:32px}
+.trio div{position:relative}
+.trio div+div::before{content:"";position:absolute;left:-16px;top:2px;bottom:2px;width:1px;background:var(--line)}
+.trio b{font-size:15px;font-weight:700;margin-bottom:4px}
+.trio span{color:var(--muted);font-size:14px}
+
+/* reviews: a rule, the stars, the quote, the name. No box, no quote mark. */
+.rev{border-top:2px solid var(--navy);padding-top:24px}
+.rev:hover{transform:none;box-shadow:none}
+.rev .stars{margin-bottom:16px}
+.rev p{font-size:19px;line-height:1.5;color:var(--ink);font-weight:400;letter-spacing:-.012em}
+.rev b{margin-top:24px;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rev .qm{display:none}
+
+/* faq: ruled rows */
+.faq{border-top:1px solid var(--line);gap:0}
+.q{border-bottom:1px solid var(--line)}
+.q[data-open="1"]{border-color:var(--line);box-shadow:none}
+.q button{padding:24px 56px 24px 0;font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.015em}
+.q-body p{padding:0 0 24px;font-size:16px;color:var(--muted)}
+.q-m{right:8px}
+
+/* towns: a set list, ruled, not a chip cloud */
+.towns{gap:0;border-top:1px solid var(--line)}
+.towns span{padding:14px 0;border-bottom:1px solid var(--line);text-align:left;
+  font-size:17px;font-weight:600;letter-spacing:-.01em;transition:color .2s,padding-left .3s cubic-bezier(.16,1,.3,1)}
+.towns span:hover{color:var(--blue);padding-left:8px;transform:none;background:none}
+.mapcard{border:0}
+.mapcard .lbl{padding:0 0 12px;border-bottom:0;font-size:12px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* process and list rows: a rule under each, nothing around them */
+.rows{gap:0}
+.row{padding:20px 0;border-bottom:1px solid var(--line)}
+.row:hover{background:none;transform:none;border-color:var(--navy);padding-left:8px}
+.row b{font-size:17px;font-weight:700;letter-spacing:-.015em}
+.row span{color:var(--muted);font-size:15px}
+.hint{color:var(--muted);font-size:15px;font-weight:400;padding:16px 0 0;border-top:1px solid var(--line)}
+
+/* inside the navy: the same treatment, inverted */
+.navypanel .rows{margin-top:24px}
+.navypanel .row{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+.navypanel .row:hover{background:none;border-color:var(--sky)}
+.nlist{gap:0;margin-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+.nlist div{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18);font-weight:400}
+.cinfo{gap:0;border-top:1px solid rgba(255,255,255,.24)}
+.cinfo a,.cinfo div{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18);
+  transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .25s}
+.cinfo a:hover{background:none;transform:none;padding-left:8px;color:var(--sky)}
+
+
+/* the blue strip keeps one container because it is a band, not a card */
+.strip3{border-radius:0}
+.strip3 div{border-right-color:rgba(255,255,255,.28)}
+
+/* ---- the glass that stays: only things that float over photography ---- */
+.blueband .strip3,.blueband .rev{backdrop-filter:none;-webkit-backdrop-filter:none}
+.blueband .strip3{background-image:none;background-color:rgba(255,255,255,.10);border-color:rgba(255,255,255,.24)}
+.blueband .rev{background:none;border:0;border-top:2px solid rgba(255,255,255,.5);box-shadow:none}
+.blueband .rev:hover{border-top-color:#fff;box-shadow:none}
+.blueband .rev p{color:#fff}
+.blueband .rev b{color:rgba(255,255,255,.7)}
+.blueband .rev::before{display:none}
+
+/* ---------- the glass stat bar, a full width row at the foot of the hero ---------- */
+.nav:not(.stuck) .glass{
+  background:
+    linear-gradient(140deg,rgba(255,255,255,.11),rgba(255,255,255,.02)),
+    linear-gradient(180deg,rgba(5,28,34,.74),rgba(5,28,34,.62));
+  backdrop-filter:blur(26px) saturate(165%);
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
+}
+.gbar{
+  grid-column:1/-1;margin-top:clamp(20px,2.6vw,34px);padding:8px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.gbar>div{position:relative;padding:16px 20px;border:0}
+.gbar>div+div::before{content:"";position:absolute;left:-3px;top:18%;bottom:18%;width:1px;background:rgba(255,255,255,.24)}
+.gbar b{display:block;color:#fff;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.035em;line-height:1}
+.gbar span{display:block;margin-top:6px;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.03em}
+
+/* ---------- fallbacks ---------- */
+@media (prefers-reduced-transparency: reduce){
+  .gbar,.pbcard,.gmenu{background:var(--navy);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
+
+/* ============================================================
+   BREAKING THE PALE RUN
+   The reference is light all the way down, and copying it left a long
+   stretch of ice and white through the middle of the page. Two grounds
+   go in to break it: a full bleed photograph after Core Services, and a
+   real blue field carrying the three up strip and the reviews.
+   ============================================================ */
+
+/* ---- the photographic band ---- */
+.photoband{position:relative;overflow:hidden;display:flex;align-items:center;
+  min-height:clamp(330px,38vw,480px)}
+.photoband>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;z-index:0}
+.photoband::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(96deg,rgba(6,31,38,.9) 4%,rgba(6,31,38,.6) 46%,rgba(6,31,38,.22) 80%)}
+.photoband>.wrap{position:relative;z-index:2;width:100%;padding-block:clamp(34px,4.5vw,56px);
+  display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,54px);align-items:center}
+.photoband h2{color:#fff;font-size:clamp(24px,3.2vw,38px);max-width:18ch;letter-spacing:-.032em}
+.photoband p{color:rgba(255,255,255,.86);margin-top:14px;max-width:50ch;font-size:16px}
+.photoband .acts{margin-top:24px}
+/* one more glass card, over the picture where it has something to refract */
+.pbcard{width:min(300px,30vw);padding:8px}
+.pbcard>div{padding:13px 16px;border:0;
+  display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.pbcard>div+div{margin-top:2px;border-top:1px solid rgba(255,255,255,.14)}
+.pbcard span{color:rgba(255,255,255,.8);font-size:13px;font-weight:700}
+.pbcard b{color:#fff;font-size:17px;font-weight:800;letter-spacing:-.03em}
+@media (max-width:900px){
+  .photoband>.wrap{grid-template-columns:1fr}
+  .pbcard{width:100%}
+}
+
+/* ---- the proof band: a dark ground so the white panel actually reads ----
+   The panel and the ice under it were within a few percent of each other in
+   value, so the card had nothing to lift off. Inverting the pair is a stronger
+   move than restyling the card: the ground goes navy and the white panel keeps
+   its contents, so the before and after photographs gain contrast rather than
+   losing it. It also reads as a different idea from the navy panel further
+   down, which is a dark card on a light ground rather than the reverse. */
+.navyfield{
+  background-color:var(--navy);
+  background-image:
+    radial-gradient(ellipse 1250px 640px at 84% -16%,rgba(11,110,126,.55),transparent 60%),
+    radial-gradient(ellipse 900px 520px at 0% 112%,rgba(6,42,51,.65),transparent 66%),
+    var(--hatch);
+}
+/* the glass fill is tuned for a light ground. Over navy it dropped the panel
+   to a mid blue grey and took the body copy under the contrast floor with it,
+   so on this ground the fill goes near opaque. The blur and the lit edge stay,
+   so it still reads as glass at the rim. */
+.navyfield .panel{
+  background:linear-gradient(150deg,rgba(255,255,255,.975),rgba(255,255,255,.94) 48%,rgba(230,245,249,.96));
+  border-color:rgba(255,255,255,.62);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -1px 0 rgba(255,255,255,.6),
+    0 40px 90px -44px rgba(3,20,25,.85);
+}
+
+/* ---- the blue field ---- */
+.blueband{
+  background-color:var(--navy-2);
+  background-image:
+    radial-gradient(ellipse 1300px 700px at 84% -14%,rgba(11,110,126,.9),transparent 62%),
+    radial-gradient(ellipse 900px 540px at 0% 112%,rgba(6,42,51,.6),transparent 66%),
+    var(--hatch);
+  color:#fff;
+}
+.blueband .sh{color:#fff}
+.blueband .sh::after{background:var(--sky)}
+/* the three up strip is a ruled band on the field, not a card on it */
+.blueband .strip3{
+  background:none;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;
+  border:0;border-top:1px solid rgba(255,255,255,.34);border-bottom:1px solid rgba(255,255,255,.34);
+}
+.blueband .strip3 div{padding:24px 32px 24px 0;border-right:0;position:relative}
+.blueband .strip3 div+div{padding-left:32px}
+.blueband .strip3 div+div::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:1px;background:rgba(255,255,255,.28)}
+.blueband .strip3 b{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;margin-bottom:8px}
+/* reviews on the field: a rule and the words, same as on the light ground */
+.blueband .rev{
+  border:0;border-top:2px solid rgba(255,255,255,.55);padding-top:24px;
+  background:none;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;
+}
+.blueband .rev::before,.blueband .rev::after{display:none}
+.blueband .rev p{color:#fff}
+.blueband .rev b{color:rgba(255,255,255,.72)}
+.blueband .rev:hover{border-top-color:#fff;box-shadow:none;transform:none}
+/* white CTA, because a blue button on a blue field is not a button */
+.blueband .btn{--b:#fff;--f:var(--navy);background:#fff;border-color:#fff;color:var(--navy);
+  box-shadow:0 10px 22px -12px rgba(3,22,28,.7)}
+.blueband .btn:hover{background:var(--ice);border-color:var(--ice);color:var(--navy)}
+
+@media (prefers-reduced-transparency: reduce){
+  .blueband .strip3,.blueband .rev,.pbcard{
+    background:rgba(6,42,51,.9);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:760px){
+  .blueband .strip3,.blueband .rev{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
+
+/* ============================================================
+   LAYOUT AND SPACING
+   Six identical three-equal-column grids read as a template no matter
+   what is in them. Core Services is now one large item beside two
+   stacked, so it is a different layout family from the three up that
+   follows it.
+
+   Everything below is on an 8pt grid: 8 16 24 32 40 48 64 80 96.
+   ============================================================ */
+.cards{gap:40px 40px;margin-top:40px}
+.cards.feature{grid-template-columns:1.12fr .88fr}
+.cards.feature>.pcard:first-child{grid-row:1/3;display:flex;flex-direction:column}
+.cards.feature>.pcard:first-child .shot{aspect-ratio:auto;flex:1;min-height:320px}
+.cards.feature>.pcard:first-child h3{font-size:28px}
+.cards.feature>.pcard:first-child p{font-size:16px;max-width:38ch}
+.cards.feature>.pcard{border-bottom:0}
+.cards.feature>.pcard:not(:first-child) .shot{aspect-ratio:16/8}
+
+.sec{padding-block:clamp(56px,7vw,96px)}
+.sh{padding-bottom:16px;font-size:clamp(26px,3.4vw,40px)}
+.sh::after{width:64px;height:2px}
+.hero-act{gap:16px;margin-top:32px}
+.checks{gap:16px;margin-top:24px}
+.checks li{font-size:16px;font-weight:400;color:var(--ink-2)}
+.intro{gap:clamp(32px,4vw,64px)}
+.panel{padding:clamp(24px,3vw,40px)}
+.panel-hd{margin-bottom:32px;gap:24px}
+.panel-hd h2{font-size:clamp(22px,2.8vw,32px);max-width:20ch}
+.revs{gap:40px;margin-top:40px}
+.trio{margin-top:24px}
+.faq{margin-top:32px}
+.towns{margin-top:24px}
+.acts{gap:16px;margin-top:32px}
+.area{gap:clamp(32px,4vw,64px)}
+.navypanel{padding:clamp(32px,5vw,68px);gap:clamp(30px,3.6vw,52px);border-radius:0}
+.cta{padding:clamp(32px,5vw,68px);gap:clamp(30px,3.6vw,52px);border-radius:0}
+.lede{font-size:17px;font-weight:300;line-height:1.6}
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone pill steps out first. It is still in the utility bar,
+   the drawer, the hero and the footer. */
+/* The nav carried the links AND a CTA down to 760, and between about 780 and
+   1010 the row is wider than the page. Collapse the links to the burger at the
+   same breakpoint the phone pill steps out, not 250px later. */
+@media (max-width:1010px){
+  .nav-cta .tel{display:none}
+  .nav-links{display:none}
+  .burger{display:grid;place-items:center}
+  .nav-links{gap:20px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:14px;font-size:13px}
+}
+@media (max-width:1040px){
+  .cards.feature{grid-template-columns:1fr}
+  .cards.feature>.pcard:first-child{grid-row:auto}
+  .cards.feature>.pcard:first-child .shot{min-height:0;aspect-ratio:16/9}
+}
+
+
+/* the estimate block: a photograph fills the run of empty ground under
+   the checklist, rather than leaving half a screen of texture */
+.introshot{margin:36px 0 0;height:clamp(190px,19vw,268px);overflow:hidden}
+.introshot img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+
+/* the about block: the short column keeps pace with the long list */
+@media (min-width:981px){
+  .blurshot .split>div:first-child{position:sticky;top:104px;align-self:start}
+}
+
+
+/* ---------- how a job runs ----------
+   Five ruled rows of 15px copy on flat ice was the thinnest block on the
+   page. The sequence is the point, so it gets a spine and real numerals,
+   and the section gets a photograph to stand on. */
+.steps-in{display:grid;grid-template-columns:1.28fr .72fr;gap:clamp(32px,4.6vw,76px);align-items:start}
+.steps{list-style:none;margin:40px 0 0;padding:0;position:relative}
+.steps::before{
+  content:"";position:absolute;left:23px;top:26px;bottom:34px;width:2px;
+  background:linear-gradient(var(--blue),var(--line));
+}
+.steps li{position:relative;display:grid;grid-template-columns:48px 1fr;
+  gap:clamp(20px,2.4vw,32px);padding:0 0 32px;align-items:start}
+.steps li:last-child{padding-bottom:0}
+.sn{
+  position:relative;z-index:1;justify-self:start;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:800;
+  letter-spacing:.02em;color:var(--white);background:var(--navy);
+  width:48px;height:48px;display:grid;place-items:center;
+}
+.steps b{display:block;font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(19px,1.9vw,24px);font-weight:700;letter-spacing:-.02em;
+  line-height:1.15;margin:10px 0 8px}
+.steps p{margin:0;color:var(--muted);font-size:16px;line-height:1.6;max-width:54ch}
+.steps-pic{margin:40px 0 0;height:clamp(380px,44vw,600px);overflow:hidden;
+  position:sticky;top:104px;background:var(--ice-2)}
+.steps-pic img{width:100%;height:100%;object-fit:cover;object-position:52% 50%}
+.steps-pic figcaption{display:none}
+@media (max-width:900px){
+  .steps-in{grid-template-columns:1fr}
+  .steps-pic{position:static;height:clamp(220px,50vw,300px);margin-top:32px}
+}
+
+/* ---------- accordion strip ---------- */
+.accord{
+  display:flex;gap:4px;margin-top:40px;
+  height:clamp(340px,44vw,520px);
+  --exp:3.4;
+}
+.pnl{
+  position:relative;flex:1 1 0;min-width:0;overflow:hidden;
+  border:0;padding:0;margin:0;background:var(--navy);
+  cursor:pointer;text-align:left;font:inherit;color:#fff;
+  transition:flex-grow .62s cubic-bezier(.16,1,.3,1);
+}
+.pnl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .9s cubic-bezier(.16,1,.3,1),filter .5s ease}
+.pnl::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(4,25,31,.88) 0,rgba(4,25,31,.38) 40%,rgba(4,25,31,.04) 74%)}
+.pnl .lbl{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 20px}
+.pnl .short{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;
+  font-weight:700;letter-spacing:-.008em;white-space:nowrap;transition:opacity .3s}
+.pnl .full{display:block;max-width:36ch;opacity:0;max-height:0;overflow:hidden;transform:translateY(12px);
+  transition:opacity .4s ease .08s,transform .55s cubic-bezier(.16,1,.3,1) .08s,max-height .55s cubic-bezier(.16,1,.3,1)}
+.pnl .full h3{font-size:clamp(19px,1.8vw,25px);margin-bottom:8px;letter-spacing:-.02em}
+.pnl .full p{font-size:14.5px;line-height:1.55;font-weight:300;color:rgba(255,255,255,.86)}
+.pnl:not(.open) img{filter:saturate(.7) brightness(.84)}
+.pnl.open{flex-grow:var(--exp)}
+.pnl.open .short{opacity:0}
+.pnl.open .full{opacity:1;transform:none;max-height:240px}
+.pnl.open img{transform:scale(1.05)}
+.pnl:focus-visible{outline:2px solid var(--sky);outline-offset:-3px}
+
+/* ---------- drag filmstrip ---------- */
+.reel-hd{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.rnav{display:flex;gap:8px}
+.rbtn{width:48px;height:48px;border:1.5px solid var(--line);background:var(--white);
+  color:var(--navy);display:grid;place-items:center;cursor:pointer;border-radius:0;
+  transition:background .25s,border-color .25s,color .25s}
+.rbtn svg{width:19px;height:19px}
+.rbtn:hover:not(:disabled){background:var(--navy);border-color:var(--navy);color:#fff}
+.rbtn:disabled{opacity:.3;cursor:default}
+.reel{
+  display:flex;gap:16px;margin-top:32px;padding-bottom:6px;
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;cursor:grab;
+  scrollbar-width:none;-ms-overflow-style:none;
+  padding-inline:max(var(--pad),calc((100% - var(--maxw))/2 + var(--pad)));
+  scroll-padding-inline:max(var(--pad),calc((100% - var(--maxw))/2 + var(--pad)));
+}
+.reel::-webkit-scrollbar{display:none}
+.reel.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.reel.drag img,.reel.drag video{pointer-events:none}
+.slide{flex:none;margin:0;scroll-snap-align:start;width:clamp(228px,26vw,320px)}
+.slide.w{width:clamp(300px,50vw,620px)}
+.slide .shot{height:clamp(250px,31vw,410px);overflow:hidden;background:var(--ice-2)}
+.slide img,.slide video{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.slide:hover img,.slide:hover video{transform:scale(1.05)}
+.slide figcaption{padding-top:14px;font-size:14px;color:var(--muted);font-weight:400}
+.slide figcaption b{display:block;color:var(--ink);font-weight:600;font-size:15.5px;
+  letter-spacing:-.012em;margin-bottom:3px}
+.reel-bar{position:relative;height:2px;background:var(--line);margin-top:36px;overflow:hidden}
+.reel-bar i{position:absolute;inset-block:0;left:0;width:var(--rw,30%);background:var(--navy);
+  transform:translateX(var(--rx,0px))}
+
+@media (prefers-reduced-motion: reduce){
+  .pnl,.pnl .full,.pnl img,.slide img{transition:none}
+}
+@media (max-width:900px){
+  /* the accordion cannot work on a narrow screen, so it becomes a plain
+     stack with every caption already open */
+  .accord{display:grid;grid-template-columns:1fr;gap:2px;height:auto}
+  .pnl{height:clamp(230px,54vw,300px)}
+  .pnl .short{display:none}
+  .pnl .full{opacity:1;max-height:none;transform:none}
+  .pnl:not(.open) img{filter:none}
+  .slide.w{width:clamp(280px,80vw,520px)}
+  .slide{width:clamp(228px,66vw,300px)}
+}
+
+/* On a short window the hero content is simply taller than the viewport, so
+   filling the screen would push the stat bar under the fold. Everything in the
+   hero steps down together rather than the bar falling off the bottom. */
+@media (min-width:1041px) and (max-height:760px){
+  .hero h1{font-size:clamp(30px,3.4vw,44px)}
+  .hero .lede{font-size:15px;margin-top:10px;max-width:52ch}
+  .hero .eyebrow{margin-bottom:10px}
+  .hero-act{margin-top:20px;gap:12px}
+  .gbar{margin-top:16px;padding:6px}
+  .gbar>div{padding:11px 16px}
+  .gbar b{font-size:clamp(19px,2vw,25px)}
+  .gbar span{font-size:12px;margin-top:3px}
+  .gmenu a{padding:9px 14px}
+  .gmenu .ttl{padding:2px 6px 8px}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1040px){
+  .hero-in,.intro,.split,.navypanel,.area,.cta{grid-template-columns:1fr}
+  .gmenu{max-width:none;margin-left:0}
+  .cards,.revs,.strip3{grid-template-columns:1fr 1fr}
+  .strip3 div{border-right:0;border-bottom:1px solid rgba(255,255,255,.24)}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .util .r{display:none}
+  .nav-links{display:none}
+  .nav-cta .tel{display:none}
+  .nav-cta .btn{display:none}
+  .burger{display:grid;place-items:center}
+  .drawer{display:block;position:fixed;inset:70px 0 auto 0;z-index:59;background:var(--white);border-bottom:1px solid var(--line);
+    padding:10px var(--pad) 22px;transform:translateY(-130%);transition:transform .42s cubic-bezier(.16,1,.3,1);box-shadow:var(--sh)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{display:block;padding:13px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:800;font-size:16px}
+  .drawer .btn,.drawer .tel{width:100%;margin-top:12px}
+  .ba,.cards,.revs,.trio,.towns{grid-template-columns:1fr}
+  .strip3{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .hero{min-height:auto;padding-block:96px 40px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+
+@media (max-width:1040px){
+  .gbar{grid-template-columns:1fr 1fr}
+  .gbar>div:nth-child(3)::before{display:none}
+}
+@media (max-width:560px){
+  .gbar{grid-template-columns:1fr}
+  .gbar>div+div::before{left:14px;right:14px;top:-3px;bottom:auto;width:auto;height:1px}
+}
+@media (max-width:760px){
+  /* only three elements blur now, and none of them on a phone */
+  .gbar,.pbcard,.gmenu{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(6,34,42,.92)}
+}
+</style>
+</head>
+<body>
+
+<!-- fixed film grain over the whole page -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ UTILITY BAR ============ -->
+<div class="util">
+  <div class="wrap util-in">
+    <a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">@eastvalleywindowcleaningllc</a>
+    <div class="r">
+      <a href="#services">Services</a>
+      <a href="#about">Owner operated</a>
+      <a href="#work">Recent work</a>
+      <a href="#estimate">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="glass">
+    <div class="wrap nav-in">
+      <a class="brand" href="#top">
+        <span class="mk">EV</span>
+        <span><b>East Valley Window Cleaning</b><small>Mesa, Arizona</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a><a href="#about">Owner operated</a><a href="#work">Recent work</a>
+        <a href="#reviews">Reviews</a><a href="#area">Areas</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="tel" href="tel:+14808069455">480-806-9455</a>
+        <a class="btn" href="#estimate">Free estimate</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
+    </div>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#services">Services</a><a href="#about">Owner operated</a><a href="#work">Recent work</a>
+  <a href="#reviews">Reviews</a><a href="#area">Areas</a>
+  <a class="tel" href="tel:+14808069455">480-806-9455</a>
+  <a class="btn" href="#estimate">Free estimate</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img src="assets/hero-pole.jpg" width="1200" height="1600"
+       alt="A water-fed pole reaching the upper glass on a two storey East Valley home" fetchpriority="high">
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Mesa and the East Valley</p>
+      <h1>Crystal Clear Views Start Here</h1>
+      <p>Owner-operated window cleaning across the East Valley. Inside and out, screens and tracks, hard water stains, tint, solar panels and hauling. Residential and commercial.</p>
+      <div class="hero-act">
+        <a class="btn" href="tel:+14808069455">Call 480-806-9455</a>
+        <a class="btn glassy" href="sms:+14808069455">Text for a quote</a>
+      </div>
+    </div>
+
+    <!-- liquid glass menu card, from the supplied component -->
+    <div class="gmenu glass" id="gmenu">
+      <div class="ttl">Jump to</div>
+      <nav>
+        <a class="on" href="#services">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          <span>What we clean</span></a>
+        <a href="#work">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+          <span>Recent work</span></a>
+        <a href="#about">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Owner operated</span></a>
+        <a href="#reviews">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+          <span>Google reviews</span></a>
+        <a href="#estimate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Free estimate</span></a>
+      </nav>
+    </div>
+
+    <!-- glass stat bar, sitting on the photograph so it has something to refract -->
+    <div class="gbar rv">
+      <div><b>5.0</b><span>On Google, all four reviews</span></div>
+      <div><b>7</b><span>Services, one phone number</span></div>
+      <div><b>8</b><span>East Valley towns covered</span></div>
+      <div><b>Free</b><span>Estimates, most without a visit</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEW TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="tick-track">
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> They left every window spotless <i class="tsep" aria-hidden="true"></i><b>Lacey Shultz</b></span>
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> Polite, easy to communicate with <i class="tsep" aria-hidden="true"></i><b>Nina Hanopol</b></span>
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> On time, on schedule <i class="tsep" aria-hidden="true"></i><b>Kirkland Sanders</b></span>
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> Really great service <i class="tsep" aria-hidden="true"></i><b>Maria Sandoval</b></span>
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> They left every window spotless <i class="tsep" aria-hidden="true"></i><b>Lacey Shultz</b></span>
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> Polite, easy to communicate with <i class="tsep" aria-hidden="true"></i><b>Nina Hanopol</b></span>
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> On time, on schedule <i class="tsep" aria-hidden="true"></i><b>Kirkland Sanders</b></span>
+    <span><b class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</b> Really great service <i class="tsep" aria-hidden="true"></i><b>Maria Sandoval</b></span>
+  </div>
+</div>
+
+<!-- ============ INTRO + CALL / TEXT PANEL ============
+     Set Right's estimate form sat here. East Valley's whole pitch is that most
+     homes get priced off a text and a photo, so a form would contradict the copy
+     beside it. The card keeps the slot, the shape and the material; the content
+     inside it is the phone number. -->
+<section class="sec aggregate">
+  <div class="wrap intro">
+    <div class="rv">
+      <h2 style="font-size:clamp(25px,3.4vw,38px);max-width:19ch">Everything That Touches The Glass, On One Phone Number</h2>
+      <p class="lede" style="margin-top:14px;max-width:52ch">One operator, one invoice. Book a single window clean or bundle the whole exterior.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Every job done by Jose Sandoval, the owner</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Purified water and a water-fed pole where the height calls for it</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Residential and commercial, single storey to multi-storey</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Free estimates, most homes priced without a visit</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>5.0 on Google, from all four reviews</li>
+      </ul>
+      <figure class="introshot">
+        <img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy"
+             alt="Clean storefront glazing at street level, frames and sidelights included">
+      </figure>
+    </div>
+
+    <div class="formcard rv">
+      <div class="hd">Free estimate, no obligation</div>
+      <div class="callpanel">
+        <p class="ck">Tell us what needs cleaning.</p>
+        <a class="bignum" href="tel:+14808069455">480-806-9455</a>
+        <p class="cn">Call or text with your address and roughly how many windows. Most homes can be priced without a visit.</p>
+        <a class="btn navy" href="sms:+14808069455" style="width:100%">Text a photo of your windows</a>
+        <div class="crow"><em>Owner</em>Jose Sandoval</div>
+        <div class="crow"><em>Covers</em>Mesa, Gilbert, Chandler, Queen Creek, San Tan Valley, Apache Junction, Johnson Ranch, Bella Vista Farms</div>
+        <div class="crow"><em>Instagram</em><a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">@eastvalleywindowcleaningllc</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEFORE / AFTER PROOF ============ -->
+<section class="sec navyfield">
+  <div class="wrap">
+    <div class="panel rv">
+      <div class="panel-hd">
+        <div>
+          <h2>The Same Storefront, Either Side Of One Visit</h2>
+        </div>
+        <a class="btn" href="#estimate">Free estimate</a>
+      </div>
+      <div class="ba">
+        <figure>
+          <div class="shot"><span class="tag">Before</span>
+            <img src="assets/ba-before.jpg" width="390" height="488" loading="lazy" alt="Commercial storefront glazing in Mesa before cleaning, hazed with dust and hard water">
+          </div>
+          <figcaption><b>Before</b><span>Storefront glazing in Mesa, carrying monsoon dust and sprinkler overspray.</span></figcaption>
+        </figure>
+        <figure>
+          <div class="shot"><span class="tag a">After</span>
+            <img src="assets/ba-after.jpg" width="390" height="488" loading="lazy" alt="The same Mesa storefront glazing after cleaning, clear and streak free">
+          </div>
+          <figcaption><b>After</b><span>The same glass after one visit. Frames and screens done at the same time.</span></figcaption>
+        </figure>
+      </div>
+      <div class="trio">
+        <div><b>The same glazing</b><span>Both photographs are the same storefront, photographed either side of one visit.</span></div>
+        <div><b>Frames and screens too</b><span>Not just the pane. Sills, frames and sliding tracks are part of the job.</span></div>
+        <div><b>One operator</b><span>The same hands on your glass every time, residential or commercial.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OWNER OPERATED ============ -->
+<section class="sec blurshot" id="about">
+  <img src="assets/job-pole-wide.jpg" width="1280" height="722" loading="lazy" alt="">
+  <div class="wrap">
+    <div class="panel rv">
+      <div class="split">
+        <div>
+          <h2 style="font-size:clamp(22px,2.9vw,32px);max-width:16ch">Every Job Is Done By The Owner</h2>
+          <p class="lede" style="margin-top:14px;font-size:15px">Every job is done by Jose Sandoval, the owner. Same hands on your glass every time, residential or commercial. There is no rotating crew and no subcontractor, so the standard on the second visit is the standard on the first.</p>
+          <p class="lede" style="margin-top:12px;font-size:15px">One operator means one invoice. Book a single window clean, or bundle the screens, the tracks, the hard water, the tint, the panels and the hauling into the same visit.</p>
+          <div class="acts" style="margin-top:18px">
+            <a class="btn" href="tel:+14808069455">Call 480-806-9455</a>
+            <a class="btn ghost" href="sms:+14808069455">Text for a quote</a>
+          </div>
+          <div class="hint">Most homes can be priced without a visit. Send a photo.</div>
+        </div>
+        <div class="rows">
+          <div class="row"><div><b>Same hands, every visit</b><span>Owner-operated. Jose does the work himself, residential and commercial.</span></div></div>
+          <div class="row"><div><b>Purified water, water-fed pole</b><span>Streak free, and the pole reaches the height without a ladder on your landscaping.</span></div></div>
+          <div class="row"><div><b>Inside and out</b><span>Both faces of the glass, plus the sills and the sliding tracks.</span></div></div>
+          <div class="row"><div><b>Free estimates</b><span>Most homes are priced off a photo and an address, without a site visit.</span></div></div>
+          <div class="row"><div><b>5.0 on Google</b><span>From all four reviews the business has received. Every one is on this page.</span></div></div>
+          <div class="row"><div><b>On the route daily</b><span>Eight East Valley towns, from Mesa out to Bella Vista Farms.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORE SERVICES ============ -->
+<section class="sec ruled" id="services">
+  <div class="wrap">
+    <h2 class="sh rv">On The Job</h2>
+    <div class="cards feature">
+      <article class="pcard rv">
+        <div class="shot"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt="Clean commercial storefront glazing at street level"></div>
+        <h3>Glass</h3>
+        <p>Windows in and out, screens, tracks and hard water stains.</p>
+      </article>
+      <article class="pcard rv">
+        <div class="shot"><img src="assets/job-solar-sky.jpg" width="540" height="960" loading="lazy" alt="A rooftop solar array under open sky, washed clear of dust"></div>
+        <h3>Film &amp; Panels</h3>
+        <p>UV and privacy film, and solar arrays washed back to output.</p>
+      </article>
+      <article class="pcard rv">
+        <div class="shot"><img src="assets/job-haul.jpg" width="820" height="1094" loading="lazy" alt="Monsoon debris and a cleared-out load stacked in a yard ready to haul"></div>
+        <h3>Property</h3>
+        <p>Pressure washing, plus junk and monsoon debris hauled away.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTOGRAPHIC BAND ============ -->
+<section class="photoband">
+  <img src="assets/job-pole-wide.jpg" width="1280" height="722" loading="lazy"
+       alt="A water-fed pole worked up the elevation of a two storey building">
+  <div class="wrap">
+    <div class="rv">
+      <h2>Glass is the first thing a customer sees and the last thing anyone budgets for.</h2>
+      <p>Purified water and a water-fed pole where the height calls for it. Streak free on the way up, and no ladder leaning on your landscaping on the way down.</p>
+      <div class="acts"><a class="btn" href="#estimate">Free estimate</a>
+        <a class="btn glassy" href="#work">See recent work</a></div>
+    </div>
+    <div class="pbcard rv">
+      <div><span>Google</span><b>5.0</b></div>
+      <div><span>Services</span><b>7</b></div>
+      <div><span>Towns</span><b>8</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ice">
+  <div class="wrap">
+    <h2 class="sh rv">Everything We Clean</h2>
+    <!-- accordion strip: hover, focus or tap a panel to open it -->
+    <div class="accord rv" id="accord">
+      <button class="pnl open" type="button">
+        <img src="assets/plate-pole.jpg" width="900" height="1200" loading="lazy" alt="A water-fed pole worked across an arched upper window">
+        <span class="lbl">
+          <span class="short">Windows</span>
+          <span class="full"><h3>Window Cleaning Inside &amp; Out</h3><p>Streak-free glass on homes and businesses, single storey to multi-storey, using purified water and a water-fed pole where the height calls for it.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="assets/job-glass-wide.jpg" width="1280" height="722" loading="lazy" alt="Window frames and screens being worked on">
+        <span class="lbl">
+          <span class="short">Screens</span>
+          <span class="full"><h3>Screens &amp; Tracks</h3><p>Screens pulled, washed and re-set. Sills and sliding tracks vacuumed and scrubbed out.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="assets/poster-storefront.jpg" width="608" height="1080" loading="lazy" alt="Storefront glass showing mineral etching from sprinkler overspray">
+        <span class="lbl">
+          <span class="short">Hard water</span>
+          <span class="full"><h3>Hard Water Stains</h3><p>Mineral etching from sprinkler overspray and monsoon dust cut back off the glass.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="assets/job-crew.jpg" width="608" height="1080" loading="lazy" alt="Exterior surfaces being washed down on a property">
+        <span class="lbl">
+          <span class="short">Pressure</span>
+          <span class="full"><h3>Pressure Washing</h3><p>Driveways, walkways, patios and building exteriors brought back to colour.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy" alt="Restaurant frontage glazing">
+        <span class="lbl">
+          <span class="short">Tinting</span>
+          <span class="full"><h3>Window Tinting</h3><p>UV and heat film to protect furnishings and hold the AC in, plus reflective film for privacy.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="assets/job-solar-roof.jpg" width="540" height="960" loading="lazy" alt="A rooftop solar array on a tile roof after cleaning">
+        <span class="lbl">
+          <span class="short">Solar</span>
+          <span class="full"><h3>Solar Panel Cleaning</h3><p>Dust and hard water film lifted off panels so the array stops losing output to grime.</p></span>
+        </span>
+      </button>
+      <button class="pnl" type="button">
+        <img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy" alt="Debris loaded for removal">
+        <span class="lbl">
+          <span class="short">Hauling</span>
+          <span class="full"><h3>Junk Removal &amp; Hauling</h3><p>Monsoon debris, rental clear-outs and listing prep loaded up and taken away.</p></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT WORK, DRAG FILMSTRIP ============ -->
+<section class="sec" id="work">
+  <div class="wrap reel-hd">
+    <h2 class="sh rv" style="margin-bottom:0">Straight From The Van</h2>
+    <div class="rnav rv">
+      <button class="rbtn" id="rprev" type="button" aria-label="Scroll to previous work" aria-controls="reel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg>
+      </button>
+      <button class="rbtn" id="rnext" type="button" aria-label="Scroll to more work" aria-controls="reel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="reel" id="reel" tabindex="0" role="region" aria-label="Recent work, scroll sideways">
+    <figure class="slide w">
+      <div class="shot"><video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg"
+        muted loop playsinline preload="none" width="1920" height="1080" aria-label="Storefront glazing being cleaned"></video></div>
+      <figcaption><b>Commercial storefront</b>Mesa. Exterior glass, frames and screens.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg"
+        muted loop playsinline preload="none" width="1080" height="1350" aria-label="A solar array being rinsed"></video></div>
+      <figcaption><b>Solar array rinse</b>Dust and hard water film lifted off.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy" alt="Restaurant frontage glazing after cleaning"></div>
+      <figcaption><b>Restaurant frontage</b>Street-facing glass, cleaned before service.</figcaption>
+    </figure>
+    <figure class="slide w">
+      <div class="shot"><img src="assets/hero-pole.jpg" width="1200" height="1600" loading="lazy" alt="A water-fed pole reaching upper storey glass"></div>
+      <figcaption><b>Two storey residential</b>Water-fed pole, no ladder on the landscaping.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt="Retail entry glazing"></div>
+      <figcaption><b>Retail entry</b>Doors, sidelights and the frames around them.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy" alt="A yard cleared of debris"></div>
+      <figcaption><b>Junk removal</b>Monsoon debris loaded up and taken away.</figcaption>
+    </figure>
+    <figure class="slide">
+      <div class="shot"><img src="assets/rig.jpg" width="1200" height="1200" loading="lazy" alt="The work van and equipment"></div>
+      <figcaption><b>The rig</b>Everything on one van, on the route daily.</figcaption>
+    </figure>
+  </div>
+
+  <div class="wrap">
+    <div class="reel-bar"><i id="reelbar"></i></div>
+    <div class="acts">
+      <a class="btn navy" href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">See more on Instagram</a>
+      <a class="btn" href="#estimate">Free estimate</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLUE THREE UP ============ -->
+<section class="blueband" style="padding-block:clamp(44px,5.5vw,72px)">
+  <div class="wrap">
+    <div class="strip3 rv">
+      <div><b>One Operator</b><span>Jose does the work himself. One invoice, one standard.</span></div>
+      <div><b>Priced Off A Photo</b><span>Most homes quoted without a visit. Text the glass, get a number.</span></div>
+      <div><b>Residential &amp; Commercial</b><span>Homes, storefronts and restaurants, single storey to multi-storey.</span></div>
+    </div>
+  </div>
+
+  <!-- ============ REVIEWS, same blue field so the gradient stays continuous ============ -->
+  <div class="wrap" id="reviews" style="margin-top:clamp(30px,4vw,52px)">
+    <h2 class="sh rv">5.0 On Google, Every Review Unedited</h2>
+    <div class="revs">
+      <figure class="rev rv" style="margin:0">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>Jose did an outstanding job cleaning my windows! The team was incredibly friendly, professional, and detail-oriented. They left every window spotless, even cleaning the frames and screens to perfection.</p>
+        <b>Lacey Shultz</b>
+        <span class="qm">&#8221;</span>
+      </figure>
+      <figure class="rev rv" style="margin:0">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>Jose from East Valley Window Cleaning is a true professional. They are polite, easy to communicate with, and make you feel confident in their honesty and reliability.</p>
+        <b>Nina Hanopol</b>
+        <span class="qm">&#8221;</span>
+      </figure>
+      <figure class="rev rv" style="margin:0">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>Great job done! On time, on schedule. Windows and sliding doors look great.</p>
+        <b>Kirkland Sanders</b>
+        <span class="qm">&#8221;</span>
+      </figure>
+      <figure class="rev rv" style="margin:0">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p>Really great service!</p>
+        <b>Maria Sandoval</b>
+        <span class="qm">&#8221;</span>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE AREA ============ -->
+<section class="sec plotted" id="area">
+  <div class="wrap area">
+    <div class="rv">
+      <h2 class="sh">Working The Whole East Valley</h2>
+      <p class="lede" style="margin-top:14px;max-width:50ch">Based in the East Valley and on the road daily. If you are near one of these, you are on the route.</p>
+      <div class="towns">
+        <span>Mesa</span><span>Gilbert</span><span>Chandler</span>
+        <span>Queen Creek</span><span>San Tan Valley</span><span>Apache Junction</span>
+        <span>Johnson Ranch</span><span>Bella Vista Farms</span>
+      </div>
+      <div class="acts"><a class="btn" href="tel:+14808069455">Call 480-806-9455</a></div>
+    </div>
+    <div class="mapcard rv">
+      <div class="lbl">Window cleaning near me, East Valley AZ</div>
+      <!-- SWAP: replace with a real Google Maps embed for the service area -->
+      <div class="shot"><img src="assets/job-pole-wide.jpg" width="1280" height="722" loading="lazy" alt="A water-fed pole worked up a building elevation in the East Valley"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec" id="estimate" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta rv">
+      <div>
+        <h2>Tell Us What Needs Cleaning.</h2>
+        <p>Call or text with your address and roughly how many windows. Most homes can be priced without a visit.</p>
+        <div class="acts" style="margin-top:20px">
+          <a class="btn" href="tel:+14808069455">Call 480-806-9455</a>
+          <a class="btn glassy" href="sms:+14808069455">Text a photo of your windows</a>
+        </div>
+      </div>
+      <div class="cinfo">
+        <a href="tel:+14808069455"><em>Phone</em>480-806-9455</a>
+        <a href="sms:+14808069455"><em>Text</em>Send a photo of your windows</a>
+        <div><em>Owner</em>Jose Sandoval</div>
+        <div><em>Covers</em>Mesa, Gilbert, Chandler, Queen Creek, San Tan Valley, Apache Junction, Johnson Ranch, Bella Vista Farms</div>
+        <a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener"><em>Instagram</em>@eastvalleywindowcleaningllc</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:12px">
+          <span class="mk">EV</span>
+          <span><b style="color:#fff">East Valley Window Cleaning</b><small style="color:rgba(255,255,255,.6)">Mesa, Arizona</small></span>
+        </a>
+        <p style="font-size:14px;max-width:34ch;margin-top:12px">East Valley Window Cleaning LLC. Owner-operated by Jose Sandoval. Residential and commercial window care across the East Valley of Arizona.</p>
+        <p style="font-size:14px;margin-top:12px;color:#fff;font-weight:700">480-806-9455</p>
+      </div>
+      <div><h5>Services</h5><a href="#services">Window cleaning</a><a href="#services">Screens and tracks</a><a href="#services">Hard water removal</a><a href="#services">Pressure washing</a><a href="#services">Window tinting</a><a href="#services">Solar panel cleaning</a><a href="#services">Junk removal</a></div>
+      <div><h5>Service area</h5><a href="#area">Mesa</a><a href="#area">Gilbert</a><a href="#area">Chandler</a><a href="#area">Queen Creek</a><a href="#area">San Tan Valley</a></div>
+      <div><h5>Contact</h5><a href="tel:+14808069455">480-806-9455</a><a href="sms:+14808069455">Text a quote request</a><a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">@eastvalleywindowcleaningllc</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>Copyright 2026 East Valley Window Cleaning LLC</span>
+      <span>Owner-operated, residential and commercial</span>
+      <span>Direction 01 / Mesic</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var rvs=document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){ rvs.forEach(function(e){e.classList.add('on');}); }
+  else{
+    var g=new Map();
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var p=e.target.parentElement,i=g.get(p)||0; g.set(p,i+1);
+        e.target.style.transitionDelay=Math.min(i*70,320)+'ms';
+        e.target.classList.add('on'); io.unobserve(e.target);
+      });
+    },{threshold:.13,rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(e){ io.observe(e); });
+  }
+
+  /* nav goes from glass over the photo to solid white once past the hero */
+  var nav=document.getElementById('nav'), s=document.createElement('div');
+  s.style.cssText='position:absolute;top:320px;height:1px;width:1px';
+  document.body.prepend(s);
+  new IntersectionObserver(function(e){ nav.classList.toggle('stuck', !e[0].isIntersecting); },{threshold:0}).observe(s);
+
+  var b=document.getElementById('burger'), d=document.getElementById('drawer');
+  b.addEventListener('click',function(){ b.setAttribute('aria-expanded', d.classList.toggle('open')); });
+  d.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
+  });
+
+  /* the glass menu card is draggable, like the supplied component */
+  (function(){
+    var el=document.getElementById('gmenu'); if(!el) return;
+    var dragging=false, sx=0, sy=0, ox=0, oy=0;
+    el.addEventListener('pointerdown',function(ev){
+      if(ev.target.closest('a')) return;
+      dragging=true; sx=ev.clientX; sy=ev.clientY;
+      el.setPointerCapture(ev.pointerId); el.style.transition='none';
+    });
+    el.addEventListener('pointermove',function(ev){
+      if(!dragging) return;
+      el.style.transform='translate('+(ox+ev.clientX-sx)+'px,'+(oy+ev.clientY-sy)+'px)';
+    });
+    function end(ev){
+      if(!dragging) return;
+      dragging=false; ox+=ev.clientX-sx; oy+=ev.clientY-sy;
+      el.style.transition='transform .5s cubic-bezier(.16,1,.3,1)';
+    }
+    el.addEventListener('pointerup',end); el.addEventListener('pointercancel',end);
+  })();
+
+
+  /* ---- glass: the specular follows the pointer ----
+     Light on a real pane moves when you move. One passive pointermove,
+     coalesced into a single animation frame, writing two custom
+     properties. No scroll listener, no per-frame layout. */
+  (function(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var panes = [].slice.call(document.querySelectorAll('.glass,.gbar,.pbcard'));
+    if (!panes.length) return;
+    var px = 0, py = 0, queued = false;
+    function paint(){
+      queued = false;
+      for (var i = 0; i < panes.length; i++){
+        var el = panes[i], r = el.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > innerHeight + 200) continue;
+        var on = px >= r.left - 40 && px <= r.right + 40 && py >= r.top - 40 && py <= r.bottom + 40;
+        el.style.setProperty('--gi', on ? '.32' : '.09');
+        if (!on) continue;
+        el.style.setProperty('--gx', ((px - r.left) / r.width * 100).toFixed(1) + '%');
+        el.style.setProperty('--gy', ((py - r.top) / r.height * 100).toFixed(1) + '%');
+      }
+    }
+    addEventListener('pointermove', function(ev){
+      if (ev.pointerType === 'touch') return;
+      px = ev.clientX; py = ev.clientY;
+      if (!queued){ queued = true; requestAnimationFrame(paint); }
+    }, {passive:true});
+  })();
+
+  /* ---- accordion strip ---- */
+  (function(){
+    var wrap = document.getElementById('accord'); if (!wrap) return;
+    var pnls = [].slice.call(wrap.querySelectorAll('.pnl'));
+    function open(el){ pnls.forEach(function(o){ o.classList.toggle('open', o === el); }); }
+    pnls.forEach(function(el){
+      el.addEventListener('pointerenter', function(ev){ if (ev.pointerType !== 'touch') open(el); });
+      el.addEventListener('focus', function(){ open(el); });
+      el.addEventListener('click', function(){ open(el); });
+    });
+  })();
+
+  /* ---- drag filmstrip ---- */
+  (function(){
+    var reel = document.getElementById('reel'); if (!reel) return;
+    var prev = document.getElementById('rprev'),
+        next = document.getElementById('rnext'),
+        bar  = document.getElementById('reelbar'),
+        rail = bar.parentElement;
+
+    function step(){
+      var s = reel.querySelector('.slide');
+      return s ? s.getBoundingClientRect().width + 16 : 320;
+    }
+    /* the indicator is sized once and then only translated, so nothing
+       lays out while the strip is moving */
+    var queued = false;
+    function paint(){
+      queued = false;
+      var max = reel.scrollWidth - reel.clientWidth;
+      var frac = max > 0 ? reel.scrollLeft / max : 0;
+      var vis = Math.max(.12, Math.min(1, reel.clientWidth / reel.scrollWidth));
+      bar.style.setProperty('--rw', (vis * 100).toFixed(2) + '%');
+      bar.style.setProperty('--rx', (frac * rail.clientWidth * (1 - vis)).toFixed(1) + 'px');
+      prev.disabled = reel.scrollLeft < 4;
+      next.disabled = reel.scrollLeft > max - 4;
+    }
+    function schedule(){ if (!queued){ queued = true; requestAnimationFrame(paint); } }
+    reel.addEventListener('scroll', schedule, {passive:true});
+    addEventListener('resize', schedule, {passive:true});
+    paint();
+
+    prev.addEventListener('click', function(){ reel.scrollBy({left:-step(), behavior:'smooth'}); });
+    next.addEventListener('click', function(){ reel.scrollBy({left: step(), behavior:'smooth'}); });
+
+    /* drag to pan. The threshold keeps a plain click on a slide working. */
+    var down = false, moved = false, sx = 0, sl = 0;
+    reel.addEventListener('pointerdown', function(ev){
+      if (ev.pointerType === 'touch') return;
+      down = true; moved = false; sx = ev.clientX; sl = reel.scrollLeft;
+      reel.setPointerCapture(ev.pointerId);
+    });
+    reel.addEventListener('pointermove', function(ev){
+      if (!down) return;
+      var dx = ev.clientX - sx;
+      if (!moved && Math.abs(dx) > 5){ moved = true; reel.classList.add('drag'); }
+      if (moved) reel.scrollLeft = sl - dx;
+    });
+    function end(){
+      if (!down) return;
+      down = false; reel.classList.remove('drag');
+    }
+    reel.addEventListener('pointerup', end);
+    reel.addEventListener('pointercancel', end);
+
+    reel.addEventListener('keydown', function(ev){
+      if (ev.key === 'ArrowRight'){ ev.preventDefault(); reel.scrollBy({left: step(), behavior:'smooth'}); }
+      if (ev.key === 'ArrowLeft'){ ev.preventDefault(); reel.scrollBy({left:-step(), behavior:'smooth'}); }
+    });
+  })();
+
+  // Their two real Instagram clips, in the filmstrip. Play only while on screen:
+  // a clip left running outside the viewport decodes frames nobody is looking
+  // at, which is what makes the strip stutter while it is being dragged.
+  (function(){
+    var vids = [].slice.call(document.querySelectorAll('.reel video'));
+    if (!vids.length) return;
+    if (reduce){ vids.forEach(function(v){ v.removeAttribute('loop'); v.load(); }); return; }
+    if (!('IntersectionObserver' in window)){
+      vids.forEach(function(v){ v.play().catch(function(){}); });
+      return;
+    }
+    var vo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var v = e.target;
+        if (e.isIntersecting) v.play().catch(function(){});
+        else if (!v.paused) v.pause();
+      });
+    }, { threshold: .35 });
+    vids.forEach(function(v){ v.preload = 'metadata'; vo.observe(v); });
+  })();
+
+})();
+</script>
+</body>
+</html>

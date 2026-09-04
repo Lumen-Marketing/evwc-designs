@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>East Valley Window Cleaning - Crystal clear views start here</title>
+<meta name="description" content="Window cleaning, screens and tracks, hard water stain removal, pressure washing, window tinting, solar panel cleaning and junk removal across the East Valley of Arizona. Owner-operated. Free estimates, call or text 480-806-9455.">
+<meta name="theme-color" content="#070C14">
+
+<!--
+  EAST VALLEY WINDOW CLEANING / 02 "SITE"
+
+  Ported from the Set Right Homes direction of the same name. Layout, material
+  and type pairing are Set Right's. Every word, photograph, clip, review, town
+  and phone number is East Valley's.
+
+  MATERIAL: film. Real grain shuffles on a four step gate the way a film gate
+  does, a scanline sits at the threshold of visibility, a vignette pulls the eye
+  back to centre, and raked light shafts cross the flat bands. Every grain veil
+  is a fixed, pointer-events:none layer, so it never repaints on scroll.
+
+  DEPTH: planes hung across boundaries. A white plate and a picture plate hang
+  off the hero into the section below, and a draggable smoked glass card floats
+  on the hero photograph.
+
+  CHANGED FROM THE SET RIGHT VERSION: the three service chapters were full bleed
+  photographic bands. Counted against this page that put five of twelve scroll
+  moments on a photograph, against a budget of two, and a services section built
+  as three full bleed bands is the exact thing that got an earlier set binned.
+  The photographs are contained plates now, with the film material still on the
+  section behind them. Two photographic grounds remain: the hero and the contact
+  band.
+
+  The job lists and the figures rail were smoked glass, because they used to
+  float over those full bleed photographs. Glass over flat colour is a
+  rectangle with two hairlines on it, so both are hairline rows now. Glass
+  survives only where there is a photograph under it: the hero card, the contact
+  details and the floating call pill.
+
+  COLOUR: the electric blue became the logo turquoise, 9.31:1 on this ground.
+
+  CONTENT: no invented statistics. Photographs and both clips are the client's
+  own, self hosted, with no licence obligation.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  color-scheme: dark;
+  --bg:#070C14;
+  --bg-2:#0C1421;
+  --fg:#FFFFFF;
+  --fg-2:rgba(255,255,255,.62);
+  --fg-3:rgba(255,255,255,.38);
+  --line:rgba(255,255,255,.16);
+  --blue:#12C4DE;
+  --blue-2:#6FE2F2;
+  --card:#FFFFFF;
+  --card-ink:#070C14;
+  --card-muted:#5C6B84;
+  --card-line:#E3E9F2;
+  --pad:clamp(20px,5vw,60px);
+  --maxw:1340px;
+  --sh:0 60px 110px -50px rgba(0,0,0,.95);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:17px;line-height:1.62;font-weight:400;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{
+  margin:0;font-family:'Big Shoulders Display','Sora',sans-serif;
+  font-weight:800;line-height:.9;letter-spacing:.004em;text-transform:uppercase;
+}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(70px,10vw,150px)}
+.lede{color:var(--fg-2);max-width:54ch;font-weight:300;font-size:clamp(16px,1.4vw,18.5px)}
+
+/* ---------- buttons ---------- */
+.btn{
+  --b:var(--blue);--f:#fff;
+  display:inline-flex;align-items:center;gap:12px;white-space:nowrap;
+  padding:17px 30px;border:1.5px solid var(--b);border-radius:0;background:var(--b);color:var(--f);
+  font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .3s,color .3s;
+}
+.btn span,.btn svg{position:relative;z-index:1}
+.btn svg{width:16px;height:16px;transition:transform .34s cubic-bezier(.16,1,.3,1)}
+.btn::after{content:"";position:absolute;inset:0;background:#fff;transform:translateY(101%);transition:transform .42s cubic-bezier(.16,1,.3,1)}
+.btn:hover::after{transform:translateY(0)}
+.btn:hover{color:var(--card-ink);transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(18,196,222,.4)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:none;box-shadow:none}
+.btn:focus-visible{outline:3px solid var(--blue-2);outline-offset:3px}
+.btn.wire{--b:rgba(255,255,255,.5);background:transparent;--f:#fff}
+.btn.wire::after{background:#fff}
+.btn.wire:hover{color:var(--card-ink)}
+.btn.ink{--b:var(--card-ink);background:var(--card-ink);--f:#fff}
+.btn.ink::after{background:var(--blue)}
+.btn.ink:hover{color:#fff}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+.nav.stuck{background:rgba(7,12,20,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.nav-in{height:76px;display:flex;align-items:center;gap:28px}
+.brand{text-decoration:none;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:25px;letter-spacing:.05em;text-transform:uppercase;line-height:1}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;gap:28px;margin-left:auto}
+.nav-links a{
+  text-decoration:none;font-family:'Big Shoulders Display',sans-serif;font-size:19px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.74);position:relative;padding-block:5px;transition:color .25s;
+}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-right{display:flex;align-items:center;gap:22px;margin-left:22px}
+.nav-tel{text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.burger{display:none;width:44px;height:44px;border:1.5px solid rgba(255,255,255,.5);background:none;margin-left:auto;cursor:pointer;border-radius:0}
+.burger i{display:block;width:19px;height:1.6px;background:#fff;margin:0 auto;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:19px;height:1.6px;background:#fff;transition:transform .3s}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+.burger[aria-expanded="true"] i{background:transparent}
+.burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
+.drawer{display:none}
+
+/* ---------- HERO: full bleed photograph, no container over it ---------- */
+.hero{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:48% 52%;z-index:0}
+/* plane two: graded scrim, dark at the bottom where type sits */
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(178deg,rgba(7,12,20,.82) 0%,rgba(7,12,20,.18) 34%,rgba(7,12,20,.72) 74%,rgba(7,12,20,.97) 100%);
+}
+.hero-in{position:relative;z-index:2;width:100%;
+  padding-top:calc(76px + clamp(18px,4vh,52px));   /* the nav is fixed: never let a tall headline slide under it */
+  padding-bottom:clamp(56px,9vw,120px)}
+.hero h1{font-size:clamp(52px,10.6vw,152px);font-weight:900;letter-spacing:.002em;line-height:.84;max-width:21ch}
+.hero h1 em{font-style:normal;color:var(--blue-2);display:block}
+.hero .lede{margin-top:26px}
+.hero-act{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+
+/* ---------- plane three: a plate hung across the boundary ---------- */
+.hang{position:relative;z-index:5;
+  margin-top:clamp(-110px,-9vw,-70px);
+  /* the chapters butted straight up against the plates. Give the row the
+     same breathing space the rest of the page uses between sections. */
+  margin-bottom:clamp(66px,9.5vw,144px)}
+/* The white plate is 640px wide and was alone on the row, which left the whole
+   right half of a wide screen as dead ground. The plate is the point of this
+   section, so it keeps its size and position; a second plate goes beside it
+   instead, carrying a picture. Two plates hung across the same boundary reads
+   as a composition. Below 1000px the picture drops away rather than shrinking
+   to a strip. */
+.hang>.wrap{display:grid;grid-template-columns:minmax(0,640px) minmax(0,1fr);
+  gap:clamp(14px,2vw,24px);align-items:stretch}
+.hang .wshot{position:relative;overflow:hidden;background:#000;min-height:100%}
+.hang .wshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
+.hang .wshot:hover img{transform:scale(1.045)}
+.hang .wshot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:clamp(18px,2.4vw,28px);
+  background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.9));
+  font-size:14px;color:var(--fg-2)}
+.hang .wshot figcaption b{display:block;font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(22px,2.4vw,30px);font-weight:800;text-transform:uppercase;
+  letter-spacing:.03em;color:#fff;margin-bottom:3px}
+@media (max-width:1000px){
+  .hang>.wrap{grid-template-columns:1fr}
+  .hang .wshot{display:none}
+}
+.wcard{
+  background:var(--card);color:var(--card-ink);box-shadow:var(--sh);
+  padding:clamp(30px,4vw,52px);max-width:640px;
+}
+.wcard h2{font-size:clamp(34px,5.1vw,63px);max-width:none}
+.wcard .sub{color:var(--card-muted);font-size:16px;margin-top:14px;font-weight:400}
+.wrow{
+  display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--card-line);
+  font-weight:600;font-size:16.5px;position:relative;transition:padding-left .32s cubic-bezier(.16,1,.3,1),color .3s;
+}
+.wrow:first-of-type{border-top:1.5px solid var(--card-ink);margin-top:26px}
+.wrow em{font-style:normal;color:var(--card-muted);font-weight:400;font-size:13.5px;margin-left:auto;white-space:nowrap}
+.wrow:hover{padding-left:16px;color:var(--blue)}
+.wcard .btn{margin-top:30px;width:100%;justify-content:center}
+
+/* ---------- full bleed chapters ---------- */
+/* CHAPTERS.
+   Set Right ran these as three full bleed photographic bands. Counted against
+   this page that put FIVE of twelve scroll moments on a photograph, against a
+   budget of two, and a services section built as three full bleed bands is the
+   exact thing that got a previous set binned.
+   The photograph is now an OBJECT, not the ground: a plate set into the flat
+   near black, with the film material still on the section behind it. Same
+   alternating composition, same type, two thirds fewer photographic grounds. */
+.chap{position:relative;padding-block:clamp(40px,4.8vw,72px);overflow:hidden}
+.chap-in{position:relative;z-index:2;width:100%;display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:clamp(28px,4.4vw,68px);align-items:center}
+.chap.r .chap-in{grid-template-columns:minmax(0,1.02fr) minmax(0,1fr)}
+/* the plate: one hairline on the lit edge only, and a shadow tinted to the page */
+.chapshot{position:relative;z-index:2;overflow:hidden;background:var(--bg-2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 40px 90px -46px rgba(0,0,0,.95)}
+.chapshot img{width:100%;height:clamp(300px,34vw,460px);object-fit:cover;display:block;
+  transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.chap:hover .chapshot img{transform:scale(1.035)}
+/* the raked light shaft stays on the section, so the ground still carries the
+   direction's material even though it is no longer a photograph */
+.chap::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:var(--shafts);opacity:.5}
+.chap-txt{max-width:46ch}
+.chap.l .chapshot{order:2}
+.chap.r .chap-txt{order:2}
+.chap h3{font-size:clamp(40px,6.4vw,88px);letter-spacing:.002em}
+.chap .lede{margin-top:18px}
+.chap.r .lede{margin-left:auto}
+.jobs{margin-top:28px;border-top:1px solid var(--line)}
+.jobs div{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:15.5px;color:var(--fg-2);transition:color .3s,letter-spacing .3s}
+.jobs div:hover{color:#fff;letter-spacing:.012em}
+
+/* ---------- statement ---------- */
+.say{font-size:clamp(30px,4.44vw,64px);font-weight:800;line-height:.94;max-width:none;
+  font-family:'Big Shoulders Display',sans-serif;text-transform:uppercase;letter-spacing:.004em}
+.say b{color:var(--blue-2);font-weight:800}
+.notes{margin-top:44px;border-top:1px solid var(--line);max-width:none}
+.note{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,64ch);gap:clamp(14px,3vw,44px);align-items:baseline}
+.note h4{font-size:clamp(23px,2.2vw,31px)}
+.note p{color:var(--fg-2);font-size:15.5px;font-weight:300}
+
+/* ---------- process: sparse ruled rail ---------- */
+.rail{margin-top:48px;border-top:1px solid var(--line)}
+.rstep{display:grid;grid-template-columns:minmax(0,5ch) minmax(0,24ch) 1fr;gap:clamp(14px,3vw,44px);
+  padding:26px 0;border-bottom:1px solid rgba(255,255,255,.1);align-items:baseline;transition:padding-left .34s cubic-bezier(.16,1,.3,1)}
+.rstep:hover{padding-left:14px}
+.rstep .n{font-family:'Big Shoulders Display',sans-serif;font-size:22px;font-weight:800;color:var(--blue)}
+.rstep h4{font-size:clamp(22px,2.6vw,30px)}
+.rstep p{color:var(--fg-2);font-size:15.5px;font-weight:300}
+
+/* ---------- figures ---------- */
+.ngrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,3vw,44px);border-top:1px solid var(--line);padding-top:34px;margin-top:clamp(40px,6vw,70px)}
+.ngrid .n{font-family:'Big Shoulders Display',sans-serif;font-size:clamp(46px,7vw,96px);font-weight:900;line-height:.86;font-variant-numeric:tabular-nums}
+.ngrid .t{margin-top:12px;font-size:14.5px;color:var(--fg-2);max-width:20ch;font-weight:300}
+
+/* ---------- gallery: two big pictures, captions inside ---------- */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:48px}
+.shot{position:relative;overflow:hidden;background:#000}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.shot:hover img{transform:scale(1.05)}
+.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px;background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.92));font-size:14.5px;color:var(--fg-2)}
+.shot figcaption b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.03em;margin-bottom:4px}
+.gal .a{grid-column:1/2;height:clamp(320px,44vw,560px)}
+.gal .b{grid-column:2/3;height:clamp(320px,44vw,560px)}
+.gal .c{grid-column:1/3;height:clamp(300px,38vw,500px)}
+/* Set Right had three plates. East Valley's gallery is seven items, so the
+   composition repeats its own rhythm - pair, full width, pair, pair - rather
+   than flattening into a seven cell grid, which is the thing this direction
+   was built to avoid. */
+.gal .d{grid-column:1/2;height:clamp(300px,38vw,500px)}
+.gal .e{grid-column:2/3;height:clamp(300px,38vw,500px)}
+.gal .f{grid-column:1/2;height:clamp(280px,33vw,430px)}
+.gal .g{grid-column:2/3;height:clamp(280px,33vw,430px)}
+.shot video{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.shot:hover video{transform:scale(1.05)}
+@media (max-width:720px){
+  .gal{grid-template-columns:1fr}
+  .gal .a,.gal .b,.gal .c,.gal .d,.gal .e,.gal .f,.gal .g{grid-column:1/2;height:clamp(260px,62vw,380px)}
+}
+
+/* before and after: the same storefront, one visit apart */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:48px}
+.ba .shot{height:clamp(300px,40vw,520px)}
+@media (max-width:720px){.ba{grid-template-columns:1fr}.ba .shot{height:clamp(260px,62vw,380px)}}
+
+/* the call plate that stands where the estimate form stood */
+.callbox .ck{display:block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--card-muted)}
+.callbox .bignum{display:block;margin:14px 0 0;font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  font-size:clamp(44px,5.4vw,74px);line-height:.86;letter-spacing:.01em;color:var(--card-ink);
+  text-decoration:none;transition:color .25s}
+.callbox .bignum:hover{color:var(--blue)}
+.callbox .cn{margin:18px 0 26px;font-size:15.5px;line-height:1.6;color:var(--card-muted);max-width:40ch}
+.callbox .fnote{margin-top:16px}
+
+/* ---------- reviews: hairline entries, no boxes ---------- */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);margin-top:48px}
+.rev{border-top:1.5px solid var(--blue);padding-top:22px;transition:border-color .3s}
+.rev:hover{border-top-color:#fff}
+.rev p{font-size:18px;font-weight:400;line-height:1.45}
+.rev footer{margin-top:20px;font-size:14px;color:var(--fg-3)}
+.rev footer b{display:block;color:#fff;font-weight:600;font-size:15px}
+
+/* ---------- towns ---------- */
+.towns{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 clamp(20px,3vw,44px);border-top:1px solid var(--line)}
+.towns span{padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1);font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(24px,2.6vw,30px);font-weight:700;text-transform:uppercase;letter-spacing:.03em;transition:color .25s,padding-left .3s}
+.towns span:hover{color:var(--blue-2);padding-left:10px}
+
+/* ---------- faq ---------- */
+.faq{margin-top:44px;border-top:1px solid var(--line)}
+.q{border-bottom:1px solid rgba(255,255,255,.1)}
+.q button{width:100%;background:none;border:0;text-align:left;cursor:pointer;position:relative;color:#fff;
+  font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:clamp(24px,3vw,34px);text-transform:uppercase;letter-spacing:.02em;
+  padding:28px 62px 28px 0;transition:color .25s;line-height:1.05}
+.q button:hover{color:var(--blue-2)}
+.q button:focus-visible{outline:3px solid var(--blue-2);outline-offset:2px}
+.q-m{position:absolute;right:6px;top:50%;width:22px;height:22px;transform:translateY(-50%)}
+.q-m::before,.q-m::after{content:"";position:absolute;background:#fff;transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s}
+.q-m::before{left:0;right:0;top:10px;height:1.8px}
+.q-m::after{top:0;bottom:0;left:10px;width:1.8px}
+.q[data-open="1"] .q-m::after{transform:rotate(90deg)}
+.q[data-open="1"] .q-m::before{background:var(--blue)}
+.q-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .46s cubic-bezier(.16,1,.3,1)}
+.q[data-open="1"] .q-body{grid-template-rows:1fr}
+.q-body>div{overflow:hidden}
+.q-body p{color:var(--fg-2);font-size:16.5px;font-weight:300;padding-bottom:30px;max-width:74ch}
+
+/* ---------- contact over a photograph ---------- */
+.cta{position:relative;overflow:hidden}
+.cta>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.cta::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,12,20,.96) 30%,rgba(7,12,20,.6))}
+.cta-in{position:relative;z-index:2;display:grid;grid-template-columns:1.14fr .86fr;gap:clamp(30px,5vw,70px);align-items:start}
+.cta h2{font-size:clamp(34px,5.8vw,83px)}
+.cinfo{margin-top:36px;border-top:1px solid var(--line)}
+.cinfo a,.cinfo div{display:flex;gap:20px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.1);
+  text-decoration:none;font-size:15.5px;font-weight:500;transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .3s}
+.cinfo a:hover{padding-left:10px;color:var(--blue-2)}
+.cinfo em{font-style:normal;color:var(--fg-3);min-width:7ch;font-weight:300}
+.fbox{background:var(--card);color:var(--card-ink);padding:clamp(28px,3.6vw,46px);box-shadow:var(--sh)}
+.f{display:grid;gap:7px;margin-bottom:18px}
+.f label{font-size:13px;font-weight:600}
+.f input,.f select,.f textarea{font:inherit;font-size:16px;padding:13px 0;border:0;border-bottom:1.5px solid var(--card-line);
+  background:transparent;color:var(--card-ink);width:100%;border-radius:0;transition:border-color .25s}
+.f input::placeholder,.f textarea::placeholder{color:#93A0B5}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-bottom-color:var(--blue);border-bottom-width:2px}
+.f .help{font-size:12.5px;color:var(--card-muted)}
+.f .err{font-size:12.5px;color:#A81E12;font-weight:600;display:none}
+.f.bad input,.f.bad select{border-bottom-color:#A81E12}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fnote{font-size:12.5px;color:var(--card-muted);margin-top:14px}
+.fok{display:none;margin-top:16px;padding:14px 16px;background:var(--card-ink);color:#fff;font-weight:500;font-size:14.5px}
+.fok.on{display:block}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--line);background:var(--bg-2)}
+.foot-in{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;padding-block:clamp(44px,6vw,76px)}
+.foot h5{font-family:'Big Shoulders Display',sans-serif;font-size:17px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);margin-bottom:14px;font-weight:700}
+.foot a{display:block;text-decoration:none;color:var(--fg-2);font-size:15px;padding:5px 0;transition:color .2s,transform .2s}
+.foot a:hover{color:#fff;transform:translateX(3px)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;color:var(--fg-3)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none;filter:none}
+
+
+/* ============================================================
+   MATERIAL PASS  /  "FILM STOCK"
+   This direction was near black fields with nothing in them. It is
+   cinematic, so it gets a cinematic material rather than a pattern:
+     - real grain, animated on a four step shuffle like a film gate
+     - a broadcast scanline at the threshold of visibility
+     - a vignette that pulls the eye back to the centre
+     - raked light shafts across the flat bands, so no band is a
+       plain fill any more
+   All three overlays are FIXED and pointer-events:none, so they
+   never repaint while the page scrolls.
+   ============================================================ */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  --shafts:repeating-linear-gradient(104deg,
+      rgba(255,255,255,.030) 0 2px, transparent 2px 6px,
+      rgba(255,255,255,.014) 6px 7px, transparent 7px 28px);
+}
+.grain{
+  position:fixed;inset:-6%;z-index:80;pointer-events:none;
+  opacity:.085;background-image:var(--grain);background-size:220px 220px;
+  animation:gate 1.1s steps(4,end) infinite;
+}
+@keyframes gate{
+  0%{transform:translate3d(0,0,0)}
+  25%{transform:translate3d(-1.6%,1.2%,0)}
+  50%{transform:translate3d(1.2%,-1.6%,0)}
+  75%{transform:translate3d(-1%,-1%,0)}
+  100%{transform:translate3d(0,0,0)}
+}
+.scan{
+  position:fixed;inset:0;z-index:79;pointer-events:none;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);
+}
+.vig{
+  position:fixed;inset:0;z-index:78;pointer-events:none;
+  background:radial-gradient(ellipse 128% 104% at 50% 44%,transparent 40%,rgba(0,0,0,.6) 100%);
+}
+@media (prefers-reduced-motion:reduce){ .grain{animation:none} }
+
+/* ---- RHYTHM ----
+   Grain is the film stock and runs the whole page. The LIGHT SHAFTS are
+   the lighting rig, and a scene is not lit from every angle at once, so
+   they fall on two sections only. Everything else is a plain ground or
+   a photograph, with the two big blue lights left in because that is
+   lighting, not pattern. */
+body{
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(ellipse 980px 660px at 80% 10%,rgba(18,196,222,.14),transparent 62%),
+    radial-gradient(ellipse 860px 600px at 6% 86%,rgba(18,196,222,.09),transparent 66%);
+  background-attachment:fixed,fixed;
+}
+/* the deeper bands are plain: just one stop down, with a top light */
+.band{
+  background-color:var(--bg-2);
+  background-image:radial-gradient(ellipse 1280px 440px at 50% -12%,rgba(18,196,222,.14),transparent 72%);
+}
+/* .lit: the raked shafts, used on two sections only */
+.lit{
+  background-image:
+    radial-gradient(ellipse 1280px 460px at 50% -12%,rgba(18,196,222,.17),transparent 72%),
+    repeating-linear-gradient(104deg,
+      rgba(255,255,255,.042) 0 2px, transparent 2px 6px,
+      rgba(255,255,255,.018) 6px 7px, transparent 7px 26px);
+}
+.foot{
+  background-color:var(--bg-2);
+  background-image:radial-gradient(ellipse 1100px 380px at 14% -40%,rgba(18,196,222,.12),transparent 68%);
+}
+/* the hero, the chapters and the contact band are photographic grounds:
+   scrim only, nothing patterned laid over the picture */
+
+/* ============================================================
+   SMOKED LIQUID GLASS
+   Same material as direction 01, cut square to this page's shape
+   rule and tinted down so it reads as smoked glass over a
+   photograph rather than frosted glass over paper.
+   ============================================================ */
+.smoke{
+  position:relative;isolation:isolate;
+  border:1px solid rgba(255,255,255,.17);
+  background:linear-gradient(152deg,rgba(255,255,255,.13),rgba(255,255,255,.035) 52%,rgba(18,196,222,.06));
+  backdrop-filter:blur(20px) saturate(150%) brightness(.82);
+  -webkit-backdrop-filter:blur(20px) saturate(150%) brightness(.82);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.26),
+    inset 0 -1px 0 rgba(255,255,255,.05),
+    0 34px 80px -46px #000;
+}
+.smoke::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 12% -8%,rgba(255,255,255,.24),transparent 44%),
+    linear-gradient(100deg,rgba(255,255,255,.09),transparent 40%);
+}
+.smoke::after{
+  content:"";position:absolute;inset:1px;pointer-events:none;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* The job lists were smoked glass, because they used to float over the
+   chapter's full bleed photograph. The photograph is a plate now and the ground
+   behind these is flat near black, and glass over flat colour is just a
+   rectangle with two hairlines on it. Back to ruled rows: the top rule carries
+   the accent so the list still reads as a distinct object. */
+.jobs{margin-top:28px;border-top:2px solid var(--blue);padding:0}
+.jobs div:last-child{border-bottom:0}
+.chap.r .jobs{text-align:right}
+@media (max-width:820px){.chap.r .jobs{text-align:left}}
+
+/* the figures sit in one glass rail instead of on the flat ground */
+/* Same reasoning as .jobs: the figures sit on the flat statement ground, so a
+   blurred pane here has nothing to refract. One rule above, one divider
+   between each pair, nothing else. */
+.ngrid{border-top:1px solid var(--line);padding:34px 0 0}
+.ngrid>div+div{position:relative}
+.ngrid>div+div::before{content:"";position:absolute;left:calc(-1 * clamp(9px,1.5vw,22px));top:4px;bottom:4px;width:1px;background:rgba(255,255,255,.14)}
+
+/* contact details become a glass plate over the earthworks photograph */
+.cinfo{
+  border-top:0;padding:4px 22px 8px;
+  position:relative;isolation:isolate;
+  border:1px solid rgba(255,255,255,.17);
+  background:linear-gradient(152deg,rgba(255,255,255,.12),rgba(255,255,255,.03));
+  backdrop-filter:blur(20px) saturate(150%) brightness(.84);
+  -webkit-backdrop-filter:blur(20px) saturate(150%) brightness(.84);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 34px 80px -46px #000;
+}
+.cinfo a:last-of-type,.cinfo div:last-of-type{border-bottom:0}
+
+/* the sticky nav becomes real glass rather than a flat dark bar */
+.nav.stuck{
+  background:linear-gradient(180deg,rgba(9,15,26,.66),rgba(9,15,26,.5));
+  backdrop-filter:blur(22px) saturate(160%);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 20px 40px -30px #000;
+}
+
+/* ---------- the glass site card, floated over the hero photograph ---------- */
+.hcard{
+  position:absolute;right:var(--pad);z-index:3;
+  /* lifted clear of the plate that hangs up over the hero's bottom edge */
+  bottom:calc(clamp(56px,9vw,120px) + 28px);
+  width:min(620px,46vw);padding:13px 18px 15px;cursor:grab;touch-action:none;
+}
+
+.hcard:active{cursor:grabbing}
+.hcard .k{font-family:'Big Shoulders Display',sans-serif;font-size:15px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.hcard ul{list-style:none;margin:9px 0 0;padding:0;position:relative;z-index:2;
+  display:grid;grid-template-columns:repeat(4,1fr)}
+.hcard li{position:relative;padding:0 15px}
+.hcard li:first-child{padding-left:0}
+.hcard li+li::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:1px;background:rgba(255,255,255,.17)}
+.hcard b{display:block;font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(30px,2.7vw,40px);font-weight:900;line-height:.92;color:#fff;font-variant-numeric:tabular-nums}
+.hcard span{display:block;margin-top:1px;font-size:12.5px;color:var(--fg-2);font-weight:400;line-height:1.3}
+/* below this the buttons and the card would meet, so it drops out */
+@media (max-width:1199px){.hcard{display:none}}
+@media (min-width:1200px){
+  /* the strip shares a band with the lede, so the lede stops short of it.
+     The headline is a row above and keeps its full measure. */
+  .hero .lede{max-width:min(54ch,46%)}
+}
+
+/* ---------- the floating glass call pill ---------- */
+.pill{
+  position:fixed;right:clamp(16px,3vw,34px);bottom:clamp(16px,3vw,30px);z-index:70;
+  display:flex;align-items:center;gap:13px;padding:12px 12px 12px 20px;
+  text-decoration:none;color:#fff;font-weight:600;font-size:15px;
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);
+}
+.pill.on{opacity:1;transform:none;pointer-events:auto}
+.pill .ic{width:38px;height:38px;display:grid;place-items:center;flex:none;
+  background:var(--blue);transition:transform .34s cubic-bezier(.16,1,.3,1)}
+.pill .ic svg{width:17px;height:17px}
+.pill:hover .ic{transform:translate(2px,-2px) scale(1.06)}
+.pill small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:700}
+@media (max-width:760px){.pill{left:clamp(16px,3vw,34px);justify-content:space-between}}
+
+@media (prefers-reduced-transparency: reduce){
+  .smoke,.cinfo,.pill{background:rgba(12,20,33,.97);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav.stuck{background:rgba(7,12,20,.98);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:760px){
+  /* stacked blurs are the single most expensive thing on a phone */
+  .cinfo{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(12,20,33,.86)}
+  .scan{display:none}
+}
+
+/* ---------- responsive ---------- */
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone link steps out first. It is still in the hero, the
+   drawer and the footer. */
+@media (max-width:1010px){
+  .nav-tel{display:none}
+  .nav-links{gap:22px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:15px;font-size:13px}
+}
+@media (max-width:1040px){
+  .chap-in,.chap.r .chap-in{grid-template-columns:1fr;gap:clamp(22px,5vw,34px)}
+  .chap.l .chapshot,.chap.r .chap-txt{order:0}
+  .chap.r .chap-txt{margin-left:0;text-align:left}
+  .chap.r .lede{margin-left:0}
+  .chapshot img{height:clamp(240px,58vw,360px)}
+  .ngrid{grid-template-columns:1fr 1fr;gap:28px}
+  .gal{grid-template-columns:1fr}
+  .gal .a,.gal .b,.gal .c{grid-column:1/2;height:clamp(260px,54vw,380px)}
+  .revs{grid-template-columns:1fr}
+  .cta-in{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr 1fr}
+  .note{grid-template-columns:1fr;gap:6px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .nav{background:rgba(7,12,20,.9);backdrop-filter:blur(12px)}
+  .nav-links,.nav-right{display:none}
+  .burger{display:grid;place-items:center}
+  .drawer{display:block;position:fixed;inset:76px 0 auto 0;z-index:59;background:var(--bg-2);border-bottom:1px solid var(--line);padding:10px var(--pad) 26px;transform:translateY(-130%);transition:transform .44s cubic-bezier(.16,1,.3,1)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{display:block;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
+    font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:26px;text-transform:uppercase;letter-spacing:.04em}
+  .drawer .btn{width:100%;justify-content:center;margin-top:20px}
+  .hang{margin-top:-40px}
+  .wcard{max-width:none}
+  .rstep{grid-template-columns:4ch 1fr;gap:16px}
+  .rstep p{grid-column:2/3}
+  .two{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .hero{min-height:88dvh}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none;filter:none}
+}
+</style>
+</head>
+<body>
+
+<!-- fixed film overlays: grain, scanline, vignette -->
+<div class="vig" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">East Valley<em>.</em></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Areas</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-tel" href="tel:+14808069455">480-806-9455</a>
+      <a class="btn" href="#estimate"><span>Free estimate</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Areas</a>
+  <a class="btn" href="#estimate"><span>Free estimate</span></a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img src="assets/restaurant.jpg" width="1400" height="1750"
+       alt="A restaurant frontage looking out through a wall of cleaned glass" fetchpriority="high">
+  <div class="wrap hero-in">
+    <!-- smoked glass card, draggable, sitting over the photograph beside the buttons -->
+    <aside class="hcard smoke" id="hcard">
+      <div class="k">On the route</div>
+      <ul>
+        <li><b>5.0</b><span>Google rating</span></li>
+        <li><b>4</b><span>Google reviews</span></li>
+        <li><b>7</b><span>Services offered</span></li>
+        <li><b>8</b><span>East Valley towns</span></li>
+      </ul>
+    </aside>
+    <h1>Crystal clear views<em>start here.</em></h1>
+    <p class="lede">Owner-operated window cleaning across the East Valley. Inside and out, screens and tracks, hard water stains, tint, solar panels and hauling. Residential and commercial.</p>
+    <div class="hero-act">
+      <a class="btn" href="tel:+14808069455"><span>Call 480-806-9455</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <a class="btn wire" href="sms:+14808069455"><span>Text for a quote</span></a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ THE WHITE CARD, HUNG ACROSS THE BOUNDARY ============ -->
+<div class="hang">
+  <div class="wrap">
+    <div class="wcard rv">
+      <h2>Everything we clean</h2>
+      <p class="sub">One operator, one invoice. Book a single window clean or bundle the whole exterior into the same visit.</p>
+      <div class="wrow">Window cleaning inside and out <em>Glass</em></div>
+      <div class="wrow">Screens and tracks <em>Glass</em></div>
+      <div class="wrow">Hard water stain removal <em>Glass</em></div>
+      <div class="wrow">Window tinting <em>Film</em></div>
+      <div class="wrow">Solar panel cleaning <em>Panels</em></div>
+      <div class="wrow">Pressure washing <em>Property</em></div>
+      <div class="wrow">Junk removal and hauling <em>Property</em></div>
+      <a class="btn ink" href="#estimate"><span>Free estimate</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+    </div>
+
+    <!-- second plate on the same boundary, so the row is a composition rather
+         than one card and a large piece of nothing -->
+    <figure class="wshot rv" style="margin:0">
+      <img src="assets/plate-pole.jpg" width="900" height="1200" loading="lazy"
+           alt="A water-fed pole worked across an arched upper window">
+      <figcaption><b>Purified water, water-fed pole</b>Streak free at height, and no ladder leaning on your landscaping on the way down.</figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- ============ CHAPTERS ============ -->
+<section id="services">
+  <div class="chap l">
+    <div class="wrap chap-in">
+      <figure class="chapshot rv" style="margin:0"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy"
+         alt="Clean commercial storefront glazing at street level"></figure>
+<div class="chap-txt rv">
+        <h3>Glass</h3>
+        <p class="lede">Windows in and out, screens, tracks and hard water stains. Streak-free on homes and businesses, single storey to multi-storey.</p>
+        <div class="jobs">
+          <div>Interior and exterior windows, homes and businesses</div>
+          <div>Purified water and a water-fed pole where the height calls for it</div>
+          <div>Screens pulled, washed and re-set</div>
+          <div>Sills and sliding tracks vacuumed and scrubbed out</div>
+          <div>Mineral etching from sprinkler overspray cut back off the glass</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chap r">
+    <div class="wrap chap-in">
+      <figure class="chapshot rv" style="margin:0"><img src="assets/job-solar-sky.jpg" width="540" height="960" loading="lazy"
+         alt="A rooftop solar array under open sky after cleaning"></figure>
+<div class="chap-txt rv">
+        <h3>Film<br>and panels</h3>
+        <p class="lede">UV and privacy film, and solar arrays washed back to output. Two jobs the same van already carries the water for.</p>
+        <div class="jobs">
+          <div>UV and heat film to protect furnishings and hold the AC in</div>
+          <div>Reflective film for privacy</div>
+          <div>Dust and hard water film lifted off panels</div>
+          <div>The array stops losing output to grime</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chap l">
+    <div class="wrap chap-in">
+      <figure class="chapshot rv" style="margin:0"><img src="assets/job-haul.jpg" width="820" height="1094" loading="lazy"
+         alt="Monsoon debris and a cleared-out load stacked in a yard ready to haul"></figure>
+<div class="chap-txt rv">
+        <h3>Property</h3>
+        <p class="lede">Pressure washing, plus junk and monsoon debris hauled away. The rest of the exterior, while the van is already at the kerb.</p>
+        <div class="jobs">
+          <div>Driveways, walkways and patios brought back to colour</div>
+          <div>Building exteriors and elevations washed down</div>
+          <div>Monsoon debris cleared</div>
+          <div>Rental clear-outs and listing prep loaded and taken away</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="say rv">Every job is done by Jose Sandoval, the owner. <b>Same hands on your glass every time,</b> residential or commercial.</p>
+    <div class="notes">
+      <div class="note rv"><h4>One operator, one invoice</h4><p>There is no rotating crew and no subcontractor, so the standard on the second visit is the standard on the first.</p></div>
+      <div class="note rv"><h4>Priced off a photo</h4><p>Call or text with your address and roughly how many windows. Most homes can be priced without a visit at all.</p></div>
+      <div class="note rv"><h4>Bundle or book one thing</h4><p>A single window clean is a job. So is the glass, the screens, the tracks, the tint, the panels and the hauling in one go.</p></div>
+    </div>
+    <div class="ngrid">
+      <div class="rv"><div class="n" data-count="5" data-dp="1" data-suffix="">5.0</div><div class="t">On Google, from all four reviews</div></div>
+      <div class="rv"><div class="n" data-count="4" data-suffix="">4</div><div class="t">Google reviews, every one on this page</div></div>
+      <div class="rv"><div class="n" data-count="7" data-suffix="">7</div><div class="t">Services on one phone number</div></div>
+      <div class="rv"><div class="n" data-count="8" data-suffix="">8</div><div class="t">East Valley towns on the route</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT WORK ============ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(38px,9.17vw,132px)">Straight from the van</h2>
+    <p class="lede rv" style="margin-top:18px;max-width:56ch">Their own clips and job photographs, straight off Instagram. The two clips play here with the sound off.</p>
+    <div class="gal">
+      <figure class="shot a rv" style="margin:0">
+        <img src="assets/plate-pole.jpg" width="900" height="1200" loading="lazy"
+             alt="A water-fed pole worked across an arched upper window">
+        <figcaption><b>Residential upper glass</b>Arched second storey windows, worked from the ground.</figcaption>
+      </figure>
+      <figure class="shot b rv" style="margin:0">
+        <video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg" muted loop playsinline
+               preload="none" width="540" height="960" aria-label="A solar array being rinsed"></video>
+        <figcaption><b>Solar array rinse</b>Dust and hard water film lifted off.</figcaption>
+      </figure>
+      <figure class="shot c rv" style="margin:0">
+        <video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg" muted loop playsinline
+               preload="none" width="1280" height="722" aria-label="Storefront glazing being cleaned"></video>
+        <figcaption><b>Commercial storefront</b>Mesa. Exterior glass, frames and screens.</figcaption>
+      </figure>
+      <figure class="shot d rv" style="margin:0">
+        <img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy"
+             alt="Restaurant frontage glazing after cleaning">
+        <figcaption><b>Restaurant frontage</b>Street-facing glass, cleaned before service.</figcaption>
+      </figure>
+      <figure class="shot e rv" style="margin:0">
+        <img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy"
+             alt="Retail entry glazing, doors and sidelights">
+        <figcaption><b>Retail entry</b>Doors, sidelights and the frames around them.</figcaption>
+      </figure>
+      <figure class="shot f rv" style="margin:0">
+        <img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy"
+             alt="A yard cleared of monsoon debris">
+        <figcaption><b>Junk removal</b>Monsoon debris loaded up and taken away.</figcaption>
+      </figure>
+      <figure class="shot g rv" style="margin:0">
+        <img src="assets/rig.jpg" width="1200" height="1200" loading="lazy"
+             alt="The work van and equipment">
+        <figcaption><b>The rig</b>Everything on one van, on the route daily.</figcaption>
+      </figure>
+    </div>
+    <div class="hero-act" style="margin-top:40px">
+      <a class="btn wire" href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener"><span>See more on Instagram</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEFORE AND AFTER ============ -->
+<section class="sec band lit" style="border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(38px,6.67vw,96px)">The same storefront, one visit apart</h2>
+    <div class="ba">
+      <figure class="shot rv" style="margin:0">
+        <img src="assets/ba-before.jpg" width="390" height="488" loading="lazy"
+             alt="Commercial storefront glazing in Mesa before cleaning">
+        <figcaption><b>Before</b>Monsoon dust and sprinkler overspray on the glass.</figcaption>
+      </figure>
+      <figure class="shot rv" style="margin:0">
+        <img src="assets/ba-after.jpg" width="390" height="488" loading="lazy"
+             alt="The same Mesa storefront glazing after cleaning">
+        <figcaption><b>After</b>One visit. Frames and screens done at the same time.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec band" id="reviews" style="border-block:1px solid var(--line)">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(38px,7.43vw,107px)">5.0, every review unedited</h2>
+    <div class="revs">
+      <figure class="rev rv" style="margin:0"><p>Jose did an outstanding job cleaning my windows! The team was incredibly friendly, professional, and detail-oriented. They left every window spotless, even cleaning the frames and screens to perfection.</p><footer><b>Lacey Shultz</b>Google review</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>Jose from East Valley Window Cleaning is a true professional. They are polite, easy to communicate with, and make you feel confident in their honesty and reliability.</p><footer><b>Nina Hanopol</b>Google review</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>Great job done! On time, on schedule. Windows and sliding doors look great.</p><footer><b>Kirkland Sanders</b>Google review</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>Really great service!</p><footer><b>Maria Sandoval</b>Google review</footer></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="sec lit" id="area">
+  <div class="wrap">
+    <h2 class="rv" style="font-size:clamp(38px,6.88vw,99px)">Working the whole East Valley</h2>
+    <p class="lede rv" style="margin-top:18px">Based in the East Valley and on the road daily. If you are near one of these, you are on the route.</p>
+    <div class="towns rv">
+      <span>Mesa</span><span>Gilbert</span><span>Chandler</span><span>Queen Creek</span>
+      <span>San Tan Valley</span><span>Apache Junction</span><span>Johnson Ranch</span><span>Bella Vista Farms</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============
+     Set Right's estimate form stood in the right hand plate. East Valley prices
+     most homes off a photo and an address, so the plate carries the number and
+     the text link instead of a form that would contradict the copy beside it. -->
+<section class="cta sec" id="estimate">
+  <img src="assets/job-pole-wide.jpg" width="1280" height="722" loading="lazy"
+       alt="A water-fed pole worked up the elevation of a two storey building">
+  <div class="wrap cta-in">
+    <div class="rv">
+      <h2>Tell us what needs cleaning.</h2>
+      <p class="lede" style="margin-top:18px">Call or text with your address and roughly how many windows. Most homes can be priced without a visit.</p>
+      <div class="cinfo">
+        <a href="tel:+14808069455"><em>Phone</em>480-806-9455</a>
+        <a href="sms:+14808069455"><em>Text</em>Send a photo of your windows</a>
+        <div><em>Owner</em>Jose Sandoval</div>
+        <div><em>Covers</em>Mesa, Gilbert, Chandler, Queen Creek, San Tan Valley, Apache Junction, Johnson Ranch, Bella Vista Farms</div>
+        <a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener"><em>Instagram</em>@eastvalleywindowcleaningllc</a>
+      </div>
+    </div>
+    <div class="fbox rv">
+      <div class="callbox">
+        <span class="ck">Free estimate</span>
+        <a class="bignum" href="tel:+14808069455">480-806-9455</a>
+        <p class="cn">A photo of the glass and a rough window count is usually all it takes. No visit, no obligation, no call-out fee.</p>
+        <a class="btn ink" href="sms:+14808069455" style="width:100%;justify-content:center"><span>Text a photo of your windows</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <p class="fnote">Residential and commercial, single storey to multi-storey, right across the East Valley.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- floating glass call pill, appears once the hero is behind you -->
+<a class="pill smoke" id="pill" href="tel:+14808069455">
+  <span><small>Call or text</small>480-806-9455</span>
+  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+</a>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top">East Valley<em>.</em></a>
+        <p style="color:var(--fg-2);font-size:15px;max-width:34ch;margin-top:14px;font-weight:300">East Valley Window Cleaning LLC. Owner-operated by Jose Sandoval. Residential and commercial window care across the East Valley of Arizona.</p>
+        <p style="font-size:15px;margin-top:14px;font-weight:600">480-806-9455</p>
+      </div>
+      <div><h5>Services</h5><a href="#services">Window cleaning</a><a href="#services">Screens and tracks</a><a href="#services">Hard water removal</a><a href="#services">Window tinting</a><a href="#services">Solar panel cleaning</a><a href="#services">Pressure washing</a><a href="#services">Junk removal</a></div>
+      <div><h5>Service area</h5><a href="#area">Mesa</a><a href="#area">Gilbert</a><a href="#area">Chandler</a><a href="#area">Queen Creek</a><a href="#area">San Tan Valley</a></div>
+      <div><h5>Contact</h5><a href="tel:+14808069455">480-806-9455</a><a href="sms:+14808069455">Text a quote request</a><a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">@eastvalleywindowcleaningllc</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>Copyright 2026 East Valley Window Cleaning LLC</span>
+      <span>Owner-operated, residential and commercial</span>
+      <span>Direction 02 / Site</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rvs=document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){ rvs.forEach(function(e){e.classList.add('on');}); }
+  else{
+    var g=new Map();
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var p=e.target.parentElement,i=g.get(p)||0; g.set(p,i+1);
+        e.target.style.transitionDelay=Math.min(i*75,340)+'ms';
+        e.target.classList.add('on'); io.unobserve(e.target);
+      });
+    },{threshold:.14,rootMargin:'0px 0px -7% 0px'});
+    rvs.forEach(function(e){ io.observe(e); });
+  }
+  var nav=document.getElementById('nav'),s=document.createElement('div');
+  s.style.cssText='position:absolute;top:0;height:1px;width:1px';
+  document.body.prepend(s);
+  new IntersectionObserver(function(e){ nav.classList.toggle('stuck',!e[0].isIntersecting); },{threshold:0}).observe(s);
+  var b=document.getElementById('burger'),d=document.getElementById('drawer');
+  b.addEventListener('click',function(){ b.setAttribute('aria-expanded', d.classList.toggle('open')); });
+  d.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }); });
+  var sio=new IntersectionObserver(function(es,o){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target,t=parseFloat(el.dataset.count),sf=el.dataset.suffix||'',
+          dp=parseInt(el.dataset.dp||'0',10); o.unobserve(el);
+      if(reduce) return;            /* markup already holds the final value */
+      el.textContent=(0).toFixed(dp)+sf;
+      var st=null;
+      function tick(ts){ if(!st)st=ts; var pr=Math.min((ts-st)/1200,1),e2=1-Math.pow(1-pr,3);
+        el.textContent=(t*e2).toFixed(dp)+sf; if(pr<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(n){ sio.observe(n); });
+  // Their two real Instagram clips. Play only while on screen; a clip running
+  // off-canvas decodes frames nobody is looking at.
+  (function(){
+    var vids=[].slice.call(document.querySelectorAll('.gal video'));
+    if(!vids.length) return;
+    if(reduce){ vids.forEach(function(v){ v.removeAttribute('loop'); v.load(); }); return; }
+    if(!('IntersectionObserver' in window)){ vids.forEach(function(v){ v.play().catch(function(){}); }); return; }
+    var vo=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v=e.target;
+        if(e.isIntersecting) v.play().catch(function(){}); else if(!v.paused) v.pause();
+      });
+    },{threshold:.3});
+    vids.forEach(function(v){ v.preload='metadata'; vo.observe(v); });
+  })();
+})();
+</script>
+</body>
+</html>

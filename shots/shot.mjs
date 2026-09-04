@@ -24,7 +24,7 @@
 //     of live chrome.exe behind and each later run gets slower until it stops
 //     answering at all.
 import { spawn } from 'node:child_process';
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 const WAIT = Number(process.env.WAIT || 520);
@@ -130,7 +130,10 @@ async function run(file, { width, height, out, slices = 0, wait = 2400 }) {
     try { ws && ws.close(); } catch {}
     chrome.kill();
     spawn('taskkill', ['/PID', String(chrome.pid), '/T', '/F'], { stdio: 'ignore' });
-    await sleep(150);
+    await sleep(400);
+    // the --user-data-dir profile is ~40MB and was never being removed, so a
+    // sweep of runs quietly filled the disk. Take it out once Chrome is gone.
+    try { rmSync(profile, { recursive: true, force: true, maxRetries: 5 }); } catch {}
   }
 }
 
@@ -139,9 +142,10 @@ const SL = Number(process.env.SLICES || 5);
 const only = process.argv[2];
 const JOBS = [
   ['index.html', 'g.png'],
-  ['01-daylight.html', 'd1.png'],
-  ['02-broadsheet.html', 'd2.png'],
-  ['03-hazard.html', 'd3.png'],
+  ['01-mesic.html', 'm1.png'],
+  ['02-site.html', 'm2.png'],
+  ['03-plate.html', 'm3.png'],
+  ['04-burst.html', 'm4.png'],
 ].filter(([f]) => !only || f.includes(only));
 
 for (const [file, out] of JOBS) {

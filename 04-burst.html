@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>East Valley Window Cleaning - Crystal clear views start here</title>
+<meta name="description" content="Window cleaning, screens and tracks, hard water stain removal, pressure washing, window tinting, solar panel cleaning and junk removal across the East Valley of Arizona. Owner-operated. Free estimates, call or text 480-806-9455.">
+<meta name="theme-color" content="#0B6E7E">
+
+<!--
+  EAST VALLEY WINDOW CLEANING / 04 "BURST"
+
+  Ported from the Set Right Homes direction of the same name. Layout, material
+  and type pairing are Set Right's. Every word, photograph, clip, review, town
+  and phone number is East Valley's.
+
+  MATERIAL: printed. Halftone dot screens at 45 degrees with a second screen
+  pulled two pixels off register, because a hand pulled print never lines up,
+  and paper grain multiplied over the lot.
+
+  DEPTH: a pattern field that laps over the content. The ray burst is a real
+  plane in the stack, not a background: it sits behind the headline, laps up
+  over the lower edge of the hero picture, and is cut off wherever a plate
+  crosses it. Plates carry a 2px ink keyline and a hard offset block in the
+  accent colour, which is what a misregistered print does. No soft shadows
+  anywhere.
+
+  LIQUID GLASS: frosted acetate, a printed transparency pinned over the poster
+  rather than a card floating above it, so it keeps the keyline and the offset.
+  Acetate takes the colour of the sheet under it, which is correct over the
+  paper grounds and wrong over the teal plane and the near black contact band:
+  the muted label ink measured 2.87:1 there. Those three sheets are pulled
+  toward opaque. Raise the pane, never recolour the ink, or the one ink colour
+  the page uses everywhere else breaks.
+
+  COLOUR: the print blues became the teal ramp. #0B6E7E carries body text on
+  paper at 5.49:1; the logo turquoise is reserved for fills and dark grounds.
+
+  CONTENT: no invented statistics. Photographs and both clips are the client's
+  own, self hosted, with no licence obligation.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  color-scheme: light;
+  --paper:#F2FAFB;
+  --ice:#DDF0F4;
+  --white:#FFFFFF;
+  --blue:#0B6E7E;
+  --blue-d:#063D48;
+  --sky:#6FD9E8;
+  --ink:#04212A;
+  --ink-2:#22545F;
+  --muted:#3E6C77;
+  --rule:#C4E2E9;
+  --off:12px;
+  --pad:clamp(20px,5vw,54px);
+  --maxw:1300px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:17px;line-height:1.6;font-weight:450;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-family:'Archivo Black','Archivo',sans-serif;font-weight:400;line-height:.98;letter-spacing:-.035em}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(60px,8vw,116px);position:relative}
+.lede{color:var(--muted);max-width:56ch}
+
+/* ---------- the ray field ---------- */
+.rays{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.rays::before{
+  content:"";position:absolute;left:50%;top:var(--ry,10%);width:220vmax;height:220vmax;
+  transform:translate(-50%,-50%);
+  background:repeating-conic-gradient(from 0deg, var(--r1,rgba(11,110,126,.1)) 0deg 7deg, transparent 7deg 14deg);
+}
+.sec>.wrap,.hero>.wrap{position:relative;z-index:2}
+
+/* ---------- hard offset plates ---------- */
+.plate{position:relative;background:var(--white);border:2px solid var(--ink)}
+.plate::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--blue);
+  transform:translate(var(--off),var(--off));transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.plate.mirror::after{transform:translate(calc(var(--off) * -1),var(--off))}
+.plate:hover::after{transform:translate(calc(var(--off) * 1.6),calc(var(--off) * 1.6))}
+.plate.mirror:hover::after{transform:translate(calc(var(--off) * -1.6),calc(var(--off) * 1.6))}
+.plate img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- buttons ---------- */
+.btn{
+  --b:var(--blue);--f:#fff;
+  display:inline-flex;align-items:center;gap:11px;white-space:nowrap;
+  padding:16px 30px;border-radius:999px;border:2px solid var(--ink);background:var(--b);color:var(--f);
+  font-family:'Archivo Black',sans-serif;font-weight:400;font-size:15.5px;letter-spacing:-.01em;
+  text-decoration:none;cursor:pointer;position:relative;overflow:hidden;
+  box-shadow:5px 5px 0 var(--ink);
+  transition:transform .16s cubic-bezier(.16,1,.3,1),box-shadow .16s,color .3s;
+}
+.btn span,.btn svg{position:relative;z-index:1}
+.btn svg{width:16px;height:16px;transition:transform .34s cubic-bezier(.16,1,.3,1)}
+.btn::after{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.btn:hover::after{transform:translateY(0)}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn:focus-visible{outline:3px solid var(--sky);outline-offset:4px}
+.btn.wht{--b:var(--white);--f:var(--ink)}
+.btn.wht:hover{color:#fff}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(244,247,253,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:2px solid transparent;transition:border-color .3s}
+.nav.stuck{border-bottom-color:var(--ink)}
+.nav-in{height:76px;display:flex;align-items:center;gap:26px}
+.brand{text-decoration:none;font-family:'Archivo Black',sans-serif;font-size:20px;letter-spacing:-.045em}
+.brand em{font-style:normal;color:var(--blue)}
+.nav-links{display:flex;gap:24px;margin-left:auto}
+.nav-links a{text-decoration:none;font-size:15px;font-weight:600;color:var(--ink-2);position:relative;padding-block:4px}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2.5px;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-right{display:flex;align-items:center;gap:18px;margin-left:20px}
+.nav-tel{text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.burger{display:none;width:46px;height:46px;border:2px solid var(--ink);background:var(--white);margin-left:auto;cursor:pointer;border-radius:0;box-shadow:4px 4px 0 var(--ink)}
+.burger i{display:block;width:18px;height:2.4px;background:var(--ink);margin:0 auto;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2.4px;background:var(--ink);transition:transform .3s}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+.burger[aria-expanded="true"] i{background:transparent}
+.burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
+.drawer{display:none}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;padding-block:clamp(40px,6vw,80px) clamp(50px,7vw,100px);
+  /* ends at the fold: the 76px nav sits above it */
+  min-height:clamp(560px,calc(100dvh - 76px),1080px);display:flex;align-items:center}
+.hero .rays{--ry:22%}
+.hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(28px,4vw,58px);align-items:center}
+.hero h1{font-size:clamp(42px,6.4vw,90px);letter-spacing:-.048em;line-height:.94}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero .lede{margin-top:22px;font-size:clamp(16.5px,1.5vw,18.5px)}
+.hero-act{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+.hero-media{position:relative}
+.hero-media .plate{aspect-ratio:4/3.3;overflow:hidden}
+/* the ray field laps up over the picture's lower edge */
+.lap{position:absolute;left:0;right:0;bottom:0;height:36%;z-index:1;pointer-events:none;overflow:hidden}
+.lap::before{content:"";position:absolute;left:50%;bottom:-160%;width:200vmax;height:200vmax;transform:translateX(-50%);
+  background:repeating-conic-gradient(from 0deg, rgba(11,110,126,.3) 0deg 7deg, transparent 7deg 14deg);
+  -webkit-mask-image:linear-gradient(0deg,#000 10%,transparent 92%);mask-image:linear-gradient(0deg,#000 10%,transparent 92%)}
+
+/* ---------- badge row ---------- */
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.badge{padding:10px 20px;border:2px solid var(--ink);background:var(--white);font-weight:700;font-size:14.5px;box-shadow:4px 4px 0 var(--ink)}
+
+/* ---------- services ---------- */
+.mods{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,3.4vw,44px);margin-top:52px}
+.mod{display:flex;flex-direction:column;gap:26px}
+.mod .plate{aspect-ratio:16/11;overflow:hidden}
+.mod h3{font-size:clamp(22px,2.4vw,29px)}
+.mod p{color:var(--muted);font-size:15.5px;margin-top:10px}
+.mod ul{list-style:none;padding:0;margin:18px 0 0;border-top:2px solid var(--ink)}
+.mod ul li{padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px;font-weight:600;color:var(--ink-2);transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .3s}
+.mod ul li:hover{padding-left:12px;color:var(--blue)}
+.mod.m1{grid-column:1/5}
+.mod.m2{grid-column:5/9}
+.mod.m3{grid-column:9/13}
+
+/* ---------- statement on the blue plane ---------- */
+.blue{position:relative;overflow:hidden;background:var(--blue);color:#fff}
+.blue .rays{--ry:50%;--r1:rgba(255,255,255,.13)}
+.blue .wrap{position:relative;z-index:2}
+.say{font-size:clamp(26px,3.33vw,48px);line-height:1.02;letter-spacing:-.04em;max-width:none;font-family:'Archivo Black',sans-serif}
+.say b{color:#C6D8FF;font-weight:400}
+.notes{margin-top:38px;border-top:2px solid rgba(255,255,255,.4);max-width:none}
+.note{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.22);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,64ch);gap:clamp(12px,3vw,40px);align-items:baseline}
+.note h4{font-size:clamp(19px,1.9vw,26px)}
+.note p{color:#fff;font-size:15.5px}   /* measured 4.1:1 at .8 alpha on the burst */
+
+/* ---------- process ---------- */
+.rail{margin-top:44px;border-top:2px solid var(--ink)}
+.rstep{display:grid;grid-template-columns:minmax(0,4.5ch) minmax(0,23ch) 1fr;gap:clamp(12px,3vw,40px);
+  padding:22px 0;border-bottom:1px solid var(--rule);align-items:baseline;transition:padding-left .34s cubic-bezier(.16,1,.3,1)}
+.rstep:hover{padding-left:12px}
+.rstep .n{font-family:'Archivo Black',sans-serif;font-size:16px;color:var(--blue);font-variant-numeric:tabular-nums}
+.rstep h4{font-size:clamp(19px,2.2vw,25px)}
+.rstep p{color:var(--muted);font-size:15.5px}
+
+/* ---------- figures ---------- */
+.ngrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.8vw,30px);margin-top:52px}
+.nbox{padding:26px;background:var(--white);border:2px solid var(--ink);position:relative}
+.nbox::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--blue);transform:translate(var(--off),var(--off));transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.nbox:nth-child(even)::after{background:var(--ink)}
+.nbox:hover::after{transform:translate(calc(var(--off) * 1.5),calc(var(--off) * 1.5))}
+.nbox .n{font-family:'Archivo Black',sans-serif;font-size:clamp(30px,4vw,46px);line-height:1;color:var(--blue);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.nbox .t{margin-top:10px;font-size:14.5px;color:var(--muted);max-width:19ch}
+
+/* ---------- projects ---------- */
+.proj{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(26px,3.6vw,46px);margin-top:52px}
+.proj figure{margin:0}
+.proj .plate{overflow:hidden}
+.proj figcaption{padding:16px 2px 0;font-size:14.5px;color:var(--muted)}
+.proj figcaption b{display:block;font-family:'Archivo Black',sans-serif;font-size:19px;color:var(--ink);letter-spacing:-.03em;margin-bottom:3px}
+.proj .g1{grid-column:1/8}
+.proj .g1 .plate{aspect-ratio:16/10}
+.proj .g2{grid-column:8/13}
+.proj .g2 .plate{aspect-ratio:4/3.6}
+.proj .g3{grid-column:1/13}
+.proj .g3 .plate{aspect-ratio:16/6}
+/* Set Right printed three. East Valley's gallery is seven, so the sheet keeps
+   its own asymmetric rhythm instead of becoming a seven cell grid. */
+.proj .g4{grid-column:1/6}
+.proj .g4 .plate{aspect-ratio:4/3.4}
+.proj .g5{grid-column:6/13}
+.proj .g5 .plate{aspect-ratio:16/9.6}
+.proj .g6{grid-column:1/7}
+.proj .g6 .plate{aspect-ratio:4/3.2}
+.proj .g7{grid-column:7/13}
+.proj .g7 .plate{aspect-ratio:4/3.2}
+.proj .plate video{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:860px){
+  .proj .g1,.proj .g2,.proj .g3,.proj .g4,.proj .g5,.proj .g6,.proj .g7{grid-column:1/13}
+  .proj .plate{aspect-ratio:4/3!important}
+}
+
+/* before and after: two prints on the sheet, the second pulled off register */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,3.6vw,46px);margin-top:52px}
+.ba .plate{aspect-ratio:4/5;overflow:hidden}
+.ba figcaption{padding:16px 2px 0;font-size:14.5px;color:var(--muted)}
+.ba figcaption b{display:block;font-family:'Archivo Black',sans-serif;font-size:19px;color:var(--ink);letter-spacing:-.03em;margin-bottom:3px}
+@media (max-width:720px){.ba{grid-template-columns:1fr}}
+
+/* the call plate that stands where the estimate form stood */
+.callbox .ck{display:block;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.callbox .bignum{display:block;margin:12px 0 0;font-family:'Archivo Black',sans-serif;
+  font-size:clamp(32px,4vw,50px);line-height:1;letter-spacing:-.05em;color:var(--ink);
+  text-decoration:none;transition:color .25s}
+.callbox .bignum:hover{color:var(--blue)}
+.callbox .cn{margin:16px 0 24px;font-size:15px;line-height:1.6;color:var(--muted);max-width:40ch}
+.callbox .fnote{margin-top:16px}
+
+/* ---------- reviews ---------- */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,36px);margin-top:52px}
+.rev{background:var(--white);border:2px solid var(--ink);padding:clamp(22px,2.6vw,30px);position:relative}
+.rev::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--blue);transform:translate(var(--off),var(--off));transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.rev:nth-child(2)::after{background:var(--ink)}
+.rev:hover::after{transform:translate(calc(var(--off) * 1.5),calc(var(--off) * 1.5))}
+.rev p{font-size:17px;font-weight:600;letter-spacing:-.018em;line-height:1.45}
+.rev footer{margin-top:20px;padding-top:14px;border-top:2px solid var(--rule);font-size:14px;color:var(--muted)}
+.rev footer b{display:block;font-family:'Archivo Black',sans-serif;font-size:16px;color:var(--ink);letter-spacing:-.025em}
+
+/* ---------- towns ---------- */
+.towns{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 clamp(20px,3vw,40px);border-top:2px solid var(--ink)}
+.towns span{padding:14px 0;border-bottom:1px solid var(--rule);font-family:'Archivo Black',sans-serif;font-size:clamp(17px,1.9vw,21px);letter-spacing:-.035em;transition:color .25s,padding-left .3s}
+.towns span:hover{color:var(--blue);padding-left:10px}
+
+/* ---------- faq ---------- */
+.faq{margin-top:40px;border-top:2px solid var(--ink)}
+.q{border-bottom:1px solid var(--rule)}
+.q button{width:100%;background:none;border:0;text-align:left;font:inherit;color:var(--ink);
+  font-family:'Archivo Black',sans-serif;font-size:clamp(17px,2.1vw,23px);letter-spacing:-.032em;
+  padding:26px 58px 26px 0;cursor:pointer;position:relative;transition:color .25s;line-height:1.18}
+.q button:hover{color:var(--blue)}
+.q button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.q-m{position:absolute;right:8px;top:50%;width:20px;height:20px;transform:translateY(-50%)}
+.q-m::before,.q-m::after{content:"";position:absolute;background:var(--ink);transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s}
+.q-m::before{left:0;right:0;top:9px;height:2.4px}
+.q-m::after{top:0;bottom:0;left:9px;width:2.4px}
+.q[data-open="1"] .q-m::after{transform:rotate(90deg)}
+.q[data-open="1"] .q-m::before{background:var(--blue)}
+.q-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s cubic-bezier(.16,1,.3,1)}
+.q[data-open="1"] .q-body{grid-template-rows:1fr}
+.q-body>div{overflow:hidden}
+.q-body p{color:var(--muted);font-size:16.5px;padding-bottom:28px;max-width:74ch}
+
+/* ---------- contact ---------- */
+.cta{position:relative;overflow:hidden;background:var(--ink);color:#fff}
+.cta .rays{--ry:44%;--r1:rgba(255,255,255,.09)}
+.cta .wrap{position:relative;z-index:2}
+.cta-in{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,4vw,58px);align-items:start}
+.cta h2{font-size:clamp(30px,4.2vw,52px)}
+.cinfo{margin-top:32px;border-top:2px solid rgba(255,255,255,.34)}
+.cinfo a,.cinfo div{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.18);text-decoration:none;font-size:15.5px;font-weight:600;transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .3s}
+.cinfo a:hover{padding-left:10px;color:var(--sky)}
+.cinfo em{font-style:normal;color:rgba(255,255,255,.54);min-width:7ch;font-weight:450}
+.fbox{background:var(--white);color:var(--ink);border:2px solid var(--ink);padding:clamp(26px,3.2vw,42px);position:relative}
+.fbox::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--blue);transform:translate(var(--off),var(--off))}
+.f{display:grid;gap:7px;margin-bottom:17px}
+.f label{font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:-.02em}
+.f input,.f select,.f textarea{font:inherit;font-size:16px;padding:13px 15px;border:2px solid var(--rule);border-radius:0;background:var(--paper);color:var(--ink);width:100%;transition:border-color .25s,background .25s}
+.f input::placeholder,.f textarea::placeholder{color:#8D99C2}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--blue);background:#fff}
+.f .help{font-size:12.5px;color:var(--muted)}
+.f .err{font-size:12.5px;color:#A81E12;font-weight:700;display:none}
+.f.bad input,.f.bad select{border-color:#A81E12}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.fnote{font-size:12.5px;color:var(--muted);margin-top:14px}
+.fok{display:none;margin-top:15px;padding:14px 16px;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px}
+.fok.on{display:block}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ice);border-top:2px solid var(--ink)}
+.foot-in{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;padding-block:clamp(42px,6vw,72px)}
+.foot h5{font-family:'Archivo Black',sans-serif;font-size:13px;letter-spacing:-.02em;color:var(--blue);margin-bottom:14px}
+.foot a{display:block;text-decoration:none;color:var(--ink-2);font-size:15px;padding:5px 0;transition:color .2s,transform .2s}
+.foot a:hover{color:var(--blue);transform:translateX(3px)}
+.foot-bot{border-top:1px solid var(--rule);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;color:var(--muted)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none;filter:none}
+
+
+/* ============================================================
+   MATERIAL PASS  /  "SCREEN PRINT"
+   The posters this came from are printed objects, so the page now
+   behaves like one:
+     - paper stock, a fibrous grain multiplied over everything
+     - HALFTONE dot screens at a 45 degree angle, the way a two colour
+       poster is actually separated, fading where the ink runs out
+     - a misregistered second screen offset by a couple of pixels,
+       because a hand pulled print never lines up perfectly
+   The grain is on a FIXED, pointer-events:none layer so it never
+   repaints while the page scrolls.
+   ============================================================ */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='190' height='190' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.grain{
+  position:fixed;inset:0;z-index:70;pointer-events:none;
+  opacity:.085;mix-blend-mode:multiply;
+  background-image:var(--grain);background-size:190px 190px;
+}
+/* ---- RHYTHM ----
+   Grain is the paper stock and covers the whole page. HALFTONE is the ink,
+   and you do not print ink on every square inch: it goes on the hero, the
+   blue plane, the service area and the contact band, with plain paper
+   either side of each. */
+body{background-color:var(--paper)}
+.white{background-color:var(--white)}
+
+/* .screened: the ink. Two dot layers at the same pitch, the second offset
+   half a tile, which is what puts the screen on a 45 degree angle. */
+.screened{
+  background-image:
+    radial-gradient(circle,rgba(11,110,126,.15) 0 1.5px,transparent 1.9px),
+    radial-gradient(circle,rgba(4,33,42,.075) 0 1.3px,transparent 1.7px);
+  background-size:9px 9px,9px 9px;
+  background-position:0 0,4.5px 4.5px;
+}
+.white.screened{
+  background-color:var(--white);
+  background-image:
+    radial-gradient(circle,rgba(11,110,126,.11) 0 1.4px,transparent 1.8px),
+    radial-gradient(circle,rgba(4,33,42,.055) 0 1.2px,transparent 1.6px);
+  background-size:10px 10px,10px 10px;
+  background-position:0 0,5px 5px;
+}
+.hero{
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(circle,rgba(11,110,126,.15) 0 1.5px,transparent 1.9px),
+    radial-gradient(circle,rgba(4,33,42,.075) 0 1.3px,transparent 1.7px);
+  background-size:9px 9px,9px 9px;
+  background-position:0 0,4.5px 4.5px;
+}
+/* the blue plane: white ink screened over the rays, heavy at the top
+   and running out toward the bottom, the way a gradient screen prints */
+.blue{
+  background-color:var(--blue);
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.20) 0 1.7px,transparent 2.1px),
+    radial-gradient(circle,rgba(255,255,255,.11) 0 1.4px,transparent 1.8px);
+  background-size:10px 10px,10px 10px;
+  background-position:0 0,5px 5px;
+}
+.cta{
+  background-color:var(--ink);
+  background-image:
+    radial-gradient(circle,rgba(111,217,232,.20) 0 1.6px,transparent 2px),
+    radial-gradient(circle,rgba(255,255,255,.07) 0 1.3px,transparent 1.7px);
+  background-size:10px 10px,10px 10px;
+  background-position:0 0,5px 5px;
+}
+.foot{background-color:var(--ice)}
+/* a solid ink block laid over the screen, so the dots stop at its edge */
+.plate{background-color:var(--white);background-image:none}
+
+/* ============================================================
+   ACETATE
+   The glass on this page is a printed transparency: a frosted
+   acetate sheet laid over the poster. It keeps this direction's
+   two rules, the 2px ink keyline and the hard offset in the accent
+   colour, so it reads as a sheet pinned over the print rather than
+   a card floating above it. Same physical recipe as the other
+   directions: blur, saturation lift, lit top edge, inner hairline.
+   ============================================================ */
+.nbox,.rev,.fbox{
+  background-color:transparent;
+  background-image:
+    linear-gradient(152deg,rgba(255,255,255,.82),rgba(255,255,255,.5) 50%,rgba(219,231,255,.64));
+  backdrop-filter:blur(14px) saturate(170%);
+  -webkit-backdrop-filter:blur(14px) saturate(170%);
+  /* Acetate is a printed transparency, so it takes the colour of the sheet
+     under it. Over the paper grounds that is fine. Over the teal plane it
+     pulled the muted label ink down to 2.87:1 measured on the rendered pixels,
+     so the sheet over THAT ground is pulled toward opaque. Raise the pane, not
+     the ink: recolouring the label would have broken the one ink colour the
+     page uses everywhere else. */
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    var(--off) var(--off) 0 var(--blue);
+  transition:box-shadow .32s cubic-bezier(.16,1,.3,1);
+}
+.blue .nbox{
+  background-image:linear-gradient(152deg,rgba(255,255,255,.97),rgba(255,255,255,.92) 50%,rgba(226,243,247,.95));
+}
+/* Same measurement, same fix, two more places the sheet sits on something dark
+   or busy: the hero acetate over the photograph, and the contact plate over the
+   near black halftone ground. */
+.cta .fbox{
+  /* an alpha of .94 over a near black ground still costs about a stop, which
+     left the note at 4.14:1. The sheet goes opaque and keeps the gradient on
+     top purely as the acetate sheen. */
+  background-color:var(--white);
+  background-image:linear-gradient(152deg,rgba(255,255,255,.86),rgba(255,255,255,.4) 50%,rgba(226,243,247,.7));
+}
+/* the offset moves to an outer shadow, which is clipped to outside the box,
+   so it no longer shows through the sheet */
+.nbox::after,.rev::after,.fbox::after{display:none}
+.nbox:nth-child(even),.rev:nth-child(2){
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    var(--off) var(--off) 0 var(--ink);
+}
+.nbox:hover{
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    calc(var(--off) * 1.5) calc(var(--off) * 1.5) 0 var(--blue);
+}
+.nbox:nth-child(even):hover,.rev:nth-child(2):hover{
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    calc(var(--off) * 1.5) calc(var(--off) * 1.5) 0 var(--ink);
+}
+.rev:hover{
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    calc(var(--off) * 1.5) calc(var(--off) * 1.5) 0 var(--blue);
+}
+.nbox::before,.rev::before,.fbox::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 12% -8%,rgba(255,255,255,.9),transparent 44%),
+    linear-gradient(100deg,rgba(255,255,255,.34),transparent 36%);
+}
+/* the acetate sheet over the hero print */
+.acard{
+  position:absolute;left:clamp(-6px,-1vw,0px);bottom:clamp(-18px,-2vw,-10px);z-index:4;
+  width:min(300px,74%);padding:20px 22px 18px;
+  border:2px solid var(--ink);cursor:grab;touch-action:none;
+  background-image:linear-gradient(152deg,rgba(255,255,255,.95),rgba(255,255,255,.86) 52%,rgba(220,240,245,.92));
+  backdrop-filter:blur(16px) saturate(175%);
+  -webkit-backdrop-filter:blur(16px) saturate(175%);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(255,255,255,.5),
+    var(--off) var(--off) 0 var(--ink);
+}
+.acard:active{cursor:grabbing}
+.acard .k{font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blue)}
+.acard .r{display:flex;justify-content:space-between;gap:12px;padding:9px 0;
+  border-bottom:1px solid var(--rule);font-size:14px;color:var(--ink-2);font-weight:600}
+.acard .r:first-of-type{margin-top:12px;border-top:2px solid var(--ink)}
+.acard .r:last-of-type{border-bottom:0}
+.acard .r b{font-family:'Archivo Black',sans-serif;font-size:15px;color:var(--ink);letter-spacing:-.03em}
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone link steps out first. It is still in the hero, the
+   drawer and the footer. */
+@media (max-width:1010px){
+  .nav-tel{display:none}
+  .nav-links{gap:22px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:15px;font-size:13px}
+}
+@media (max-width:1040px){.acard{position:static;width:auto;margin-top:26px}}
+
+/* contact details become smoked acetate over the ray field */
+.cinfo{
+  margin-top:32px;border-top:0;padding:2px 20px 4px;
+  position:relative;isolation:isolate;
+  border:2px solid rgba(255,255,255,.4);
+  background-image:linear-gradient(152deg,rgba(255,255,255,.16),rgba(255,255,255,.05));
+  backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  -webkit-backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.32);
+}
+.cinfo a:last-of-type,.cinfo div:last-of-type{border-bottom:0}
+/* on the dark contact plane the sheet has to stay light enough for ink
+   coloured labels to hold their contrast */
+.cta .fbox{
+  background-image:linear-gradient(152deg,rgba(255,255,255,.93),rgba(255,255,255,.86) 50%,rgba(226,235,255,.9));
+}
+
+/* the sticky nav is acetate too */
+.nav{
+  background:linear-gradient(180deg,rgba(244,247,253,.72),rgba(244,247,253,.56));
+  backdrop-filter:blur(20px) saturate(175%);
+  -webkit-backdrop-filter:blur(20px) saturate(175%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+.nav.stuck{background:linear-gradient(180deg,rgba(244,247,253,.94),rgba(244,247,253,.86))}
+
+@media (prefers-reduced-transparency: reduce){
+  .nbox,.rev,.fbox,.acard{background-image:none;background-color:var(--white);
+    backdrop-filter:none;-webkit-backdrop-filter:none}
+  .cinfo{background-image:none;background-color:rgba(255,255,255,.12);
+    backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav,.nav.stuck{background:var(--paper);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:760px){
+  /* stacked blurs are the single most expensive thing on a phone */
+  .nbox,.rev,.fbox,.acard{backdrop-filter:none;-webkit-backdrop-filter:none;
+    background-image:linear-gradient(152deg,rgba(255,255,255,.97),rgba(240,245,255,.97))}
+  .cinfo{backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+
+
+/* ---- the third ground: a photograph ----
+   This direction had plain paper and screened paper but no photographic
+   ground, so the rhythm only had two gears. One full bleed band, kept
+   clean: a scrim for legibility and nothing patterned laid over the
+   picture, because a photograph is a ground in its own right. */
+.band{
+  position:relative;overflow:hidden;
+  min-height:clamp(340px,42vw,540px);display:flex;align-items:flex-end;
+  border-block:2px solid var(--ink);
+}
+.band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;z-index:0}
+.band::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(96deg,rgba(4,33,42,.86) 6%,rgba(4,33,42,.5) 44%,rgba(4,33,42,.14) 76%)}
+.band-in{position:relative;z-index:2;width:100%;padding-block:clamp(34px,5vw,60px);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(22px,4vw,54px);align-items:end}
+.band h2{color:#fff;font-size:clamp(26px,3.8vw,50px);max-width:15ch}
+.band p{color:rgba(255,255,255,.84);margin-top:14px;max-width:46ch;font-size:16px}
+/* one more acetate sheet, this time over a photograph rather than the print */
+.bcard{
+  width:min(300px,34vw);padding:18px 20px 16px;border:2px solid #fff;
+  background-image:linear-gradient(152deg,rgba(255,255,255,.24),rgba(255,255,255,.08));
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.5),var(--off) var(--off) 0 var(--blue);
+}
+.bcard .k{font-family:'Archivo Black',sans-serif;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:#fff;opacity:.72}
+.bcard .r{display:flex;justify-content:space-between;gap:12px;padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.28);font-size:14px;color:rgba(255,255,255,.86);font-weight:600}
+.bcard .r:first-of-type{margin-top:12px;border-top:2px solid #fff}
+.bcard .r:last-of-type{border-bottom:0}
+.bcard .r b{font-family:'Archivo Black',sans-serif;font-size:15px;color:#fff;letter-spacing:-.03em}
+@media (max-width:860px){
+  .band-in{grid-template-columns:1fr}
+  .bcard{width:100%}
+  .band::after{background:linear-gradient(180deg,rgba(4,33,42,.5),rgba(4,33,42,.9))}
+}
+@media (prefers-reduced-transparency: reduce){
+  .bcard{background-image:none;background-color:rgba(4,33,42,.9);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:760px){
+  .bcard{backdrop-filter:none;-webkit-backdrop-filter:none;background-image:none;background-color:rgba(4,33,42,.82)}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1040px){
+  .hero-in,.cta-in{grid-template-columns:1fr}
+  .mods{grid-template-columns:1fr}
+  .mod.m1,.mod.m2,.mod.m3{grid-column:1/2}
+  .ngrid{grid-template-columns:1fr 1fr}
+  .proj .g1,.proj .g2,.proj .g3{grid-column:1/13}
+  .proj .g2 .plate,.proj .g3 .plate{aspect-ratio:16/10}
+  .revs{grid-template-columns:1fr}
+  .note{grid-template-columns:1fr;gap:6px}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  :root{--off:8px}
+  .nav-links,.nav-right{display:none}
+  .burger{display:grid;place-items:center}
+  .drawer{display:block;position:fixed;inset:76px 0 auto 0;z-index:59;background:var(--white);border-bottom:2px solid var(--ink);padding:10px var(--pad) 26px;transform:translateY(-130%);transition:transform .44s cubic-bezier(.16,1,.3,1)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{display:block;padding:15px 0;border-bottom:1px solid var(--rule);text-decoration:none;font-family:'Archivo Black',sans-serif;font-size:19px;letter-spacing:-.04em}
+  .drawer .btn{width:100%;justify-content:center;margin-top:18px}
+  .ngrid{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+  .rstep{grid-template-columns:3.5ch 1fr;gap:14px}
+  .rstep p{grid-column:2/3}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none;filter:none}
+}
+</style>
+</head>
+<body>
+
+<!-- fixed paper grain over the whole page -->
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">East Valley<em>.</em></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Service area</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-tel" href="tel:+14808069455">480-806-9455</a>
+      <a class="btn" href="#estimate"><span>Free estimate</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Service area</a>
+  <a class="btn" href="#estimate"><span>Free estimate</span></a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div>
+      <h1>Crystal clear views <em>start here.</em></h1>
+      <p class="lede">Owner-operated window cleaning across the East Valley. Inside and out, screens and tracks, hard water stains, tint, solar panels and hauling. Residential and commercial.</p>
+      <div class="hero-act">
+        <a class="btn" href="tel:+14808069455"><span>Call 480-806-9455</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="btn wht" href="sms:+14808069455"><span>Text for a quote</span></a>
+      </div>
+      <div class="badges">
+        <span class="badge">Owner operated</span>
+        <span class="badge">Free estimates</span>
+        <span class="badge">Residential and commercial</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="plate">
+        <img src="assets/restaurant.jpg" width="1400" height="1750"
+             alt="A restaurant frontage looking out through a wall of cleaned glass" fetchpriority="high">
+        <div class="lap" aria-hidden="true"></div>
+      </div>
+
+      <!-- acetate sheet pinned over the print, draggable -->
+      <div class="acard" id="acard">
+        <div class="k">On Google</div>
+        <div class="r"><span>Rating</span><b>5.0</b></div>
+        <div class="r"><span>Reviews</span><b>4</b></div>
+        <div class="r"><span>Services</span><b>7</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="rv">
+      <h2 style="font-size:clamp(30px,6.11vw,88px)">Everything that touches the glass.</h2>
+      <p class="lede" style="margin-top:18px">One operator, one invoice. Book a single window clean or bundle the whole exterior into the same visit.</p>
+    </div>
+    <div class="mods">
+      <article class="mod m1 rv">
+        <div class="plate mirror"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt="Clean commercial storefront glazing at street level"></div>
+        <div>
+          <h3>Glass</h3>
+          <p>Windows in and out, screens, tracks and hard water stains. Streak-free on homes and businesses, single storey to multi-storey.</p>
+          <ul><li>Interior and exterior windows</li><li>Purified water and a water-fed pole at height</li><li>Screens pulled, washed and re-set</li><li>Sills and sliding tracks scrubbed out</li><li>Mineral etching cut back off the glass</li></ul>
+        </div>
+      </article>
+      <article class="mod m2 rv">
+        <div class="plate"><img src="assets/job-solar-sky.jpg" width="540" height="960" loading="lazy" alt="A rooftop solar array under open sky after cleaning"></div>
+        <div>
+          <h3>Film and panels</h3>
+          <p>UV and privacy film, and solar arrays washed back to output. Two jobs the same van already carries the water for.</p>
+          <ul><li>UV and heat film for furnishings and the AC</li><li>Reflective film for privacy</li><li>Dust and hard water film lifted off panels</li><li>The array stops losing output to grime</li></ul>
+        </div>
+      </article>
+      <article class="mod m3 rv">
+        <div class="plate mirror"><img src="assets/job-haul.jpg" width="820" height="1094" loading="lazy" alt="Monsoon debris and a cleared-out load stacked in a yard ready to haul"></div>
+        <div>
+          <h3>Property</h3>
+          <p>Pressure washing, plus junk and monsoon debris hauled away. The rest of the exterior, while the van is already at the kerb.</p>
+          <ul><li>Driveways, walkways and patios</li><li>Building exteriors and elevations</li><li>Monsoon debris cleared</li><li>Rental clear-outs and listing prep</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="blue sec">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="say rv">Every job is done by Jose Sandoval, the owner. <b>Same hands on your glass every time.</b></p>
+    <div class="notes">
+      <div class="note rv"><h4>No rotating crew</h4><p>There is no subcontractor and no rotating team, so the standard on the second visit is the standard on the first.</p></div>
+      <div class="note rv"><h4>Priced off a photo</h4><p>Call or text with your address and roughly how many windows. Most homes can be priced without a visit at all.</p></div>
+      <div class="note rv"><h4>Frames and sills too</h4><p>Screens come out and go back. Sills and sliding tracks are vacuumed and scrubbed as part of the same job.</p></div>
+    </div>
+    <div class="ngrid">
+      <div class="nbox rv"><div class="n" data-count="5" data-dp="1" data-suffix="">5.0</div><div class="t">On Google, from all four reviews</div></div>
+      <div class="nbox rv"><div class="n" data-count="4" data-suffix="">4</div><div class="t">Google reviews, every one on this page</div></div>
+      <div class="nbox rv"><div class="n" data-count="7" data-suffix="">7</div><div class="t">Services on one phone number</div></div>
+      <div class="nbox rv"><div class="n" data-count="8" data-suffix="">8</div><div class="t">East Valley towns on the route</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTOGRAPHIC BAND ============ -->
+<section class="band">
+  <img src="assets/job-pole-wide.jpg" width="1280" height="722" loading="lazy"
+       alt="A water-fed pole worked up the elevation of a two storey building">
+  <div class="wrap band-in">
+    <div class="rv">
+      <h2>Glass is the first thing a customer sees.</h2>
+      <p>Purified water and a water-fed pole where the height calls for it. Streak free on the way up, and no ladder leaning on your landscaping on the way down.</p>
+    </div>
+    <div class="bcard rv">
+      <div class="k">On the route</div>
+      <div class="r"><span>Towns covered</span><b>8</b></div>
+      <div class="r"><span>Services</span><b>7</b></div>
+      <div class="r"><span>Estimates</span><b>Free</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEFORE AND AFTER ============ -->
+<section class="sec white" id="proof">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(30px,5.0vw,72px)">The same storefront, one visit apart.</h2></div>
+    <div class="ba">
+      <figure class="rv" style="margin:0">
+        <div class="plate"><img src="assets/ba-before.jpg" width="390" height="488" loading="lazy" alt="Commercial storefront glazing in Mesa before cleaning"></div>
+        <figcaption><b>Before</b>Monsoon dust and sprinkler overspray on the glass.</figcaption>
+      </figure>
+      <figure class="rv" style="margin:0">
+        <div class="plate mirror"><img src="assets/ba-after.jpg" width="390" height="488" loading="lazy" alt="The same Mesa storefront glazing after cleaning"></div>
+        <figcaption><b>After</b>One visit. Frames and screens done at the same time.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT WORK ============ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(30px,6.81vw,98px)">Straight from the van.</h2></div>
+    <p class="lede rv" style="margin-top:16px;max-width:56ch">Their own clips and job photographs, straight off Instagram. The two clips play here with the sound off.</p>
+    <div class="proj">
+      <figure class="g1 rv">
+        <div class="plate"><video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg" muted loop playsinline preload="none" width="1280" height="722" aria-label="Storefront glazing being cleaned"></video></div>
+        <figcaption><b>Commercial storefront</b>Mesa. Exterior glass, frames and screens.</figcaption>
+      </figure>
+      <figure class="g2 rv">
+        <div class="plate mirror"><video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="A solar array being rinsed"></video></div>
+        <figcaption><b>Solar array rinse</b>Dust and hard water film lifted off.</figcaption>
+      </figure>
+      <figure class="g3 rv">
+        <div class="plate"><img src="assets/plate-pole.jpg" width="900" height="1200" loading="lazy" alt="A water-fed pole worked across an arched upper window"></div>
+        <figcaption><b>Residential upper glass</b>Arched second storey windows, worked from the ground.</figcaption>
+      </figure>
+      <figure class="g4 rv">
+        <div class="plate mirror"><img src="assets/hero-pole.jpg" width="1200" height="1600" loading="lazy" alt="A water-fed pole reaching upper storey glass"></div>
+        <figcaption><b>Two storey residential</b>Water-fed pole, no ladder on the landscaping.</figcaption>
+      </figure>
+      <figure class="g5 rv">
+        <div class="plate"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt="Retail entry glazing, doors and sidelights"></div>
+        <figcaption><b>Retail entry</b>Doors, sidelights and the frames around them.</figcaption>
+      </figure>
+      <figure class="g6 rv">
+        <div class="plate mirror"><img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy" alt="A yard cleared of monsoon debris"></div>
+        <figcaption><b>Junk removal</b>Monsoon debris loaded up and taken away.</figcaption>
+      </figure>
+      <figure class="g7 rv">
+        <div class="plate"><img src="assets/rig.jpg" width="1200" height="1200" loading="lazy" alt="The work van and equipment"></div>
+        <figcaption><b>The rig</b>Everything on one van, on the route daily.</figcaption>
+      </figure>
+    </div>
+    <div class="hero-act" style="margin-top:40px">
+      <a class="btn wht" href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener"><span>See more on Instagram</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(30px,5.83vw,84px)">5.0, every review unedited.</h2></div>
+    <div class="revs">
+      <figure class="rev rv" style="margin:0"><p>Jose did an outstanding job cleaning my windows! The team was incredibly friendly, professional, and detail-oriented. They left every window spotless, even cleaning the frames and screens to perfection.</p><footer><b>Lacey Shultz</b>Google review</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>Jose from East Valley Window Cleaning is a true professional. They are polite, easy to communicate with, and make you feel confident in their honesty and reliability.</p><footer><b>Nina Hanopol</b>Google review</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>Great job done! On time, on schedule. Windows and sliding doors look great.</p><footer><b>Kirkland Sanders</b>Google review</footer></figure>
+      <figure class="rev rv" style="margin:0"><p>Really great service!</p><footer><b>Maria Sandoval</b>Google review</footer></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="sec white screened" id="area">
+  <div class="wrap">
+    <div class="rv">
+      <h2 style="font-size:clamp(30px,4.93vw,71px)">Working the whole East Valley.</h2>
+      <p class="lede" style="margin-top:16px">Based in the East Valley and on the road daily. If you are near one of these, you are on the route.</p>
+    </div>
+    <div class="towns rv">
+      <span>Mesa</span><span>Gilbert</span><span>Chandler</span><span>Queen Creek</span>
+      <span>San Tan Valley</span><span>Apache Junction</span><span>Johnson Ranch</span><span>Bella Vista Farms</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============
+     Set Right's estimate form sat in the right hand plate. East Valley prices
+     most homes off a photo and an address, so the plate carries the number
+     instead of a form that would contradict the copy beside it. -->
+<section class="cta sec" id="estimate">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="wrap cta-in">
+    <div class="rv">
+      <h2>Tell us what needs cleaning.</h2>
+      <p class="lede" style="color:rgba(255,255,255,.78);margin-top:16px">Call or text with your address and roughly how many windows. Most homes can be priced without a visit.</p>
+      <div class="cinfo">
+        <a href="tel:+14808069455"><em>Phone</em>480-806-9455</a>
+        <a href="sms:+14808069455"><em>Text</em>Send a photo of your windows</a>
+        <div><em>Owner</em>Jose Sandoval</div>
+        <div><em>Covers</em>Mesa, Gilbert, Chandler, Queen Creek, San Tan Valley, Apache Junction, Johnson Ranch, Bella Vista Farms</div>
+        <a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener"><em>Instagram</em>@eastvalleywindowcleaningllc</a>
+      </div>
+    </div>
+    <div class="fbox rv">
+      <div class="callbox">
+        <span class="ck">Free estimate</span>
+        <a class="bignum" href="tel:+14808069455">480-806-9455</a>
+        <p class="cn">A photo of the glass and a rough window count is usually all it takes. No visit, no obligation, no call-out fee.</p>
+        <a class="btn" href="sms:+14808069455" style="width:100%;justify-content:center"><span>Text a photo of your windows</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <p class="fnote">Residential and commercial, single storey to multi-storey, right across the East Valley.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top">East Valley<em>.</em></a>
+        <p style="font-size:15px;max-width:34ch;margin-top:14px">East Valley Window Cleaning LLC. Owner-operated by Jose Sandoval. Residential and commercial window care across the East Valley of Arizona.</p>
+        <p style="font-size:15px;margin-top:14px;font-weight:700">480-806-9455</p>
+      </div>
+      <div><h5>Services</h5><a href="#services">Window cleaning</a><a href="#services">Screens and tracks</a><a href="#services">Hard water removal</a><a href="#services">Window tinting</a><a href="#services">Solar panel cleaning</a><a href="#services">Pressure washing</a><a href="#services">Junk removal</a></div>
+      <div><h5>Service area</h5><a href="#area">Mesa</a><a href="#area">Gilbert</a><a href="#area">Chandler</a><a href="#area">Queen Creek</a><a href="#area">San Tan Valley</a></div>
+      <div><h5>Contact</h5><a href="tel:+14808069455">480-806-9455</a><a href="sms:+14808069455">Text a quote request</a><a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">@eastvalleywindowcleaningllc</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>Copyright 2026 East Valley Window Cleaning LLC</span>
+      <span>Owner-operated, residential and commercial</span>
+      <span>Direction 04 / Burst</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rvs=document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){ rvs.forEach(function(e){e.classList.add('on');}); }
+  else{
+    var g=new Map();
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var p=e.target.parentElement,i=g.get(p)||0; g.set(p,i+1);
+        e.target.style.transitionDelay=Math.min(i*75,340)+'ms';
+        e.target.classList.add('on'); io.unobserve(e.target);
+      });
+    },{threshold:.14,rootMargin:'0px 0px -7% 0px'});
+    rvs.forEach(function(e){ io.observe(e); });
+  }
+  var nav=document.getElementById('nav'),s=document.createElement('div');
+  s.style.cssText='position:absolute;top:0;height:1px;width:1px';
+  document.body.prepend(s);
+  new IntersectionObserver(function(e){ nav.classList.toggle('stuck',!e[0].isIntersecting); },{threshold:0}).observe(s);
+  var b=document.getElementById('burger'),d=document.getElementById('drawer');
+  b.addEventListener('click',function(){ b.setAttribute('aria-expanded', d.classList.toggle('open')); });
+  d.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }); });
+  var sio=new IntersectionObserver(function(es,o){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target,t=parseFloat(el.dataset.count),sf=el.dataset.suffix||'',dp=parseInt(el.dataset.dp||'0',10); o.unobserve(el);
+      if(reduce) return;
+      el.textContent=(0).toFixed(dp)+sf;
+      var st=null;
+      function tick(ts){ if(!st)st=ts; var pr=Math.min((ts-st)/1200,1),e2=1-Math.pow(1-pr,3);
+        el.textContent=(t*e2).toFixed(dp)+sf; if(pr<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(n){ sio.observe(n); });
+  // Their two real Instagram clips. Play only while on screen; a clip running
+  // off-canvas decodes frames nobody is looking at.
+  (function(){
+    var vids=[].slice.call(document.querySelectorAll('.proj video'));
+    if(!vids.length) return;
+    if(reduce){ vids.forEach(function(v){ v.removeAttribute('loop'); v.load(); }); return; }
+    if(!('IntersectionObserver' in window)){ vids.forEach(function(v){ v.play().catch(function(){}); }); return; }
+    var vo=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v=e.target;
+        if(e.isIntersecting) v.play().catch(function(){}); else if(!v.paused) v.pause();
+      });
+    },{threshold:.3});
+    vids.forEach(function(v){ v.preload='metadata'; vo.observe(v); });
+  })();
+})();
+</script>
+</body>
+</html>

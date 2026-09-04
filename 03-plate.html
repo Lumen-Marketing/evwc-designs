@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>East Valley Window Cleaning - Crystal clear views start here</title>
+<meta name="description" content="Window cleaning, screens and tracks, hard water stain removal, pressure washing, window tinting, solar panel cleaning and junk removal across the East Valley of Arizona. Owner-operated. Free estimates, call or text 480-806-9455.">
+<meta name="theme-color" content="#131A24">
+
+<!--
+  EAST VALLEY WINDOW CLEANING / 03 "PLATE"
+
+  Ported from the Set Right Homes direction of the same name. Layout, material
+  and type pairing are Set Right's. Every word, photograph, clip, review, town
+  and phone number is East Valley's.
+
+  MATERIAL: milled metal. Horizontal linisher marks with a specular sweep across
+  the width on every steel face; the teal field is knurled instead, a fine
+  diagonal crosshatch like the grip on a hand tool, so the two alloys read
+  differently. Tread plate on the sheared seams.
+
+  DEPTH: machined bevels. Every surface has a lit top edge and a dark bottom
+  edge, bolt heads at the corners, and a tinted cast shadow. The bolt heads are
+  the concept of this direction, not decoration, which is why they are the one
+  place a circle appears on a page otherwise locked to square.
+
+  LIQUID GLASS: machine guard glazing, square cut, tinted toward the field teal
+  and bolted at four corners. A draggable spec panel over the hero, the promise
+  nodes set into the field, the review cores inside their bolted frames, the
+  contact details, the nav. The pane's tint was deepened and its brightness
+  dropped to .72 after the spec panel's label measured 2.90:1 where its corner
+  crosses the bright glass in the hero photograph. Glass attenuates, so the fix
+  is a heavier tint, never a brighter label.
+
+  COLOUR: the royal blue field became a deep teal, 9.30:1 against white text,
+  and the bright accent became #48D8EC at 10.25:1 on steel.
+
+  CONTENT: no invented statistics. Photographs and both clips are the client's
+  own, self hosted, with no licence obligation.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Saira:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  color-scheme: dark;
+  --steel:#131A24;
+  --steel-2:#1A2330;
+  --steel-3:#0C1119;
+  --field:#0A4E5C;
+  --field-2:#073B46;
+  --bright:#48D8EC;
+  --fg:#FFFFFF;
+  --fg-2:rgba(255,255,255,.64);
+  --fg-3:rgba(255,255,255,.4);
+  --line:rgba(255,255,255,.14);
+  --paper:#E9EEF7;
+  --ink:#0C1119;
+  --shear:130px;
+  --pad:clamp(20px,5vw,54px);
+  --maxw:1300px;
+  /* the bevel: lit top edge, dark bottom edge, tinted cast shadow */
+  --bevel:inset 0 1px 0 rgba(255,255,255,.17), inset 0 -1px 0 rgba(0,0,0,.6), 0 26px 54px -32px rgba(3,24,30,.9);
+  --bevel-in:inset 0 2px 5px rgba(0,0,0,.55), inset 0 -1px 0 rgba(255,255,255,.08);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--steel);color:var(--fg);
+  font-family:'Saira',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:17px;line-height:1.62;font-weight:400;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3,h4{margin:0;font-family:'Saira Condensed','Saira',sans-serif;font-weight:800;line-height:.96;letter-spacing:.004em;text-transform:uppercase}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:clamp(60px,8vw,116px);position:relative}
+.lede{color:var(--fg-2);max-width:56ch}
+
+/* bolt heads, four corners, drawn once and reused */
+.bolts{position:relative}
+.bolts::before,.bolts::after{
+  content:"";position:absolute;width:7px;height:7px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%, rgba(255,255,255,.55), rgba(0,0,0,.7) 72%);
+  box-shadow:0 1px 0 rgba(255,255,255,.14);pointer-events:none;z-index:3;
+}
+.bolts::before{left:11px;top:11px;box-shadow:calc(100% + 11px) 0 0 -0px transparent}
+.bolts::after{right:11px;top:11px}
+.bolts>.b2{position:absolute;left:11px;bottom:11px;width:7px;height:7px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%, rgba(255,255,255,.55), rgba(0,0,0,.7) 72%);z-index:3;pointer-events:none}
+.bolts>.b3{position:absolute;right:11px;bottom:11px;width:7px;height:7px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%, rgba(255,255,255,.55), rgba(0,0,0,.7) 72%);z-index:3;pointer-events:none}
+
+/* ---------- buttons ---------- */
+.btn{
+  --b:var(--field);--f:#fff;
+  display:inline-flex;align-items:center;gap:12px;white-space:nowrap;
+  padding:15px 28px;border:1.5px solid rgba(255,255,255,.22);border-radius:0;background:var(--b);color:var(--f);
+  font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;position:relative;overflow:hidden;
+  box-shadow:var(--bevel);
+  transition:transform .16s cubic-bezier(.16,1,.3,1),box-shadow .26s,color .3s;
+}
+.btn span,.btn svg{position:relative;z-index:1}
+.btn svg{width:16px;height:16px;transition:transform .34s cubic-bezier(.16,1,.3,1)}
+.btn::after{content:"";position:absolute;inset:0;background:var(--bright);transform:translateY(101%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.btn:hover::after{transform:translateY(0)}
+.btn:hover{color:var(--ink);transform:translate(-2px,-3px);box-shadow:6px 8px 0 var(--field-2), var(--bevel)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:active{transform:translate(1px,1px);box-shadow:var(--bevel-in)}
+.btn:focus-visible{outline:3px solid var(--bright);outline-offset:3px}
+.btn.wire{--b:transparent;border-color:rgba(255,255,255,.4);box-shadow:none}
+.btn.wire::after{background:#fff}
+.btn.wire:hover{color:var(--ink);box-shadow:6px 8px 0 rgba(255,255,255,.14)}
+.btn.pale{--b:var(--paper);--f:var(--ink);border-color:rgba(0,0,0,.2)}
+.btn.pale::after{background:var(--field)}
+.btn.pale:hover{color:#fff}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:60;background:rgba(12,17,25,.93);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nav-in{height:74px;display:flex;align-items:center;gap:26px}
+.brand{text-decoration:none;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:24px;letter-spacing:.09em;text-transform:uppercase;line-height:1}
+.brand em{font-style:normal;color:var(--bright)}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font-family:'Saira Condensed',sans-serif;text-decoration:none;font-size:18px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);position:relative;padding-block:4px;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--bright);transform:scaleX(0);transform-origin:right;transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-right{display:flex;align-items:center;gap:20px;margin-left:20px}
+.nav-tel{text-decoration:none;font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:.05em;white-space:nowrap}
+.burger{display:none;width:44px;height:44px;border:1.5px solid rgba(255,255,255,.4);background:none;margin-left:auto;cursor:pointer;border-radius:0}
+.burger i{display:block;width:18px;height:2px;background:#fff;margin:0 auto;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:#fff;transition:transform .3s}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+.burger[aria-expanded="true"] i{background:transparent}
+.burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
+.drawer{display:none}
+
+/* ---------- HERO: dark band, photo, then the shear ---------- */
+.hero{
+  position:relative;overflow:hidden;background:var(--steel-3);
+  /* the 74px nav sits over the top of this, so the hero has to reach the fold
+     rather than stopping at whatever its padding happens to add up to */
+  min-height:clamp(560px,calc(100dvh - 74px),1080px);
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:clamp(40px,6vw,80px);padding-bottom:calc(var(--shear) + clamp(40px,6vw,80px));
+  clip-path:polygon(0 0,100% 0,100% calc(100% - var(--shear)),0 100%);
+}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;z-index:0;opacity:.66}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(96deg,rgba(12,17,25,.95) 26%,rgba(12,17,25,.5) 62%,rgba(10,78,92,.34))}
+.hero-in{position:relative;z-index:2}
+.hero h1{font-size:clamp(46px,8.4vw,116px);max-width:19ch;letter-spacing:.002em}
+.hero h1 em{font-style:normal;color:var(--bright);display:block}
+.hero .lede{margin-top:22px;font-size:clamp(16px,1.5vw,18.5px)}
+.hero-act{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+
+/* ---------- the blue field, sheared both ends ---------- */
+.field{
+  position:relative;background:var(--field);color:#fff;
+  margin-top:calc(var(--shear) * -1);
+  padding-top:calc(var(--shear) + clamp(36px,5vw,64px));
+  padding-bottom:calc(var(--shear) + clamp(36px,5vw,64px));
+  clip-path:polygon(0 var(--shear),100% 0,100% calc(100% - var(--shear)),0 100%);
+}
+.field-in{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(28px,5vw,64px)}
+/* the process chain, plates instead of diamonds */
+.chain{display:grid;gap:14px}
+.node{
+  position:relative;background:var(--field-2);padding:18px 20px 18px 62px;
+  box-shadow:var(--bevel);transition:transform .28s cubic-bezier(.16,1,.3,1),box-shadow .28s;
+}
+.node:hover{transform:translate(-3px,-3px);box-shadow:6px 8px 0 rgba(0,0,0,.34), var(--bevel)}
+.node .n{
+  position:absolute;left:0;top:0;bottom:0;width:46px;display:grid;place-items:center;
+  background:var(--steel-3);font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:20px;color:var(--bright);
+  box-shadow:var(--bevel-in);
+}
+.node h4{font-size:21px;letter-spacing:.05em}
+.node p{color:rgba(255,255,255,.72);font-size:14.5px;margin-top:3px}
+.field h2{font-size:clamp(32px,5vw,62px);max-width:15ch}
+.field .lede{color:rgba(255,255,255,.8);margin-top:16px}
+.checks{list-style:none;padding:0;margin:26px 0 0;border-top:1px solid rgba(255,255,255,.28)}
+.checks li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:16px;transition:padding-left .3s cubic-bezier(.16,1,.3,1)}
+.checks li:hover{padding-left:12px}
+.checks li b{font-weight:700}
+
+/* ---------- photo plates ---------- */
+.plate{position:relative;background:var(--steel-2);box-shadow:var(--bevel);overflow:hidden}
+.plate img{width:100%;height:100%;object-fit:cover;transition:transform .85s cubic-bezier(.16,1,.3,1)}
+.plate:hover img{transform:scale(1.045)}
+.plate figcaption{padding:18px 22px;font-size:14.5px;color:var(--fg-2);background:var(--steel-2);position:relative;z-index:2}
+.plate figcaption b{display:block;font-family:'Saira Condensed',sans-serif;font-size:21px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;margin-bottom:2px}
+
+/* ---------- services: recessed panels that rise ---------- */
+.svcs{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2.4vw,26px);margin-top:44px}
+.svc{
+  background:var(--steel-2);box-shadow:var(--bevel-in);padding:0;overflow:hidden;
+  transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s;
+}
+.svc:hover{transform:translateY(-5px);box-shadow:var(--bevel)}
+.svc .pic{height:clamp(190px,22vw,270px);overflow:hidden;position:relative}
+.svc .pic img{width:100%;height:100%;object-fit:cover;transition:transform .85s cubic-bezier(.16,1,.3,1)}
+.svc:hover .pic img{transform:scale(1.05)}
+.svc .body{padding:clamp(20px,2.4vw,30px)}
+.svc h3{font-size:clamp(22px,2.6vw,30px);letter-spacing:.04em}
+.svc p{color:var(--fg-2);font-size:15px;margin-top:9px}
+.svc ul{list-style:none;padding:0;margin:18px 0 0;border-top:1px solid var(--line)}
+.svc ul li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14.5px;color:var(--fg-2);transition:color .25s,padding-left .3s}
+.svc ul li:hover{color:#fff;padding-left:10px}
+.svc.a{grid-column:1/7}
+.svc.b{grid-column:7/13}
+.svc.c{grid-column:1/13}
+.svc.c{display:grid;grid-template-columns:1fr 1fr}
+.svc.c .pic{height:100%;min-height:280px}
+
+/* ---------- figures on a rule ---------- */
+.ngrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2.6vw,28px);margin-top:clamp(44px,6vw,70px)}
+.nbox{background:var(--steel-2);padding:24px;box-shadow:var(--bevel);position:relative;transition:transform .28s cubic-bezier(.16,1,.3,1)}
+.nbox:hover{transform:translateY(-5px)}
+.nbox .n{font-family:'Saira Condensed',sans-serif;font-size:clamp(36px,4.8vw,56px);font-weight:800;line-height:1;color:var(--bright);font-variant-numeric:tabular-nums}
+.nbox .t{margin-top:9px;font-size:14px;color:var(--fg-2);max-width:19ch}
+
+/* ---------- statement ---------- */
+.say{font-family:'Saira Condensed',sans-serif;font-size:clamp(28px,5.0vw,72px);font-weight:800;text-transform:uppercase;letter-spacing:.004em;line-height:.98;max-width:none}
+.say b{color:var(--bright)}
+.notes{margin-top:38px;border-top:1px solid var(--line);max-width:none}
+.note{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,64ch);gap:clamp(12px,3vw,40px);align-items:baseline}
+.note h4{font-size:clamp(21px,2.1vw,29px);letter-spacing:.05em}
+.note p{color:var(--fg-2);font-size:15px}
+
+/* ---------- projects ---------- */
+.proj{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2.4vw,26px);margin-top:44px}
+.proj figure{margin:0}
+.proj .r1{grid-column:1/8}
+.proj .r1 .plate>div{height:clamp(280px,34vw,420px)}
+.proj .r2{grid-column:8/13}
+.proj .r2 .plate>div{height:clamp(280px,34vw,420px)}
+.proj .r3{grid-column:1/13}
+.proj .r3 .plate>div{height:clamp(240px,28vw,360px)}
+/* Set Right showed three projects. East Valley's gallery is seven items, so the
+   12 column grid keeps going in the same asymmetric rhythm rather than
+   collapsing into a seven cell grid. */
+.proj .r4{grid-column:1/6}
+.proj .r5{grid-column:6/13}
+.proj .r4 .plate>div,.proj .r5 .plate>div{height:clamp(240px,28vw,360px)}
+.proj .r6{grid-column:1/8}
+.proj .r7{grid-column:8/13}
+.proj .r6 .plate>div,.proj .r7 .plate>div{height:clamp(230px,26vw,330px)}
+.plate>div video{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .85s cubic-bezier(.16,1,.3,1)}
+.plate:hover>div video{transform:scale(1.04)}
+
+/* before and after: two bolted plates, same width */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,26px);margin-top:44px}
+.ba .plate>div{height:clamp(300px,36vw,460px)}
+@media (max-width:720px){.ba{grid-template-columns:1fr}}
+@media (max-width:860px){
+  .proj .r1,.proj .r2,.proj .r3,.proj .r4,.proj .r5,.proj .r6,.proj .r7{grid-column:1/13}
+  .proj .plate>div{height:clamp(230px,52vw,330px)}
+}
+
+/* the call plate that stands where the estimate form stood */
+.callbox .ck{display:block;font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3)}
+.callbox .bignum{display:block;margin:14px 0 0;font-family:'Saira Condensed',sans-serif;font-weight:800;
+  font-size:clamp(42px,5.2vw,68px);line-height:.9;letter-spacing:.008em;color:var(--fg);
+  text-decoration:none;transition:color .25s}
+.callbox .bignum:hover{color:var(--bright)}
+.callbox .cn{margin:16px 0 26px;font-size:15px;line-height:1.6;color:var(--fg-2);max-width:40ch}
+.callbox .fnote{margin-top:16px}
+.plate>div{overflow:hidden}
+
+/* ---------- reviews: bolted plates with recessed cores ---------- */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,26px);margin-top:44px}
+.rev{background:var(--steel-2);padding:14px;box-shadow:var(--bevel);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.rev:hover{transform:translateY(-5px)}
+.rev .core{background:var(--steel-3);padding:clamp(20px,2.4vw,28px);box-shadow:var(--bevel-in)}
+.rev p{font-size:16.5px;line-height:1.48}
+.rev footer{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;color:var(--fg-3)}
+.rev footer b{display:block;font-family:'Saira Condensed',sans-serif;font-size:19px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+
+/* ---------- towns ---------- */
+.towns{margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 clamp(20px,3vw,40px);border-top:1px solid var(--line)}
+.towns span{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);font-family:'Saira Condensed',sans-serif;
+  font-size:clamp(20px,2.2vw,26px);font-weight:700;text-transform:uppercase;letter-spacing:.06em;transition:color .25s,padding-left .3s}
+.towns span:hover{color:var(--bright);padding-left:10px}
+
+/* ---------- faq ---------- */
+.faq{margin-top:40px;border-top:1px solid var(--line)}
+.q{border-bottom:1px solid rgba(255,255,255,.08)}
+.q button{width:100%;background:none;border:0;text-align:left;cursor:pointer;position:relative;color:#fff;
+  font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:clamp(21px,2.6vw,29px);text-transform:uppercase;letter-spacing:.04em;
+  padding:24px 58px 24px 0;transition:color .25s;line-height:1.1}
+.q button:hover{color:var(--bright)}
+.q button:focus-visible{outline:3px solid var(--bright);outline-offset:2px}
+.q-m{position:absolute;right:8px;top:50%;width:20px;height:20px;transform:translateY(-50%)}
+.q-m::before,.q-m::after{content:"";position:absolute;background:#fff;transition:transform .4s cubic-bezier(.16,1,.3,1),background .3s}
+.q-m::before{left:0;right:0;top:9px;height:2px}
+.q-m::after{top:0;bottom:0;left:9px;width:2px}
+.q[data-open="1"] .q-m::after{transform:rotate(90deg)}
+.q[data-open="1"] .q-m::before{background:var(--bright)}
+.q-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .44s cubic-bezier(.16,1,.3,1)}
+.q[data-open="1"] .q-body{grid-template-rows:1fr}
+.q-body>div{overflow:hidden}
+.q-body p{color:var(--fg-2);font-size:16px;padding-bottom:26px;max-width:74ch}
+
+/* ---------- contact, sheared field again ---------- */
+.cbar{position:relative;background:var(--field);color:#fff;
+  clip-path:polygon(0 var(--shear),100% 0,100% 100%,0 100%);
+  padding-top:calc(var(--shear) + clamp(36px,5vw,66px));padding-bottom:clamp(46px,7vw,84px)}
+.cbar-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,58px);align-items:start}
+.cbar h2{font-size:clamp(32px,5.4vw,68px)}
+.cinfo{margin-top:30px;border-top:1px solid rgba(255,255,255,.28)}
+.cinfo a,.cinfo div{display:flex;gap:18px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.16);text-decoration:none;font-size:15.5px;transition:padding-left .3s cubic-bezier(.16,1,.3,1),color .3s}
+.cinfo a:hover{padding-left:10px;color:var(--bright)}
+.cinfo em{font-style:normal;color:rgba(255,255,255,.56);min-width:7ch}
+.fbox{background:var(--field-2);padding:clamp(24px,3vw,38px);box-shadow:var(--bevel)}
+.f{display:grid;gap:6px;margin-bottom:16px}
+.f label{font-family:'Saira Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.f input,.f select,.f textarea{font:inherit;font-size:16px;padding:13px 15px;border:1.5px solid rgba(255,255,255,.28);border-radius:0;
+  background:rgba(0,0,0,.28);color:#fff;width:100%;box-shadow:var(--bevel-in);transition:border-color .25s,background .25s}
+.f input::placeholder,.f textarea::placeholder{color:rgba(255,255,255,.5)}
+.f select option{color:var(--ink);background:#fff}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--bright);background:rgba(0,0,0,.4)}
+.f .help{font-size:12.5px;color:rgba(255,255,255,.62)}
+.f .err{font-size:12.5px;color:#FFC4BC;font-weight:600;display:none}
+.f.bad input,.f.bad select{border-color:#FF8B7A}
+.f.bad .err{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fnote{font-size:12.5px;color:rgba(255,255,255,.62);margin-top:13px}
+.fok{display:none;margin-top:14px;padding:13px 15px;background:var(--paper);color:var(--ink);font-weight:600;font-size:14.5px}
+.fok.on{display:block}
+
+/* ---------- footer ---------- */
+.foot{background:var(--steel-3);border-top:1px solid var(--line)}
+.foot-in{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;padding-block:clamp(42px,6vw,70px)}
+.foot h5{font-family:'Saira Condensed',sans-serif;font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin-bottom:14px;font-weight:700}
+.foot a{display:block;text-decoration:none;color:var(--fg-2);font-size:15px;padding:5px 0;transition:color .2s,transform .2s}
+.foot a:hover{color:#fff;transform:translateX(3px)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;color:var(--fg-3)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none;filter:none}
+
+
+/* ============================================================
+   MATERIAL PASS  /  "BRUSHED STEEL"
+   The plates were the right shape but the grounds behind them were
+   flat fill. Now every surface on this page is milled:
+     - anisotropic brush marks running horizontally, the way a linisher
+       leaves them, with a broad specular sweep across the width
+     - the blue field is KNURLED, a fine diagonal crosshatch like the
+       grip on a hand tool, so it reads as a different alloy
+     - tread plate on the section seams
+     - a fixed grain veil so nothing is mathematically clean
+   ============================================================ */
+:root{
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* the brush: fine horizontal striations, uneven on purpose */
+  --brush:repeating-linear-gradient(180deg,
+      rgba(255,255,255,.038) 0 1px, rgba(0,0,0,.05) 1px 2px,
+      transparent 2px 3px, rgba(255,255,255,.017) 3px 4px, transparent 4px 6px);
+  /* the specular sweep of a light bar across a milled face */
+  --sweep:linear-gradient(90deg,
+      rgba(255,255,255,.055) 0%, rgba(255,255,255,.012) 20%,
+      rgba(255,255,255,.07) 47%, rgba(255,255,255,.010) 74%, rgba(255,255,255,.05) 100%);
+  /* knurling: a fine diagonal crosshatch */
+  --knurl:
+      repeating-linear-gradient(45deg, rgba(255,255,255,.055) 0 1px, transparent 1px 7px),
+      repeating-linear-gradient(-45deg, rgba(0,0,0,.10) 0 1px, transparent 1px 7px);
+  --tread:
+      repeating-linear-gradient(24deg, rgba(255,255,255,.10) 0 3px, transparent 3px 14px),
+      repeating-linear-gradient(-24deg, rgba(255,255,255,.10) 0 3px, transparent 3px 14px);
+}
+.grain{
+  position:fixed;inset:0;z-index:75;pointer-events:none;
+  opacity:.07;background-image:var(--grain);background-size:200px 200px;
+}
+/* ---- RHYTHM ----
+   Grain is the mill finish and covers everything. The BRUSH is a machined
+   face, and you machine the faces that matter, not the whole shop floor.
+   So the grounds are plain steel and the brush is kept for the plates
+   themselves plus two sections. The blue field stays knurled, because
+   that is the page's one coloured-and-textured ground. */
+body{
+  background-color:var(--steel);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.035),transparent 40%);
+  background-attachment:fixed;
+}
+.sec[style*="steel-3"],.foot,.hero{background-color:var(--steel-3);background-image:none}
+/* .milled: a brushed face, used on two sections only */
+.milled{
+  background-image:
+    linear-gradient(90deg,rgba(255,255,255,.05),rgba(255,255,255,.008) 26%,rgba(255,255,255,.06) 52%,rgba(255,255,255,.008) 78%,rgba(255,255,255,.045)),
+    repeating-linear-gradient(180deg,
+      rgba(255,255,255,.045) 0 1px, rgba(0,0,0,.07) 1px 2px,
+      transparent 2px 3px, rgba(255,255,255,.02) 3px 4px, transparent 4px 6px);
+}
+/* the blue field and the contact bar are knurled, not brushed */
+.field,.cbar{
+  background-color:var(--field);
+  background-image:
+    radial-gradient(ellipse 1200px 460px at 50% -6%,rgba(72,216,236,.30),transparent 70%),
+    var(--knurl);
+}
+/* a tread plate strip along the sheared seams */
+.field::before{
+  content:"";position:absolute;left:0;right:0;top:var(--shear);height:16px;z-index:1;pointer-events:none;
+  background-image:var(--tread);opacity:.7;
+}
+/* the plates themselves are milled faces, not flat fills */
+.plate,.svc,.nbox,.rev,.node,.fbox{
+  background-image:var(--sweep),var(--brush);
+}
+.plate figcaption,.rev .core{background-image:var(--brush)}
+/* the hero is a photographic ground: scrim only, no striations over the picture */
+
+/* ============================================================
+   ARMOURED GLASS
+   This page is hard on purpose, so the glass here is not the soft
+   frosted kind: it is machine guard glazing. Square cut, tinted
+   toward the field blue, bolted at all four corners, and set into
+   the steel rather than floating over it. Same physical recipe as
+   the other directions, different alloy.
+   ============================================================ */
+.gpanel{
+  position:relative;isolation:isolate;
+  border:1px solid rgba(255,255,255,.24);
+  /* The spec panel's corner crosses the bright glass in the hero photograph,
+     which put its cyan label at 2.90:1 on the rendered pixels. Glass
+     attenuates, so the fix is a heavier tint and a lower brightness, not a
+     brighter label: pushing the label instead would have washed it out
+     everywhere the panel sits on something dark. */
+  background:linear-gradient(158deg,rgba(6,26,32,.5),rgba(6,26,32,.62) 54%,rgba(10,78,92,.58));
+  backdrop-filter:blur(18px) saturate(155%) brightness(.72);
+  -webkit-backdrop-filter:blur(18px) saturate(155%) brightness(.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34),
+    inset 0 -1px 0 rgba(0,0,0,.5),
+    0 30px 66px -40px rgba(0,0,0,.95);
+}
+.gpanel::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(circle at 10% -10%,rgba(255,255,255,.3),transparent 44%),
+    linear-gradient(104deg,rgba(255,255,255,.10),transparent 38%);
+}
+/* four bolt heads, drawn straight onto the glazing */
+.gpanel::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 11px 11px,rgba(255,255,255,.55) 0 1.4px,rgba(0,0,0,.72) 1.7px 3.3px,transparent 3.6px),
+    radial-gradient(circle at calc(100% - 11px) 11px,rgba(255,255,255,.55) 0 1.4px,rgba(0,0,0,.72) 1.7px 3.3px,transparent 3.6px),
+    radial-gradient(circle at 11px calc(100% - 11px),rgba(255,255,255,.55) 0 1.4px,rgba(0,0,0,.72) 1.7px 3.3px,transparent 3.6px),
+    radial-gradient(circle at calc(100% - 11px) calc(100% - 11px),rgba(255,255,255,.55) 0 1.4px,rgba(0,0,0,.72) 1.7px 3.3px,transparent 3.6px);
+}
+
+/* the who-we-are list becomes glazing set into the blue field */
+.checks{
+  margin-top:26px;border-top:0;padding:4px 22px 6px;
+  position:relative;isolation:isolate;
+  border:1px solid rgba(255,255,255,.24);
+  background:linear-gradient(158deg,rgba(255,255,255,.14),rgba(255,255,255,.04) 56%,rgba(0,0,0,.06));
+  backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  -webkit-backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -1px 0 rgba(0,0,0,.4),0 26px 58px -40px rgba(0,0,0,.9);
+}
+.checks li:last-child{border-bottom:0}
+
+/* the review cores are glazing inside a bolted steel frame */
+.rev .core{
+  background-color:transparent;
+  background-image:none;
+  border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(158deg,rgba(255,255,255,.10),rgba(255,255,255,.028) 56%,rgba(72,216,236,.07));
+  backdrop-filter:blur(14px) saturate(145%) brightness(.9);
+  -webkit-backdrop-filter:blur(14px) saturate(145%) brightness(.9);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -2px 6px rgba(0,0,0,.45);
+}
+
+/* contact details become glazing over the knurled field */
+.cinfo{
+  margin-top:30px;border-top:0;padding:4px 20px 6px;
+  position:relative;isolation:isolate;
+  border:1px solid rgba(255,255,255,.24);
+  background:linear-gradient(158deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+  backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  -webkit-backdrop-filter:blur(16px) saturate(150%) brightness(.94);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 26px 58px -40px rgba(0,0,0,.9);
+}
+.cinfo a:last-of-type,.cinfo div:last-of-type{border-bottom:0}
+
+/* the sticky nav is glazing too */
+.nav{
+  background:linear-gradient(180deg,rgba(12,17,25,.72),rgba(12,17,25,.56));
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+}
+.nav.stuck{background:linear-gradient(180deg,rgba(12,17,25,.9),rgba(12,17,25,.78))}
+
+/* ---------- the glazed spec panel bolted over the hero ---------- */
+.spec{
+  position:absolute;right:var(--pad);bottom:calc(var(--shear) + clamp(30px,4vw,60px));z-index:3;
+  width:min(330px,30vw);padding:20px 22px 16px;cursor:grab;touch-action:none;
+}
+.spec:active{cursor:grabbing}
+.spec .k{font-family:'Saira Condensed',sans-serif;font-size:15px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--bright)}
+.spec dl{margin:14px 0 0;position:relative;z-index:2}
+.spec .r{display:flex;justify-content:space-between;gap:14px;padding:9px 0;
+  border-top:1px solid rgba(255,255,255,.16);font-size:14px;color:var(--fg-2)}
+.spec .r b{color:#fff;font-family:'Saira Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.05em}
+/* the nav has to hold one line. Between 760 and 1010 it did not,
+   so the phone link steps out first. It is still in the hero, the
+   drawer and the footer. */
+@media (max-width:1010px){
+  .nav-tel{display:none}
+  .nav-links{gap:22px;font-size:14px}
+}
+@media (max-width:860px){
+  .nav-links{gap:15px;font-size:13px}
+}
+@media (max-width:1040px){.spec{display:none}}
+
+@media (prefers-reduced-transparency: reduce){
+  .gpanel,.checks,.cinfo,.rev .core{background:rgba(12,17,25,.96);backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav,.nav.stuck{background:rgba(12,17,25,.98);backdrop-filter:none;-webkit-backdrop-filter:none}
+}
+@media (max-width:760px){
+  /* stacked blurs are the single most expensive thing on a phone */
+  .checks,.cinfo,.rev .core{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(10,15,23,.6)}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:1040px){
+  :root{--shear:80px}
+  .field-in,.cbar-in{grid-template-columns:1fr}
+  .svc.a,.svc.b,.svc.c{grid-column:1/13}
+  .svc.c{grid-template-columns:1fr}
+  .ngrid{grid-template-columns:1fr 1fr}
+  .proj .r1,.proj .r2,.proj .r3{grid-column:1/13}
+  .revs{grid-template-columns:1fr}
+  .note{grid-template-columns:1fr;gap:6px}
+  .foot-in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  :root{--shear:46px}
+  .nav-links,.nav-right{display:none}
+  .burger{display:grid;place-items:center}
+  .drawer{display:block;position:fixed;inset:74px 0 auto 0;z-index:59;background:var(--steel-3);border-bottom:1px solid var(--line);padding:10px var(--pad) 26px;transform:translateY(-130%);transition:transform .44s cubic-bezier(.16,1,.3,1)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{display:block;padding:15px 0;border-bottom:1px solid var(--line);text-decoration:none;font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:23px;letter-spacing:.08em;text-transform:uppercase}
+  .drawer .btn{width:100%;justify-content:center;margin-top:18px}
+  .ngrid{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+  .foot-in{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none;filter:none}
+}
+</style>
+</head>
+<body>
+
+<!-- fixed grain over the whole page -->
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">East Valley<em>.</em></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Areas</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-tel" href="tel:+14808069455">480-806-9455</a>
+      <a class="btn" href="#estimate"><span>Free estimate</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Areas</a>
+  <a class="btn pale" href="#estimate"><span>Free estimate</span></a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img src="assets/plate-pole.jpg" width="900" height="1200"
+       alt="A water-fed pole worked across an arched upper window" fetchpriority="high">
+  <div class="wrap hero-in">
+    <h1>Crystal clear views.<em>Start here.</em></h1>
+    <p class="lede">Owner-operated window cleaning across the East Valley. Inside and out, screens and tracks, hard water stains, tint, solar panels and hauling. Residential and commercial.</p>
+    <div class="hero-act">
+      <a class="btn pale" href="tel:+14808069455"><span>Call 480-806-9455</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      <a class="btn wire" href="sms:+14808069455"><span>Text for a quote</span></a>
+    </div>
+  </div>
+
+  <!-- glazed spec panel, bolted through the steel, draggable -->
+  <aside class="spec gpanel" id="spec">
+    <div class="k">Job spec</div>
+    <dl>
+      <div class="r"><span>Google rating</span><b>5.0</b></div>
+      <div class="r"><span>Google reviews</span><b>4</b></div>
+      <div class="r"><span>Services</span><b>7</b></div>
+      <div class="r"><span>Towns covered</span><b>8</b></div>
+      <div class="r"><span>Estimates</span><b>Free</b></div>
+    </dl>
+  </aside>
+</section>
+
+<!-- ============ FIELD ============ -->
+<section class="field" id="about">
+  <div class="wrap field-in">
+    <div class="chain rv">
+      <div class="node bolts"><span class="b2"></span><span class="b3"></span><span class="n">01</span><h4>Same hands, every visit</h4><p>Owner-operated. No rotating crew and no subcontractor.</p></div>
+      <div class="node bolts"><span class="b2"></span><span class="b3"></span><span class="n">02</span><h4>Purified water, water-fed pole</h4><p>Streak free at height, and no ladder on your landscaping.</p></div>
+      <div class="node bolts"><span class="b2"></span><span class="b3"></span><span class="n">03</span><h4>Inside and out</h4><p>Both faces of the glass, plus the sills and the sliding tracks.</p></div>
+      <div class="node bolts"><span class="b2"></span><span class="b3"></span><span class="n">04</span><h4>Priced off a photo</h4><p>Most homes are quoted from an address and a picture, with no visit.</p></div>
+    </div>
+    <div class="rv">
+      <h2>The owner does the work</h2>
+      <p class="lede">Every job is done by Jose Sandoval, the owner. Same hands on your glass every time, residential or commercial. There is no rotating crew and no subcontractor, so the standard on the second visit is the standard on the first.</p>
+      <ul class="checks">
+        <li><b>One operator, one invoice.</b> Book a single window clean or bundle the whole exterior into the same visit.</li>
+        <li><b>Residential and commercial.</b> Homes, storefronts and restaurants, single storey through to multi-storey.</li>
+        <li><b>Free estimates.</b> Call or text with your address and roughly how many windows.</li>
+        <li><b>On the route daily.</b> Eight East Valley towns, from Mesa out to Bella Vista Farms.</li>
+      </ul>
+      <div style="margin-top:30px"><a class="btn pale" href="#estimate"><span>Free estimate</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(32px,6.46vw,93px)">Three groups, and one phone number.</h2></div>
+    <div class="svcs">
+      <article class="svc a rv">
+        <div class="pic"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt="Clean commercial storefront glazing at street level"></div>
+        <div class="body">
+          <h3>Glass</h3>
+          <p>Windows in and out, screens, tracks and hard water stains. Streak-free on homes and businesses, single storey to multi-storey.</p>
+          <ul><li>Interior and exterior windows</li><li>Purified water and a water-fed pole at height</li><li>Screens pulled, washed and re-set</li><li>Sills and sliding tracks scrubbed out</li><li>Mineral etching cut back off the glass</li></ul>
+        </div>
+      </article>
+      <article class="svc b rv">
+        <div class="pic"><img src="assets/job-solar-sky.jpg" width="540" height="960" loading="lazy" alt="A rooftop solar array under open sky after cleaning"></div>
+        <div class="body">
+          <h3>Film and panels</h3>
+          <p>UV and privacy film, and solar arrays washed back to output. Two jobs the same van already carries the water for.</p>
+          <ul><li>UV and heat film for furnishings and the AC</li><li>Reflective film for privacy</li><li>Dust and hard water film lifted off panels</li><li>The array stops losing output to grime</li></ul>
+        </div>
+      </article>
+      <article class="svc c rv">
+        <div class="pic"><img src="assets/job-haul.jpg" width="820" height="1094" loading="lazy" alt="Monsoon debris and a cleared-out load stacked in a yard ready to haul"></div>
+        <div class="body">
+          <h3>Property</h3>
+          <p>Pressure washing, plus junk and monsoon debris hauled away. The rest of the exterior, while the van is already at the kerb.</p>
+          <ul><li>Driveways, walkways and patios</li><li>Building exteriors and elevations</li><li>Monsoon debris cleared</li><li>Rental clear-outs and listing prep</li></ul>
+        </div>
+      </article>
+    </div>
+    <div class="ngrid">
+      <div class="nbox bolts rv"><span class="b2"></span><span class="b3"></span><div class="n" data-count="5" data-dp="1" data-suffix="">5.0</div><div class="t">On Google, from all four reviews</div></div>
+      <div class="nbox bolts rv"><span class="b2"></span><span class="b3"></span><div class="n" data-count="4" data-suffix="">4</div><div class="t">Google reviews, every one on this page</div></div>
+      <div class="nbox bolts rv"><span class="b2"></span><span class="b3"></span><div class="n" data-count="7" data-suffix="">7</div><div class="t">Services on one phone number</div></div>
+      <div class="nbox bolts rv"><span class="b2"></span><span class="b3"></span><div class="n" data-count="8" data-suffix="">8</div><div class="t">East Valley towns on the route</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATEMENT ============ -->
+<section class="sec milled" style="background:var(--steel-3);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <p class="say rv">One operator, one invoice. <b>Book a single window clean, or bundle the whole exterior.</b></p>
+    <div class="notes">
+      <div class="note rv"><h4>Everything that touches the glass</h4><p>Windows, screens, tracks, hard water, tint, panels and the hauling. Seven services, and the same person doing all of them.</p></div>
+      <div class="note rv"><h4>Most homes need no visit</h4><p>Call or text with your address and roughly how many windows. That is usually enough to price the job.</p></div>
+      <div class="note rv"><h4>Frames and sills, not just the pane</h4><p>Screens come out and go back. Sills and sliding tracks are vacuumed and scrubbed as part of the same job.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEFORE AND AFTER ============ -->
+<section class="sec" id="proof">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(32px,6.88vw,99px)">The same storefront, one visit apart.</h2></div>
+    <div class="ba">
+      <figure class="rv" style="margin:0">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><img src="assets/ba-before.jpg" width="390" height="488" loading="lazy" alt="Commercial storefront glazing in Mesa before cleaning"></div>
+          <figcaption><b>Before</b>Monsoon dust and sprinkler overspray on the glass.</figcaption>
+        </div>
+      </figure>
+      <figure class="rv" style="margin:0">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><img src="assets/ba-after.jpg" width="390" height="488" loading="lazy" alt="The same Mesa storefront glazing after cleaning"></div>
+          <figcaption><b>After</b>One visit. Frames and screens done at the same time.</figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENT WORK ============ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(32px,8.13vw,117px)">Straight from the van.</h2></div>
+    <p class="lede rv" style="margin-top:16px;max-width:56ch">Their own clips and job photographs, straight off Instagram. The two clips play here with the sound off.</p>
+    <div class="proj">
+      <figure class="r1 rv">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg" muted loop playsinline preload="none" width="1280" height="722" aria-label="Storefront glazing being cleaned"></video></div>
+          <figcaption><b>Commercial storefront</b>Mesa. Exterior glass, frames and screens.</figcaption>
+        </div>
+      </figure>
+      <figure class="r2 rv">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="A solar array being rinsed"></video></div>
+          <figcaption><b>Solar array rinse</b>Dust and hard water film lifted off.</figcaption>
+        </div>
+      </figure>
+      <figure class="r3 rv">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy" alt="Restaurant frontage glazing after cleaning"></div>
+          <figcaption><b>Restaurant frontage</b>Street-facing glass, cleaned before service.</figcaption>
+        </div>
+      </figure>
+      <figure class="r4 rv">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><img src="assets/hero-pole.jpg" width="1200" height="1600" loading="lazy" alt="A water-fed pole reaching upper storey glass"></div>
+          <figcaption><b>Two storey residential</b>Water-fed pole, no ladder on the landscaping.</figcaption>
+        </div>
+      </figure>
+      <figure class="r5 rv">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt="Retail entry glazing, doors and sidelights"></div>
+          <figcaption><b>Retail entry</b>Doors, sidelights and the frames around them.</figcaption>
+        </div>
+      </figure>
+      <figure class="r6 rv">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy" alt="A yard cleared of monsoon debris"></div>
+          <figcaption><b>Junk removal</b>Monsoon debris loaded up and taken away.</figcaption>
+        </div>
+      </figure>
+      <figure class="r7 rv">
+        <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
+          <div><img src="assets/rig.jpg" width="1200" height="1200" loading="lazy" alt="The work van and equipment"></div>
+          <figcaption><b>The rig</b>Everything on one van, on the route daily.</figcaption>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="sec" id="reviews" style="background:var(--steel-3);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="rv"><h2 style="font-size:clamp(32px,6.88vw,99px)">5.0, every review unedited.</h2></div>
+    <div class="revs">
+      <figure class="rev bolts rv" style="margin:0"><span class="b2"></span><span class="b3"></span><div class="core"><p>Jose did an outstanding job cleaning my windows! The team was incredibly friendly, professional, and detail-oriented. They left every window spotless, even cleaning the frames and screens to perfection.</p><footer><b>Lacey Shultz</b>Google review</footer></div></figure>
+      <figure class="rev bolts rv" style="margin:0"><span class="b2"></span><span class="b3"></span><div class="core"><p>Jose from East Valley Window Cleaning is a true professional. They are polite, easy to communicate with, and make you feel confident in their honesty and reliability.</p><footer><b>Nina Hanopol</b>Google review</footer></div></figure>
+      <figure class="rev bolts rv" style="margin:0"><span class="b2"></span><span class="b3"></span><div class="core"><p>Great job done! On time, on schedule. Windows and sliding doors look great.</p><footer><b>Kirkland Sanders</b>Google review</footer></div></figure>
+      <figure class="rev bolts rv" style="margin:0"><span class="b2"></span><span class="b3"></span><div class="core"><p>Really great service!</p><footer><b>Maria Sandoval</b>Google review</footer></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREA ============ -->
+<section class="sec milled" id="area">
+  <div class="wrap">
+    <div class="rv">
+      <h2 style="font-size:clamp(32px,6.25vw,90px)">Working the whole East Valley.</h2>
+      <p class="lede" style="margin-top:16px">Based in the East Valley and on the road daily. If you are near one of these, you are on the route.</p>
+    </div>
+    <div class="towns rv">
+      <span>Mesa</span><span>Gilbert</span><span>Chandler</span><span>Queen Creek</span>
+      <span>San Tan Valley</span><span>Apache Junction</span><span>Johnson Ranch</span><span>Bella Vista Farms</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============
+     Set Right's estimate form was bolted into the right hand plate. East Valley
+     prices most homes off a photo and an address, so the plate carries the
+     number instead of a form that would contradict the copy beside it. -->
+<section class="cbar" id="estimate">
+  <div class="wrap cbar-in">
+    <div class="rv">
+      <h2>Tell us what needs cleaning.</h2>
+      <p class="lede" style="color:rgba(255,255,255,.82);margin-top:16px">Call or text with your address and roughly how many windows. Most homes can be priced without a visit.</p>
+      <div class="cinfo">
+        <a href="tel:+14808069455"><em>Phone</em>480-806-9455</a>
+        <a href="sms:+14808069455"><em>Text</em>Send a photo of your windows</a>
+        <div><em>Owner</em>Jose Sandoval</div>
+        <div><em>Covers</em>Mesa, Gilbert, Chandler, Queen Creek, San Tan Valley, Apache Junction, Johnson Ranch, Bella Vista Farms</div>
+        <a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener"><em>Instagram</em>@eastvalleywindowcleaningllc</a>
+      </div>
+    </div>
+    <div class="fbox bolts rv"><span class="b2"></span><span class="b3"></span>
+      <div class="callbox">
+        <span class="ck">Free estimate</span>
+        <a class="bignum" href="tel:+14808069455">480-806-9455</a>
+        <p class="cn">A photo of the glass and a rough window count is usually all it takes. No visit, no obligation, no call-out fee.</p>
+        <a class="btn pale" href="sms:+14808069455" style="width:100%;justify-content:center"><span>Text a photo of your windows</span>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <p class="fnote">Residential and commercial, single storey to multi-storey, right across the East Valley.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <a class="brand" href="#top">East Valley<em>.</em></a>
+        <p style="color:var(--fg-2);font-size:15px;max-width:34ch;margin-top:14px">East Valley Window Cleaning LLC. Owner-operated by Jose Sandoval. Residential and commercial window care across the East Valley of Arizona.</p>
+        <p style="font-size:15px;margin-top:14px;font-weight:600">480-806-9455</p>
+      </div>
+      <div><h5>Services</h5><a href="#services">Window cleaning</a><a href="#services">Screens and tracks</a><a href="#services">Hard water removal</a><a href="#services">Window tinting</a><a href="#services">Solar panel cleaning</a><a href="#services">Pressure washing</a><a href="#services">Junk removal</a></div>
+      <div><h5>Service area</h5><a href="#area">Mesa</a><a href="#area">Gilbert</a><a href="#area">Chandler</a><a href="#area">Queen Creek</a><a href="#area">San Tan Valley</a></div>
+      <div><h5>Contact</h5><a href="tel:+14808069455">480-806-9455</a><a href="sms:+14808069455">Text a quote request</a><a href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener">@eastvalleywindowcleaningllc</a></div>
+    </div>
+    <div class="foot-bot">
+      <span>Copyright 2026 East Valley Window Cleaning LLC</span>
+      <span>Owner-operated, residential and commercial</span>
+      <span>Direction 03 / Plate</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rvs=document.querySelectorAll('.rv');
+  if(reduce || !('IntersectionObserver' in window)){ rvs.forEach(function(e){e.classList.add('on');}); }
+  else{
+    var g=new Map();
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var p=e.target.parentElement,i=g.get(p)||0; g.set(p,i+1);
+        e.target.style.transitionDelay=Math.min(i*75,340)+'ms';
+        e.target.classList.add('on'); io.unobserve(e.target);
+      });
+    },{threshold:.14,rootMargin:'0px 0px -7% 0px'});
+    rvs.forEach(function(e){ io.observe(e); });
+  }
+  var nav=document.getElementById('nav'),s=document.createElement('div');
+  s.style.cssText='position:absolute;top:0;height:1px;width:1px';
+  document.body.prepend(s);
+  new IntersectionObserver(function(e){ nav.classList.toggle('stuck',!e[0].isIntersecting); },{threshold:0}).observe(s);
+  var b=document.getElementById('burger'),d=document.getElementById('drawer');
+  b.addEventListener('click',function(){ b.setAttribute('aria-expanded', d.classList.toggle('open')); });
+  d.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }); });
+  var sio=new IntersectionObserver(function(es,o){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target,t=parseFloat(el.dataset.count),sf=el.dataset.suffix||'',dp=parseInt(el.dataset.dp||'0',10); o.unobserve(el);
+      if(reduce) return;
+      el.textContent=(0).toFixed(dp)+sf;
+      var st=null;
+      function tick(ts){ if(!st)st=ts; var pr=Math.min((ts-st)/1200,1),e2=1-Math.pow(1-pr,3);
+        el.textContent=(t*e2).toFixed(dp)+sf; if(pr<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(n){ sio.observe(n); });
+  // Their two real Instagram clips, in the bolted plates. Play only while on
+  // screen; a clip running off-canvas decodes frames nobody is looking at.
+  (function(){
+    var vids=[].slice.call(document.querySelectorAll('.proj video'));
+    if(!vids.length) return;
+    if(reduce){ vids.forEach(function(v){ v.removeAttribute('loop'); v.load(); }); return; }
+    if(!('IntersectionObserver' in window)){ vids.forEach(function(v){ v.play().catch(function(){}); }); return; }
+    var vo=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v=e.target;
+        if(e.isIntersecting) v.play().catch(function(){}); else if(!v.paused) v.pause();
+      });
+    },{threshold:.3});
+    vids.forEach(function(v){ v.preload='metadata'; vo.observe(v); });
+  })();
+})();
+</script>
+</body>
+</html>
