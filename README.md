@@ -42,7 +42,7 @@ laid out the same way twice, so the client is comparing designs rather than colo
 | Seven services | Accordion strip, the panel under the pointer takes a third | Job lists inside each alternating chapter | Recessed lists inside the milled cards | Lists inside the keylined modules |
 | Photographic band | Full bleed photo with a glass figure card | (not used) | (not used) | Full bleed photo with an acetate figure card |
 | Before and after | Two plates on a teal field inside one white panel | Two plates on the lit band | Two bolted plates | Two keylined prints, second one mirrored |
-| Recent work, 7 items | Drag filmstrip, mixed slide widths, runs off the right edge | Seven plate composition, pair then full width then pair | Seven bolted plates on a twelve column grid | Seven prints on a twelve column grid, each pulled at a different size |
+| Recent work, 7 items | Drag filmstrip, mixed slide widths, runs off the right edge | Projector: one frame at full width, numbered contact sheet under it | Indexing rail: stations on a track, machined control block and readout | Seven prints on a twelve column grid, each pulled at a different size |
 | Reviews, all four | Glass cards on the teal band with quote marks | Hairline entries, accent rule on top | Bolted frames around white cores | Keylined cards with offset blocks |
 | Service area | Town columns on survey contours beside a map card | Ruled town grid on the lit band | Ruled town columns on a milled ground | Ruled town grid on a screened white ground |
 | Contact | Teal panel, details list beside the call block | Photo ground, details beside a white call plate | Teal bar, details beside a bolted call plate | Screened near black, details beside an acetate call plate |
@@ -117,6 +117,61 @@ The two reels play muted on a loop and **pause when they scroll out of view**, s
 running off screen is never decoding frames nobody is looking at.
 
 ---
+
+## Recent work: two real gallery components (2026-09-09)
+
+Both were grids, and a grid shows everything at once and nothing at size. On a
+trades page that is the wrong trade, because the photography **is** the product.
+Both are now components you operate, and they are deliberately not the same
+component: 01 already owns the drag filmstrip and 04 keeps its print grid, so
+across the four directions no two galleries work the same way.
+
+### 02: the projector
+
+Film stock, so the gallery is a projector. One frame at a time at full width,
+the reel laid out as a **numbered contact sheet** underneath, and a film cut
+between them: the outgoing frame goes soft and slightly large on its way out,
+which is the same treatment the before and after uses. Driven by a click on any
+cell, the two gate arms, the arrow keys, or a horizontal swipe.
+
+Every source is a phone frame at a different aspect, so each one carries a hand
+set `object-position` and the crop lands on the work rather than on somebody's
+knees. Below 760px the seven thumbnails would be 40px each, under the touch
+minimum and unreadable, so the sheet becomes a snapping strip and the gate arms
+move to the top of the frame, clear of the caption they were sitting across.
+
+### 03: the indexing rail
+
+Milled metal, so the gallery is a rail you travel along. Stations on a track, the
+plate at the station lit and its neighbours dimmed, a **machined control block**
+with back and forward bolted either side of a `01 / 07` readout, and a seven
+mark station strip under it.
+
+Built on native scroll-snap rather than a JS translated track, so touch drag,
+trackpad, momentum and keyboard all come from the browser and there is no drag
+handler to fight the page's own scrolling. Scroll position is the single source
+of truth: the readout, the ticks, the dimming, the disabled state of the two
+buttons and which clip is allowed to decode are all read back off `scrollLeft`,
+so a flick and a button press cannot disagree.
+
+### Three things measurement caught
+
+1. **The last two stations could never reach the reading position.** The track
+   bottomed out two stations early, so the readout stuck at `07` and pressing
+   back jumped straight to `05`. Fixed with trailing room after the last station
+   (`::after` sized to the rail minus one station), and by making the buttons
+   travel **to a station offset** rather than **by a measured step**, which
+   drifts at the ends where less than one full step remains.
+2. **Both clips were playing at once behind a picture nobody could see.** All
+   seven projector frames are stacked on the same spot, so the old per-clip
+   observer saw both as on screen. The component now owns which clip runs, and
+   the observer only stops them when the whole gallery leaves the viewport.
+3. **The projector took `.shot` with it, and the before and after still used
+   it.** The base rules went back; only the grid specific ones were dropped.
+
+Both galleries are the control surface, not decoration, so they are verified
+with `cdnjs` blocked at the network layer: with no GSAP at all the arms, the
+cells, the buttons, the readout and the ticks all still work.
 
 ## Motion on 02 and 03 (2026-09-09)
 

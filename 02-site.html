@@ -262,29 +262,92 @@ h1,h2,h3,h4{
 .ngrid .t{margin-top:12px;font-size:14.5px;color:var(--fg-2);max-width:20ch;font-weight:300}
 
 /* ---------- gallery: two big pictures, captions inside ---------- */
-.gal{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:48px}
+/* ---------- RECENT WORK: the projector ----------
+   One frame at a time, projected at full width, with the reel laid out as a
+   contact sheet under it. Frames are stacked and crossfaded rather than moved,
+   because a projector changes the picture in place; the outgoing frame goes
+   soft on its way out, which is the same film cut the rest of this direction
+   uses. Every source is a phone frame at a different aspect, so each one keeps
+   a hand set object-position and the crop lands on the work. */
+.projx{margin-top:clamp(30px,4vw,48px)}
+.stage{position:relative;aspect-ratio:3/2;overflow:hidden;background:#000;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 50px 110px -50px rgba(0,0,0,.95)}
+.frame{position:absolute;inset:0;margin:0;opacity:0;filter:blur(9px);transform:scale(1.025);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1),filter .5s cubic-bezier(.16,1,.3,1),
+             transform .7s cubic-bezier(.16,1,.3,1);
+  pointer-events:none}
+.frame[data-on]{opacity:1;filter:none;transform:none;pointer-events:auto}
+.frame img,.frame video{width:100%;height:100%;object-fit:cover;display:block}
+/* the gate: a soft edge at the foot so the caption always has a field */
+.stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;z-index:2;
+  pointer-events:none;background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.9))}
+.pcap{position:absolute;left:0;right:0;bottom:0;z-index:3;
+  padding:clamp(18px,2.6vw,34px);display:flex;align-items:flex-end;
+  gap:clamp(14px,2vw,26px);flex-wrap:wrap}
+.pcap b{display:block;font-family:'Big Shoulders Display',sans-serif;
+  font-size:clamp(24px,3.4vw,44px);font-weight:800;text-transform:uppercase;
+  letter-spacing:.03em;color:#fff;line-height:1}
+.pcap span{display:block;margin-top:6px;font-size:14.5px;color:var(--fg-2);max-width:46ch}
+.pcount{margin-left:auto;font-family:'Big Shoulders Display',sans-serif;font-weight:700;
+  font-size:15px;letter-spacing:.22em;color:rgba(255,255,255,.66);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+/* the gate arms. 48px, so they clear the 44px minimum on a touch screen. */
+.pnav{position:absolute;top:50%;z-index:4;transform:translateY(-50%);
+  width:48px;height:48px;display:grid;place-items:center;cursor:pointer;
+  border:1px solid rgba(255,255,255,.34);background:rgba(7,12,20,.5);color:#fff;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  transition:background .25s,border-color .25s,transform .25s}
+.pnav:hover{background:rgba(7,12,20,.78);border-color:#fff}
+.pnav:active{transform:translateY(-50%) scale(.94)}
+.pnav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round}
+.pnav.prev{left:clamp(12px,1.6vw,20px)}
+.pnav.next{right:clamp(12px,1.6vw,20px)}
+/* the contact sheet. Numbered, because a reel is numbered. */
+.sheet{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:clamp(8px,1vw,14px);margin-top:clamp(10px,1.4vw,18px)}
+.cell{position:relative;padding:0;border:0;cursor:pointer;background:#000;
+  aspect-ratio:3/2;overflow:hidden;opacity:.42;
+  transition:opacity .35s cubic-bezier(.16,1,.3,1),box-shadow .35s cubic-bezier(.16,1,.3,1);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.cell img{width:100%;height:100%;object-fit:cover;display:block}
+.cell:hover{opacity:.78}
+.cell[aria-current="true"]{opacity:1;box-shadow:inset 0 0 0 2px var(--blue)}
+.cell .num{position:absolute;left:0;top:0;z-index:2;padding:4px 7px;
+  font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:.12em;color:#fff;background:rgba(7,12,20,.66);
+  font-variant-numeric:tabular-nums}
+@media (max-width:760px){
+  .stage{aspect-ratio:4/3}
+  /* at this width the gate arms sat straight across the caption headline. They
+     go to the top of the frame, where the caption never reaches and the swipe
+     is the primary gesture anyway. */
+  .pnav{top:12px;transform:none}
+  .pnav:active{transform:scale(.94)}
+  .pnav.prev{left:12px}
+  .pnav.next{right:12px}
+  .pcap{padding:16px}
+  /* seven thumbnails at a phone's width would be 40px each, under the touch
+     minimum and too small to read. They become a snapping strip instead. */
+  .sheet{display:flex;overflow-x:auto;overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);
+    scrollbar-width:none}
+  .sheet::-webkit-scrollbar{display:none}
+  .cell{flex:0 0 92px;scroll-snap-align:center}
+}
+@media (max-width:720px){
+}
+
+/* a framed picture with its caption laid over the foot. The gallery that used
+   to share this is a projector now; the before and after plates still use it. */
 .shot{position:relative;overflow:hidden;background:#000}
 .shot img{width:100%;height:100%;object-fit:cover;transition:scale .9s cubic-bezier(.16,1,.3,1)}
 .shot:hover img{scale:1.05}
-.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px;background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.92));font-size:14.5px;color:var(--fg-2)}
-.shot figcaption b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.03em;margin-bottom:4px}
-.gal .a{grid-column:1/2;height:clamp(320px,44vw,560px)}
-.gal .b{grid-column:2/3;height:clamp(320px,44vw,560px)}
-.gal .c{grid-column:1/3;height:clamp(300px,38vw,500px)}
-/* Set Right had three plates. East Valley's gallery is seven items, so the
-   composition repeats its own rhythm - pair, full width, pair, pair - rather
-   than flattening into a seven cell grid, which is the thing this direction
-   was built to avoid. */
-.gal .d{grid-column:1/2;height:clamp(300px,38vw,500px)}
-.gal .e{grid-column:2/3;height:clamp(300px,38vw,500px)}
-.gal .f{grid-column:1/2;height:clamp(280px,33vw,430px)}
-.gal .g{grid-column:2/3;height:clamp(280px,33vw,430px)}
-.shot video{width:100%;height:100%;object-fit:cover;transition:scale .9s cubic-bezier(.16,1,.3,1)}
-.shot:hover video{scale:1.05}
-@media (max-width:720px){
-  .gal{grid-template-columns:1fr}
-  .gal .a,.gal .b,.gal .c,.gal .d,.gal .e,.gal .f,.gal .g{grid-column:1/2;height:clamp(260px,62vw,380px)}
-}
+.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px;
+  background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.92));font-size:14.5px;color:var(--fg-2)}
+.shot figcaption b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:26px;
+  font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.03em;margin-bottom:4px}
 
 /* before and after: the same storefront, one visit apart */
 .ba{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:48px}
@@ -600,8 +663,6 @@ body{
   .chap.r .lede{margin-left:0}
   .chapshot img{height:clamp(240px,58vw,360px)}
   .ngrid{grid-template-columns:1fr 1fr;gap:28px}
-  .gal{grid-template-columns:1fr}
-  .gal .a,.gal .b,.gal .c{grid-column:1/2;height:clamp(260px,54vw,380px)}
   .revs{grid-template-columns:1fr}
   .cta-in{grid-template-columns:1fr}
   .foot-in{grid-template-columns:1fr 1fr}
@@ -787,42 +848,28 @@ body{
   <div class="wrap">
     <h2 class="rv" style="font-size:clamp(38px,9.17vw,132px)">Straight from the van</h2>
     <p class="lede rv" style="margin-top:18px;max-width:56ch">Their own clips and job photographs, straight off Instagram. The two clips play here with the sound off.</p>
-    <div class="gal">
-      <figure class="shot a" style="margin:0">
-        <img src="assets/plate-pole.jpg" width="900" height="1200" loading="lazy"
-             alt="A water-fed pole worked across an arched upper window">
-        <figcaption><b>Residential upper glass</b>Arched second storey windows, worked from the ground.</figcaption>
-      </figure>
-      <figure class="shot b" style="margin:0">
-        <video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg" muted loop playsinline
-               preload="none" width="540" height="960" aria-label="A solar array being rinsed"></video>
-        <figcaption><b>Solar array rinse</b>Dust and hard water film lifted off.</figcaption>
-      </figure>
-      <figure class="shot c" style="margin:0">
-        <video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg" muted loop playsinline
-               preload="none" width="1280" height="722" aria-label="Storefront glazing being cleaned"></video>
-        <figcaption><b>Commercial storefront</b>Mesa. Exterior glass, frames and screens.</figcaption>
-      </figure>
-      <figure class="shot d" style="margin:0">
-        <img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy"
-             alt="Restaurant frontage glazing after cleaning">
-        <figcaption><b>Restaurant frontage</b>Street-facing glass, cleaned before service.</figcaption>
-      </figure>
-      <figure class="shot e" style="margin:0">
-        <img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy"
-             alt="Retail entry glazing, doors and sidelights">
-        <figcaption><b>Retail entry</b>Doors, sidelights and the frames around them.</figcaption>
-      </figure>
-      <figure class="shot f" style="margin:0">
-        <img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy"
-             alt="A yard cleared of monsoon debris">
-        <figcaption><b>Junk removal</b>Monsoon debris loaded up and taken away.</figcaption>
-      </figure>
-      <figure class="shot g" style="margin:0">
-        <img src="assets/rig.jpg" width="1200" height="1200" loading="lazy"
-             alt="The work van and equipment">
-        <figcaption><b>The rig</b>Everything on one van, on the route daily.</figcaption>
-      </figure>
+    <div class="projx" role="group" aria-roledescription="carousel" aria-label="Recent work">
+      <div class="stage">
+        <figure class="frame" data-on data-i="0" aria-roledescription="slide" aria-label="1 of 7, Residential upper glass"><img src="assets/plate-pole.jpg" width="900" height="1200" fetchpriority="high" style="object-position:50% 62%" alt="A water-fed pole worked across an arched upper window"></figure>
+        <figure class="frame" data-i="1" aria-roledescription="slide" aria-label="2 of 7, Solar array rinse"><video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg" muted loop playsinline preload="none" width="540" height="960" style="object-position:50% 50%" aria-label="A solar array being rinsed"></video></figure>
+        <figure class="frame" data-i="2" aria-roledescription="slide" aria-label="3 of 7, Commercial storefront"><video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg" muted loop playsinline preload="none" width="1280" height="722" style="object-position:50% 45%" aria-label="Storefront glazing being cleaned"></video></figure>
+        <figure class="frame" data-i="3" aria-roledescription="slide" aria-label="4 of 7, Restaurant frontage"><img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy" style="object-position:50% 42%" alt="Restaurant frontage glazing after cleaning"></figure>
+        <figure class="frame" data-i="4" aria-roledescription="slide" aria-label="5 of 7, Retail entry"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" style="object-position:50% 50%" alt="Retail entry glazing, doors and sidelights"></figure>
+        <figure class="frame" data-i="5" aria-roledescription="slide" aria-label="6 of 7, Junk removal"><img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy" style="object-position:50% 55%" alt="A yard cleared of monsoon debris"></figure>
+        <figure class="frame" data-i="6" aria-roledescription="slide" aria-label="7 of 7, The rig"><img src="assets/rig.jpg" width="1200" height="1200" loading="lazy" style="object-position:50% 50%" alt="The work van and equipment"></figure>
+        <p class="pcap" aria-live="polite"><span><b>Residential upper glass</b><span>Arched second storey windows, worked from the ground.</span></span><span class="pcount">01 / 07</span></p>
+        <button class="pnav prev" type="button" aria-label="Previous frame"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
+        <button class="pnav next" type="button" aria-label="Next frame"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="sheet">
+        <button class="cell" type="button" data-i="0" aria-current="true" aria-label="Show frame 1, Residential upper glass"><img src="assets/plate-pole.jpg" width="900" height="1200" loading="lazy" alt=""><span class="num">01</span></button>
+        <button class="cell" type="button" data-i="1" aria-current="false" aria-label="Show frame 2, Solar array rinse"><img src="assets/poster-solar.jpg" width="540" height="960" loading="lazy" alt=""><span class="num">02</span></button>
+        <button class="cell" type="button" data-i="2" aria-current="false" aria-label="Show frame 3, Commercial storefront"><img src="assets/poster-storefront-wide.jpg" width="1280" height="722" loading="lazy" alt=""><span class="num">03</span></button>
+        <button class="cell" type="button" data-i="3" aria-current="false" aria-label="Show frame 4, Restaurant frontage"><img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy" alt=""><span class="num">04</span></button>
+        <button class="cell" type="button" data-i="4" aria-current="false" aria-label="Show frame 5, Retail entry"><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt=""><span class="num">05</span></button>
+        <button class="cell" type="button" data-i="5" aria-current="false" aria-label="Show frame 6, Junk removal"><img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy" alt=""><span class="num">06</span></button>
+        <button class="cell" type="button" data-i="6" aria-current="false" aria-label="Show frame 7, The rig"><img src="assets/rig.jpg" width="1200" height="1200" loading="lazy" alt=""><span class="num">07</span></button>
+      </div>
     </div>
     <div class="hero-act" style="margin-top:40px">
       <a class="btn wire" href="https://www.instagram.com/eastvalleywindowcleaningllc/" target="_blank" rel="noopener"><span>See more on Instagram</span></a>
@@ -1019,11 +1066,12 @@ body{
 
   /* 4. the gallery rides up as the grid crosses, each frame a beat behind the
         one before it, so the block arrives as a sequence rather than a slab. */
-  gsap.utils.toArray('.gal').forEach(function(g){
-    gsap.fromTo(g.querySelectorAll('.shot'), {y:56, opacity:0}, {
-      y:0, opacity:1, duration:1, ease:EASE, stagger:.07,
-      scrollTrigger:{trigger:g, start:'top 84%'}
-    });
+  gsap.utils.toArray('.projx').forEach(function(g){
+    gsap.fromTo(g.querySelector('.stage'), {y:52, opacity:0},
+      {y:0, opacity:1, duration:1, ease:EASE, scrollTrigger:{trigger:g, start:'top 84%'}});
+    gsap.fromTo(g.querySelectorAll('.cell'), {y:26, opacity:0},
+      {y:0, opacity:1, duration:.8, ease:EASE, stagger:.05,
+       scrollTrigger:{trigger:g, start:'top 78%'}});
   });
 
   /* 5. position along the reel. Transform only, so it costs one composite. */
@@ -1037,20 +1085,85 @@ body{
   addEventListener('load', function(){ ScrollTrigger.refresh(); });
   })();
 
-  // Their two real Instagram clips. Play only while on screen; a clip running
-  // off-canvas decodes frames nobody is looking at.
+  // Their two real Instagram clips. Both live in the projector now, and all
+  // seven frames are stacked on the same spot, so a per-clip observer saw both
+  // of them as on screen and played both at once behind a picture nobody could
+  // see. The projector owns which clip runs; this only stops them when the
+  // whole gallery leaves the viewport.
   (function(){
-    var vids=[].slice.call(document.querySelectorAll('.gal video'));
+    var box=document.querySelector('.projx');
+    if(!box) return;
+    var vids=[].slice.call(box.querySelectorAll('video'));
     if(!vids.length) return;
     if(reduce){ vids.forEach(function(v){ v.removeAttribute('loop'); v.load(); }); return; }
-    if(!('IntersectionObserver' in window)){ vids.forEach(function(v){ v.play().catch(function(){}); }); return; }
-    var vo=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        var v=e.target;
-        if(e.isIntersecting) v.play().catch(function(){}); else if(!v.paused) v.pause();
+    if(!('IntersectionObserver' in window)){ return; }
+    new IntersectionObserver(function(es){
+      var on=es[0].isIntersecting;
+      box.dataset.live = on ? '1' : '';
+      vids.forEach(function(v){
+        var active = v.closest('.frame').hasAttribute('data-on');
+        if(on && active){ v.preload='metadata'; v.play().catch(function(){}); }
+        else if(!v.paused) v.pause();
       });
-    },{threshold:.3});
-    vids.forEach(function(v){ v.preload='metadata'; vo.observe(v); });
+    },{threshold:.25}).observe(box);
+  })();
+
+  /* ---------- the projector ----------
+     One frame is shown at a time and the others are stacked behind it at
+     opacity 0, so changing frame is a crossfade rather than a move. Only the
+     frame on screen is allowed to decode: a paused clip three frames back is
+     work nobody is watching. Driven by clicks, the two gate arms, the arrow
+     keys and a horizontal swipe, because a gallery that only answers a hover
+     is not a control. */
+  (function(){
+    var box = document.querySelector('.projx');
+    if(!box) return;
+    var frames = [].slice.call(box.querySelectorAll('.frame'));
+    var cells  = [].slice.call(box.querySelectorAll('.cell'));
+    var cap    = box.querySelector('.pcap');
+    var capT   = cap.querySelector('b');
+    var capD   = cap.querySelector('b + span');
+    var count  = box.querySelector('.pcount');
+    var cur = 0;
+    var META = frames.map(function(f){
+      var l = f.getAttribute('aria-label').split(', ');
+      return l.slice(1).join(', ');
+    });
+    var DESC = ['Arched second storey windows, worked from the ground.', 'Dust and hard water film lifted off.', 'Mesa. Exterior glass, frames and screens.', 'Street-facing glass, cleaned before service.', 'Doors, sidelights and the frames around them.', 'Monsoon debris loaded up and taken away.', 'Everything on one van, on the route daily.'];
+
+    function show(n){
+      n = (n + frames.length) % frames.length;
+      if(n === cur) return;
+      cur = n;
+      frames.forEach(function(f,i){
+        if(i === n) f.setAttribute('data-on',''); else f.removeAttribute('data-on');
+        var v = f.querySelector('video');
+        if(v){ if(i === n && box.dataset.live){ v.preload='metadata'; v.play().catch(function(){}); }
+               else if(!v.paused) v.pause(); }
+      });
+      cells.forEach(function(c,i){ c.setAttribute('aria-current', String(i === n)); });
+      capT.textContent = META[n];
+      capD.textContent = DESC[n];
+      count.textContent = String(n+1).padStart(2,'0') + ' / 07';
+      var active = cells[n];
+      if(active && active.scrollIntoView) active.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+    }
+
+    cells.forEach(function(c){ c.addEventListener('click', function(){ show(+c.dataset.i); }); });
+    box.querySelector('.pnav.prev').addEventListener('click', function(){ show(cur-1); });
+    box.querySelector('.pnav.next').addEventListener('click', function(){ show(cur+1); });
+    box.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); show(cur-1); }
+      if(e.key === 'ArrowRight'){ e.preventDefault(); show(cur+1); }
+    });
+    var sx = null;
+    var stage = box.querySelector('.stage');
+    stage.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
+    stage.addEventListener('touchend', function(e){
+      if(sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx; sx = null;
+      if(Math.abs(dx) > 42) show(cur + (dx < 0 ? 1 : -1));
+    }, {passive:true});
   })();
 })();
 </script>

@@ -236,23 +236,54 @@ h1,h2,h3,h4{margin:0;font-family:'Saira Condensed','Saira',sans-serif;font-weigh
 .note p{color:var(--fg-2);font-size:15px}
 
 /* ---------- projects ---------- */
-.proj{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2.4vw,26px);margin-top:44px}
-.proj figure{margin:0}
-.proj .r1{grid-column:1/8}
-.proj .r1 .plate>div{height:clamp(280px,34vw,420px)}
-.proj .r2{grid-column:8/13}
-.proj .r2 .plate>div{height:clamp(280px,34vw,420px)}
-.proj .r3{grid-column:1/13}
-.proj .r3 .plate>div{height:clamp(240px,28vw,360px)}
-/* Set Right showed three projects. East Valley's gallery is seven items, so the
-   12 column grid keeps going in the same asymmetric rhythm rather than
-   collapsing into a seven cell grid. */
-.proj .r4{grid-column:1/6}
-.proj .r5{grid-column:6/13}
-.proj .r4 .plate>div,.proj .r5 .plate>div{height:clamp(240px,28vw,360px)}
-.proj .r6{grid-column:1/8}
-.proj .r7{grid-column:8/13}
-.proj .r6 .plate>div,.proj .r7 .plate>div{height:clamp(230px,26vw,330px)}
+/* ---------- RECENT WORK: the indexing rail ----------
+   Stations on a track. You travel along it rather than reading a grid, the
+   plate at the station is at full size, and a machined block reports where you
+   are. Native scroll-snap does the travelling: touch drag, trackpad, momentum
+   and keyboard all come free, and there is no drag handler to fight the page's
+   own scroll. */
+.rail{display:flex;gap:clamp(14px,2vw,24px);margin-top:44px;
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scroll-padding-inline:0;scrollbar-width:none;
+  /* the track runs off both edges of the column, so the rail reads as longer
+     than the page rather than as a box with things in it */
+  margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad)}
+.rail::-webkit-scrollbar{display:none}
+/* trailing room, so the LAST station can still travel to the reading position.
+   Without it the track bottoms out two stations early, the readout sticks, and
+   back skips a station on the way out. */
+.rail::after{content:"";flex:0 0 max(0px,calc(100% - clamp(268px,46vw,620px) - var(--pad)))}
+.station{flex:0 0 clamp(268px,46vw,620px);margin:0;scroll-snap-align:start;
+  opacity:.5;transition:opacity .45s cubic-bezier(.2,.9,.2,1)}
+.station[data-at]{opacity:1}
+.station .plate>div{height:clamp(230px,30vw,400px)}
+.station .plate>div img,.station .plate>div video{width:100%;height:100%;object-fit:cover;display:block}
+/* the control block: back and forward bolted either side of the readout */
+.railctl{display:flex;align-items:stretch;gap:0;margin-top:clamp(18px,2.2vw,28px);
+  width:max-content;background:var(--steel-2);box-shadow:var(--bevel)}
+.rnav{width:56px;min-height:56px;display:grid;place-items:center;cursor:pointer;
+  border:0;background:transparent;color:#fff;
+  transition:background .25s,color .25s,transform .18s}
+.rnav:hover{background:rgba(255,255,255,.07)}
+.rnav:active{transform:scale(.94)}
+.rnav[disabled]{opacity:.32;cursor:default;transform:none}
+.rnav svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+.readout{display:grid;place-items:center;padding:0 clamp(16px,2vw,26px);
+  font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:17px;
+  letter-spacing:.2em;color:#fff;font-variant-numeric:tabular-nums;white-space:nowrap;
+  border-inline:1px solid rgba(0,0,0,.55);
+  box-shadow:inset 1px 0 0 rgba(255,255,255,.07),inset -1px 0 0 rgba(255,255,255,.07)}
+/* the station strip. Seven marks, the one you are at lit. */
+.ticks{display:flex;gap:5px;align-items:center;margin-top:14px}
+.ticks i{display:block;width:26px;height:3px;background:rgba(255,255,255,.17);
+  transition:background .35s cubic-bezier(.2,.9,.2,1)}
+.ticks i[data-at]{background:var(--bright)}
+@media (max-width:760px){
+  .station{flex:0 0 min(84vw,420px)}
+  .ticks i{width:18px}
+}
 .plate>div video{width:100%;height:100%;object-fit:cover;display:block;
   transition:transform .85s cubic-bezier(.16,1,.3,1)}
 .plate:hover>div video{transform:scale(1.04)}
@@ -262,8 +293,6 @@ h1,h2,h3,h4{margin:0;font-family:'Saira Condensed','Saira',sans-serif;font-weigh
 .ba .plate>div{height:clamp(300px,36vw,460px)}
 @media (max-width:720px){.ba{grid-template-columns:1fr}}
 @media (max-width:860px){
-  .proj .r1,.proj .r2,.proj .r3,.proj .r4,.proj .r5,.proj .r6,.proj .r7{grid-column:1/13}
-  .proj .plate>div{height:clamp(230px,52vw,330px)}
 }
 
 /* the call plate that stands where the estimate form stood */
@@ -566,7 +595,6 @@ body{
   .svc.a,.svc.b,.svc.c{grid-column:1/13}
   .svc.c{grid-template-columns:1fr}
   .ngrid{grid-template-columns:1fr 1fr}
-  .proj .r1,.proj .r2,.proj .r3{grid-column:1/13}
   .revs{grid-template-columns:1fr}
   .note{grid-template-columns:1fr;gap:6px}
   .foot-in{grid-template-columns:1fr 1fr}
@@ -741,50 +769,56 @@ body{
   <div class="wrap">
     <div class="rv"><h2 style="font-size:clamp(32px,8.13vw,117px)">Straight from the van.</h2></div>
     <p class="lede rv" style="margin-top:16px;max-width:56ch">Their own clips and job photographs, straight off Instagram. The two clips play here with the sound off.</p>
-    <div class="proj">
-      <figure class="r1 rv">
+    <div class="rail" role="group" aria-roledescription="carousel" aria-label="Recent work" tabindex="0">
+      <figure class="station" data-at data-i="0" aria-roledescription="slide" aria-label="1 of 7, Commercial storefront">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
           <div><video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg" muted loop playsinline preload="none" width="1280" height="722" aria-label="Storefront glazing being cleaned"></video></div>
           <figcaption><b>Commercial storefront</b>Mesa. Exterior glass, frames and screens.</figcaption>
         </div>
       </figure>
-      <figure class="r2 rv">
+      <figure class="station" data-i="1" aria-roledescription="slide" aria-label="2 of 7, Solar array rinse">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
           <div><video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="A solar array being rinsed"></video></div>
           <figcaption><b>Solar array rinse</b>Dust and hard water film lifted off.</figcaption>
         </div>
       </figure>
-      <figure class="r3 rv">
+      <figure class="station" data-i="2" aria-roledescription="slide" aria-label="3 of 7, Restaurant frontage">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
           <div><img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy" alt="Restaurant frontage glazing after cleaning"></div>
           <figcaption><b>Restaurant frontage</b>Street-facing glass, cleaned before service.</figcaption>
         </div>
       </figure>
-      <figure class="r4 rv">
+      <figure class="station" data-i="3" aria-roledescription="slide" aria-label="4 of 7, Two storey residential">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
           <div><img src="assets/hero-pole.jpg" width="1200" height="1600" loading="lazy" alt="A water-fed pole reaching upper storey glass"></div>
           <figcaption><b>Two storey residential</b>Water-fed pole, no ladder on the landscaping.</figcaption>
         </div>
       </figure>
-      <figure class="r5 rv">
+      <figure class="station" data-i="4" aria-roledescription="slide" aria-label="5 of 7, Retail entry">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
           <div><img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy" alt="Retail entry glazing, doors and sidelights"></div>
           <figcaption><b>Retail entry</b>Doors, sidelights and the frames around them.</figcaption>
         </div>
       </figure>
-      <figure class="r6 rv">
+      <figure class="station" data-i="5" aria-roledescription="slide" aria-label="6 of 7, Junk removal">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
           <div><img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy" alt="A yard cleared of monsoon debris"></div>
           <figcaption><b>Junk removal</b>Monsoon debris loaded up and taken away.</figcaption>
         </div>
       </figure>
-      <figure class="r7 rv">
+      <figure class="station" data-i="6" aria-roledescription="slide" aria-label="7 of 7, The rig">
         <div class="plate bolts"><span class="b2"></span><span class="b3"></span>
           <div><img src="assets/rig.jpg" width="1200" height="1200" loading="lazy" alt="The work van and equipment"></div>
           <figcaption><b>The rig</b>Everything on one van, on the route daily.</figcaption>
         </div>
       </figure>
     </div>
+    <div class="railctl">
+      <button class="rnav" type="button" data-d="-1" aria-label="Previous station" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
+      <span class="readout" aria-live="polite">01 / 07</span>
+      <button class="rnav" type="button" data-d="1" aria-label="Next station"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="ticks" aria-hidden="true"><i data-at></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
@@ -921,6 +955,12 @@ body{
   gsap.registerPlugin(ScrollTrigger);
   var HARD = 'power4.out';   /* a machine stops. It does not ease out forever. */
 
+  /* the rail travels sideways under its own control, so its plates seat on
+     arrival rather than on a scroll trigger that would fight the track */
+  gsap.fromTo('.rail .station', {y:34, opacity:0}, {y:0, opacity:1, duration:.8,
+    ease:HARD, stagger:.05, clearProps:'opacity',
+    scrollTrigger:{trigger:'.rail', start:'top 86%'}});
+
   /* 1. THE DEVICE. A light bar travels across every milled face as that face
         crosses the viewport. One custom property per element, composited. */
   gsap.utils.toArray('.plate,.milled').forEach(function(el){
@@ -945,7 +985,7 @@ body{
   /* 4. plates seat. Short travel, hard stop, one beat apart down the run. No
         blur anywhere in this direction: a blurred edge is a lens, and there is
         no lens in a machine shop. */
-  gsap.utils.toArray('.ba, .proj, .revs, .svcs').forEach(function(row){
+  gsap.utils.toArray('.ba, .revs, .svcs').forEach(function(row){
     var kids = row.querySelectorAll(':scope > *');
     if(!kids.length) return;
     /* one element, one owner. These carry .rv as well, and .rv holds opacity at
@@ -970,17 +1010,83 @@ body{
   // Their two real Instagram clips, in the bolted plates. Play only while on
   // screen; a clip running off-canvas decodes frames nobody is looking at.
   (function(){
-    var vids=[].slice.call(document.querySelectorAll('.proj video'));
+    var rail=document.querySelector('.rail');
+    if(!rail) return;
+    var vids=[].slice.call(rail.querySelectorAll('video'));
     if(!vids.length) return;
     if(reduce){ vids.forEach(function(v){ v.removeAttribute('loop'); v.load(); }); return; }
-    if(!('IntersectionObserver' in window)){ vids.forEach(function(v){ v.play().catch(function(){}); }); return; }
-    var vo=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        var v=e.target;
-        if(e.isIntersecting) v.play().catch(function(){}); else if(!v.paused) v.pause();
+    if(!('IntersectionObserver' in window)){ return; }
+    // a clip decodes only when it is BOTH the station you are at and on screen
+    new IntersectionObserver(function(es){
+      rail.dataset.live = es[0].isIntersecting ? '1' : '';
+      vids.forEach(function(v){
+        var at = v.closest('.station').hasAttribute('data-at');
+        if(rail.dataset.live && at){ v.preload='metadata'; v.play().catch(function(){}); }
+        else if(!v.paused) v.pause();
       });
-    },{threshold:.3});
-    vids.forEach(function(v){ v.preload='metadata'; vo.observe(v); });
+    },{threshold:.25}).observe(rail);
+  })();
+
+  /* ---------- the indexing rail ----------
+     Scroll position is the source of truth, so a drag, a flick, a trackpad and
+     the two buttons all end up in the same place with no state to keep in sync.
+     The readout, the ticks, the dimming and which clip is allowed to run are
+     all read back off scrollLeft. */
+  (function(){
+    var rail=document.querySelector('.rail');
+    if(!rail) return;
+    var stations=[].slice.call(rail.querySelectorAll('.station'));
+    var out=document.querySelector('.readout');
+    var ticks=[].slice.call(document.querySelectorAll('.ticks i'));
+    var navs=[].slice.call(document.querySelectorAll('.rnav'));
+    var vids=[].slice.call(rail.querySelectorAll('video'));
+    var cur=-1, raf=0;
+
+    // the buttons travel to a station, not by a distance. Measuring a step and
+    // adding it drifts at the ends, where the track has less room left than one
+    // full step; an offset cannot drift.
+    function go(i){
+      i=Math.max(0,Math.min(stations.length-1,i));
+      rail.scrollTo({left: stations[i].offsetLeft - stations[0].offsetLeft, behavior:'smooth'});
+    }
+    function nearest(){
+      var x=rail.scrollLeft, base=stations[0].offsetLeft, best=0, d=Infinity;
+      stations.forEach(function(st,i){
+        var dd=Math.abs(st.offsetLeft - base - x);
+        if(dd<d){ d=dd; best=i; }
+      });
+      return best;
+    }
+    function paint(){
+      var n=nearest();
+      if(n===cur) return;
+      cur=n;
+      stations.forEach(function(st,i){ if(i===n) st.setAttribute('data-at',''); else st.removeAttribute('data-at'); });
+      ticks.forEach(function(t,i){ if(i===n) t.setAttribute('data-at',''); else t.removeAttribute('data-at'); });
+      out.textContent=String(n+1).padStart(2,'0')+' / 07';
+      navs[0].disabled = n===0;
+      navs[1].disabled = n===stations.length-1;
+      vids.forEach(function(v){
+        var at=v.closest('.station').hasAttribute('data-at');
+        if(at && rail.dataset.live){ v.preload='metadata'; v.play().catch(function(){}); }
+        else if(!v.paused) v.pause();
+      });
+    }
+    rail.addEventListener('scroll', function(){
+      if(raf) return;
+      raf=requestAnimationFrame(function(){ raf=0; paint(); });
+    }, {passive:true});
+    navs.forEach(function(b){
+      b.addEventListener('click', function(){
+        go(cur + (+b.dataset.d));
+      });
+    });
+    rail.addEventListener('keydown', function(e){
+      if(e.key==='ArrowLeft'){ e.preventDefault(); go(cur-1); }
+      if(e.key==='ArrowRight'){ e.preventDefault(); go(cur+1); }
+    });
+    addEventListener('resize', function(){ cur=-1; paint(); });
+    paint();
   })();
 })();
 </script>
