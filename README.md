@@ -44,7 +44,7 @@ laid out the same way twice, so the client is comparing designs rather than colo
 | Before and after | Two plates on a teal field inside one white panel | Two plates on the lit band | Two bolted plates | Two keylined prints, second one mirrored |
 | Recent work, 7 items | Drag filmstrip, mixed slide widths, runs off the right edge | Projector: one frame at full width, numbered contact sheet under it | Indexing rail: stations on a track, machined control block and readout | Seven prints on a twelve column grid, each pulled at a different size |
 | Reviews, all four | Glass cards on the teal band with quote marks | Hairline entries, accent rule on top | Bolted frames around white cores | Keylined cards with offset blocks |
-| Service area | Town columns on survey contours beside a map card | Ruled town grid on the lit band | Ruled town columns on a milled ground | Ruled town grid on a screened white ground |
+| Service area | Town columns on survey contours beside a map card | Ruled town grid, then the map edge to edge as a coverage band | Ruled town columns, then the map recessed into a bolted panel | Ruled town grid, then the map keylined with the block pulled off register |
 | Contact | Teal panel, details list beside the call block | Photo ground, details beside a white call plate | Teal bar, details beside a bolted call plate | Screened near black, details beside an acetate call plate |
 
 ---
@@ -91,7 +91,7 @@ reviews and photographs all came from the business. The single placeholder:
 
 | Placeholder | Where | Currently |
 |---|---|---|
-| `SWAP:` map embed | 01 Mesic, service area | A photograph standing in for a Google Maps embed of the service area |
+| ~~`SWAP:` map embed~~ | resolved 2026-09-09 | A real keyless Google Maps embed is in, on all four |
 
 There are no invented statistics on any of the four. The only numbers are 5.0 (the Google
 rating), 4 (the review count, stated alongside it every time), 7 (the services listed) and
@@ -117,6 +117,28 @@ The two reels play muted on a loop and **pause when they scroll out of view**, s
 running off screen is never decoding frames nobody is looking at.
 
 ---
+
+## A real service area map, on all four (2026-09-09)
+
+There is no storefront to pin. This is a mobile trade working out of a van, so
+the honest thing to show is the **area**, not an address, and no address has
+been invented. The keyless Google embed centred on Mesa at zoom 10 happens to
+frame Mesa, Gilbert, Chandler, Queen Creek, Apache Junction and San Tan Valley
+in a single view, which is exactly the route. No API key, `loading="lazy"`, and
+it resolves the `SWAP:` comment 01 had been carrying since it was built.
+
+Same embed on all four; the frame around it is what changes, because these four
+share no components:
+
+| | Frame |
+|---|---|
+| 01 Mesic | The existing map card beside the town columns, keylined |
+| 02 Site | A coverage band, edge to edge, lit like a screen on a dark page |
+| 03 Plate | Recessed into a bolted panel with a machined label bar |
+| 04 Burst | Keylined, with the second block pulled off register |
+
+Only 01 keeps it as a two column pair. The section audit below is the reason
+the other three take it as a full width band instead of another split.
 
 ## Recent work: two real gallery components (2026-09-09)
 

@@ -236,6 +236,21 @@ h1,h2,h3,h4{margin:0;font-family:'Saira Condensed','Saira',sans-serif;font-weigh
 .note p{color:var(--fg-2);font-size:15px}
 
 /* ---------- projects ---------- */
+/* the map itself. Same embed on all four; the frame around it is what
+   changes, because these four do not share components. */
+.gmap{display:block;width:100%;height:100%;border:0;filter:saturate(.9)}
+/* recessed into the plate and bolted at four corners, the way every other
+   panel on this page is fixed down. Full width rather than a second column:
+   two column is already the most repeated shape here. */
+.mappanel{position:relative;margin-top:clamp(26px,3.4vw,44px);
+  background:var(--steel-2);box-shadow:var(--bevel);padding:10px}
+.mappanel>div{height:clamp(240px,30vw,420px);overflow:hidden;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.7),inset 0 2px 5px rgba(0,0,0,.55)}
+.maplbl{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;
+  padding:13px 4px 3px;font-size:14px;color:var(--fg-2)}
+.maplbl b{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:16px;
+  letter-spacing:.18em;text-transform:uppercase;color:#fff}
+
 /* ---------- RECENT WORK: the indexing rail ----------
    Stations on a track. You travel along it rather than reading a grid, the
    plate at the station is at full size, and a machined block reports where you
@@ -846,6 +861,10 @@ body{
       <span>Mesa</span><span>Gilbert</span><span>Chandler</span><span>Queen Creek</span>
       <span>San Tan Valley</span><span>Apache Junction</span><span>Johnson Ranch</span><span>Bella Vista Farms</span>
     </div>
+    <figure class="mappanel bolts rv" style="margin:0"><span class="b2"></span><span class="b3"></span>
+      <div><iframe class="gmap" title="Map of the East Valley service area, centred on Mesa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Mesa,+Arizona&amp;z=10&amp;output=embed"></iframe></div>
+      <figcaption class="maplbl"><b>On the route</b><span>Mesa to San Tan Valley, and everything between the 60 and the 202.</span></figcaption>
+    </figure>
   </div>
 </section>
 

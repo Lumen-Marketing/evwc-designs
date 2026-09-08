@@ -365,6 +365,10 @@ h1,h2,h3,h4{margin:0;font-family:'Bricolage Grotesque','Hanken Grotesk',sans-ser
 .mapcard .lbl{padding:11px 14px;font-size:13px;font-weight:700;border-bottom:1px solid var(--line);color:var(--ink-2)}
 .mapcard .shot{aspect-ratio:16/11;overflow:hidden}
 .mapcard img{width:100%;height:100%;object-fit:cover}
+/* the map itself. Same embed on all four; the frame around it is what
+   changes, because these four do not share components. */
+.gmap{display:block;width:100%;height:100%;border:0;filter:saturate(.9)}
+
 
 /* ---------- faq ---------- */
 .faq{margin-top:26px;display:grid;gap:9px}
@@ -1445,8 +1449,7 @@ body{background-color:var(--white)}
     </div>
     <div class="mapcard rv">
       <div class="lbl">Window cleaning near me, East Valley AZ</div>
-      <!-- SWAP: replace with a real Google Maps embed for the service area -->
-      <div class="shot"><img src="assets/job-pole-wide.jpg" width="1280" height="722" loading="lazy" alt="A water-fed pole worked up a building elevation in the East Valley"></div>
+      <div class="shot"><iframe class="gmap" title="Map of the East Valley service area, centred on Mesa" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Mesa,+Arizona&amp;z=10&amp;output=embed"></iframe></div>
     </div>
   </div>
 </section>
