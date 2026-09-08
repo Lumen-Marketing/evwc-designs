@@ -17,11 +17,21 @@ for(const [p,out] of pages){
     h:document.body.scrollHeight,
     fonts:[...new Set([...document.querySelectorAll('h1,body')].map(e=>getComputedStyle(e).fontFamily.split(',')[0].replace(/["']/g,'')))],
     broken:[...document.images].filter(i=>i.complete&&i.naturalWidth===0).map(i=>i.getAttribute('src')),
-    vids:[...document.querySelectorAll('video')].map(v=>({f:(v.currentSrc||'').split('/').pop(),w:v.videoWidth,ready:v.readyState,t:Math.round(v.currentTime*100)/100,err:v.error?v.error.code:null,off:!!v.dataset.off})),
+    vids:[...document.querySelectorAll('video')].map(v=>({f:(v.currentSrc||'').split('/').pop(),w:v.videoWidth,ready:v.readyState,t:Math.round(v.currentTime*100)/100,err:v.error?v.error.code:null,off:(function(){
+      if(v.dataset.off)return true;
+      // the projector and the rail park every clip that is not the frame or the
+      // station you are on, and a parked clip is preload="none" on purpose. It
+      // has no width and readyState 0, which is correct, not a failure. The
+      // interaction tests (galtest.mjs, railtest.mjs) are what prove a parked
+      // clip plays when it is selected.
+      var f=v.closest('.frame'); if(f) return !f.hasAttribute('data-on');
+      var st=v.closest('.station'); if(st) return !st.hasAttribute('data-at');
+      return false;})()})),
     frames:document.querySelectorAll('iframe').length
   })`);
   const d=JSON.parse(info);
-  const badV=d.vids.filter(v=>!(v.w>0&&v.ready>=2&&!v.err&&(v.off||v.t>0)));
+  // a parked clip only has to be error free; a playing one has to have decoded
+  const badV=d.vids.filter(v=> v.off ? !!v.err : !(v.w>0&&v.ready>=2&&!v.err&&v.t>0));
   const parked=d.vids.filter(v=>v.off).length;
   await P.evalJS(`scrollTo(0,0)`); await sleep(500);
   const s=await P.send('Page.captureScreenshot',{format:'png'});
