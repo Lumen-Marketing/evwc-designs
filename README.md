@@ -35,7 +35,7 @@ laid out the same way twice, so the client is comparing designs rather than colo
 
 | Section | 01 Mesic | 02 Site | 03 Plate | 04 Burst |
 |---|---|---|---|---|
-| Hero | Full bleed photo, glass jump menu and glass stat bar floating on it | Photo, draggable smoked glass card, 152px headline underneath | Photo, bolted spec panel, sheared teal field cutting in below | Sunburst rays, photo in a keylined plate, acetate card pinned over it |
+| Hero | Full bleed photo, glass jump menu and glass stat bar floating on it | Split screen: copy left, photo right, the smoked glass figures crossing the seam | Photo, bolted spec panel, sheared teal field cutting in below | Sunburst rays, photo in a keylined plate, acetate card pinned over it |
 | Figures | Four cells inside the hero glass bar | Four counters on a ruled row | Four bolted steel boxes | Four acetate plates with offset colour blocks |
 | Owner statement | Blurred photo ground, two columns, six ruled promise rows | Statement at 64px, three ruled notes | Numbered bolted nodes on the teal field beside a checklist | Teal plane, white ink screened over rays, three ruled notes |
 | Services, three groups | One large photo card beside two stacked | Three alternating plates, left and right, with recessed job lists | Three milled cards, picture over a recessed list | Three keylined modules, mirrored plates, offset blocks |
@@ -117,6 +117,72 @@ The two reels play muted on a loop and **pause when they scroll out of view**, s
 running off screen is never decoding frames nobody is looking at.
 
 ---
+
+## 02 Site rebuilt as a split screen (2026-09-09)
+
+The section audit is why. Five of nine sections on 02 were the same two column
+shape inside the same max width container, and the same was true of the other
+three, which is how four different materials still read as one page.
+
+The answer was not to stop using two columns. It was to make the split the
+page's **archetype** instead of its default: full height, edge to edge, the
+media pane running to the viewport rather than stopping at a gutter, the side it
+sits on changing down the page, and full width breakers so it never becomes nine
+identical halves.
+
+| Section | Shape now |
+|---|---|
+| Hero | Split. Copy left, photograph right, and the smoked glass figures **run out of the copy pane and across the seam** onto the picture |
+| Everything we clean | Unchanged. Two plates hung across the hero boundary, which is its own family |
+| Glass | Split. Copy left, media right |
+| Film and panels | Split, **the seam changes sides**. Media left, copy right |
+| Property | **Breaker.** No seam at all: the photograph is the whole ground and the copy stands on it |
+| Owner statement | **Breaker.** Full width |
+| Recent work | Split. The projector runs to the left edge, the numbered contact sheet stands in the right pane |
+| Before and after | **Full bleed 50/50, no gutter.** The page's signature: the one piece of content that *is* a split screen |
+| Reviews | **Breaker.** A full width ruled run. No cards: a rule, the quote at reading size, the name in small caps |
+| Service area | Split. Towns in the pane, the map running off the right edge |
+| Contact | Unchanged. A photographic band, which closes the page on a different family |
+
+Never more than two splits in a row before something full width.
+
+### The number that shows it landed
+
+`node shots/layoutaudit.mjs` now also counts sections with a picture running to
+the **viewport edge**, which is the split screen signature and the thing a two
+column count cannot see:
+
+| | Sections | 2-col | media to edge |
+|---|---|---|---|
+| 01 Mesic | 11 | 8 | 4 |
+| **02 Site** | 9 | 7 | **6** |
+| 03 Plate | 9 | 4 | 2 |
+| 04 Burst | 9 | 5 | 1 |
+
+02 still counts as two column in most sections, and that is the point: the shape
+did not change, the treatment of it did.
+
+### Four things measurement caught
+
+1. **`1fr` is not `minmax(0,1fr)`.** A single collapsed grid track still takes an
+   auto minimum from its content, and the projector's contact sheet is a 690px
+   flex scroller. It blew the column, and the page with it, **185px past a 505px
+   viewport**. Every track on the page is `minmax(0,...)` now.
+2. **`.band-chap::after` silently never painted.** `.chap::after` already carries
+   this direction's scanline material and matches at the same specificity, so the
+   scrim lost on source order and the copy sat on a bright block wall. Moved to
+   `::before`, which also puts the scanline back on top where it belongs.
+3. **The copy pane was taller than the row it sat in**, so the recent work
+   heading slid up under the fixed nav. Four narrower contact sheet cells and a
+   tighter block brought it inside.
+4. **`shots/live.mjs` was still checking `01-daylight`, `02-broadsheet` and
+   `03-hazard`**, retired on 5 September. Every run since had been loading 404
+   pages and reporting them as passing.
+
+The hero figures also came back on phones. They used to be absolutely positioned
+over the photograph, where below 1200px they landed on the buttons and were
+dropped; in the split they sit under the buttons and collide with nothing, so
+four checkable figures are no longer lost on a phone.
 
 ## A real service area map, on all four (2026-09-09)
 

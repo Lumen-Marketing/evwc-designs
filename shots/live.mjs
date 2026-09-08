@@ -1,7 +1,9 @@
 import {open,sleep} from './cdp.mjs';
 import {writeFileSync} from 'node:fs';
 const BASE='https://lumen-marketing.github.io/evwc-designs/';
-const pages=[['','live-g.png'],['01-daylight.html','live-d1.png'],['02-broadsheet.html','live-d2.png'],['03-hazard.html','live-d3.png']];
+// the set was replaced on 2026-09-05; this list still named the three that
+// were retired, so every run was silently loading 404 pages and passing.
+const pages=[['','live-g.png'],['01-mesic.html','live-d1.png'],['02-site.html','live-d2.png'],['03-plate.html','live-d3.png'],['04-burst.html','live-d4.png']];
 for(const [p,out] of pages){
   const P=await open(1440,940);
   await P.send('Page.navigate',{url:BASE+p});
