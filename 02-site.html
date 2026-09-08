@@ -143,6 +143,9 @@ h1,h2,h3,h4{
 /* ---------- HERO: full bleed photograph, no container over it ---------- */
 .hero{position:relative;min-height:100dvh;display:flex;align-items:flex-end;overflow:hidden}
 .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:48% 52%;z-index:0}
+/* headroom for the camera push. The plate drifts inside this margin, so the
+   frame edge is never exposed at either end of the travel. */
+.hero>img{top:-9%;height:118%}
 /* plane two: graded scrim, dark at the bottom where type sits */
 .hero::after{
   content:"";position:absolute;inset:0;z-index:1;
@@ -175,7 +178,7 @@ h1,h2,h3,h4{
 .hang .wshot{position:relative;overflow:hidden;background:#000;min-height:100%}
 .hang .wshot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
-.hang .wshot:hover img{transform:scale(1.045)}
+.hang .wshot:hover img{scale:1.045}
 .hang .wshot figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;
   padding:clamp(18px,2.4vw,28px);
   background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.9));
@@ -219,7 +222,7 @@ h1,h2,h3,h4{
 .chapshot{position:relative;z-index:2;overflow:hidden;background:var(--bg-2);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 40px 90px -46px rgba(0,0,0,.95)}
 .chapshot img{width:100%;height:clamp(300px,34vw,460px);object-fit:cover;display:block;
-  transition:transform 1s cubic-bezier(.16,1,.3,1)}
+  transition:scale 1s cubic-bezier(.16,1,.3,1)}
 .chap:hover .chapshot img{transform:scale(1.035)}
 /* the raked light shaft stays on the section, so the ground still carries the
    direction's material even though it is no longer a photograph */
@@ -261,8 +264,8 @@ h1,h2,h3,h4{
 /* ---------- gallery: two big pictures, captions inside ---------- */
 .gal{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:48px}
 .shot{position:relative;overflow:hidden;background:#000}
-.shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
-.shot:hover img{transform:scale(1.05)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:scale .9s cubic-bezier(.16,1,.3,1)}
+.shot:hover img{scale:1.05}
 .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px;background:linear-gradient(180deg,rgba(7,12,20,0),rgba(7,12,20,.92));font-size:14.5px;color:var(--fg-2)}
 .shot figcaption b{display:block;font-family:'Big Shoulders Display',sans-serif;font-size:26px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.03em;margin-bottom:4px}
 .gal .a{grid-column:1/2;height:clamp(320px,44vw,560px)}
@@ -276,8 +279,8 @@ h1,h2,h3,h4{
 .gal .e{grid-column:2/3;height:clamp(300px,38vw,500px)}
 .gal .f{grid-column:1/2;height:clamp(280px,33vw,430px)}
 .gal .g{grid-column:2/3;height:clamp(280px,33vw,430px)}
-.shot video{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
-.shot:hover video{transform:scale(1.05)}
+.shot video{width:100%;height:100%;object-fit:cover;transition:scale .9s cubic-bezier(.16,1,.3,1)}
+.shot:hover video{scale:1.05}
 @media (max-width:720px){
   .gal{grid-template-columns:1fr}
   .gal .a,.gal .b,.gal .c,.gal .d,.gal .e,.gal .f,.gal .g{grid-column:1/2;height:clamp(260px,62vw,380px)}
@@ -366,6 +369,17 @@ h1,h2,h3,h4{
 .foot-bot{border-top:1px solid rgba(255,255,255,.1);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 30px;font-size:13px;color:var(--fg-3)}
 
 /* ---------- reveal ---------- */
+/* ---------- MOTION: the camera ----------
+   Two lines of the headline ride up out of a mask, like a title card. The mask
+   carries a little padding under it because the display face runs at .84 line
+   height and a bare overflow:hidden would shear the descender off "views". */
+.ln{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em}
+.ln>i{display:block;font-style:inherit}
+/* a scrub bar along the top of the reel. It reports position and nothing else,
+   which is the only reason it is on the page. */
+.scrub{position:fixed;left:0;top:0;height:2px;width:100%;z-index:70;pointer-events:none;
+  background:linear-gradient(90deg,var(--blue),var(--blue-2));
+  transform:scaleX(0);transform-origin:0 50%;will-change:transform}
 .rv{opacity:0;transform:translateY(26px);filter:blur(7px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.16,1,.3,1)}
 .rv.on{opacity:1;transform:none;filter:none}
 
@@ -657,7 +671,7 @@ body{
         <li><b>8</b><span>East Valley towns</span></li>
       </ul>
     </aside>
-    <h1>Crystal clear views<em>start here.</em></h1>
+    <h1><span class="ln"><i>Crystal clear views</i></span><em class="ln"><i>start here.</i></em></h1>
     <p class="lede">Owner-operated window cleaning across the East Valley. Inside and out, screens and tracks, hard water stains, tint, solar panels and hauling. Residential and commercial.</p>
     <div class="hero-act">
       <a class="btn" href="tel:+14808069455"><span>Call 480-806-9455</span>
@@ -774,37 +788,37 @@ body{
     <h2 class="rv" style="font-size:clamp(38px,9.17vw,132px)">Straight from the van</h2>
     <p class="lede rv" style="margin-top:18px;max-width:56ch">Their own clips and job photographs, straight off Instagram. The two clips play here with the sound off.</p>
     <div class="gal">
-      <figure class="shot a rv" style="margin:0">
+      <figure class="shot a" style="margin:0">
         <img src="assets/plate-pole.jpg" width="900" height="1200" loading="lazy"
              alt="A water-fed pole worked across an arched upper window">
         <figcaption><b>Residential upper glass</b>Arched second storey windows, worked from the ground.</figcaption>
       </figure>
-      <figure class="shot b rv" style="margin:0">
+      <figure class="shot b" style="margin:0">
         <video src="assets/reel-solar.mp4" poster="assets/poster-solar.jpg" muted loop playsinline
                preload="none" width="540" height="960" aria-label="A solar array being rinsed"></video>
         <figcaption><b>Solar array rinse</b>Dust and hard water film lifted off.</figcaption>
       </figure>
-      <figure class="shot c rv" style="margin:0">
+      <figure class="shot c" style="margin:0">
         <video src="assets/reel-storefront-wide.mp4" poster="assets/poster-storefront-wide.jpg" muted loop playsinline
                preload="none" width="1280" height="722" aria-label="Storefront glazing being cleaned"></video>
         <figcaption><b>Commercial storefront</b>Mesa. Exterior glass, frames and screens.</figcaption>
       </figure>
-      <figure class="shot d rv" style="margin:0">
+      <figure class="shot d" style="margin:0">
         <img src="assets/restaurant.jpg" width="1400" height="1750" loading="lazy"
              alt="Restaurant frontage glazing after cleaning">
         <figcaption><b>Restaurant frontage</b>Street-facing glass, cleaned before service.</figcaption>
       </figure>
-      <figure class="shot e rv" style="margin:0">
+      <figure class="shot e" style="margin:0">
         <img src="assets/storefront.jpg" width="1200" height="1200" loading="lazy"
              alt="Retail entry glazing, doors and sidelights">
         <figcaption><b>Retail entry</b>Doors, sidelights and the frames around them.</figcaption>
       </figure>
-      <figure class="shot f rv" style="margin:0">
+      <figure class="shot f" style="margin:0">
         <img src="assets/junk-yard.jpg" width="820" height="1094" loading="lazy"
              alt="A yard cleared of monsoon debris">
         <figcaption><b>Junk removal</b>Monsoon debris loaded up and taken away.</figcaption>
       </figure>
-      <figure class="shot g rv" style="margin:0">
+      <figure class="shot g" style="margin:0">
         <img src="assets/rig.jpg" width="1200" height="1200" loading="lazy"
              alt="The work van and equipment">
         <figcaption><b>The rig</b>Everything on one van, on the route daily.</figcaption>
@@ -919,6 +933,9 @@ body{
   </div>
 </footer>
 
+<span class="scrub" aria-hidden="true"></span>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
   "use strict";
@@ -958,6 +975,68 @@ body{
     });
   },{threshold:.5});
   document.querySelectorAll('[data-count]').forEach(function(n){ sio.observe(n); });
+
+  /* ---------- MOTION: the camera ----------
+     Every move below is scroll-LINKED rather than a one-shot fade, which is the
+     difference the page was missing. Four moves, no pinning and no scroll
+     hijack: a push on the hero plate, a title card, a shutter on each chapter
+     frame, and the gallery riding up as the grid crosses.
+
+     Entry states are set by GSAP at runtime, never in the stylesheet, so if the
+     CDN never answers the page renders complete instead of blank. Reduced
+     motion skips the whole block and the CSS reveals carry it. */
+  (function(){
+  /* its own scope: a bare return here would also skip the clip autoplay set up
+     below it, so reduced motion or a CDN that never answers would silently
+     leave both reels paused. */
+  if(reduce || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  var EASE = 'expo.out';
+
+  /* 1. the camera push. The plate drifts and closes in across the hero's own
+        scroll, inside the 9% headroom the stylesheet gives it. */
+  gsap.fromTo('.hero>img', {yPercent:-3.2, scale:1.02}, {
+    yPercent:3.2, scale:1.09, ease:'none',
+    scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:.6}
+  });
+
+  /* 2. the title card. On load, not on scroll: it is the first thing read. */
+  var tl = gsap.timeline({defaults:{ease:EASE}});
+  tl.fromTo('.hero h1 .ln > i', {yPercent:112}, {yPercent:0, duration:1.15, stagger:.09})
+    .fromTo('.hero .lede', {y:22, opacity:0}, {y:0, opacity:1, duration:.9}, '-=.72')
+    .fromTo('.hero-act > *', {y:18, opacity:0}, {y:0, opacity:1, duration:.8, stagger:.08}, '-=.66')
+    .fromTo('.hcard', {y:26, opacity:0}, {y:0, opacity:1, duration:.9}, '-=.7');
+
+  /* 3. the shutter. Each chapter frame opens from its foot as it crosses, and
+        the picture inside settles at the same time. clip-path so the frame's
+        own hover scale is left alone. */
+  gsap.utils.toArray('.chapshot').forEach(function(f){
+    gsap.fromTo(f,
+      {clipPath:'inset(0% 0% 34% 0%)'},
+      {clipPath:'inset(0% 0% 0% 0%)', ease:'none',
+       scrollTrigger:{trigger:f, start:'top 88%', end:'top 46%', scrub:.5}});
+  });
+
+  /* 4. the gallery rides up as the grid crosses, each frame a beat behind the
+        one before it, so the block arrives as a sequence rather than a slab. */
+  gsap.utils.toArray('.gal').forEach(function(g){
+    gsap.fromTo(g.querySelectorAll('.shot'), {y:56, opacity:0}, {
+      y:0, opacity:1, duration:1, ease:EASE, stagger:.07,
+      scrollTrigger:{trigger:g, start:'top 84%'}
+    });
+  });
+
+  /* 5. position along the reel. Transform only, so it costs one composite. */
+  var bar = document.querySelector('.scrub');
+  if(bar) gsap.to(bar, {scaleX:1, ease:'none',
+    scrollTrigger:{trigger:document.documentElement, start:'top top', end:'bottom bottom', scrub:.25}});
+
+  /* webfonts land after first paint and every start/end above is a percentage
+     of a measured height, so the triggers have to be recomputed once. */
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); });
+  addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  })();
+
   // Their two real Instagram clips. Play only while on screen; a clip running
   // off-canvas decodes frames nobody is looking at.
   (function(){

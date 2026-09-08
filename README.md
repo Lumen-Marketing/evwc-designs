@@ -118,6 +118,71 @@ running off screen is never decoding frames nobody is looking at.
 
 ---
 
+## Motion on 02 and 03 (2026-09-09)
+
+Both pages already faded blocks in as they arrived. What they had none of was
+motion **linked to the scroll**, and that is the difference between a page that
+animates and a page that feels alive under the hand. Added with **GSAP 3.12.5 +
+ScrollTrigger** from cdnjs, pinned to an exact version.
+
+The two directions do not share a single tween. Each motion system is read off
+that direction's own material, the same way its texture and its depth device are.
+
+### 02 Site: the camera
+
+Film stock, so the motion is a camera rather than a set of fades.
+
+| Move | What it communicates |
+|---|---|
+| The hero plate drifts and closes in across the hero's own scroll | A camera push. Depth between the plate and the type standing on it |
+| Both headline lines ride up out of a mask, on load | A title card. The first thing read does not wait for a scroll |
+| Each chapter frame opens from its foot as it crosses | A shutter. `clip-path`, so the frame's own hover scale is untouched |
+| The gallery rides up, each frame a beat behind the last | The block arrives as a sequence, not as a slab |
+| A 2px scrub bar along the top | Position along the reel. It reports and nothing else |
+
+### 03 Plate: the machine
+
+Milled metal, so nothing drifts, because nothing on a machine drifts.
+
+| Move | What it communicates |
+|---|---|
+| **A light bar travels across every milled face as it crosses** | The device. The specular sweep was already painted on every steel face; now it actually moves, which is what a brushed surface does under a moving light. Driven by `--sx` off ScrollTrigger, composited as a transform, clipped by the plate |
+| The hero plate traverses slowly against the type | Separation between the two planes |
+| Both headline lines run in from the left and hard stop | A carriage. `power4.out`, no blur: a blurred edge is a lens, and there is no lens in a machine shop |
+| Plates seat with a short travel, one beat apart down the run | The run is assembled in order rather than appearing at once |
+
+### What was deliberately not built
+
+**No Three.js.** A WebGL scene on a window cleaning page fails the first house
+rule: it would work exactly as well for a crypto startup, so it does not come
+from the trade. **No pinning and no scroll hijack.** Every move is scroll-linked
+but the scroll itself stays with the visitor, on a page whose job is to get a
+phone call. **No anime.js or React**, because GSAP already covers the scroll
+work and a second animation library on the same page fights for the same frames.
+
+### Four failures found by measuring, not by looking
+
+1. **A bare `return` guarding the motion block also skipped the clip autoplay
+   set up below it.** Reduced motion, or a CDN that never answered, would have
+   silently left both reels paused. The motion now lives in its own scope. Proved
+   by blocking `cdnjs.cloudflare.com` at the network layer and asserting both
+   clips still play.
+2. **`gsap.from()` reads the end state off the computed value at build time.**
+   The before and after plates carry `.rv` as well, which holds opacity at 0
+   until its own observer fires, so the tween animated from 0 to 0 and the whole
+   row stayed invisible. Every entry tween is `fromTo()` now, both ends stated.
+   One element, one owner: anything GSAP takes over drops `.rv`.
+3. **A fifth move on 03 fed the sheared teal field in from its leading edge.**
+   Cut. The field starts 771px down a 900px fold, so it is always already on
+   screen at load, and a half drawn field reads as a rendering fault rather than
+   as an entrance. Nothing above the fold gets an entrance it cannot finish.
+4. **GSAP writes `transform`, and so did every hover scale on the page.** The
+   hovers moved to the independent `scale` property, which multiplies with the
+   transform instead of replacing it, so the parallax and the hover polish both
+   survive.
+
+Reduced motion skips the whole block and the CSS reveals carry the page.
+
 ## Measured before shipping
 
 Not eyeballed. The harness is in `shots/` and every number below is reproducible.
