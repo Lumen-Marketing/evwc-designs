@@ -132,8 +132,28 @@ Not eyeballed. The harness is in `shots/` and every number below is reproducible
 | Em dashes | zero |
 | Middle dot chains | zero |
 | Decorative dots | zero. 03's bolt heads carry the direction's concept, not decoration |
+| Hero buttons to the plate hung below them, 02 | 52 to 90px across 505 to 1920. Was 0 to 10px |
+| Nav on one line, 780 to 860 | one row, no child squeezed below its natural width |
+
+### Two collisions, both found by measuring rather than looking
+
+**02's hero foot and the plate hung below it were the same number.** The hero's
+`padding-bottom` was `clamp(56px,9vw,120px)` and the plate's climb into it was
+`clamp(-110px,-9vw,-70px)`. Identical `9vw` terms, so the plate's top edge landed
+exactly on the call buttons: a 10px gap at 1440 and none at all below 1280. Both
+now live on `:root` as `--hero-foot` and `--hang-climb`, the climb is always the
+smaller of the two, and the foot carries a `min(11vw,17vh)` term so it cannot
+grow past what a short window can hold. The gap is 52 to 90px across the sweep.
+
+**02's nav wrapped mid-word between 760 and 860.** Above the hamburger
+breakpoint the three children want 715px and the row's content box is 687, so
+flexbox squeezed the brand and the links until "EAST VALLEY." and "RECENT WORK"
+each broke onto two lines. The 28px came back out of the gutters, not the type.
+A nav that collapses at 760 is not proof it fits at 800.
 
 ```
+node shots/gap.mjs <page> <w> [h] <sel...>   vertical gaps between elements, reveals fired
+node shots/navfit.mjs                        nav children against the row's content box
 node shots/shot.mjs           screenshots, viewport slices, per direction
 node shots/audit.mjs *.html   overflow, heading fill, dead space, ground and eyebrow counts
 node shots/contrast.mjs       contrast where CSS can resolve the background

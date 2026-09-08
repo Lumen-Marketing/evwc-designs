@@ -63,6 +63,13 @@
   --card-muted:#5C6B84;
   --card-line:#E3E9F2;
   --pad:clamp(20px,5vw,60px);
+  /* The hero's foot and the climb of the plate below it were both 9vw, so the
+     plate's top edge landed exactly on the buttons: a 10px gap at 1440 and none
+     at all below 1280. Both live here now and the climb is always the smaller
+     of the two. The vh term stops the foot growing past what a short window can
+     hold. .hang is a sibling of .hero, so these have to be on :root to reach it. */
+  --hero-foot:clamp(92px,min(11vw,17vh),156px);
+  --hang-climb:clamp(40px,4.4vw,72px);
   --maxw:1340px;
   --sh:0 60px 110px -50px rgba(0,0,0,.95);
 }
@@ -143,7 +150,7 @@ h1,h2,h3,h4{
 }
 .hero-in{position:relative;z-index:2;width:100%;
   padding-top:calc(76px + clamp(18px,4vh,52px));   /* the nav is fixed: never let a tall headline slide under it */
-  padding-bottom:clamp(56px,9vw,120px)}
+  padding-bottom:var(--hero-foot)}
 .hero h1{font-size:clamp(52px,10.6vw,152px);font-weight:900;letter-spacing:.002em;line-height:.84;max-width:21ch}
 .hero h1 em{font-style:normal;color:var(--blue-2);display:block}
 .hero .lede{margin-top:26px}
@@ -151,7 +158,9 @@ h1,h2,h3,h4{
 
 /* ---------- plane three: a plate hung across the boundary ---------- */
 .hang{position:relative;z-index:5;
-  margin-top:clamp(-110px,-9vw,-70px);
+  /* hung across the boundary, but always by less than the hero's foot, so the
+     buttons keep a clear band above the plate */
+  margin-top:calc(var(--hang-climb) * -1);
   /* the chapters butted straight up against the plates. Give the row the
      same breathing space the rest of the page uses between sections. */
   margin-bottom:clamp(66px,9.5vw,144px)}
@@ -504,7 +513,7 @@ body{
 .hcard{
   position:absolute;right:var(--pad);z-index:3;
   /* lifted clear of the plate that hangs up over the hero's bottom edge */
-  bottom:calc(clamp(56px,9vw,120px) + 28px);
+  bottom:calc(var(--hero-foot) + 28px);
   width:min(620px,46vw);padding:13px 18px 15px;cursor:grab;touch-action:none;
 }
 
@@ -563,6 +572,12 @@ body{
 }
 @media (max-width:860px){
   .nav-links{gap:15px;font-size:13px}
+  /* measured: between 760 and 860 the three children want 715px and the row's
+     content box is 687, so the brand and the links were being squeezed until
+     they wrapped mid-word. The 28px comes back out of the gutters, not out of
+     the type. */
+  .nav-in{gap:16px}
+  .nav-right{margin-left:12px;gap:16px}
 }
 @media (max-width:1040px){
   .chap-in,.chap.r .chap-in{grid-template-columns:1fr;gap:clamp(22px,5vw,34px)}
