@@ -464,11 +464,10 @@ Three traps are documented in those files because each one cost real time:
 ## Files
 
 ```
-index.html          the chooser: four live scaled iframes, desktop and mobile toggle
-01-mesic.html       drafting linen, light
-02-site.html        film stock, near black
-03-plate.html       brushed steel, dark
-04-burst.html       screen print, light
+index.html          the chooser: three live scaled iframes, desktop and mobile toggle
+01-mesic.html       BASIC     drafting linen, light
+03-plate.html       STANDARD  brushed steel, dark
+02-site.html        PREMIUM   film stock, near black
 assets/             their photographs and re-encoded reels
 scrape/             the Instagram extraction scripts
 shots/              the headless Chrome verification harness
