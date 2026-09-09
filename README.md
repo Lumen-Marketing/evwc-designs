@@ -55,7 +55,7 @@ laid out the same way twice, so the client is comparing designs rather than colo
 | Hero | Full bleed photo, glass jump menu and glass stat bar floating on it | Split screen: copy left, photo right, the smoked glass figures crossing the seam | Photo, bolted spec panel, sheared teal field cutting in below |
 | Figures | Four cells inside the hero glass bar | Four counters on a ruled row | Four bolted steel boxes |
 | Owner statement | Blurred photo ground, two columns, six ruled promise rows | Statement at 64px, three ruled notes | Numbered bolted nodes on the teal field beside a checklist |
-| Services, three groups | One large photo card beside two stacked | Three alternating plates, left and right, with recessed job lists | Three milled cards, picture over a recessed list |
+| Services, three groups | Three drawn details on the sheet, the primary one at the full measure with its title plate hung into the picture | Three alternating plates, left and right, with recessed job lists | Three milled cards, picture over a recessed list |
 | Seven services | Accordion strip, the panel under the pointer takes a third | Job lists inside each alternating chapter | Recessed lists inside the milled cards |
 | Photographic band | Full bleed photo with a glass figure card | (not used) | (not used) |
 | Before and after | Wipe: ruled blue divider, keylined white tabs, in the white panel | Wipe: full bleed, cyan hairline, smoked gate handle | Wipe: machined seam, knurled boss bolted through it, in a bolted plate |
