@@ -41,7 +41,7 @@ laid out the same way twice, so the client is comparing designs rather than colo
 | Services, three groups | One large photo card beside two stacked | Three alternating plates, left and right, with recessed job lists | Three milled cards, picture over a recessed list | Three keylined modules, mirrored plates, offset blocks |
 | Seven services | Accordion strip, the panel under the pointer takes a third | Job lists inside each alternating chapter | Recessed lists inside the milled cards | Lists inside the keylined modules |
 | Photographic band | Full bleed photo with a glass figure card | (not used) | (not used) | Full bleed photo with an acetate figure card |
-| Before and after | Two plates on a teal field inside one white panel | Two plates on the lit band | Two bolted plates | Two keylined prints, second one mirrored |
+| Before and after | Wipe: ruled blue divider, keylined white tabs, in the white panel | Wipe: full bleed, cyan hairline, smoked gate handle | Wipe: machined seam, knurled boss bolted through it, in a bolted plate | Wipe: hard ink rule, handle with the block pulled off register |
 | Recent work, 7 items | Drag filmstrip, mixed slide widths, runs off the right edge | Projector: one frame at full width, numbered contact sheet under it | Indexing rail: stations on a track, machined control block and readout | Seven prints on a twelve column grid, each pulled at a different size |
 | Reviews, all four | Glass cards on the teal band with quote marks | Hairline entries, accent rule on top | Bolted frames around white cores | Keylined cards with offset blocks |
 | Service area | Town columns on survey contours beside a map card | Ruled town grid, then the map edge to edge as a coverage band | Ruled town columns, then the map recessed into a bolted panel | Ruled town grid, then the map keylined with the block pulled off register |
@@ -117,6 +117,56 @@ The two reels play muted on a loop and **pause when they scroll out of view**, s
 running off screen is never decoding frames nobody is looking at.
 
 ---
+
+## Before and after becomes a wipe, on all four (2026-09-09)
+
+The client sent a reference: a draggable divider over two shots of the same
+truck, labelled and captioned "Same vehicle, same day". Built to it.
+
+**The caveat, stated once and then built anyway.** These two frames were taken
+from slightly different camera positions, which an earlier scale sweep and phase
+cross correlation put at **NCC -0.04**, so the mullions do not line up across
+the seam. That was the reason a wipe was refused the first time. The reference
+has exactly the same property, a truck shot head on against the same truck shot
+from the side, and it works because the divider is **a hard rule rather than a
+pretence that the two halves are one continuous photograph**. So the divider
+here is a hard rule with a handle on it and both sides are labelled. He has seen
+the device and asked for it; that is his call to make.
+
+**The mechanism is shared across the four**, which is the one time that is
+right, because the client asked for this specific control. The frame, the
+divider, the handle and the labels stay in each direction's material:
+
+| | Divider | Handle | Tabs |
+|---|---|---|---|
+| 01 Mesic | 2px blue rule | White square, blue keyline | Keylined white, ink type |
+| 02 Site | 2px cyan hairline, **full bleed** | Smoked glass gate, blurred | Smoked, mono caps |
+| 03 Plate | 3px machined seam | Knurled boss, bevelled and bolted | Machined tabs on steel |
+| 04 Burst | 3px hard ink rule | White square, sky block **two pixels off register** | Solid ink blocks |
+
+**The control is a real `<input type="range">** covering the whole box at zero
+opacity. Pointer drag, touch drag, arrow keys, Home and End, and the screen
+reader announcement all come from the browser, and there is no drag handler to
+get wrong. `aria-valuetext` reads out as "21% before, 79% after".
+
+The BEFORE plate is **clipped** back to the handle rather than resized, because
+a width driven overlay rescales its own picture as it moves and the two halves
+stop matching. It sweeps itself once on arrival, out to the before and back past
+centre to the after, then hands over for good: cancelled by the first touch,
+skipped under reduced motion, never runs twice. Verified with `cdnjs` blocked,
+because the wipe is a control and not decoration.
+
+### Three things measurement caught
+
+1. **The wipe script was injected inside the GSAP `<script src>` tag** on 02 and
+   03. A script element with a `src` ignores its inline content, so the code
+   never ran and neither wipe moved, while 01 and 04 worked. `</script>` is not
+   a safe anchor on a page that loads anything from a CDN.
+2. **`aspect-ratio` with an inherited height derives the WIDTH.** 03 sets a
+   height on `.plate > div`, so the wipe came out filling 58% of its plate.
+3. And once the width was forced, the same inherited height letterboxed a
+   portrait source into a **2.6:1 strip**, which is the crop that got called out
+   two rounds ago. `.ba .plate > .wipe{height:auto}` lets the aspect win.
 
 ## 02 Site rebuilt as a split screen (2026-09-09)
 
