@@ -1,0 +1,10 @@
+import {open,sleep} from './cdp.mjs';
+const P=await open(1440,900);
+await P.send('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
+await P.send('Page.navigate',{url:'file:///C:/Users/tagal/evwc-designs/'+process.argv[2]});
+await sleep(2000);
+await P.evalJS('scrollTo(0,1400)'); await sleep(700);
+const r=await P.send('Runtime.evaluate',{expression:`(()=>{const n=document.getElementById('nav');const b=n.getBoundingClientRect();const cs=getComputedStyle(n);
+ return JSON.stringify({top:Math.round(b.top),h:Math.round(b.height),pos:cs.position,z:cs.zIndex,bg:cs.backgroundColor,cls:n.className,vis:cs.visibility,op:cs.opacity,tr:cs.transform})})()`,returnByValue:true});
+console.log(r.result.value);
+P.close();process.exit(0);

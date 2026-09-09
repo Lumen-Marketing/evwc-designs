@@ -93,7 +93,11 @@ h1,h2,h3,h4{
 
 /* ---------- buttons ---------- */
 .btn{
-  --b:var(--blue);--f:#fff;
+  /* Measured off the rendered pixels: white on #12C4DE is 2.12:1, which
+     fails even the 3:1 allowed for large text. The cyan is the brand accent
+     and it stays; the label goes to ink, which measures 9.1:1. The wire and
+     ink variants set their own --f and are unaffected. */
+  --b:var(--blue);--f:var(--card-ink);
   display:inline-flex;align-items:center;gap:12px;white-space:nowrap;
   padding:17px 30px;border:1.5px solid var(--b);border-radius:0;background:var(--b);color:var(--f);
   font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;letter-spacing:.06em;text-transform:uppercase;
@@ -116,25 +120,76 @@ h1,h2,h3,h4{
 .btn.ink:hover{color:#fff}
 
 /* ---------- nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-.nav.stuck{background:rgba(7,12,20,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line)}
-.nav-in{height:76px;display:flex;align-items:center;gap:28px}
-.brand{text-decoration:none;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:25px;letter-spacing:.05em;text-transform:uppercase;line-height:1}
+/* ---------- NAV: it splits at the seam ----------
+   Every section on this page is a split screen. The nav was the one thing
+   laid across the top of them, and it was the same bar 03 was using. It is
+   now built out of the archetype instead: the seam runs up through it, the
+   wordmark stands on the dark plane and the controls stand on the picture
+   inside a smoked gate.
+
+   The gate is the only part of the bar with a ground, because it is the only
+   part with a photograph behind it. A tint over the dark left plane would be
+   a rectangle, not glass. */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;
+  transition:background .35s,box-shadow .35s,backdrop-filter .35s}
+/* the hero overrides .split with 1.06fr/.94fr, so a 50/50 nav put the seam
+   42px off the one it is supposed to be continuing. It takes the hero's
+   ratio, not the generic one. The seam is only drawn at the top of the page,
+   which is the only place the hero is behind it. */
+.nav-in{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  align-items:stretch;height:84px;position:relative;
+  transition:height .35s cubic-bezier(.16,1,.3,1)}
+/* the seam, carried up from the hero */
+.nav-in::after{content:"";position:absolute;left:53%;top:0;bottom:0;width:1px;
+  background:var(--line);z-index:3;transition:opacity .35s}
+
+.brand{align-self:center;justify-self:start;padding-left:clamp(24px,5vw,90px);
+  text-decoration:none;font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+  font-size:clamp(23px,1.9vw,28px);letter-spacing:.05em;text-transform:uppercase;line-height:1}
 .brand em{font-style:normal;color:var(--blue)}
-.nav-links{display:flex;gap:28px;margin-left:auto}
+
+/* the gate */
+.gate{position:relative;isolation:isolate;overflow:hidden;
+  display:flex;align-items:stretch;justify-content:flex-end;
+  gap:clamp(12px,1.9vw,30px);padding-left:clamp(16px,2vw,34px);
+  --gx:72%; --gi:0;
+  background:linear-gradient(180deg,rgba(7,12,20,.60),rgba(7,12,20,.42));
+  backdrop-filter:blur(20px) saturate(190%) brightness(.9);
+  -webkit-backdrop-filter:blur(20px) saturate(190%) brightness(.9);
+  /* the top face only. An even rim on four sides is a frame, not a material. */
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),
+             inset 0 14px 24px -20px rgba(255,255,255,.5);
+  transition:background .35s,box-shadow .35s}
+/* the light on the pane, tracking the pointer. Dim at rest, which is also
+   what keeps the labels legal against a bright frame. */
+.gate::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(360px 190px at var(--gx) 0%,rgba(255,255,255,.15),transparent 72%);
+  opacity:var(--gi);transition:opacity .45s}
+
+.nav-links{display:flex;align-items:center;gap:clamp(14px,1.7vw,26px);white-space:nowrap}
 .nav-links a{
   text-decoration:none;font-family:'Big Shoulders Display',sans-serif;font-size:19px;font-weight:700;
   letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.74);position:relative;padding-block:5px;transition:color .25s;
 }
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--blue);transform:scaleX(0);transform-origin:right;transition:transform .32s cubic-bezier(.16,1,.3,1)}
+/* the mark sits ABOVE the label, because the underline that sweeps in from
+   the right is what 03 does and no two directions share a component */
+.nav-links a::after{content:"";position:absolute;left:0;right:0;top:-9px;height:2px;
+  background:var(--blue);transform:scaleX(0);transition:transform .3s cubic-bezier(.16,1,.3,1)}
 .nav-links a:hover{color:#fff}
-.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
-.nav-right{display:flex;align-items:center;gap:22px;margin-left:22px}
-.nav-tel{text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.burger{display:none;width:44px;height:44px;border:1.5px solid rgba(255,255,255,.5);background:none;margin-left:auto;cursor:pointer;border-radius:0}
-.burger i{display:block;width:19px;height:1.6px;background:#fff;margin:0 auto;position:relative;transition:background .3s}
-.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:19px;height:1.6px;background:#fff;transition:transform .3s}
-.burger i::before{top:-6px}.burger i::after{top:6px}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;align-items:stretch;gap:clamp(12px,1.7vw,24px)}
+.nav-tel{display:flex;align-items:center;text-decoration:none;font-weight:600;font-size:15px;
+  white-space:nowrap;font-variant-numeric:tabular-nums}
+/* the key runs flush into the corner of the window at full bar height, so the
+   accent lands on a surface rather than on a small element */
+.navkey{align-self:stretch;height:auto;padding:0 clamp(20px,2.4vw,38px);border:0;
+  font-size:clamp(16px,1.35vw,19px)}
+.navkey:hover{transform:none;box-shadow:none}
+.burger{display:none;width:52px;border:0;background:none;cursor:pointer;border-radius:0;
+  align-self:stretch;padding:0}
+.burger i{display:block;width:22px;height:1.6px;background:#fff;margin:0 auto;position:relative;transition:background .3s}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:22px;height:1.6px;background:#fff;transition:transform .3s}
+.burger i::before{top:-7px}.burger i::after{top:7px}
 .burger[aria-expanded="true"] i{background:transparent}
 .burger[aria-expanded="true"] i::before{transform:translateY(6px) rotate(45deg)}
 .burger[aria-expanded="true"] i::after{transform:translateY(-6px) rotate(-45deg)}
@@ -167,6 +222,23 @@ h1,h2,h3,h4{
    a white card floating on a dark ground */
 .sp-copy.paper{background:var(--card);color:var(--card-ink)}
 .sp-copy.paper .lede,.sp-copy.paper p{color:var(--card-muted)}
+/* Below 900 the splits collapse to one column, so there is no split behind
+   the bar for the seam to mark and nothing bright behind the gate for its
+   tint to read against. Both come off at the same breakpoint the splits do,
+   and the bar becomes one row. */
+@media (max-width:900px){
+  .nav-in{grid-template-columns:1fr;height:74px}
+  .nav-in::after{display:none}
+  .gate{background:none;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+    padding-left:0;padding-right:var(--pad);justify-content:flex-end}
+  .gate::before{display:none}
+  .brand{grid-row:1;grid-column:1;align-self:center}
+  .gate{grid-row:1;grid-column:1}
+  .nav{background:linear-gradient(180deg,rgba(9,15,26,.72),rgba(9,15,26,.56));
+    backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.13)}
+  .navkey{padding:0 18px;font-size:16px}
+}
 @media (max-width:900px){
   /* a split screen on a phone is one column. The media leads where the picture
      is the point, and follows where the words are. */
@@ -764,13 +836,20 @@ body{
 }
 .cinfo a:last-of-type,.cinfo div:last-of-type{border-bottom:0}
 
-/* the sticky nav becomes real glass rather than a flat dark bar */
+/* Off the top of the page there is no split behind the bar any more, so the
+   gate hands its glass to the whole bar and the seam goes with it. The bar
+   tightens at the same time: that is the state change, not decoration. */
 .nav.stuck{
-  background:linear-gradient(180deg,rgba(9,15,26,.66),rgba(9,15,26,.5));
-  backdrop-filter:blur(22px) saturate(160%);
-  -webkit-backdrop-filter:blur(22px) saturate(160%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 20px 40px -30px #000;
+  background:linear-gradient(180deg,rgba(9,15,26,.68),rgba(9,15,26,.52));
+  backdrop-filter:blur(22px) saturate(170%);
+  -webkit-backdrop-filter:blur(22px) saturate(170%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 20px 40px -30px #000;
 }
+.nav.stuck .nav-in{height:70px}
+.nav.stuck .nav-in::after{opacity:0}
+.nav.stuck .gate{background:none;box-shadow:none;
+  backdrop-filter:none;-webkit-backdrop-filter:none}
+.nav.stuck .gate::before{opacity:0}
 
 /* ---------- the glass site card, floated over the hero photograph ---------- */
 .hcard{
@@ -828,21 +907,35 @@ body{
 }
 
 /* ---------- responsive ---------- */
-/* the nav has to hold one line. Between 760 and 1010 it did not,
-   so the phone link steps out first. It is still in the hero, the
-   drawer and the footer. */
-@media (max-width:1010px){
+/* The bar only gets HALF the width, because the gate stands on the photograph
+   and the photograph is half the page. Measured at 940: the four labels plus
+   the estimate key want about 545px and half the bar is 470px, so SERVICES was
+   being clipped to CES by the gate's own overflow. A full width bar would have
+   coped down to 860; a split one cannot.
+
+   So the links hand over to the drawer at 1180, which is a long way above the
+   usual hamburger breakpoint and is the honest consequence of the archetype.
+   The key stays: a bar you cannot act on is worse than a bar with no links. */
+/* Measured with the children's own left edges, because the gate is
+   justify-content:flex-end and scrollWidth only counts overflow at the END
+   edge: it reported zero while SERVICES was being cut to VICES. The number is
+   the gate's width, not the page's. The row needs about 740px and the gate is
+   47% of the bar, so the phone only comes back at 1560. */
+@media (max-width:1560px){
   .nav-tel{display:none}
-  .nav-links{gap:22px;font-size:14px}
 }
-@media (max-width:860px){
-  .nav-links{gap:15px;font-size:13px}
-  /* measured: between 760 and 860 the three children want 715px and the row's
-     content box is 687, so the brand and the links were being squeezed until
-     they wrapped mid-word. The 28px comes back out of the gutters, not out of
-     the type. */
-  .nav-in{gap:16px}
-  .nav-right{margin-left:12px;gap:16px}
+@media (max-width:1180px){
+  .nav-links{display:none}
+  .burger{display:grid;place-items:center}
+  .drawer{display:block;position:fixed;inset:var(--navh,84px) 0 auto 0;z-index:59;
+    background:var(--bg-2);border-bottom:1px solid var(--line);
+    padding:10px var(--pad) 26px;transform:translateY(-130%);
+    transition:transform .44s cubic-bezier(.16,1,.3,1)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{display:block;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
+    font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:26px;
+    text-transform:uppercase;letter-spacing:.04em}
+  .drawer .btn{width:100%;justify-content:center;margin-top:20px}
 }
 @media (max-width:1040px){
   .chap.r .chap-txt{margin-left:0;text-align:left}
@@ -855,13 +948,7 @@ body{
 @media (max-width:760px){
   body{font-size:16px}
   .nav{background:rgba(7,12,20,.9);backdrop-filter:blur(12px)}
-  .nav-links,.nav-right{display:none}
-  .burger{display:grid;place-items:center}
-  .drawer{display:block;position:fixed;inset:76px 0 auto 0;z-index:59;background:var(--bg-2);border-bottom:1px solid var(--line);padding:10px var(--pad) 26px;transform:translateY(-130%);transition:transform .44s cubic-bezier(.16,1,.3,1)}
-  .drawer.open{transform:translateY(0)}
-  .drawer a{display:block;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
-    font-family:'Big Shoulders Display',sans-serif;font-weight:700;font-size:26px;text-transform:uppercase;letter-spacing:.04em}
-  .drawer .btn{width:100%;justify-content:center;margin-top:20px}
+  .nav-right{display:none}
   .hang{margin-top:-40px}
   .wcard{max-width:none}
   .rstep{grid-template-columns:4ch 1fr;gap:16px}
@@ -884,16 +971,18 @@ body{
 <div class="grain" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
-  <div class="wrap nav-in">
+  <div class="nav-in">
     <a class="brand" href="#top">East Valley<em>.</em></a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Areas</a>
-    </nav>
-    <div class="nav-right">
-      <a class="nav-tel" href="tel:+14808069455">480-806-9455</a>
-      <a class="btn" href="#estimate"><span>Free estimate</span></a>
+    <div class="gate" id="gate">
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a><a href="#work">Recent work</a><a href="#reviews">Reviews</a><a href="#area">Areas</a>
+      </nav>
+      <div class="nav-right">
+        <a class="nav-tel" href="tel:+14808069455">480-806-9455</a>
+        <a class="btn navkey" href="#estimate"><span>Free estimate</span></a>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
     </div>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><i></i></button>
   </div>
 </header>
 <div class="drawer" id="drawer">
@@ -1201,6 +1290,37 @@ body{
   s.style.cssText='position:absolute;top:0;height:1px;width:1px';
   document.body.prepend(s);
   new IntersectionObserver(function(e){ nav.classList.toggle('stuck',!e[0].isIntersecting); },{threshold:0}).observe(s);
+  /* the light on the gate. A pane in the sun has a hot spot that moves as
+     you move, and a tint that does not is just a dark rectangle. One passive
+     listener, coalesced into a single frame, and dim again the moment the
+     pointer leaves. */
+  (function(){
+    var g=document.getElementById('gate');
+    if(!g || !matchMedia('(hover:hover)').matches) return;
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var raf=0,px=0;
+    g.addEventListener('pointermove',function(e){
+      px=e.clientX; if(raf) return;
+      raf=requestAnimationFrame(function(){
+        raf=0;
+        var r=g.getBoundingClientRect();
+        g.style.setProperty('--gx',(((px-r.left)/r.width)*100).toFixed(1)+'%');
+        g.style.setProperty('--gi','1');
+      });
+    },{passive:true});
+    g.addEventListener('pointerleave',function(){ g.style.setProperty('--gi','0'); });
+  })();
+  /* the drawer drops from under the bar, and the bar is not a fixed height:
+     01's brand steps down at 560 and 02's whole bar tightens off the top of
+     the page. A ResizeObserver keeps --navh honest without a scroll listener. */
+  (function(){
+    var n=document.getElementById('nav');
+    if(!n) return;
+    function set(){ document.documentElement.style.setProperty('--navh', n.offsetHeight+'px'); }
+    set();
+    if('ResizeObserver' in window) new ResizeObserver(set).observe(n);
+    else addEventListener('resize', set);
+  })();
   var b=document.getElementById('burger'),d=document.getElementById('drawer');
   b.addEventListener('click',function(){ b.setAttribute('aria-expanded', d.classList.toggle('open')); });
   d.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ d.classList.remove('open'); b.setAttribute('aria-expanded','false'); }); });

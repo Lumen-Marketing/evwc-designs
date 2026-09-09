@@ -52,6 +52,7 @@ laid out the same way twice, so the client is comparing designs rather than colo
 
 | Section | 01 Mesic | 02 Site | 03 Plate |
 |---|---|---|---|
+| Nav | A title block: named fields in ruled cells, the estimate cell running proud of the bottom rule | Split at the hero's own seam: wordmark on the dark plane, controls in a smoked film gate over the photograph | A plate bolted at four corners, links milled into a recessed channel, the number in a readout window |
 | Hero | Full bleed photo, glass jump menu and glass stat bar floating on it | Split screen: copy left, photo right, the smoked glass figures crossing the seam | Photo, bolted spec panel, sheared teal field cutting in below |
 | Figures | Four cells inside the hero glass bar | Four counters on a ruled row | Four bolted steel boxes |
 | Owner statement | Blurred photo ground, two columns, six ruled promise rows | Statement at 64px, three ruled notes | Numbered bolted nodes on the teal field beside a checklist |
