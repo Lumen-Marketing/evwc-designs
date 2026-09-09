@@ -2,7 +2,7 @@
 import {open,sleep} from './cdp.mjs';
 import {writeFileSync} from 'node:fs';
 const P=await open(1440,900);
-for(const page of ['01-mesic.html','02-site.html','03-plate.html','04-burst.html']){
+for(const page of ['01-mesic.html','02-site.html','03-plate.html']){
   await P.send('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});
   await P.send('Page.navigate',{url:'file:///C:/Users/tagal/evwc-designs/'+page});
   await sleep(2600);

@@ -61,7 +61,12 @@ h1 em{font-style:normal;color:var(--cy)}
 .seg button.on{background:var(--cy);color:var(--ink);font-weight:700}
 
 .cards{display:grid;grid-template-columns:1fr;gap:clamp(18px,2.4vw,34px);padding-block:clamp(30px,5vw,64px)}
-@media (min-width:900px){.cards{grid-template-columns:1fr 1fr}}
+@media (min-width:900px){
+  .cards{grid-template-columns:1fr 1fr}
+  /* three cards in a two column grid strands the last one beside half a screen
+     of nothing, so it takes the whole row */
+  .cards .card:last-child{grid-column:1 / -1}
+}
 .card{border:1px solid var(--s800);background:var(--s950);display:flex;flex-direction:column;opacity:0;translate:0 30px;transition:opacity .8s var(--ease),translate .8s var(--ease),border-color .4s}
 .card.is-in{opacity:1;translate:0 0}
 .card:nth-child(2){transition-delay:.08s}.card:nth-child(3){transition-delay:.16s}.card:nth-child(4){transition-delay:.24s}
@@ -73,6 +78,25 @@ h1 em{font-style:normal;color:var(--cy)}
 .card-hd .tier.t2{border-color:rgba(18,196,222,.55);color:var(--cy)}
 .card-hd .tier.t3{background:var(--cy);border-color:var(--cy);color:#06232a}
 .tierline{color:var(--paper)!important;font-weight:500}
+.lead .note{margin-top:14px;font-size:11px;letter-spacing:.1em;color:var(--s400)}
+.whytier{color:var(--s300)!important;font-size:13.5px!important;
+  border-left:2px solid var(--cy);padding-left:13px}
+/* what the tier buys when it is BUILT. The excluded rows are greyed rather
+   than dropped, because the client has to be able to see what the next one up
+   is for. */
+.incl{list-style:none;margin:4px 0 0;padding:0;border-top:1px solid var(--s800)}
+.incl li{display:flex;align-items:baseline;gap:9px;padding:9px 0;
+  border-bottom:1px solid var(--s800);font-size:13px;line-height:1.4}
+.incl li b{font-weight:500;color:var(--paper)}
+.incl li span{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--s400);white-space:nowrap;padding-left:10px}
+.incl svg{flex:0 0 13px;width:13px;height:13px;fill:none;stroke-width:2.2;
+  stroke-linecap:round;stroke-linejoin:round;translate:0 2px}
+.incl .yes{color:var(--paper)}
+.incl .yes svg{stroke:var(--cy)}
+.incl .no{color:var(--s500)}
+.incl .no b{color:var(--s500);font-weight:400}
+.incl .no svg{stroke:var(--s600)}
 .card-hd h2{font-size:19px;font-weight:800;letter-spacing:-.02em;font-stretch:118%;text-transform:uppercase}
 .card-hd .open{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--s700);padding:11px 13px;transition:border-color .3s,color .3s;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
 .card-hd .open:hover{border-color:var(--cy);color:var(--cy)}
@@ -120,9 +144,10 @@ footer{padding-block:34px 46px;border-top:1px solid var(--s800)}
       </span>
       <span class="t"><b>East Valley Window Cleaning LLC</b><span class="mono">Mesa and San Tan Valley AZ / <b>480-806-9455</b></span></span>
     </div>
-    <h1>One page,<br>four <em>directions</em></h1>
+    <h1>One page,<br>three <em>tiers</em></h1>
     <div class="lead">
-      <p>Same business, same section order, same words and the same photographs. Four completely separate builds with <b>no shared components</b>: each one owns its own material, its own type pairing and its own depth device, so they read as four designs rather than four colourways. Every photo and every clip is <b>their own</b>, pulled from the Instagram account. The reels <b>play muted and loop</b>, and pause when they scroll out of view.</p>
+      <p>Same business, same section order, same words and the same photographs. Three completely separate builds with <b>no shared components</b>: each one owns its own material, its own type pairing and its own depth device, so they read as three designs rather than three colourways. They ladder on <b>how much bespoke build is in them</b>, not on how much content they hold, so nothing has been stripped out of the cheaper one to justify the ladder. Every photo and every clip is <b>their own</b>, pulled from the Instagram account. The reels <b>play muted and loop</b>, and pause when they scroll out of view.</p>
+      <p class="mono note">All three previews are the <b>homepage</b>. The list on each card is what that tier includes when it is built.</p>
       <div class="toolbar">
         <div class="seg" id="seg" role="group" aria-label="Preview width">
           <button data-mode="desktop" class="on" aria-pressed="true">Desktop 1440</button>
@@ -137,7 +162,7 @@ footer{padding-block:34px 46px;border-top:1px solid var(--s800)}
 <div class="cards" id="cards">
 
   <article class="card">
-    <div class="card-hd"><span class="tier t1">01</span><h2>Mesic</h2><a class="open" href="01-mesic.html" target="_blank" rel="noopener">Open full</a></div>
+    <div class="card-hd"><span class="tier t1">Basic</span><h2>Mesic</h2><a class="open" href="01-mesic.html" target="_blank" rel="noopener">Open full</a></div>
     <div class="swatch" aria-hidden="true"><i style="background:#062a33"></i><i style="background:#dff0f4"></i><i style="background:#12c4de"></i><i style="background:#0b6e7e"></i><i style="background:#ffffff"></i></div>
     <div class="stage desktop" data-src="01-mesic.html">
       <div class="loading"><span>Loading preview</span></div>
@@ -145,29 +170,24 @@ footer{padding-block:34px 46px;border-top:1px solid var(--s800)}
       <div class="veil" role="button" tabindex="0"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
+      <p class="whytier">Conventional patterns done well, and the only one of the three with no scroll driven motion system in it. That is the tier, not a criticism: it is the quickest to build and the easiest for anyone to pick up and extend later.</p>
       <p class="tierline">The light one. A drafting sheet, ruled continuously from the top of the page to the bottom.</p>
       <p><b>Almost nothing is in a box.</b> A 24px minor rule and a 144px major rule are painted on the page itself, so the grid runs straight through every section seam instead of restarting. Frosted glass on three things only: the nav, a draggable jump menu, and the stat bar over the hero photograph. Services are one large picture beside two stacked, the seven jobs are an accordion strip where the panel under your pointer takes a third of the width, and recent work is a drag filmstrip running off the right edge of the page.</p>
+      <ul class="incl">
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Homepage designed to this look</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Their own photos, clips and reviews</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Tap to call and tap to text</b></li>
+        <li class="no"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5"/></svg><b>Service and contact pages</b><span>Standard and up</span></li>
+        <li class="no"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5"/></svg><b>Working enquiry form, emailed and stored</b><span>Standard and up</span></li>
+        <li class="yes"><b>Motion</b><span>Entry reveals only</span></li>
+        <li class="no"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5"/></svg><b>SEO groundwork and Google Business schema</b><span>Premium only</span></li>
+      </ul>
       <div class="chips"><span class="chip cy">Bricolage Grotesque</span><span class="chip">Hanken Grotesk</span><span class="chip">Drafting linen</span><span class="chip">Survey contours</span><span class="chip sn">Frosted glass</span></div>
     </div>
   </article>
 
   <article class="card">
-    <div class="card-hd"><span class="tier t2">02</span><h2>Site</h2><a class="open" href="02-site.html" target="_blank" rel="noopener">Open full</a></div>
-    <div class="swatch" aria-hidden="true"><i style="background:#070c14"></i><i style="background:#0c1421"></i><i style="background:#12c4de"></i><i style="background:#6fe2f2"></i><i style="background:#ffffff"></i></div>
-    <div class="stage desktop" data-src="02-site.html">
-      <div class="loading"><span>Loading preview</span></div>
-      <div class="holder"></div>
-      <div class="veil" role="button" tabindex="0"><span>Click to interact</span></div>
-    </div>
-    <div class="card-bd">
-      <p class="tierline">The cinematic one. Film stock: real grain shuffling on a four step gate, a scanline at the threshold of visibility, and raked light shafts across the flat bands.</p>
-      <p><b>A split screen, top to bottom.</b> Every major section is two full height panes with the media running to the viewport edge, and the side it sits on changes as you go down. The hero's smoked glass figures run out of the copy pane and across the seam onto the photograph. A white plate and a picture plate hang off the hero into the section below. The three service groups alternate left and right as contained plates on flat near black, recent work is a <b>projector</b>: one frame at full width with a numbered contact sheet under it, and a glass call pill appears once the hero is behind you. <b>The motion is a camera:</b> the hero plate pushes in as you scroll, the headline lands as a title card, each chapter frame opens on a shutter, and a scrub bar tracks position along the reel.</p>
-      <div class="chips"><span class="chip cy">Big Shoulders Display</span><span class="chip">Sora</span><span class="chip">Film stock</span><span class="chip">Smoked glass</span><span class="chip">Camera motion</span><span class="chip sn">Split screen</span></div>
-    </div>
-  </article>
-
-  <article class="card">
-    <div class="card-hd"><span class="tier t2">03</span><h2>Plate</h2><a class="open" href="03-plate.html" target="_blank" rel="noopener">Open full</a></div>
+    <div class="card-hd"><span class="tier t2">Standard</span><h2>Plate</h2><a class="open" href="03-plate.html" target="_blank" rel="noopener">Open full</a></div>
     <div class="swatch" aria-hidden="true"><i style="background:#131a24"></i><i style="background:#0a4e5c"></i><i style="background:#48d8ec"></i><i style="background:#e9eef7"></i><i style="background:#0c1119"></i></div>
     <div class="stage desktop" data-src="03-plate.html">
       <div class="loading"><span>Loading preview</span></div>
@@ -175,24 +195,44 @@ footer{padding-block:34px 46px;border-top:1px solid var(--s800)}
       <div class="veil" role="button" tabindex="0"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
+      <p class="whytier">A designed system rather than a set of components. One rule set draws the bolted plates, the machined control block, the recessed panels and the indexing rail, and the motion is driven by the scroll rather than by arrival.</p>
       <p class="tierline">The industrial one. Milled metal: horizontal linisher marks with a specular sweep across every steel face, and a knurled teal field so the two alloys read differently.</p>
       <p><b>Everything is bolted through.</b> Machine guard glazing, square cut and fixed at four corners: a draggable spec panel over the hero, the promise nodes set into the sheared teal field, the review cores inside their own bolted frames. Tread plate on the sheared seams. Services are three milled cards with recessed job lists, and recent work is an <b>indexing rail</b>: stations on a track with a machined control block and a station readout. <b>The motion is a machine:</b> a light bar travels across every milled face as it crosses the screen, the headline runs in on a carriage and hard stops, and the plates seat one beat apart down the run.</p>
+      <ul class="incl">
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Homepage designed to this look</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Their own photos, clips and reviews</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Tap to call and tap to text</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Service and contact pages</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Working enquiry form, emailed and stored</b></li>
+        <li class="yes"><b>Motion</b><span>Scroll driven, throughout</span></li>
+        <li class="no"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5"/></svg><b>SEO groundwork and Google Business schema</b><span>Premium only</span></li>
+      </ul>
       <div class="chips"><span class="chip cy">Saira Condensed</span><span class="chip">Saira</span><span class="chip">Brushed steel</span><span class="chip">Knurled field</span><span class="chip">Bolted glazing</span><span class="chip sn">Machine motion</span></div>
     </div>
   </article>
 
   <article class="card">
-    <div class="card-hd"><span class="tier t3">04</span><h2>Burst</h2><a class="open" href="04-burst.html" target="_blank" rel="noopener">Open full</a></div>
-    <div class="swatch" aria-hidden="true"><i style="background:#f2fafb"></i><i style="background:#0b6e7e"></i><i style="background:#04212a"></i><i style="background:#6fd9e8"></i><i style="background:#ddf0f4"></i></div>
-    <div class="stage desktop" data-src="04-burst.html">
+    <div class="card-hd"><span class="tier t3">Premium</span><h2>Site</h2><a class="open" href="02-site.html" target="_blank" rel="noopener">Open full</a></div>
+    <div class="swatch" aria-hidden="true"><i style="background:#070c14"></i><i style="background:#0c1421"></i><i style="background:#12c4de"></i><i style="background:#6fe2f2"></i><i style="background:#ffffff"></i></div>
+    <div class="stage desktop" data-src="02-site.html">
       <div class="loading"><span>Loading preview</span></div>
       <div class="holder"></div>
       <div class="veil" role="button" tabindex="0"><span>Click to interact</span></div>
     </div>
     <div class="card-bd">
-      <p class="tierline">The poster one. Screen print: a 45 degree halftone with a second screen pulled two pixels off register, because a hand pulled print never lines up.</p>
-      <p><b>Ink keylines and hard offsets, not shadows.</b> Every plate carries a 2px keyline and a solid block of colour offset behind it, which is what a misregistered print does. A sunburst runs behind the hero, the statement is a teal plane with white ink screened over the rays, and the acetate cards are printed transparencies pinned onto the sheet rather than glass floating above it. Seven work prints on a twelve column grid, each pulled at a different size.</p>
-      <div class="chips"><span class="chip cy">Archivo Black</span><span class="chip">Archivo</span><span class="chip">Screen print</span><span class="chip">Halftone offset</span><span class="chip sn">Frosted acetate</span></div>
+      <p class="whytier">The most bespoke of the three. A split screen archetype carried top to bottom, a camera motion system, and a gallery engine built for this page and nothing else.</p>
+      <p class="tierline">The cinematic one. Film stock: real grain shuffling on a four step gate, a scanline at the threshold of visibility, and raked light shafts across the flat bands.</p>
+      <p><b>A split screen, top to bottom.</b> Every major section is two full height panes with the media running to the viewport edge, and the side it sits on changes as you go down. The hero's smoked glass figures run out of the copy pane and across the seam onto the photograph. A white plate and a picture plate hang off the hero into the section below. The three service groups alternate left and right as contained plates on flat near black, recent work is a <b>projector</b>: one frame at full width with a numbered contact sheet under it, and a glass call pill appears once the hero is behind you. <b>The motion is a camera:</b> the hero plate pushes in as you scroll, the headline lands as a title card, each chapter frame opens on a shutter, and a scrub bar tracks position along the reel.</p>
+      <ul class="incl">
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Homepage designed to this look</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Their own photos, clips and reviews</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Tap to call and tap to text</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Service and contact pages</b></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>Working enquiry form, emailed and stored</b></li>
+        <li class="yes"><b>Motion</b><span>Full editorial, scroll linked</span></li>
+        <li class="yes"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.4 6.2 12 13 4.6"/></svg><b>SEO groundwork and Google Business schema</b></li>
+      </ul>
+      <div class="chips"><span class="chip cy">Big Shoulders Display</span><span class="chip">Sora</span><span class="chip">Film stock</span><span class="chip">Smoked glass</span><span class="chip">Camera motion</span><span class="chip sn">Split screen</span></div>
     </div>
   </article>
 </div>

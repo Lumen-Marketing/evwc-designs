@@ -145,7 +145,7 @@ const JOBS = [
   ['01-mesic.html', 'm1.png'],
   ['02-site.html', 'm2.png'],
   ['03-plate.html', 'm3.png'],
-  ['04-burst.html', 'm4.png'],
+  ['m4.png'],
 ].filter(([f]) => !only || f.includes(only));
 
 for (const [file, out] of JOBS) {

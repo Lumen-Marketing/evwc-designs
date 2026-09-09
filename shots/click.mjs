@@ -119,7 +119,7 @@ await session('01-mesic.html', async ({ evalJs, clickSel }) => {
 });
 
 // 5. every mobile drawer opens from its burger
-for (const f of ['01-mesic.html', '02-site.html', '03-plate.html', '04-burst.html']) {
+for (const f of ['01-mesic.html', '02-site.html', '03-plate.html']) {
   await session(f, async ({ evalJs, clickSel }) => {
     await evalJs(`(()=>{const s=document.createElement('style');s.textContent='@media(min-width:0px){.burger{display:grid!important}}';document.head.appendChild(s);})()`);
     await sleep(200);

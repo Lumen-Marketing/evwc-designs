@@ -1,6 +1,6 @@
-# East Valley Window Cleaning - four homepage directions
+# East Valley Window Cleaning - three homepage designs, three tiers
 
-Four complete homepage designs for **East Valley Window Cleaning LLC** (Mesa and San Tan
+Three complete homepage designs for **East Valley Window Cleaning LLC** (Mesa and San Tan
 Valley, AZ). Owner **Jose Sandoval**, **480-806-9455**,
 [@eastvalleywindowcleaningllc](https://www.instagram.com/eastvalleywindowcleaningllc/).
 
@@ -10,7 +10,7 @@ Valley, AZ). Owner **Jose Sandoval**, **480-806-9455**,
 
 ## Where these came from
 
-These four are a port of the **Set Right Homes** design set
+These are a port of the **Set Right Homes** design set
 ([lumen-marketing.github.io/setrighthomes-designs](https://lumen-marketing.github.io/setrighthomes-designs/)),
 rebuilt around East Valley's content and recoloured to their logo turquoise. The layouts,
 components, materials and type pairings are Set Right's. Every word, photograph, clip,
@@ -24,28 +24,45 @@ still in the git history if you want them back.
 | 01 | **Mesic** | Drafting linen: 24px minor and 144px major rules painted on the page, survey contours, aggregate speckle | Bricolage Grotesque + Hanken Grotesk | Light, bluish white |
 | 02 | **Site** | Film stock: grain on a shuffling four step gate, scanline, vignette, raked light shafts | Big Shoulders Display + Sora | Near black |
 | 03 | **Plate** | Brushed steel with a specular sweep, knurled teal field, tread plate on the sheared seams | Saira Condensed + Saira | Dark steel |
-| 04 | **Burst** | Screen print: 45 degree halftone with a second screen pulled two pixels off register, paper grain | Archivo Black + Archivo | Light paper |
 
 ---
 
+## The tiers (2026-09-09)
+
+A fourth direction, **04 Burst**, was cut. The remaining three ladder on **how
+much bespoke build is in them**, because that is what actually costs money, and
+it means nothing had to be stripped out of the cheaper one to justify the
+ladder. **Filenames did not change**, so every link already sent still opens.
+
+| Tier | Direction | Why it sits there |
+|---|---|---|
+| **Basic** | 01 Mesic | Conventional patterns done well, and the only one with no scroll driven motion system in it. Quickest to build, easiest for anyone to extend later. |
+| **Standard** | 03 Plate | A designed system rather than a set of components: one rule set draws the bolted plates, the machined control block, the recessed panels and the indexing rail, and the motion is driven by the scroll. |
+| **Premium** | 02 Site | A split screen archetype carried top to bottom, a camera motion system on GSAP, and a gallery engine built for this page and nothing else. |
+
+Every card in the chooser carries a **Yes/No inclusion list** for what the tier
+buys when it is built. Excluded rows are greyed rather than dropped, so the
+client can see what the next tier up is for. All three previews are the
+**homepage**; the list is scope, not a description of the mockup.
+
 ## The furniture matrix
 
-All four run **the same section set in the same order with the same words**. No section is
+All three run **the same section set in the same order with the same words**. No section is
 laid out the same way twice, so the client is comparing designs rather than colourways.
 
-| Section | 01 Mesic | 02 Site | 03 Plate | 04 Burst |
-|---|---|---|---|---|
-| Hero | Full bleed photo, glass jump menu and glass stat bar floating on it | Split screen: copy left, photo right, the smoked glass figures crossing the seam | Photo, bolted spec panel, sheared teal field cutting in below | Sunburst rays, photo in a keylined plate, acetate card pinned over it |
-| Figures | Four cells inside the hero glass bar | Four counters on a ruled row | Four bolted steel boxes | Four acetate plates with offset colour blocks |
-| Owner statement | Blurred photo ground, two columns, six ruled promise rows | Statement at 64px, three ruled notes | Numbered bolted nodes on the teal field beside a checklist | Teal plane, white ink screened over rays, three ruled notes |
-| Services, three groups | One large photo card beside two stacked | Three alternating plates, left and right, with recessed job lists | Three milled cards, picture over a recessed list | Three keylined modules, mirrored plates, offset blocks |
-| Seven services | Accordion strip, the panel under the pointer takes a third | Job lists inside each alternating chapter | Recessed lists inside the milled cards | Lists inside the keylined modules |
-| Photographic band | Full bleed photo with a glass figure card | (not used) | (not used) | Full bleed photo with an acetate figure card |
-| Before and after | Wipe: ruled blue divider, keylined white tabs, in the white panel | Wipe: full bleed, cyan hairline, smoked gate handle | Wipe: machined seam, knurled boss bolted through it, in a bolted plate | Wipe: hard ink rule, handle with the block pulled off register |
-| Recent work, 7 items | Drag filmstrip, mixed slide widths, runs off the right edge | Projector: one frame at full width, numbered contact sheet under it | Indexing rail: stations on a track, machined control block and readout | Seven prints on a twelve column grid, each pulled at a different size |
-| Reviews, all four | Glass cards on the teal band with quote marks | Hairline entries, accent rule on top | Bolted frames around white cores | Keylined cards with offset blocks |
-| Service area | Town columns on survey contours beside a map card | Ruled town grid, then the map edge to edge as a coverage band | Ruled town columns, then the map recessed into a bolted panel | Ruled town grid, then the map keylined with the block pulled off register |
-| Contact | Teal panel, details list beside the call block | Photo ground, details beside a white call plate | Teal bar, details beside a bolted call plate | Screened near black, details beside an acetate call plate |
+| Section | 01 Mesic | 02 Site | 03 Plate |
+|---|---|---|---|
+| Hero | Full bleed photo, glass jump menu and glass stat bar floating on it | Split screen: copy left, photo right, the smoked glass figures crossing the seam | Photo, bolted spec panel, sheared teal field cutting in below |
+| Figures | Four cells inside the hero glass bar | Four counters on a ruled row | Four bolted steel boxes |
+| Owner statement | Blurred photo ground, two columns, six ruled promise rows | Statement at 64px, three ruled notes | Numbered bolted nodes on the teal field beside a checklist |
+| Services, three groups | One large photo card beside two stacked | Three alternating plates, left and right, with recessed job lists | Three milled cards, picture over a recessed list |
+| Seven services | Accordion strip, the panel under the pointer takes a third | Job lists inside each alternating chapter | Recessed lists inside the milled cards |
+| Photographic band | Full bleed photo with a glass figure card | (not used) | (not used) |
+| Before and after | Wipe: ruled blue divider, keylined white tabs, in the white panel | Wipe: full bleed, cyan hairline, smoked gate handle | Wipe: machined seam, knurled boss bolted through it, in a bolted plate |
+| Recent work, 7 items | Drag filmstrip, mixed slide widths, runs off the right edge | Projector: one frame at full width, numbered contact sheet under it | Indexing rail: stations on a track, machined control block and readout |
+| Reviews, all four | Glass cards on the teal band with quote marks | Hairline entries, accent rule on top | Bolted frames around white cores |
+| Service area | Town columns on survey contours beside a map card | Ruled town grid, then the map edge to edge as a coverage band | Ruled town columns, then the map recessed into a bolted panel |
+| Contact | Teal panel, details list beside the call block | Photo ground, details beside a white call plate | Teal bar, details beside a bolted call plate |
 
 ---
 
@@ -77,7 +94,7 @@ sections carry the page.
 **Set Right had an estimate form. It became the call and text block.** East Valley's own
 copy says most homes are priced off a photo and an address with no visit, so a form would
 have contradicted the sentence next to it. The form's slot, shape and material are kept in
-all four; the content inside it is the phone number.
+all three; the content inside it is the phone number.
 
 If you want the FAQ and the process back, say so and they will be written as `SWAP:`
 placeholders for Jose to correct rather than invented.
@@ -91,9 +108,9 @@ reviews and photographs all came from the business. The single placeholder:
 
 | Placeholder | Where | Currently |
 |---|---|---|
-| ~~`SWAP:` map embed~~ | resolved 2026-09-09 | A real keyless Google Maps embed is in, on all four |
+| ~~`SWAP:` map embed~~ | resolved 2026-09-09 | A real keyless Google Maps embed is in, on all three |
 
-There are no invented statistics on any of the four. The only numbers are 5.0 (the Google
+There are no invented statistics on any of the three. The only numbers are 5.0 (the Google
 rating), 4 (the review count, stated alongside it every time), 7 (the services listed) and
 8 (the towns listed).
 
@@ -142,7 +159,6 @@ divider, the handle and the labels stay in each direction's material:
 | 01 Mesic | 2px blue rule | White square, blue keyline | Keylined white, ink type |
 | 02 Site | 2px cyan hairline, **full bleed** | Smoked glass gate, blurred | Smoked, mono caps |
 | 03 Plate | 3px machined seam | Knurled boss, bevelled and bolted | Machined tabs on steel |
-| 04 Burst | 3px hard ink rule | White square, sky block **two pixels off register** | Solid ink blocks |
 
 **The control is a real `<input type="range">** covering the whole box at zero
 opacity. Pointer drag, touch drag, arrow keys, Home and End, and the screen
@@ -207,7 +223,6 @@ column count cannot see:
 | 01 Mesic | 11 | 8 | 4 |
 | **02 Site** | 9 | 7 | **6** |
 | 03 Plate | 9 | 4 | 2 |
-| 04 Burst | 9 | 5 | 1 |
 
 02 still counts as two column in most sections, and that is the point: the shape
 did not change, the treatment of it did.
@@ -251,7 +266,6 @@ share no components:
 | 01 Mesic | The existing map card beside the town columns, keylined |
 | 02 Site | A coverage band, edge to edge, lit like a screen on a dark page |
 | 03 Plate | Recessed into a bolted panel with a machined label bar |
-| 04 Burst | Keylined, with the second block pulled off register |
 
 Only 01 keeps it as a two column pair. The section audit below is the reason
 the other three take it as a full width band instead of another split.
@@ -382,7 +396,7 @@ Not eyeballed. The harness is in `shots/` and every number below is reproducible
 
 | Check | Result |
 |---|---|
-| Horizontal overflow at 505, 780, 880, 1024, 1280, 1440 | zero on all four |
+| Horizontal overflow at 505, 780, 880, 1024, 1280, 1440, 1920 | zero on all three |
 | Text contrast on photographs, glass and gradients | every node clears 4.5:1, measured on rendered pixels |
 | Section heading fill | 86 to 100 percent of its own box on all four |
 | Photographic grounds | 2, 2, 1, 1 against a cap of 2 |
